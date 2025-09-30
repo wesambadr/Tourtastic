@@ -11,7 +11,7 @@ const api = axios.create({
   }
 });
 
-const REFRESH_ENDPOINT = '/api/auth/refresh-token';
+const REFRESH_ENDPOINT = '/auth/refresh-token';
 let redirectingToLogin = false;
 
 // Add session ID to requests for anonymous users
@@ -37,7 +37,9 @@ api.interceptors.request.use(async (config) => {
       // Token looks expired or invalid; attempt refresh if we have a refresh token
       if (refreshToken) {
         try {
-          const refreshResp = await axios.post(REFRESH_ENDPOINT, { refreshToken });
+          // Use full URL to avoid circular dependency with api instance
+          const baseURL = import.meta.env.VITE_API_URL ?? '/api';
+          const refreshResp = await axios.post(`${baseURL}${REFRESH_ENDPOINT}`, { refreshToken });
           if (refreshResp.data?.success && refreshResp.data.accessToken) {
             localStorage.setItem('token', refreshResp.data.accessToken);
             if (refreshResp.data.refreshToken) {
@@ -111,7 +113,9 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem('refreshToken');
         if (refreshToken) {
           try {
-            const response = await axios.post(REFRESH_ENDPOINT, { refreshToken });
+            // Use full URL to avoid circular dependency
+            const baseURL = import.meta.env.VITE_API_URL ?? '/api';
+            const response = await axios.post(`${baseURL}${REFRESH_ENDPOINT}`, { refreshToken });
             
             if (response.data.success) {
               // Save new tokens
