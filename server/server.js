@@ -47,25 +47,58 @@ app.set('trust proxy', 1);
 const allowedOrigins = [
   'http://localhost:8080',
   'http://127.0.0.1:8080',
-  'https://tourtastic.vercel.app'
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://tourtastic.vercel.app',
+  'https://www.tourtastic.net',
+  'https://tourtastic.net'
 ];
 
-// Regex for matching Vercel Preview URLs
+// Regex for matching Vercel Preview URLs and custom domains
 const vercelRegex = /^https:\/\/.*\.vercel\.app$/;
+const customDomainRegex = /^https:\/\/(www\.)?tourtastic\.net$/;
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin) || vercelRegex.test(origin)) {
-      callback(null, true);
+    // Allow requests with no origin (like mobile apps, curl, or Postman)
+    if (!origin) {
+      return callback(null, true);
+    }
+    
+    // Check if origin is in allowed list or matches regex patterns
+    if (allowedOrigins.includes(origin) || vercelRegex.test(origin) || customDomainRegex.test(origin)) {
+      return callback(null, true);
     } else {
-      callback(new Error(`CORS error: Not allowed origin - ${origin}`));
+      console.warn(`⚠️  CORS blocked origin: ${origin}`);
+      // Don't send error, just deny by not setting the header
+      return callback(null, false);
     }
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Session-ID'],
-  exposedHeaders: ['Content-Range', 'X-Content-Range']
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Session-ID', 'X-Requested-With'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 }));
+
+// Additional CORS headers middleware to ensure they're always set
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin && (allowedOrigins.includes(origin) || vercelRegex.test(origin) || customDomainRegex.test(origin))) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept, X-Session-ID, X-Requested-With');
+  }
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+  
+  next();
+});
 
 // Session middleware for anonymous cart support
 const sessionOptions = {
