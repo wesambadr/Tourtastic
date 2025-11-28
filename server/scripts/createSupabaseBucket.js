@@ -61,7 +61,7 @@ async function createBucket() {
     console.log(`📝 Creating bucket "${BUCKET_NAME}"...`);
     const { data, error } = await supabase.storage.createBucket(BUCKET_NAME, {
       public: false,  // Private bucket (مهم!)
-      fileSizeLimit: 104857600, // 100MB
+      fileSizeLimit: 10485, // 100MB
       allowedMimeTypes: null  // السماح بكل أنواع الملفات
     });
 

@@ -1283,3 +1283,58 @@ Tourtastic Team`;
     });
   }
 });
+
+// @desc    Get admin settings
+// @route   GET /api/admin/settings
+// @access  Private/Admin
+exports.getAdminSettings = asyncHandler(async (req, res, next) => {
+  const Setting = require('../models/Setting');
+  
+  // Get all settings or create defaults
+  let settings = await Setting.findOne({ key: 'integrations' });
+  
+  if (!settings) {
+    // Create default settings
+    settings = await Setting.create({
+      key: 'integrations',
+      value: {
+        seeruTravelEnabled: true
+      }
+    });
+  }
+  
+  res.status(200).json({
+    success: true,
+    data: settings.value
+  });
+});
+
+// @desc    Update admin settings
+// @route   PUT /api/admin/settings
+// @access  Private/Admin
+exports.updateAdminSettings = asyncHandler(async (req, res, next) => {
+  const Setting = require('../models/Setting');
+  const { seeruTravelEnabled } = req.body;
+  
+  let settings = await Setting.findOne({ key: 'integrations' });
+  
+  if (!settings) {
+    settings = await Setting.create({
+      key: 'integrations',
+      value: {
+        seeruTravelEnabled: seeruTravelEnabled !== undefined ? seeruTravelEnabled : true
+      }
+    });
+  } else {
+    settings.value = {
+      ...settings.value,
+      seeruTravelEnabled: seeruTravelEnabled !== undefined ? seeruTravelEnabled : settings.value.seeruTravelEnabled
+    };
+    await settings.save();
+  }
+  
+  res.status(200).json({
+    success: true,
+    data: settings.value
+  });
+});

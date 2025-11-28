@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { format } from 'date-fns';
 import { ar, enUS } from 'date-fns/locale';
-import { CalendarIcon, Plane } from 'lucide-react';
+import { CalendarIcon, Plane, Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -27,11 +27,13 @@ import { useMultiCitySearch, SegmentInput } from '@/hooks/useMultiCitySearch';
 
 // Form schema
 const searchFormSchema = z.object({
+  searchType: z.enum(['oneWay', 'roundTrip', 'multiCity']).optional(),
   flightSegments: z.array(z.object({
     from: z.string().min(2, { message: 'الرجاء إدخال مدينة المغادرة' }),
     to: z.string().min(2, { message: 'الرجاء إدخال مدينة الوصول' }),
     date: z.date({ required_error: 'الرجاء اختيار تاريخ السفر' }),
   })),
+  returnDate: z.date().optional(),
   passengers: z.object({
     adults: z.number().min(1, { message: 'يجب اختيار مسافر بالغ واحد على الأقل' }),
     children: z.number().min(0),
@@ -249,11 +251,14 @@ const Flights = () => {
   const [toSuggestions, setToSuggestions] = useState<Airport[]>([]);
   const [showFromSuggestions, setShowFromSuggestions] = useState<number | null>(null);
   const [showToSuggestions, setShowToSuggestions] = useState<number | null>(null);
+  const [returnDatePickerOpen, setReturnDatePickerOpen] = useState(false);
+  const [datePickerOpen, setDatePickerOpen] = useState<boolean[]>([false]);
   const initializedFromStateRef = useRef(false);
 
-  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<SearchFormValues>({
+  const { register, handleSubmit, formState: { errors }, setValue, watch, trigger, setError, clearErrors } = useForm<SearchFormValues>({
     resolver: zodResolver(searchFormSchema),
     defaultValues: {
+      searchType: 'oneWay',
       flightSegments: [{ from: '', to: '', date: undefined }],
       passengers: {
         adults: 1,
@@ -262,6 +267,7 @@ const Flights = () => {
       },
       cabin: 'e',
       direct: false,
+      returnDate: undefined,
     },
   });
 
@@ -269,6 +275,7 @@ const Flights = () => {
   const passengers = watch('passengers');
   const cabin = watch('cabin');
   const direct = watch('direct');
+  const returnDate = watch('returnDate');
 
   const { searchSections, startMultiSearch, loadMore } = useMultiCitySearch();
   // Keep track of the last submitted search so we can retry automatically if needed
@@ -318,6 +325,11 @@ const Flights = () => {
     });
   };
 
+  // Update datePickerOpen state when flightSegments change
+  useEffect(() => {
+    setDatePickerOpen(Array(flightSegments.length).fill(false));
+  }, [flightSegments.length]);
+
   // Update available airlines whenever search results change
   useEffect(() => {
     if (searchSections.length > 0) {
@@ -339,7 +351,37 @@ const Flights = () => {
   const onSubmit = useCallback(async (data: SearchFormValues) => {
     try {
       setIsSubmitting(true);
-      const segmentsForHook = data.flightSegments.map((segment, idx) => ({
+      clearErrors();
+
+      let segments = data.flightSegments;
+
+      // For round trip, validate and add return segment
+      if (data.searchType === 'roundTrip') {
+        const outboundDate = data.flightSegments?.[0]?.date;
+        if (!data.returnDate) {
+          setError('returnDate', { type: 'manual', message: t('returnDateRequired', 'Return date is required for round trip flights') });
+          setIsSubmitting(false);
+          return;
+        }
+        if (outboundDate && data.returnDate <= outboundDate) {
+          setError('returnDate', { type: 'manual', message: t('returnDateAfterDeparture', 'Return date must be after departure date') });
+          setIsSubmitting(false);
+          return;
+        }
+
+        if (data.returnDate && segments.length === 1) {
+          segments = [
+            segments[0],
+            {
+              from: segments[0].to,
+              to: segments[0].from,
+              date: data.returnDate,
+            }
+          ];
+        }
+      }
+
+      const segmentsForHook = segments.map((segment, idx) => ({
         from: segment.from,
         to: segment.to,
         date: segment.date,
@@ -533,6 +575,38 @@ const Flights = () => {
     }
   }, [hasSearched, searchSections, startMultiSearch, t, waitForResults]);
 
+  // Track which segments have been retried to avoid infinite loops
+  const retriedSegmentsRef = useRef<Set<number>>(new Set());
+
+  // Auto-retry individual segments that complete with zero flights
+  useEffect(() => {
+    if (!hasSearched || !searchSections || searchSections.length === 0) return;
+    if (!lastSearchPayloadRef.current) return;
+
+    const payload = lastSearchPayloadRef.current;
+
+    searchSections.forEach((section, sectionIndex) => {
+      // Check if this section is complete but has zero flights and hasn't been retried
+      if (section.isComplete && section.flights.length === 0 && !retriedSegmentsRef.current.has(sectionIndex)) {
+        // Mark this segment as retried to avoid infinite loops
+        retriedSegmentsRef.current.add(sectionIndex);
+
+        // Retry this specific segment
+        void (async () => {
+          try {
+            const segment = payload.segments[sectionIndex];
+            if (segment) {
+              // Create a new search for just this segment
+              await startMultiSearch([segment], payload.passengers, payload.cabin, payload.direct);
+            }
+          } catch (error) {
+            console.error(`Failed to retry segment ${sectionIndex}:`, error);
+          }
+        })();
+      }
+    });
+  }, [hasSearched, searchSections, startMultiSearch]);
+
   // Open filters popover automatically on desktop/laptop when results are shown
   useEffect(() => {
     if (!hasSearched) {
@@ -691,7 +765,9 @@ const Flights = () => {
             price: {
               total: flight.price,
               currency: flight.currency
-            }
+            },
+            // Include fare_key for Seeru integration (use id as fare_key)
+            fareKey: flight.id || flight.fare_key || null
           }
         };
         cartItems.push(newItem);
@@ -724,7 +800,9 @@ const Flights = () => {
             price: {
               total: flight.price,
               currency: flight.currency
-            }
+            },
+            // Include fare_key for Seeru integration (use id as fare_key)
+            fareKey: flight.id || flight.fare_key || null
           }
         }
       });
@@ -759,6 +837,64 @@ const Flights = () => {
     }
   }, [navigate, t]);
 
+  const [searchType, setSearchType] = useState<'oneWay' | 'roundTrip' | 'multiCity'>('oneWay');
+
+  const handleSearchTypeChange = (type: 'oneWay' | 'roundTrip' | 'multiCity') => {
+    setSearchType(type);
+    setValue('searchType', type);
+
+    if (type === 'oneWay' || type === 'roundTrip') {
+      setValue('flightSegments', [{ from: '', to: '', date: undefined }]);
+      setFromAirportNames(['']);
+      setToAirportNames(['']);
+      setDatePickerOpen([false]);
+    } else if (type === 'multiCity' && flightSegments.length < 2) {
+      setValue('flightSegments', [
+        { from: '', to: '', date: undefined },
+        { from: '', to: '', date: undefined }
+      ]);
+      setFromAirportNames(['', '']);
+      setToAirportNames(['', '']);
+      setDatePickerOpen([false, false]);
+    }
+
+    if (type !== 'roundTrip') {
+      setValue('returnDate', undefined);
+    }
+  };
+
+  const addFlightSegment = () => {
+    if (flightSegments.length < 3) {
+      setValue('flightSegments', [...flightSegments, { from: '', to: '', date: undefined }]);
+      setFromAirportNames(prev => [...prev, '']);
+      setToAirportNames(prev => [...prev, '']);
+      setDatePickerOpen(prev => [...prev, false]);
+    }
+  };
+
+  const removeFlightSegment = (index: number) => {
+    if (searchType === 'multiCity' && flightSegments.length > 2) {
+      const newSegments = flightSegments.filter((_, i) => i !== index);
+      setValue('flightSegments', newSegments);
+      setFromAirportNames(prev => prev.filter((_, i) => i !== index));
+      setToAirportNames(prev => prev.filter((_, i) => i !== index));
+      setDatePickerOpen(prev => prev.filter((_, i) => i !== index));
+    }
+  };
+
+  const getMinDateForSegment = (index: number) => {
+    if (index === 0) {
+      return new Date();
+    }
+    const previousDate = flightSegments[index - 1]?.date;
+    if (previousDate && previousDate instanceof Date) {
+      const nextDay = new Date(previousDate);
+      nextDay.setDate(nextDay.getDate() + 1);
+      return nextDay;
+    }
+    return new Date();
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -775,11 +911,55 @@ const Flights = () => {
       <div className="py-8 container-custom">
         <Card className="bg-white shadow-md">
           <CardContent className="p-6">
+            {/* Flight Type Tabs */}
+            <div className="flex space-x-1 rounded-lg bg-gray-100 p-1 mb-6">
+              <button
+                type="button"
+                className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'oneWay'
+                    ? 'bg-white text-tourtastic-blue shadow'
+                    : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                onClick={() => handleSearchTypeChange('oneWay')}
+              >
+                {t('oneWay', 'One Way')}
+              </button>
+              <button
+                type="button"
+                className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'roundTrip'
+                    ? 'bg-white text-tourtastic-blue shadow'
+                    : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                onClick={() => handleSearchTypeChange('roundTrip')}
+              >
+                {t('roundTrip', 'Round Trip')}
+              </button>
+              <button
+                type="button"
+                className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'multiCity'
+                    ? 'bg-white text-tourtastic-blue shadow'
+                    : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                onClick={() => handleSearchTypeChange('multiCity')}
+              >
+                {t('multiCity', 'Multi-City')}
+              </button>
+            </div>
+
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Flight Segments */}
               <div className="space-y-4">
                 {flightSegments.map((segment, index) => (
-                  <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-lg">
+                  <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-lg relative">
+                    {/* Remove button for additional segments */}
+                    {(searchType === 'multiCity' ? flightSegments.length > 2 : flightSegments.length > 1) && (
+                      <button
+                        type="button"
+                        onClick={() => removeFlightSegment(index)}
+                        className="absolute top-2 right-2 h-6 w-6 p-0 text-gray-400 hover:text-red-500"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    )}
                     <div className="space-y-2">
                       <Label htmlFor={`from-${index}`}>{t('from', 'From')}</Label>
                       <div className="relative">
@@ -916,41 +1096,61 @@ const Flights = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor={`date-${index}`}>{t('date', 'Date')}</Label>
-                      <Popover>
+                      <Label htmlFor={`date-${index}`}>
+                        {t('date', 'Date')}
+                        {index > 0 && (
+                          <span className="text-xs text-gray-500 ml-1">
+                            {flightSegments[index - 1]?.date
+                              ? (i18n.language === 'ar'
+                                  ? `بعد ${format(flightSegments[index - 1].date, "MMM dd")}`
+                                  : `(after ${format(flightSegments[index - 1].date, "MMM dd")})`)
+                              : (i18n.language === 'ar' ? '  بعد الرحلة السابقة' : ' (after previous flight)')}
+                          </span>
+                        )}
+                      </Label>
+                      <Popover open={datePickerOpen[index]} onOpenChange={open => setDatePickerOpen(prev => {
+                        const arr = [...prev];
+                        arr[index] = open;
+                        return arr;
+                      })}>
                         <PopoverTrigger asChild>
-                              <Button
-                                id={`date-${index}`}
-                                variant="outline"
-                                className={cn(
-                                  'w-full justify-start text-left font-normal',
-                                  !segment.date && 'text-muted-foreground'
-                                )}
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {segment.date ? (segment.date instanceof Date && !isNaN(segment.date.getTime()) ? format(segment.date, 'dd MMMM yyyy', { locale: i18n.language === 'ar' ? ar : enUS }) : <span>{t('pickDate', 'Pick a date')}</span>) : <span>{t('pickDate', 'Pick a date')}</span>}
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0" align="start">
-                              <Calendar
-                                mode="single"
-                                selected={segment.date}
-                                onSelect={(date) => {
-                                  if (date) {
-                                    setValue(`flightSegments.${index}.date`, date);
-                                    // Close the popover by finding and clicking the trigger button
-                                    const popoverTrigger = document.querySelector(`#date-${index}`);
-                                    if (popoverTrigger instanceof HTMLElement) {
-                                      popoverTrigger.click();
-                                    }
-                                  }
-                                }}
-                                disabled={(date) => date < new Date()}
-                                initialFocus
-                                locale={i18n.language === 'ar' ? ar : enUS}
-                                className={cn('p-3 pointer-events-auto')}
-                              />
-                            </PopoverContent>
+                          <Button
+                            id={`date-${index}`}
+                            variant="outline"
+                            className={cn(
+                              'w-full justify-start text-left font-normal',
+                              !segment.date && 'text-muted-foreground'
+                            )}
+                            onClick={() => setDatePickerOpen(prev => {
+                              const arr = [...prev];
+                              arr[index] = true;
+                              return arr;
+                            })}
+                          >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            {segment.date ? (segment.date instanceof Date && !isNaN(segment.date.getTime()) ? format(segment.date, 'dd MMMM yyyy', { locale: i18n.language === 'ar' ? ar : enUS }) : <span>{t('pickDate', 'Pick a date')}</span>) : <span>{t('pickDate', 'Pick a date')}</span>}
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={segment.date}
+                            onSelect={(date) => {
+                              setValue(`flightSegments.${index}.date`, date);
+                              setDatePickerOpen(prev => {
+                                const arr = [...prev];
+                                arr[index] = false;
+                                return arr;
+                              });
+                              // Validate date sequence
+                              trigger('flightSegments');
+                            }}
+                            disabled={(date) => date < getMinDateForSegment(index)}
+                            initialFocus
+                            locale={i18n.language === 'ar' ? ar : enUS}
+                            className={cn('p-3 pointer-events-auto')}
+                          />
+                        </PopoverContent>
                       </Popover>
                       {errors.flightSegments?.[index]?.date && (
                         <p className="text-sm text-destructive">{errors.flightSegments[index]?.date?.message}</p>
@@ -959,6 +1159,61 @@ const Flights = () => {
                   </div>
                 ))}
               </div>
+
+              {/* Add Search Button - Only show for Multi-City */}
+              {searchType === 'multiCity' && flightSegments.length < 3 && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={addFlightSegment}
+                  className="w-full"
+                >
+                  <Plus className="mr-2 h-4 w-4" /> {t('addSearch', 'Add Search')}
+                </Button>
+              )}
+
+              {/* Return date for Round Trip */}
+              {searchType === 'roundTrip' && (
+                <div className="p-4 border rounded-lg">
+                  <Label>{t('returnDate', 'Return Date')}</Label>
+                  <div className="mt-2">
+                    <Popover open={returnDatePickerOpen} onOpenChange={open => setReturnDatePickerOpen(open)}>
+                      <PopoverTrigger asChild>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !returnDate && "text-muted-foreground"
+                          )}
+                          onClick={() => setReturnDatePickerOpen(true)}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {returnDate ? (returnDate instanceof Date && !isNaN(returnDate.getTime()) ? format(returnDate, 'dd MMMM yyyy', { locale: i18n.language === 'ar' ? ar : enUS }) : <span>{t('pickDate', 'Pick a date')}</span>) : <span>{t('pickDate', 'Pick a date')}</span>}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={returnDate}
+                          onSelect={(date) => {
+                            setValue('returnDate', date);
+                            setReturnDatePickerOpen(false);
+                          }}
+                          disabled={(date) => {
+                            const outboundDate = flightSegments?.[0]?.date;
+                            return outboundDate ? date <= outboundDate : date < new Date();
+                          }}
+                          initialFocus
+                          locale={i18n.language === 'ar' ? ar : enUS}
+                          className={cn('p-3 pointer-events-auto')}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                    {errors.returnDate && <p className="text-sm text-destructive mt-2">{errors.returnDate.message}</p>}
+                  </div>
+                </div>
+              )}
 
               {/* Passenger Selection */}
               <div className="p-4 border rounded-lg">

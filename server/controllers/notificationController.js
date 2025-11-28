@@ -21,7 +21,8 @@ async function convertNotificationUrl(notification) {
     try {
       notif.pdfUrl = await generateSignedUrl(notif.pdfUrl, 86400); // 24 hours
     } catch (err) {
-      console.error('Failed to generate signed URL for notification PDF:', err);
+      console.warn('Failed to generate signed URL for notification PDF:', err.message);
+      // Keep the original path as fallback
     }
   }
   

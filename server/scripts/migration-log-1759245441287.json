@@ -1,0 +1,15 @@
+{
+  "startTime": "2025-09-30T15:17:21.287Z",
+  "endTime": "2025-09-30T15:17:27.289Z",
+  "isDryRun": false,
+  "batchSize": 20,
+  "models": [
+    "destinations",
+    "notifications"
+  ],
+  "totalFiles": 0,
+  "successCount": 0,
+  "failureCount": 0,
+  "skippedCount": 0,
+  "files": []
+}

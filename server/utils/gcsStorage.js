@@ -30,7 +30,13 @@ async function generateSignedUrl(identifier, expiresIn = 3600) {
   // If it's already a full HTTP URL, return as-is (legacy support)
   if (/^https?:\/\//i.test(identifier)) return identifier;
   
-  return await supabaseStorage.generateSignedUrl(identifier, expiresIn);
+  try {
+    return await supabaseStorage.generateSignedUrl(identifier, expiresIn);
+  } catch (error) {
+    console.warn('Failed to generate signed URL from Supabase:', error.message);
+    // Return the identifier as fallback - it might be a local path or already accessible URL
+    return identifier;
+  }
 }
 
 // Delete file

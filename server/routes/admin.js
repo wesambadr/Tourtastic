@@ -25,7 +25,9 @@ const {
     updateFlightBooking,
     deleteFlightBooking,
     uploadFlightTicket,
-    sendFlightTicket
+    sendFlightTicket,
+    getAdminSettings,
+    updateAdminSettings
 } = require("../controllers/adminController");
 
 const { protect, authorize } = require("../middleware/auth");
@@ -99,5 +101,10 @@ router.post(
 );
 
 router.post("/flight-bookings/:bookingId/send-ticket", sendFlightTicket);
+
+// Settings Management
+router.route("/settings")
+    .get(getAdminSettings)
+    .put(updateAdminSettings);
 
 module.exports = router;

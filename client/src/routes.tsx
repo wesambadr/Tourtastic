@@ -2,6 +2,7 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import Layout from './components/layout/Layout';
 import { RequireAuth } from './providers/RequireAuth';
+import { RequireAdmin } from './providers/RequireAdmin';
 
 // Lazy load components
 const Home = lazy(() => import('./pages/Home'));
@@ -26,6 +27,7 @@ const AdminUsers = lazy(() => import('./pages/admin/Users'));
 const AdminDestinations = lazy(() => import('./pages/admin/Destinations'));
 const AdminReports = lazy(() => import('./pages/admin/Reports'));
 const AdminSupport = lazy(() => import('./pages/admin/Support'));
+const AdminSettings = lazy(() => import('./pages/admin/Settings'));
 // Support pages
 const Support247 = lazy(() => import('./pages/support/Support247'));
 const HelpCenter = lazy(() => import('./pages/support/HelpCenter'));
@@ -79,13 +81,14 @@ const AppRoutes = () => {
 
       {/* Admin Routes - NOT wrapped by main site Layout so only AdminLayout is used */}
 
-  <Route path="/admin" element={<RequireAuth><Suspense fallback={<PageLoader />}><AdminLayout><AdminReports /></AdminLayout></Suspense></RequireAuth>} />
-  <Route path="/admin/bookings" element={<RequireAuth><Suspense fallback={<PageLoader />}><AdminLayout><AdminBookings /></AdminLayout></Suspense></RequireAuth>} />
-      <Route path="/admin/users" element={<RequireAuth><Suspense fallback={<PageLoader />}><AdminLayout><AdminUsers /></AdminLayout></Suspense></RequireAuth>} />
-      <Route path="/admin/destinations" element={<RequireAuth><Suspense fallback={<PageLoader />}><AdminLayout><AdminDestinations /></AdminLayout></Suspense></RequireAuth>} />
-      <Route path="/admin/reports" element={<RequireAuth><Suspense fallback={<PageLoader />}><AdminLayout><AdminReports /></AdminLayout></Suspense></RequireAuth>} />
-      <Route path="/admin/profile" element={<RequireAuth><Suspense fallback={<PageLoader />}><AdminLayout><AdminProfile /></AdminLayout></Suspense></RequireAuth>} />
-  <Route path="/admin/support" element={<RequireAuth><Suspense fallback={<PageLoader />}><AdminLayout><AdminSupport /></AdminLayout></Suspense></RequireAuth>} />
+  <Route path="/admin" element={<RequireAdmin><Suspense fallback={<PageLoader />}><AdminLayout><AdminReports /></AdminLayout></Suspense></RequireAdmin>} />
+  <Route path="/admin/bookings" element={<RequireAdmin><Suspense fallback={<PageLoader />}><AdminLayout><AdminBookings /></AdminLayout></Suspense></RequireAdmin>} />
+      <Route path="/admin/users" element={<RequireAdmin><Suspense fallback={<PageLoader />}><AdminLayout><AdminUsers /></AdminLayout></Suspense></RequireAdmin>} />
+      <Route path="/admin/destinations" element={<RequireAdmin><Suspense fallback={<PageLoader />}><AdminLayout><AdminDestinations /></AdminLayout></Suspense></RequireAdmin>} />
+      <Route path="/admin/reports" element={<RequireAdmin><Suspense fallback={<PageLoader />}><AdminLayout><AdminReports /></AdminLayout></Suspense></RequireAdmin>} />
+      <Route path="/admin/profile" element={<RequireAdmin><Suspense fallback={<PageLoader />}><AdminLayout><AdminProfile /></AdminLayout></Suspense></RequireAdmin>} />
+  <Route path="/admin/support" element={<RequireAdmin><Suspense fallback={<PageLoader />}><AdminLayout><AdminSupport /></AdminLayout></Suspense></RequireAdmin>} />
+      <Route path="/admin/settings" element={<RequireAdmin><Suspense fallback={<PageLoader />}><AdminLayout><AdminSettings /></AdminLayout></Suspense></RequireAdmin>} />
     </Routes>
   );
 };

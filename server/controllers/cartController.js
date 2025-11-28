@@ -3,6 +3,7 @@ const Booking = require("../models/Booking");
 const FlightBooking = require("../models/FlightBooking");
 const Notification = require("../models/Notification");
 const User = require("../models/User");
+const { checkFareValidityIfEnabled, processSeeruBookingIfEnabled } = require('../utils/seeruBookingHelper');
 
 // Helper function to generate a unique flight booking ID
 async function generateFlightBookingId() {
@@ -97,6 +98,20 @@ exports.addFlightToCart = asyncHandler(async (req, res) => {
       flightDetails: processedFlightDetails,
       status: "pending"
     });
+
+    // Step 1: Check fare validity with Seeru (POST /booking/fare)
+    // This is done asynchronously to not block the response
+    console.log('📝 Booking created locally. Checking fare validity with Seeru...');
+    console.log('📋 Booking ID:', flightBooking.bookingId);
+    
+    checkFareValidityIfEnabled(flightBooking)
+      .then(result => {
+        console.log('✅ Fare validity check completed:', result);
+      })
+      .catch(error => {
+        console.error('❌ Error checking fare validity:', error);
+        // Don't throw error - booking is already saved locally
+      });
 
     res.status(201).json({
       success: true,

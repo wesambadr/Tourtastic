@@ -114,6 +114,9 @@ export interface FlightLeg {
 export interface Flight {
   // Required properties that were missing
   trip_id: string;
+  id: string; // Unique flight identifier from Seeru (used as fare_key)
+  search_id?: string; // Search ID from Seeru
+  src?: string; // Source provider
   search_query: {
     adt: number;
     chd: number;

@@ -19,5 +19,7 @@
   "loginToAddWishlist": "يرجى تسجيل الدخول لإضافة الوجهات إلى المفضلة",
   "addedToWishlist": "تمت الإضافة إلى المفضلة",
   "removedFromWishlist": "تمت الإزالة من المفضلة",
-  "failedToUpdateWishlist": "فشل في تحديث المفضلة"
+  "failedToUpdateWishlist": "فشل في تحديث المفضلة",
+  "selectNationality": "اختر الجنسية",
+  "selectPassportCountry": "اختر دولة الجواز"
 }

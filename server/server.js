@@ -34,6 +34,9 @@ const flightRoutes = require('./routes/flights');
 const contactRoutes = require('./routes/contact');
 const supportRoutes = require('./routes/support');
 const storageRoutes = require('./routes/storage');
+const seeruRoutes = require('./routes/seeru');
+const webhookRoutes = require('./routes/webhooks');
+const { startTicketIssuanceMonitor } = require('./services/ticketIssuanceService');
 
 const app = express();
 
@@ -144,6 +147,8 @@ app.use("/api/bookings", bookingRoutes);
 app.use("/api/newsletter", newsletterRoutes);
 app.use("/api/admin", adminRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api/seeru', seeruRoutes);
+app.use('/api/webhooks', webhookRoutes);
 
 // Public development-only endpoint: return flight bookings without auth when explicitly requested.
 // This is useful for local dev environments where the frontend may not have an admin session yet.
@@ -188,6 +193,11 @@ if (!process.env.VERCEL) {
     console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode`);
     console.log(`Listening on ${HOST}:${PORT}`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    
+    // Start ticket issuance monitor
+    if (process.env.MONGODB_URI) {
+      startTicketIssuanceMonitor();
+    }
   });
 
   // Handle unhandled promise rejections only when a server is running

@@ -4,6 +4,7 @@ const asyncHandler = require("../middleware/asyncHandler");
 const fs = require('fs');
 const path = require('path');
 const { generateSignedUrl } = require('../utils/gcsStorage');
+const { checkFareValidityIfEnabled, processSeeruBookingIfEnabled } = require('../utils/seeruBookingHelper');
 
 // Load airports data to try to resolve IATA codes when missing
 const airportsJsonPath = path.join(__dirname, '../data/airports.json');
@@ -105,6 +106,14 @@ exports.createBooking = asyncHandler(async (req, res, next) => {
     amount: null,
   };
 
+  // Resolve Seeru integration keys from incoming payload/raw flight
+  const resolvedFareKey = (selectedFlight && (selectedFlight.fareKey || selectedFlight.fare_key))
+    || (rawFlight && (rawFlight.fareKey || rawFlight.fare_key))
+    || null;
+  const resolvedFareBrand = (selectedFlight && (selectedFlight.fareBrand || selectedFlight.fare_brand))
+    || (rawFlight && (rawFlight.fareBrand || rawFlight.fare_brand))
+    || undefined;
+
   // Generate a unique booking ID
   const bookingId = await generateBookingId();
 
@@ -164,14 +173,24 @@ exports.createBooking = asyncHandler(async (req, res, next) => {
     userId: req.user.id,
     customerName: user.name,
     customerEmail: user.email,
+    customerPhone: user.phone || '', // Add phone for Seeru integration
+    // Add passenger and contact data for Seeru integration
+    passengers: details.passengers || [],
+    passengerDetails: details.passengerDetails || [],
+    contact: {
+      full_name: user.name,
+      email: user.email,
+      mobile: user.phone || '',
+      phone: user.phone || ''
+    },
     flightDetails: {
       from: details.from,
       to: details.to,
       fromIata: resolvedFromIata,
       toIata: resolvedToIata,
       departureDate: details.departureDate,
-  passengers: details.passengers,
-  passengerDetails: details.passengerDetails || [],
+      passengers: details.passengers,
+      passengerDetails: details.passengerDetails || [],
       selectedFlight: {
         flightId: flightIdVal || '',
         airline: airlineVal || '',
@@ -181,6 +200,8 @@ exports.createBooking = asyncHandler(async (req, res, next) => {
         class: details.flight?.class || details.flight?.cabin || 'economy',
         airlineCode: resolvedAirlineCode,
         airlineLogo: resolvedAirlineLogo,
+        // include fareKey for downstream seeru processing
+        fareKey: resolvedFareKey || undefined,
         // store raw provider flight object for full UI rendering
         raw: details.flight || selectedFlight || {}
       }
@@ -198,9 +219,37 @@ exports.createBooking = asyncHandler(async (req, res, next) => {
     timeline: [{ status: 'created', timestamp: new Date(), description: 'Booking created and added to cart' }]
   });
 
+  // Persist fare metadata at booking root if available (helps server-side processors)
+  if (resolvedFareKey) {
+    booking.fareKey = resolvedFareKey;
+  }
+  if (resolvedFareBrand) {
+    booking.fareBrand = resolvedFareBrand;
+  }
+  if (resolvedFareKey || resolvedFareBrand) {
+    try { await booking.save(); } catch (e) { /* ignore non-fatal persist errors */ }
+  }
+
+  // Step 1: Check fare validity with Seeru (POST /booking/fare)
+  // This sets status to "Initiated" if successful
+  console.log('📝 Booking created locally. Checking fare validity with Seeru...');
+  console.log('📋 Booking ID:', booking.bookingId);
+  console.log('📋 Booking fareKey:', booking.fareKey);
+  console.log('📋 Booking fareBrand:', booking.fareBrand);
+  
+  checkFareValidityIfEnabled(booking)
+    .then(result => {
+      console.log('✅ Fare validity check completed:', result);
+    })
+    .catch(error => {
+      console.error('❌ Error checking fare validity:', error);
+      // Don't throw error - booking is already saved locally
+    });
+
   res.status(201).json({
     success: true,
     data: booking,
+    message: 'Booking created. Fare is being validated. Please save passenger details to complete the booking.'
   });
 });
 
@@ -305,14 +354,20 @@ exports.updateBooking = asyncHandler(async (req, res, next) => {
     booking.flightDetails.passengerDetails = req.body.flightDetails.passengerDetails.map(p => ({
       firstName: p.firstName || '',
       lastName: p.lastName || '',
+      gender: p.gender || '',
       dob: p.dob ? new Date(p.dob) : null,
       passportNumber: p.passportNumber || '',
       passportIssueDate: p.passportIssueDate ? new Date(p.passportIssueDate) : null,
       passportExpiryDate: p.passportExpiryDate ? new Date(p.passportExpiryDate) : null,
+      passportCountry: p.passportCountry || '',
+      nationality: p.nationality || '',
       phone: p.phone || '',
       email: p.email || '',
       type: p.type || 'adult'
     }));
+    
+    // Also update root-level passengerDetails for Seeru
+    booking.passengerDetails = booking.flightDetails.passengerDetails;
   }
 
   if (req.body.customerName) booking.customerName = req.body.customerName;
@@ -322,6 +377,91 @@ exports.updateBooking = asyncHandler(async (req, res, next) => {
   await booking.save();
 
   res.status(200).json({ success: true, data: booking });
+});
+
+/**
+ * @desc    Save passenger details and trigger Seeru booking
+ * @route   POST /api/bookings/:id/save-passengers
+ * @access  Private (user must own the booking)
+ */
+exports.savePassengersAndProcessSeeru = asyncHandler(async (req, res, next) => {
+  const booking = await FlightBooking.findById(req.params.id);
+  if (!booking) {
+    return res.status(404).json({ success: false, message: 'Booking not found' });
+  }
+
+  if (booking.userId.toString() !== req.user.id.toString()) {
+    return res.status(403).json({ success: false, message: 'Not authorized to update this booking' });
+  }
+
+  const { passengerDetails } = req.body;
+
+  if (!passengerDetails || !Array.isArray(passengerDetails) || passengerDetails.length === 0) {
+    return res.status(400).json({ success: false, message: 'Passenger details are required' });
+  }
+
+  // Update passenger details with all required fields
+  const transformedPassengers = passengerDetails.map(p => ({
+    firstName: p.firstName || '',
+    lastName: p.lastName || '',
+    gender: p.gender || '',
+    dob: p.dob ? new Date(p.dob) : null,
+    passportNumber: p.passportNumber || '',
+    passportIssueDate: p.passportIssueDate ? new Date(p.passportIssueDate) : null,
+    passportExpiryDate: p.passportExpiryDate ? new Date(p.passportExpiryDate) : null,
+    passportCountry: p.passportCountry || '',
+    nationality: p.nationality || '',
+    phone: p.phone || '',
+    email: p.email || '',
+    type: p.type || 'adult'
+  }));
+
+  // Save only to root level passengerDetails to avoid Mongoose version conflicts
+  booking.passengerDetails = transformedPassengers;
+
+  // Save booking with passenger details
+  await booking.save();
+
+  console.log('✅ Passenger details saved for booking:', booking.bookingId);
+  console.log('📋 Passenger count:', booking.passengerDetails.length);
+  console.log('📝 First passenger data:', JSON.stringify(booking.passengerDetails[0], null, 2));
+
+  // Step 2: Save booking with Seeru (POST /booking/save) if fare was already validated
+  // Status should be 'initiated' (from fare check) or 'pending' (if fare check failed)
+  console.log('📊 Checking Seeru status for booking:', booking.bookingId);
+  console.log('📊 Current Seeru Status:', booking.seeruStatus);
+  console.log('📊 All Seeru fields:', {
+    seeruStatus: booking.seeruStatus,
+    seeruOrderId: booking.seeruOrderId,
+    seeruError: booking.seeruError,
+    seeruValidated: booking.seeruValidated
+  });
+  
+  // Process if status is 'initiated', 'pending', or 'failed' (retry on failure)
+  // 'new' means already saved to Seeru, skip processing
+  if (booking.seeruStatus === 'initiated' || booking.seeruStatus === 'pending' || booking.seeruStatus === 'failed') {
+    console.log('🚀 Saving booking with Seeru after passenger details saved...');
+    console.log('📊 Current Seeru Status:', booking.seeruStatus);
+    if (booking.seeruStatus === 'failed') {
+      console.log('🔄 Retrying Seeru booking (previous attempt failed)...');
+    }
+    processSeeruBookingIfEnabled(booking).catch(error => {
+      console.error('❌ Error processing booking with Seeru:', error);
+      // Don't throw error - booking is already saved locally
+    });
+  } else if (booking.seeruStatus === 'new') {
+    console.log('✅ Booking already saved with Seeru. Status: new');
+    console.log('📊 Order ID:', booking.seeruOrderId);
+  } else {
+    console.log('⚠️ Skipping Seeru booking save. Current status:', booking.seeruStatus);
+    console.log('⚠️ Expected status to be: initiated, pending, or failed');
+  }
+
+  res.status(200).json({
+    success: true,
+    message: 'Passenger details saved and Seeru booking initiated',
+    data: booking
+  });
 });
 
 // @desc    Return a usable URL (public or signed) for a booking ticket

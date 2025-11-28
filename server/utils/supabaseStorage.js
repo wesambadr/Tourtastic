@@ -8,8 +8,11 @@ const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const SUPABASE_BUCKET = process.env.SUPABASE_BUCKET || 'tourtastic-files';
 const SIGNED_URL_EXPIRY = parseInt(process.env.SUPABASE_SIGNED_URL_EXPIRY || '3600', 10); // 1 hour default
 
+// Import local storage as fallback
+const localStorage = require('./localStorageBackup');
+
 if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  console.warn('Supabase is not fully configured. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in your environment.');
+  console.warn('⚠️ Supabase is not fully configured. Using Local Storage as fallback.');
 }
 
 // Create Supabase client (with service_role key for server-side operations)
@@ -105,54 +108,58 @@ function detectMimeType(filePath) {
 }
 
 /**
- * Upload a buffer to Supabase Storage
+ * Upload a buffer to Supabase Storage (with Local Storage fallback)
  * @param {Buffer} buffer - File buffer
  * @param {string} destinationPath - Destination path in Supabase Storage
  * @param {string} contentType - MIME type of the file
  * @returns {Promise<string>} - Returns the storage path
  */
 async function uploadBuffer(buffer, destinationPath, contentType) {
-  if (!supabase) {
-    throw new Error('Supabase client is not initialized. Check your environment variables.');
+  // Try Supabase first if configured
+  if (supabase) {
+    try {
+      const { fullPath } = normalizeDestination(destinationPath);
+      
+      // Detect MIME type from extension if not provided or is generic
+      let finalContentType = contentType;
+      if (!contentType || contentType === 'application/octet-stream') {
+        finalContentType = detectMimeType(fullPath);
+      }
+
+      const { data, error } = await supabase.storage
+        .from(SUPABASE_BUCKET)
+        .upload(fullPath, buffer, {
+          contentType: finalContentType,
+          upsert: true, // Overwrite if exists
+          cacheControl: '3600'
+        });
+
+      if (error) {
+        throw new Error(`Supabase upload failed: ${error.message}`);
+      }
+
+      console.log('✅ File uploaded to Supabase Storage');
+      // Return the storage path (not a public URL since bucket is private)
+      // Format: supabase://bucket-name/path/to/file.jpg
+      return `supabase://${SUPABASE_BUCKET}/${data.path}`;
+    } catch (error) {
+      console.warn('⚠️ Supabase upload failed, falling back to Local Storage:', error.message);
+      // Fall through to local storage
+    }
   }
 
-  const { fullPath } = normalizeDestination(destinationPath);
-  
-  // Detect MIME type from extension if not provided or is generic
-  let finalContentType = contentType;
-  if (!contentType || contentType === 'application/octet-stream') {
-    finalContentType = detectMimeType(fullPath);
-  }
-
-  const { data, error } = await supabase.storage
-    .from(SUPABASE_BUCKET)
-    .upload(fullPath, buffer, {
-      contentType: finalContentType,
-      upsert: true, // Overwrite if exists
-      cacheControl: '3600'
-    });
-
-  if (error) {
-    console.error('Supabase upload error:', error);
-    throw new Error(`Supabase upload failed: ${error.message}`);
-  }
-
-  // Return the storage path (not a public URL since bucket is private)
-  // Format: supabase://bucket-name/path/to/file.jpg
-  return `supabase://${SUPABASE_BUCKET}/${data.path}`;
+  // Fallback to Local Storage
+  console.log('📁 Using Local Storage for file upload');
+  return await localStorage.uploadBuffer(buffer, destinationPath, contentType);
 }
 
 /**
- * Generate a signed URL for a private file
- * @param {string} identifier - Storage path or identifier (e.g., 'supabase://bucket/path' or 'path/to/file.jpg')
+ * Generate a signed URL for a private file (with Local Storage support)
+ * @param {string} identifier - Storage path or identifier (e.g., 'supabase://bucket/path' or 'local://path/to/file.jpg')
  * @param {number} expiresIn - Expiry time in seconds (default: 3600 = 1 hour)
  * @returns {Promise<string>} - Signed URL
  */
 async function generateSignedUrl(identifier, expiresIn = SIGNED_URL_EXPIRY) {
-  if (!supabase) {
-    throw new Error('Supabase client is not initialized. Check your environment variables.');
-  }
-
   if (!identifier) return '';
 
   // If it's already a full HTTP URL (legacy Cloudinary), return as-is
@@ -160,41 +167,58 @@ async function generateSignedUrl(identifier, expiresIn = SIGNED_URL_EXPIRY) {
     return identifier;
   }
 
-  // Extract path from supabase:// format
-  let filePath = identifier;
+  // Handle local:// format (Local Storage)
+  if (identifier.startsWith('local://')) {
+    return await localStorage.generateSignedUrl(identifier, expiresIn);
+  }
+
+  // Handle supabase:// format
   if (identifier.startsWith('supabase://')) {
-    // Format: supabase://bucket-name/path/to/file.jpg
-    const parts = identifier.replace('supabase://', '').split('/');
-    parts.shift(); // Remove bucket name
-    filePath = parts.join('/');
+    if (!supabase) {
+      console.warn('⚠️ Supabase not configured, using Local Storage fallback');
+      // Convert supabase path to local path and use local storage
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
+      return `/uploads/${filePath}`;
+    }
+
+    try {
+      // Format: supabase://bucket-name/path/to/file.jpg
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
+
+      const { data, error } = await supabase.storage
+        .from(SUPABASE_BUCKET)
+        .createSignedUrl(filePath, expiresIn);
+
+      if (error) {
+        throw new Error(`Failed to generate signed URL: ${error.message}`);
+      }
+
+      console.log('✅ Signed URL generated from Supabase');
+      return data.signedUrl;
+    } catch (err) {
+      console.warn('⚠️ Supabase signed URL failed, using Local Storage fallback:', err.message);
+      // Fallback to local storage
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
+      return `/uploads/${filePath}`;
+    }
   }
 
-  // Remove leading slashes
-  filePath = filePath.replace(/^\/+/, '');
-
-  const { data, error } = await supabase.storage
-    .from(SUPABASE_BUCKET)
-    .createSignedUrl(filePath, expiresIn);
-
-  if (error) {
-    console.error('Supabase signed URL error:', error);
-    throw new Error(`Failed to generate signed URL: ${error.message}`);
-  }
-
-  return data.signedUrl;
+  // Default: treat as local path
+  return `/uploads/${identifier}`;
 }
 
 /**
- * Generate public URL for a file (only works if bucket is public - NOT RECOMMENDED for this project)
+ * Generate public URL for a file (with Local Storage support)
  * @param {string} identifier - Storage path or identifier
- * @returns {string} - Public URL (DO NOT USE for private buckets)
+ * @returns {string} - Public URL
  */
 function generatePublicUrl(identifier) {
-  if (!supabase) {
-    console.warn('Supabase client is not initialized.');
-    return '';
-  }
-
   if (!identifier) return '';
 
   // If it's already a full HTTP URL, return as-is
@@ -202,79 +226,123 @@ function generatePublicUrl(identifier) {
     return identifier;
   }
 
-  // Extract path from supabase:// format
-  let filePath = identifier;
-  if (identifier.startsWith('supabase://')) {
-    const parts = identifier.replace('supabase://', '').split('/');
-    parts.shift(); // Remove bucket name
-    filePath = parts.join('/');
+  // Handle local:// format
+  if (identifier.startsWith('local://')) {
+    return localStorage.generatePublicUrl(identifier);
   }
 
-  filePath = filePath.replace(/^\/+/, '');
+  // Handle supabase:// format
+  if (identifier.startsWith('supabase://')) {
+    if (!supabase) {
+      console.warn('⚠️ Supabase not configured, using Local Storage fallback');
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
+      return `/uploads/${filePath}`;
+    }
 
-  const { data } = supabase.storage
-    .from(SUPABASE_BUCKET)
-    .getPublicUrl(filePath);
+    try {
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
 
-  return data.publicUrl;
+      const { data } = supabase.storage
+        .from(SUPABASE_BUCKET)
+        .getPublicUrl(filePath);
+
+      return data.publicUrl;
+    } catch (error) {
+      console.warn('⚠️ Supabase public URL failed, using Local Storage fallback');
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
+      return `/uploads/${filePath}`;
+    }
+  }
+
+  // Default: treat as local path
+  return `/uploads/${identifier}`;
 }
 
 /**
- * Delete a file from Supabase Storage
+ * Delete a file from Supabase Storage (with Local Storage support)
  * @param {string} identifier - Storage path or identifier
  * @returns {Promise<void>}
  */
 async function deleteFile(identifier) {
-  if (!supabase) {
-    throw new Error('Supabase client is not initialized.');
-  }
-
   if (!identifier) return;
 
-  // Extract path from supabase:// format
-  let filePath = identifier;
-  if (identifier.startsWith('supabase://')) {
-    const parts = identifier.replace('supabase://', '').split('/');
-    parts.shift(); // Remove bucket name
-    filePath = parts.join('/');
+  // Handle local:// format
+  if (identifier.startsWith('local://')) {
+    return await localStorage.deleteFile(identifier);
   }
 
-  filePath = filePath.replace(/^\/+/, '');
+  // Handle supabase:// format
+  if (identifier.startsWith('supabase://')) {
+    if (!supabase) {
+      console.warn('⚠️ Supabase not configured, using Local Storage fallback');
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
+      return await localStorage.deleteFile(`local://${filePath}`);
+    }
 
-  const { error } = await supabase.storage
-    .from(SUPABASE_BUCKET)
-    .remove([filePath]);
+    try {
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
 
-  if (error) {
-    console.error('Supabase delete error:', error);
-    throw new Error(`Failed to delete file: ${error.message}`);
+      const { error } = await supabase.storage
+        .from(SUPABASE_BUCKET)
+        .remove([filePath]);
+
+      if (error) {
+        throw new Error(`Failed to delete file: ${error.message}`);
+      }
+
+      console.log('✅ File deleted from Supabase');
+    } catch (error) {
+      console.warn('⚠️ Supabase delete failed, using Local Storage fallback:', error.message);
+      const parts = identifier.replace('supabase://', '').split('/');
+      parts.shift(); // Remove bucket name
+      const filePath = parts.join('/');
+      return await localStorage.deleteFile(`local://${filePath}`);
+    }
   }
 }
 
 /**
- * List files in a folder
+ * List files in a folder (with Local Storage support)
  * @param {string} folderPath - Folder path (e.g., 'destinations/')
  * @returns {Promise<Array>} - Array of file objects
  */
 async function listFiles(folderPath = '') {
-  if (!supabase) {
-    throw new Error('Supabase client is not initialized.');
+  // Try Supabase first if configured
+  if (supabase) {
+    try {
+      const { data, error } = await supabase.storage
+        .from(SUPABASE_BUCKET)
+        .list(folderPath, {
+          limit: 1000,
+          offset: 0,
+          sortBy: { column: 'created_at', order: 'desc' }
+        });
+
+      if (error) {
+        throw new Error(`Failed to list files: ${error.message}`);
+      }
+
+      console.log('✅ Files listed from Supabase');
+      return data || [];
+    } catch (error) {
+      console.warn('⚠️ Supabase list files failed, using Local Storage fallback:', error.message);
+      // Fall through to local storage
+    }
   }
 
-  const { data, error } = await supabase.storage
-    .from(SUPABASE_BUCKET)
-    .list(folderPath, {
-      limit: 1000,
-      offset: 0,
-      sortBy: { column: 'created_at', order: 'desc' }
-    });
-
-  if (error) {
-    console.error('Supabase list files error:', error);
-    throw new Error(`Failed to list files: ${error.message}`);
-  }
-
-  return data || [];
+  // Fallback to Local Storage
+  console.log('📁 Listing files from Local Storage');
+  return await localStorage.listFiles(folderPath);
 }
 
 module.exports = {

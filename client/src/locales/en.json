@@ -138,6 +138,8 @@
   "subtotal": "Subtotal",
   "subtotalAmount": "Subtotal",
   "addToCart": "Add to cart",
+  "flightAddedToCart": "Flight has been added to your cart",
+  "addToCartError": "Failed to add flight to cart. Please try again.",
   "loading": "Loading...",
   "loadMore": "Load More Flights",
   "noFlightsFound": "No flights found",
@@ -149,41 +151,22 @@
   "totalPrice": "Total Price",
   "proceedToPayment": "Proceed to Payment",
   "delete": "Delete",
-  "route": "Route"
-  ,
+  "route": "Route",
   "enterPassengerDetails": "Enter Passenger Details",
-  "passengerDetailsTitle": "Passenger Details",
-  "passenger": "Passenger",
-  "firstName": "First name",
-    "firstNameRequired": "First name is required",
-    "lastNameRequired": "Last name is required",
-    "dobInvalid": "Please enter a valid date of birth",
-    "passportNumberRequired": "Passport number is required",
-    "passportIssueDateInvalid": "Invalid passport issue date",
-    "passportExpiryDateInvalid": "Invalid passport expiry date",
-    "phoneInvalid": "Please enter a valid phone number",
-    "emailInvalid": "Please enter a valid email address",
-  "lastName": "Last name",
-  "dob": "Date of birth",
-  "passportNumber": "Passport number",
-  "passportIssueDate": "Passport issue date",
-  "passportExpiryDate": "Passport expiry date",
-  "phone": "Phone",
-  "email": "Email",
   "save": "Save",
   "cancel": "Cancel",
   "passengerDetailsSaved": "Passenger details saved",
   "savePassengerDetailsError": "Failed to save passenger details. Please try again.",
-  "notifications":{"title": "Notifications",
-  "markAllAsRead": "Mark all as read",
-  "markAsRead": "Mark as read",
-  "description": "Stay up to date with your bookings, payments and special offers.",
-  "tabs": {
-    "all": "All",
-    "unread": "Unread"
-  }
-}
-,
+  "notifications": {
+    "title": "Notifications",
+    "markAllAsRead": "Mark all as read",
+    "markAsRead": "Mark as read",
+    "description": "Stay up to date with your bookings, payments and special offers.",
+    "tabs": {
+      "all": "All",
+      "unread": "Unread"
+    }
+  },
   "destinationsManagement": "Destinations Management",
   "addDestination": "Add Destination",
   "destinationsList": "Destinations List",
@@ -218,8 +201,7 @@
   "popularDestination": "Popular Destination",
   "update": "Update",
   "add": "Add",
-  "destination": "Destination"
-,
+  "destination": "Destination",
   "admin": {
     "support": {
       "title": "Support",
@@ -294,8 +276,7 @@
       "uploading": "Uploading...",
       "saveAndComplete": "Save & Complete"
     }
-  }
-,
+  },
   "profile": {
     "title": "My Profile",
     "failedToLoadUserData": "Failed to load user data",
@@ -325,9 +306,9 @@
     "changePassword": "Change Password",
     "changingPassword": "Changing password...",
     "passwordUpdated": "Password updated successfully",
-    "failedToChangePassword": "Failed to change password"
-  ,"username": "Username",
-  "saveProfile": "Save Profile"
+    "failedToChangePassword": "Failed to change password",
+    "username": "Username",
+    "saveProfile": "Save Profile"
   },
   
   "profileIntro": "Manage your account details, view your bookings, and access your saved destinations.",
@@ -346,7 +327,7 @@
     "ticket": "E-ticket",
     "openTicket": "Open Ticket (PDF)"
   },
-  "passenge": {
+  "passenger": {
     "name": "Name",
     "email": "Email",
     "count": "Passengers",
@@ -358,22 +339,16 @@
     "amount": "Amount",
     "status": "Payment Status"
   },
-  "statu": {
+  "status": {
     "confirmed": "Confirmed",
     "pending": "Pending",
     "cancelled": "Cancelled",
     "done": "Done"
-  }
-  ,
+  },
   "searchQueries": "Search Queries",
   "orders": "Orders",
-  "count": "Count",
   "orderId": "Order ID",
-  "user": "User",
-  "amount": "Amount",
-  "status": "Status",
   "month": "Month",
-  "bookings": "Bookings",
   "forgotPassword": "Forgot Password",
   "forgotPasswordIntro": "Enter your email address and we will send you a verification code to reset your password.",
   "sendResetCode": "Send Verification Code",
@@ -397,5 +372,51 @@
   "backToLogin": "Back to Login",
   "error": "Error",
   "success": "Success",
-  "resetLinkError": "Failed to send reset code. Please try again."
+  "resetLinkError": "Failed to send reset code. Please try again.",
+  "settings": "Settings",
+  "manageIntegrations": "Manage integrations and system settings",
+  "integrations": "Integrations",
+  "manageExternalServices": "Manage external service integrations",
+  "seeruTravelIntegration": "Seeru Travel Integration",
+  "seeruTravelDescription": "Enable automatic ticket generation and delivery through Seeru Travel API",
+  "seeruTravelEnabledInfo": "Tickets will be automatically generated and sent to users through Seeru Travel",
+  "seeruTravelDisabledInfo": "Tickets will be stored in admin panel. Manual ticket generation required",
+  "seeruTravelEnabled": "Seeru Travel integration enabled",
+  "seeruTravelDisabled": "Seeru Travel integration disabled",
+  "failedToLoadSettings": "Failed to load settings",
+  "failedToUpdateSettings": "Failed to update settings",
+  "seeruTravelNote1": "When enabled: Tickets are generated automatically via Seeru Travel API",
+  "seeruTravelNote2": "When disabled: Tickets must be manually generated from the admin panel",
+  "seeruTravelNote3": "Booking data will only be sent to Seeru Travel when integration is enabled",
+  "note": "Note",
+
+  "gender": "Gender",
+  "selectGender": "Select Gender",
+  "male": "Male",
+  "female": "Female",
+  "genderRequired": "Gender is required",
+  "nationality": "Nationality",
+  "selectNationality": "Select Nationality",
+  "nationalityRequired": "Nationality is required",
+  "passportCountry": "Passport Country",
+  "selectPassportCountry": "Select Passport Country",
+  "passportCountryRequired": "Passport country is required",
+  "passengerDetailsDesc": "Please fill in the required passenger information for each traveler.",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "firstNameRequired": "First name is required",
+  "lastNameRequired": "Last name is required",
+  "dob": "Date of Birth",
+  "dobPlaceholder": "yyyy-mm-dd",
+  "dobInvalid": "Please enter a valid date of birth",
+  "passportNumber": "Passport Number",
+  "passportNumberRequired": "Passport number is required",
+  "passportIssueDate": "Passport Issue Date",
+  "passportIssueDateInvalid": "Invalid passport issue date",
+  "passportExpiryDate": "Passport Expiry Date",
+  "passportExpiryDateInvalid": "Invalid passport expiry date",
+  "phone": "Phone",
+  "phoneInvalid": "Please enter a valid phone number",
+  "email": "Email",
+  "emailInvalid": "Please enter a valid email address"
 }

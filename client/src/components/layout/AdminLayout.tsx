@@ -19,6 +19,7 @@ import {
   Globe,
   Menu as MenuIcon,
   X as CloseIcon,
+  Settings as SettingsIcon,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -46,6 +47,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     { name: t('admin.support.title'), href: '/admin/support', icon: <HelpCircle className="h-5 w-5" /> },
     { name: t('destinations'), href: '/admin/destinations', icon: <MapPin className="h-5 w-5" /> },
     { name: t('reports'), href: '/admin/reports', icon: <BarChart2 className="h-5 w-5" /> },
+    { name: t('settings'), href: '/admin/settings', icon: <SettingsIcon className="h-5 w-5" /> },
   ];
 
   const isActive = (path: string) => {

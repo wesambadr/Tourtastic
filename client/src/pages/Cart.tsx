@@ -15,7 +15,33 @@ import { useNavigate } from 'react-router-dom';
 import { paymentService } from '@/services/paymentService';
 import { useAuthenticatedAction } from '@/hooks/useAuthenticatedAction';
 import { getAirlineLogo } from '@/components/flights/utils/flightHelpers';
-import { formatSypFromUsd } from '@/utils/currency';
+import { formatSypFromUsd, getSypRate } from '@/utils/currency';
+
+// Arab countries list with English and Arabic names
+const ARAB_COUNTRIES = [
+  { code: 'DZ', nameEn: 'Algeria', nameAr: 'الجزائر' },
+  { code: 'BH', nameEn: 'Bahrain', nameAr: 'البحرين' },
+  { code: 'KM', nameEn: 'Comoros', nameAr: 'جزر القمر' },
+  { code: 'DJ', nameEn: 'Djibouti', nameAr: 'جيبوتي' },
+  { code: 'EG', nameEn: 'Egypt', nameAr: 'مصر' },
+  { code: 'IQ', nameEn: 'Iraq', nameAr: 'العراق' },
+  { code: 'JO', nameEn: 'Jordan', nameAr: 'الأردن' },
+  { code: 'KW', nameEn: 'Kuwait', nameAr: 'الكويت' },
+  { code: 'LB', nameEn: 'Lebanon', nameAr: 'لبنان' },
+  { code: 'LY', nameEn: 'Libya', nameAr: 'ليبيا' },
+  { code: 'MR', nameEn: 'Mauritania', nameAr: 'موريتانيا' },
+  { code: 'MA', nameEn: 'Morocco', nameAr: 'المغرب' },
+  { code: 'OM', nameEn: 'Oman', nameAr: 'عمان' },
+  { code: 'PS', nameEn: 'Palestine', nameAr: 'فلسطين' },
+  { code: 'QA', nameEn: 'Qatar', nameAr: 'قطر' },
+  { code: 'SA', nameEn: 'Saudi Arabia', nameAr: 'المملكة العربية السعودية' },
+  { code: 'SO', nameEn: 'Somalia', nameAr: 'الصومال' },
+  { code: 'SD', nameEn: 'Sudan', nameAr: 'السودان' },
+  { code: 'SY', nameEn: 'Syria', nameAr: 'سوريا' },
+  { code: 'TN', nameEn: 'Tunisia', nameAr: 'تونس' },
+  { code: 'AE', nameEn: 'United Arab Emirates', nameAr: 'الإمارات العربية المتحدة' },
+  { code: 'YE', nameEn: 'Yemen', nameAr: 'اليمن' }
+];
 
 interface Transaction {
   id: string;
@@ -138,10 +164,13 @@ const Cart = () => {
     type: 'adult' | 'child' | 'infant';
     firstName: string;
     lastName: string;
+    gender?: string; // M, F, or other
     dob?: string | null;
     passportNumber?: string;
     passportIssueDate?: string | null;
     passportExpiryDate?: string | null;
+    passportCountry?: string; // Country of passport issuance
+    nationality?: string; // Passenger nationality
     phone?: string;
     email?: string;
   }
@@ -193,9 +222,14 @@ const Cart = () => {
         try {
           const response = await api.get<ApiResponse>('/bookings/my');
           if (response.data.success && Array.isArray(response.data.data)) {
-            // Merge local and server bookings but only include pending bookings
-            const serverPending = response.data.data.filter(b => String(b.status || '').toLowerCase() === 'pending');
-            setBookings([...localBookings, ...serverPending].filter(b => String(b.status || '').toLowerCase() === 'pending'));
+            // Merge local and server bookings
+            // Include all bookings except those with status 'done' or 'issued'
+            // (pending, confirmed are all shown in cart)
+            const serverBookings = response.data.data.filter(b => {
+              const status = String(b.status || '').toLowerCase();
+              return status !== 'done' && status !== 'issued';
+            });
+            setBookings([...localBookings, ...serverBookings]);
           } else {
             setBookings(localBookings);
             console.error('Invalid response format:', response.data);
@@ -205,8 +239,12 @@ const Cart = () => {
           setBookings(localBookings);
         }
       } else {
-        // Only include pending local bookings
-        setBookings(localBookings.filter((b: FlightBooking) => String(b.status || '').toLowerCase() === 'pending'));
+        // Include all local bookings (pending, confirmed, etc.)
+        // Only exclude 'done' and 'issued' bookings
+        setBookings(localBookings.filter((b: FlightBooking) => {
+          const status = String(b.status || '').toLowerCase();
+          return status !== 'done' && status !== 'issued';
+        }));
       }
     } catch (error) {
       console.error('Error loading cart:', error);
@@ -249,6 +287,17 @@ const Cart = () => {
     };
     loadAirportsBoth();
   }, [i18n.language]);
+
+  // Re-render dialog when language changes to update dropdown text
+  useEffect(() => {
+    if (passengerDialogOpen) {
+      // Force re-render by closing and reopening
+      setPassengerDialogOpen(false);
+      setTimeout(() => {
+        setPassengerDialogOpen(true);
+      }, 0);
+    }
+  }, [i18n.language, passengerDialogOpen]);
 
   const handleCheckout = () => {
     // Check if user is logged in before proceeding to checkout
@@ -315,8 +364,12 @@ const Cart = () => {
     authenticatedAction(async () => {
       try {
         setProcessingPayment(booking._id);
-        const amount = booking.flightDetails?.selectedFlight?.price?.total || 0;
-        const paymentUrl = await paymentService.initiatePayment(amount, booking.bookingId);
+        const amountUsd = booking.flightDetails?.selectedFlight?.price?.total || 0;
+        // Convert USD amount to SYP using the exchange rate from localStorage
+        const sypRate = getSypRate();
+        const amountSyp = Math.round(amountUsd * sypRate);
+        console.log(`💰 Payment conversion: ${amountUsd} USD × ${sypRate} = ${amountSyp} SYP`);
+        const paymentUrl = await paymentService.initiatePayment(amountSyp, booking.bookingId);
         window.location.href = paymentUrl;
       } catch (error) {
         console.error('Payment initiation error:', error);
@@ -334,18 +387,25 @@ const Cart = () => {
     // Build a passenger forms array based on counts
     const counts = booking.flightDetails?.passengers || { adults: 0, children: 0, infants: 0 };
   const arr: PassengerForm[] = [];
-  for (let i = 0; i < counts.adults; i++) arr.push({ type: 'adult', firstName: '', lastName: '', dob: null, passportNumber: '', passportIssueDate: null, passportExpiryDate: null, phone: '', email: '' });
-  for (let i = 0; i < counts.children; i++) arr.push({ type: 'child', firstName: '', lastName: '', dob: null, passportNumber: '', passportIssueDate: null, passportExpiryDate: null, phone: '', email: '' });
-  for (let i = 0; i < counts.infants; i++) arr.push({ type: 'infant', firstName: '', lastName: '', dob: null, passportNumber: '', passportIssueDate: null, passportExpiryDate: null, phone: '', email: '' });
+  for (let i = 0; i < counts.adults; i++) arr.push({ type: 'adult', firstName: '', lastName: '', gender: '', dob: null, passportNumber: '', passportIssueDate: null, passportExpiryDate: null, passportCountry: '', nationality: '', phone: '', email: '' });
+  for (let i = 0; i < counts.children; i++) arr.push({ type: 'child', firstName: '', lastName: '', gender: '', dob: null, passportNumber: '', passportIssueDate: null, passportExpiryDate: null, passportCountry: '', nationality: '', phone: '', email: '' });
+  for (let i = 0; i < counts.infants; i++) arr.push({ type: 'infant', firstName: '', lastName: '', gender: '', dob: null, passportNumber: '', passportIssueDate: null, passportExpiryDate: null, passportCountry: '', nationality: '', phone: '', email: '' });
 
-    // If booking already has passengerDetails, prefill
-  const existing = ((booking.flightDetails as unknown) as { passengerDetails?: PassengerForm[] }).passengerDetails || [];
+    // If booking already has passengerDetails, prefill from both locations
+    // Check booking.passengerDetails first (root level), then flightDetails.passengerDetails
+  const existing = (booking as any).passengerDetails || ((booking.flightDetails as unknown) as { passengerDetails?: PassengerForm[] }).passengerDetails || [];
+    console.log('📖 Opening passenger dialog for booking:', booking.bookingId);
+    console.log('📋 Existing passenger details:', JSON.stringify(existing, null, 2));
+    console.log('🔍 Root level passengerDetails:', (booking as any).passengerDetails);
+    console.log('🔍 FlightDetails passengerDetails:', ((booking.flightDetails as unknown) as { passengerDetails?: PassengerForm[] }).passengerDetails);
+    
     if (existing.length === arr.length) {
       for (let i = 0; i < arr.length; i++) {
         arr[i] = { ...arr[i], ...existing[i] };
       }
     }
 
+    console.log('✅ Final passenger forms to display:', JSON.stringify(arr, null, 2));
     setPassengerForms(arr);
     setActiveBookingForPassengers(booking);
     setPassengerDialogOpen(true);
@@ -388,6 +448,9 @@ const Cart = () => {
       // basic required checks
       if (!f.firstName || String(f.firstName).trim() === '') missing.push('firstName');
       if (!f.lastName || String(f.lastName).trim() === '') missing.push('lastName');
+      if (!f.gender || String(f.gender).trim() === '') missing.push('gender');
+      if (!f.nationality || String(f.nationality).trim() === '') missing.push('nationality');
+      if (!f.passportCountry || String(f.passportCountry).trim() === '') missing.push('passportCountry');
 
       // DOB: must be a valid date and not in the future
       const dobDate = parseDate(f.dob ?? undefined);
@@ -444,12 +507,19 @@ const Cart = () => {
         }
         toast({ title: t('success', 'Success'), description: t('passengerDetailsSaved', 'Passenger details saved locally') });
       } else {
-        // Server-side booking: call PATCH endpoint to update passengerDetails
-        const payload = { flightDetails: { passengerDetails: passengerForms } };
-        const resp = await api.patch(`/bookings/${activeBookingForPassengers._id}`, payload);
+        // Server-side booking: call new endpoint to save passengers and trigger Seeru processing
+        console.log('📋 Saving passenger details and triggering Seeru booking...');
+        console.log('📝 Passenger forms to send:', JSON.stringify(passengerForms, null, 2));
+        const payload = { passengerDetails: passengerForms };
+        const resp = await api.post(`/bookings/${activeBookingForPassengers._id}/save-passengers`, payload);
         if (resp.data && resp.data.success) {
+          console.log('✅ Response from server:', JSON.stringify(resp.data.data.passengerDetails, null, 2));
           setBookings(prev => prev.map(b => b._id === activeBookingForPassengers._id ? resp.data.data : b));
-          toast({ title: t('success', 'Success'), description: t('passengerDetailsSaved', 'Passenger details saved') });
+          toast({ 
+            title: t('success', 'Success'), 
+            description: t('passengerDetailsSaved', 'Passenger details saved and booking is being processed') 
+          });
+          console.log('✅ Passenger details saved. Seeru booking initiated.');
         } else {
           throw new Error('Failed to save passenger details');
         }
@@ -487,10 +557,10 @@ const Cart = () => {
 
   return (
     <div>
-      <Dialog open={passengerDialogOpen} onOpenChange={setPassengerDialogOpen}>
+      <Dialog key={i18n.language} open={passengerDialogOpen} onOpenChange={setPassengerDialogOpen}>
         <DialogContent className="max-w-3xl w-[95vw]">
           <DialogHeader>
-            <DialogTitle>{t('passengerDetailsTitle', 'Passenger Details / تفاصيل المسافر')}</DialogTitle>
+            <DialogTitle>{t('passengerDetailsTitle', 'Passenger Details')}</DialogTitle>
             <DialogDescription>
               {t('passengerDetailsDesc', 'Please fill in the required passenger information for each traveler.')}
             </DialogDescription>
@@ -504,16 +574,41 @@ const Cart = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-sm">{t('firstName', 'First Name')}</label>
-                    <Input value={p.firstName} onChange={(e) => handlePassengerFieldChange(idx, 'firstName', e.target.value)} />
+                    <Input value={p.firstName || ''} onChange={(e) => handlePassengerFieldChange(idx, 'firstName', e.target.value)} />
                     {passengerFormErrors[idx] && passengerFormErrors[idx].includes('firstName') && (
                       <div className="text-sm text-red-600 mt-1">{t('firstNameRequired', 'First name is required')}</div>
                     )}
                   </div>
                   <div>
                     <label className="block text-sm">{t('lastName', 'Last Name')}</label>
-                    <Input value={p.lastName} onChange={(e) => handlePassengerFieldChange(idx, 'lastName', e.target.value)} />
+                    <Input value={p.lastName || ''} onChange={(e) => handlePassengerFieldChange(idx, 'lastName', e.target.value)} />
                     {passengerFormErrors[idx] && passengerFormErrors[idx].includes('lastName') && (
                       <div className="text-sm text-red-600 mt-1">{t('lastNameRequired', 'Last name is required')}</div>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-sm">{t('gender', 'Gender')}</label>
+                    <select value={p.gender || ''} onChange={(e) => handlePassengerFieldChange(idx, 'gender', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-tourtastic-blue">
+                      <option value="">{t('selectGender', 'Select Gender')}</option>
+                      <option value="M">{t('male', 'Male')}</option>
+                      <option value="F">{t('female', 'Female')}</option>
+                    </select>
+                    {passengerFormErrors[idx] && passengerFormErrors[idx].includes('gender') && (
+                      <div className="text-sm text-red-600 mt-1">{t('genderRequired', 'Gender is required')}</div>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-sm">{t('nationality', 'Nationality')}</label>
+                    <select value={p.nationality || ''} onChange={(e) => handlePassengerFieldChange(idx, 'nationality', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-tourtastic-blue">
+                      <option value="">{t('selectNationality', 'Select Nationality')}</option>
+                      {ARAB_COUNTRIES.map(country => (
+                        <option key={country.code} value={country.code}>
+                          {isArabic ? country.nameAr : country.nameEn}
+                        </option>
+                      ))}
+                    </select>
+                    {passengerFormErrors[idx] && passengerFormErrors[idx].includes('nationality') && (
+                      <div className="text-sm text-red-600 mt-1">{t('nationalityRequired', 'Nationality is required')}</div>
                     )}
                   </div>
                   <div>
@@ -540,9 +635,23 @@ const Cart = () => {
                   </div>
                   <div>
                     <label className="block text-sm">{t('passportNumber', 'Passport Number')}</label>
-                    <Input value={p.passportNumber} onChange={(e) => handlePassengerFieldChange(idx, 'passportNumber', e.target.value)} />
+                    <Input value={p.passportNumber || ''} onChange={(e) => handlePassengerFieldChange(idx, 'passportNumber', e.target.value)} />
                     {passengerFormErrors[idx] && passengerFormErrors[idx].includes('passportNumber') && (
                       <div className="text-sm text-red-600 mt-1">{t('passportNumberRequired', 'Passport number is required')}</div>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-sm">{t('passportCountry', 'Passport Country')}</label>
+                    <select value={p.passportCountry || ''} onChange={(e) => handlePassengerFieldChange(idx, 'passportCountry', e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-tourtastic-blue">
+                      <option value="">{t('selectPassportCountry', 'Select Passport Country')}</option>
+                      {ARAB_COUNTRIES.map(country => (
+                        <option key={country.code} value={country.code}>
+                          {isArabic ? country.nameAr : country.nameEn}
+                        </option>
+                      ))}
+                    </select>
+                    {passengerFormErrors[idx] && passengerFormErrors[idx].includes('passportCountry') && (
+                      <div className="text-sm text-red-600 mt-1">{t('passportCountryRequired', 'Passport country is required')}</div>
                     )}
                   </div>
                   <div>
@@ -591,14 +700,14 @@ const Cart = () => {
                   </div>
                   <div>
                     <label className="block text-sm">{t('phone', 'Phone')}</label>
-                    <Input value={p.phone} onChange={(e) => handlePassengerFieldChange(idx, 'phone', e.target.value)} />
+                    <Input value={p.phone || ''} onChange={(e) => handlePassengerFieldChange(idx, 'phone', e.target.value)} />
                     {passengerFormErrors[idx] && passengerFormErrors[idx].includes('phone') && (
                       <div className="text-sm text-red-600 mt-1">{t('phoneInvalid', 'Please enter a valid phone number')}</div>
                     )}
                   </div>
                   <div>
                     <label className="block text-sm">{t('email', 'Email')}</label>
-                    <Input value={p.email} onChange={(e) => handlePassengerFieldChange(idx, 'email', e.target.value)} />
+                    <Input value={p.email || ''} onChange={(e) => handlePassengerFieldChange(idx, 'email', e.target.value)} />
                     {passengerFormErrors[idx] && passengerFormErrors[idx].includes('email') && (
                       <div className="text-sm text-red-600 mt-1">{t('emailInvalid', 'Please enter a valid email address')}</div>
                     )}

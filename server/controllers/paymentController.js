@@ -3,6 +3,7 @@ const FlightBooking = require("../models/FlightBooking");
 const Booking = require("../models/Booking");
 const Notification = require("../models/Notification");
 const crypto = require('crypto');
+const { issueOrder } = require('../utils/seeruAPI');
 
 // Load payment config from environment
 const ECASH_PAYMENT_GATEWAY_URL = process.env.ECASH_PAYMENT_GATEWAY_URL || 'https://checkout.ecash-pay.com';
@@ -101,6 +102,7 @@ exports.handlePaymentCallback = asyncHandler(async (req, res) => {
 
     if (isSuccess) {
       booking.status = "confirmed";
+      booking.paymentStatus = "completed";
       
       // Create payment success notification
       await Notification.create({
@@ -115,6 +117,54 @@ exports.handlePaymentCallback = asyncHandler(async (req, res) => {
         },
         type: "payment"
       });
+
+      // Issue ticket from Seeru if order is saved
+      if (booking.seeruOrderId) {
+        console.log('🎫 Issuing ticket from Seeru after payment confirmation for order:', booking.seeruOrderId);
+        issueOrder(booking.seeruOrderId)
+          .then(result => {
+            if (result.success) {
+              console.log('✅ Ticket issued successfully after payment');
+              
+              // Update booking with ticket details
+              booking.seeruStatus = 'issued';
+              booking.status = 'issued';
+              
+              // Save ticket details
+              if (!booking.ticketDetails) {
+                booking.ticketDetails = {};
+              }
+              
+              booking.ticketDetails.ticketNumber = result.ticketNumber;
+              booking.ticketDetails.pnr = result.pnr;
+              booking.ticketDetails.eTicketPath = result.ticketUrl;
+              booking.seeruIssuedAt = result.issuedAt;
+              
+              booking.save()
+                .then(() => {
+                  console.log('✅ Booking updated with ticket details:', {
+                    ticketNumber: result.ticketNumber,
+                    pnr: result.pnr,
+                    ticketUrl: result.ticketUrl
+                  });
+                })
+                .catch(err => {
+                  console.error('❌ Error saving ticket details to booking:', err);
+                });
+            } else {
+              console.error('❌ Failed to issue ticket:', result.error);
+              booking.seeruStatus = 'issue_failed';
+              booking.seeruError = result.error;
+              booking.save();
+            }
+          })
+          .catch(error => {
+            console.error('❌ Error issuing ticket after payment:', error);
+            booking.seeruStatus = 'issue_error';
+            booking.seeruError = error.message;
+            booking.save();
+          });
+      }
     } else {
       // Create payment failure notification
       await Notification.create({

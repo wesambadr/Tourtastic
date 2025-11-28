@@ -135,6 +135,36 @@ const getErrorMessage = (err: unknown) => {
   return e?.response?.data?.message ?? (err instanceof Error ? err.message : String(err));
 };
 
+// Convert storage path to accessible URL
+const convertStoragePath = (path: string): string => {
+  if (!path) return '';
+  
+  // If it's already a full HTTP URL, return as-is
+  if (/^https?:\/\//i.test(path)) {
+    return path;
+  }
+  
+  // Convert local:// format to /uploads/
+  if (path.startsWith('local://')) {
+    return `/uploads/${path.replace('local://', '')}`;
+  }
+  
+  // Convert supabase:// format to /uploads/
+  if (path.startsWith('supabase://')) {
+    const parts = path.replace('supabase://', '').split('/');
+    parts.shift(); // Remove bucket name
+    return `/uploads/${parts.join('/')}`;
+  }
+  
+  // If it already starts with /uploads/, return as-is
+  if (path.startsWith('/uploads/')) {
+    return path;
+  }
+  
+  // Default: prepend /uploads/
+  return `/uploads/${path}`;
+};
+
 // Mock bookings removed — bookings will be loaded from the API at runtime
 
 const AdminBookings: React.FC = () => {
@@ -1014,7 +1044,7 @@ const AdminBookings: React.FC = () => {
                     <div className="text-sm">PNR: {selectedBooking.ticketDetails?.pnr || '-'}</div>
                     <div className="text-sm">{t('admin.bookings.ticketNumber')}: {selectedBooking.ticketDetails?.ticketNumber || '-'}</div>
                     {selectedBooking.ticketDetails?.eTicketPath && (
-                      <div className="text-sm">{t('booking.ticket')}: <a className="text-blue-600 underline" href={selectedBooking.ticketDetails.eTicketPath} target="_blank" rel="noreferrer">{t('booking.openTicket')}</a></div>
+                      <div className="text-sm">{t('booking.ticket')}: <a className="text-blue-600 underline" href={convertStoragePath(selectedBooking.ticketDetails.eTicketPath)} target="_blank" rel="noreferrer">{t('booking.openTicket')}</a></div>
                     )}
                   </div>
                   <div>

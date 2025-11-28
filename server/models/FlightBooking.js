@@ -20,6 +20,21 @@ const FlightBookingSchema = new mongoose.Schema({
     required: true
   },
   customerPhone: String,
+  // Root-level passenger details (mirror of flightDetails.passengerDetails for easier access)
+  passengerDetails: [{
+    firstName: String,
+    lastName: String,
+    gender: String,
+    dob: Date,
+    passportNumber: String,
+    passportIssueDate: Date,
+    passportExpiryDate: Date,
+    passportCountry: String,
+    nationality: String,
+    phone: String,
+    email: String,
+    type: { type: String, enum: ['adult','child','infant'], default: 'adult' }
+  }],
   flightDetails: {
     from: {
       type: String,
@@ -52,10 +67,13 @@ const FlightBookingSchema = new mongoose.Schema({
     passengerDetails: [{
       firstName: String,
       lastName: String,
+      gender: String,
       dob: Date,
       passportNumber: String,
       passportIssueDate: Date,
       passportExpiryDate: Date,
+      passportCountry: String,
+      nationality: String,
       phone: String,
       email: String,
       type: { type: String, enum: ['adult','child','infant'], default: 'adult' }
@@ -103,12 +121,12 @@ const FlightBookingSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["pending", "confirmed", "done"],
+    enum: ["pending", "confirmed", "issued", "done"],
     default: "pending"
   },
   paymentStatus: {
     type: String,
-    enum: ["pending", "paid"],
+    enum: ["pending", "completed", "failed"],
     default: "pending"
   },
   ticketUrl: {
@@ -162,6 +180,45 @@ const FlightBookingSchema = new mongoose.Schema({
     notes: String,
     updatedBy: String
   }],
+  ticketHistory: [{
+    status: String,
+    date: Date,
+    notes: String,
+    updatedBy: String
+  }],
+  // Seeru Travel Integration Fields
+  seeruOrderId: String,
+  seeruStatus: {
+    type: String,
+    enum: ['pending', 'initiated', 'validated', 'saved', 'new', 'confirmed', 'issued', 'saved_not_issued', 'failed', 'cancelled', 'expired'],
+    default: 'pending'
+  },
+  seeruValidated: {
+    type: Boolean,
+    default: false
+  },
+  seeruValidatedAt: Date,
+  seeruSavedAt: Date,
+  seeruConfirmedAt: Date,
+  seeruIssuedAt: Date,
+  seeruFailedAt: Date,
+  seeruCancelledAt: Date,
+  seeruExpiredAt: Date,
+  seeruError: String,
+  ticketNumber: String,
+  pnr: String,
+  ticketUrl: String,
+  fareKey: String,
+  fareBrand: String,
+  // Ticket Status Fields
+  ticketStatus: {
+    type: String,
+    enum: ['issued', 'refunded', 'voided', 'exchanged', 'pending'],
+    default: 'pending'
+  },
+  refundedAt: Date,
+  voidedAt: Date,
+  exchangedAt: Date,
   createdAt: {
     type: Date,
     default: Date.now

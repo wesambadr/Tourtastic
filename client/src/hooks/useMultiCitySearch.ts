@@ -46,8 +46,8 @@ interface PollingRef {
 
 // Module-level caches and locks (shared across hook instances)
 const CACHE_DURATION_MS = 5 * 60 * 1000; // 5 minutes
-const MAX_IDLE_POLLS = 30; // ~60s if interval is 2s
-const MAX_IDLE_POLLS_NO_RESULTS = 15; // ~30s if no results found yet
+const MAX_IDLE_POLLS = 5; // ~10s if interval is 2s (reduced from 30)
+const MAX_IDLE_POLLS_NO_RESULTS = 3; // ~6s if no results found yet (reduced from 15)
 const segmentResultsCache = new Map<string, {
   flights: Flight[];
   progress: number;
@@ -166,16 +166,17 @@ export function useMultiCitySearch(): MultiCitySearchApi {
             return;
           }
           
-          // If we've been polling with no results for a while, be more patient before stopping.
-          // Many providers can take a while to stream first results; wait longer to reduce false negatives.
+          // If we've been polling with no results for a while, fail fast to allow retry
+          // Reduced timeout to minimize user-perceived delay
           ref.emptyPollCount += 1;
-          if (ref.emptyPollCount >= 30) { // ~60s with 2s interval
+          if (ref.emptyPollCount >= 5) { // ~10s with 2s interval (reduced from 30)
             updateSection(sectionIndex, (prev) => ({
               ...prev,
               loading: false,
               isComplete: true,
               hasMore: false,
-              error: 'No flights found after multiple attempts. Please try different search criteria.'
+              // Only show error if we actually have no flights
+              error: prev.flights.length === 0 ? 'No flights found after multiple attempts. Please try different search criteria.' : undefined
             }));
             pollingRefs.set(segmentKey, { ...ref, active: false });
             return;
@@ -193,6 +194,9 @@ export function useMultiCitySearch(): MultiCitySearchApi {
         const enrichedFlights = Array.isArray(results.result)
           ? results.result.map((f) => ({
               ...f,
+              // Attach Seeru search_id from the current polling context
+              // so it can be forwarded later when creating a booking
+              search_id: searchId,
               search_query: {
                 ...f.search_query,
                 adt: segPassengers.adults,

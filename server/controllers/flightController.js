@@ -439,6 +439,11 @@ function transformSeeruToFrontendFormat(seeruFlight, segmentIndex = 0) {
     // Add cabin class at flight level
     cabin_class: getCabinName(seeruFlight.search_query?.options?.cabin),
     
+    // Seeru integration fields
+    fare_key: seeruFlight.fare_key || '',
+    fare_brand: seeruFlight.fare_brand || 'ECONOMY',
+    refundable_info: seeruFlight.refundable_info || 'Non-Refundable',
+    
     // Segment index for multi-trip searches (0 for single-trip)
     segment_index: segmentIndex
   };
