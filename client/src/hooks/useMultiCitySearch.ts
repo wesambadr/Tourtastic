@@ -46,8 +46,9 @@ interface PollingRef {
 
 // Module-level caches and locks (shared across hook instances)
 const CACHE_DURATION_MS = 5 * 60 * 1000; // 5 minutes
-const MAX_IDLE_POLLS = 5; // ~10s if interval is 2s (reduced from 30)
-const MAX_IDLE_POLLS_NO_RESULTS = 3; // ~6s if no results found yet (reduced from 15)
+const POLLING_INTERVAL_MS = 800; // Reduced from 2000ms for faster results
+const MAX_IDLE_POLLS = 8; // ~6.4s if interval is 800ms (show results faster)
+const MAX_IDLE_POLLS_NO_RESULTS = 5; // ~4s if no results found yet (fail fast)
 const segmentResultsCache = new Map<string, {
   flights: Flight[];
   progress: number;
@@ -167,9 +168,9 @@ export function useMultiCitySearch(): MultiCitySearchApi {
           }
           
           // If we've been polling with no results for a while, fail fast to allow retry
-          // Reduced timeout to minimize user-perceived delay
+          // But only if search progress is significant (>= 50%) to avoid premature errors
           ref.emptyPollCount += 1;
-          if (ref.emptyPollCount >= 5) { // ~10s with 2s interval (reduced from 30)
+          if (ref.emptyPollCount >= MAX_IDLE_POLLS_NO_RESULTS && normalizedComplete >= 50) { // ~4s with 800ms interval, but only if search is 50% done
             updateSection(sectionIndex, (prev) => ({
               ...prev,
               loading: false,
@@ -270,7 +271,14 @@ export function useMultiCitySearch(): MultiCitySearchApi {
           if (pollingRef.timeoutId) clearTimeout(pollingRef.timeoutId);
           pollingRef.active = false;
           pollingRefs.set(segmentKey, pollingRef);
-          updateSection(sectionIndex, (prev) => ({ ...prev, loading: false, isComplete: true, hasMore: prev.flights.length > prev.visibleCount }));
+          updateSection(sectionIndex, (prev) => ({ 
+            ...prev, 
+            loading: false, 
+            isComplete: true, 
+            hasMore: prev.flights.length > prev.visibleCount,
+            // Only show error if we actually have no flights
+            error: prev.flights.length === 0 ? 'No flights found after multiple attempts. Please try different search criteria.' : undefined
+          }));
           return;
         }
 
@@ -279,13 +287,20 @@ export function useMultiCitySearch(): MultiCitySearchApi {
           if (pollingRef.timeoutId) clearTimeout(pollingRef.timeoutId);
           pollingRef.active = false;
           pollingRefs.set(segmentKey, pollingRef);
-          updateSection(sectionIndex, (prev) => ({ ...prev, loading: false, isComplete: true, hasMore: prev.flights.length > prev.visibleCount }));
+          updateSection(sectionIndex, (prev) => ({ 
+            ...prev, 
+            loading: false, 
+            isComplete: true, 
+            hasMore: prev.flights.length > prev.visibleCount,
+            // Clear error when search completes successfully
+            error: undefined
+          }));
           return;
         }
 
         // Continue polling if not complete
         if (pollingRef.active !== false) {
-          const timeoutId = setTimeout(() => pollOnce(normalizedLastAfter), 2000);
+          const timeoutId = setTimeout(() => pollOnce(normalizedLastAfter), POLLING_INTERVAL_MS);
           pollingRef.timeoutId = timeoutId;
           pollingRef.active = true;
           pollingRefs.set(segmentKey, pollingRef);

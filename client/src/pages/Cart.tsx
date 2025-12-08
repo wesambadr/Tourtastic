@@ -537,8 +537,8 @@ const Cart = () => {
     const counts = booking.flightDetails?.passengers || { adults: 0, children: 0, infants: 0 };
     const expected = (counts.adults || 0) + (counts.children || 0) + (counts.infants || 0);
 
-    // Try to read passengerDetails from booking.flightDetails first
-    const pd = ((booking.flightDetails as unknown) as { passengerDetails?: PassengerForm[] }).passengerDetails || [];
+    // Check both locations: root level first, then flightDetails
+    const pd = (booking as any).passengerDetails || ((booking.flightDetails as unknown) as { passengerDetails?: PassengerForm[] }).passengerDetails || [];
     if (!pd || pd.length !== expected) return false;
 
     const { valid } = validatePassengerForms(pd);

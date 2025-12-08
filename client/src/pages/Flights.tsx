@@ -300,13 +300,16 @@ const Flights = () => {
       const check = () => {
         const sections = searchSectionsRef.current;
         if (sections && sections.length > 0) {
+          // Check if we have any flights - this is the primary success condition
           const hasFlights = sections.some(section => section.flights.length > 0);
           if (hasFlights) {
             resolve(true);
             return;
           }
 
-          const allCompletedWithoutFlights = sections.every(section => section.isComplete && section.flights.length === 0 && !!section.error);
+          // Only consider it a failure if ALL sections are complete AND have no flights
+          // Don't check for error message - error messages may persist even when results exist
+          const allCompletedWithoutFlights = sections.every(section => section.isComplete && section.flights.length === 0);
           if (allCompletedWithoutFlights) {
             resolve(false);
             return;
@@ -413,12 +416,7 @@ const Flights = () => {
       if (gotResults) {
         setHasSearched(true);
       } else {
-        // Initial search completed without usable results - retry immediately once
-        toast({
-          title: t('searchErrorTitle', 'Search Error'),
-          description: t('noFlightsFoundTimeout', 'No flights found after multiple attempts. Please try different search criteria.'),
-          variant: 'destructive',
-        });
+        // Initial search completed without usable results - retry immediately once (silently, without showing error)
         if (!hasRetriedRef.current && lastSearchPayloadRef.current) {
           hasRetriedRef.current = true;
           const payload = lastSearchPayloadRef.current;
@@ -428,10 +426,24 @@ const Flights = () => {
             const retryResults = await waitForResults(30000, 500);
             if (retryResults) {
               setHasSearched(true);
+            } else {
+              // Only show error if retry also failed
+              toast({
+                title: t('searchErrorTitle', 'Search Error'),
+                description: t('noFlightsFoundTimeout', 'No flights found after multiple attempts. Please try different search criteria.'),
+                variant: 'destructive',
+              });
             }
           } finally {
             setIsSubmitting(false);
           }
+        } else {
+          // If we can't retry, show error immediately
+          toast({
+            title: t('searchErrorTitle', 'Search Error'),
+            description: t('noFlightsFoundTimeout', 'No flights found after multiple attempts. Please try different search criteria.'),
+            variant: 'destructive',
+          });
         }
       }
     } catch (error) {

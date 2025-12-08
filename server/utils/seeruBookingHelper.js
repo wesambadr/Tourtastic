@@ -66,21 +66,16 @@ async function checkFareValidityIfEnabled(booking) {
     
     console.log('🔍 Resolved fareKey:', fareKey);
 
-    // Transform booking data with fare_key (if available)
-    const bookingData = transformBookingToSeeru(booking);
+    // Store fare_key in booking for later use
     if (fareKey) {
-      bookingData.fare_key = fareKey;
+      booking.fareKey = fareKey;
     }
     
-    console.log('✅ Transformed booking data for Seeru');
+    console.log('✅ Booking prepared for Seeru');
     
-    // NOTE: /booking/fare is optional in Seeru API
-    // Some providers/sandbox environments may not support it
-    // The actual fare validation happens during /booking/save
-    // So we skip /booking/fare and go directly to marking as ready for save
-    
-    console.log('⏭️ Skipping /booking/fare (optional endpoint)');
-    console.log('📝 Booking will be validated during /booking/save with passenger details');
+    // ⏭️ Skip /booking/fare endpoint - Seeru will validate fare during /booking/save
+    // This avoids "no_supplier" errors and is more efficient
+    console.log('⏭️ Skipping /booking/fare (Seeru validates during /booking/save)');
     
     // Status: Initiated (ready for passenger details and booking save)
     booking.seeruStatus = 'initiated';

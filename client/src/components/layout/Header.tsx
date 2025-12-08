@@ -263,7 +263,7 @@ const Header: React.FC = () => {
                     <Bell className="h-5 w-5 mr-2" />
                     {t('notifications.title')}
                     {hasUnreadNotifications && (
-                      <span className="absolute top-2 right-2 block h-2 w-2 rounded-full bg-tourtastic-blue" />
+                      <span className="absolute top-2 right-4 block h-2 w-2 rounded-full bg-tourtastic-blue" />
                     )}
                   </Link>
                   <Link 

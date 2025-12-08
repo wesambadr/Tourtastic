@@ -248,23 +248,10 @@ export const getSearchResults = async (searchId: string, after?: number): Promis
         throw new Error('Invalid response structure from flight search API');
       }
 
-      // Check if the search is stalled with no results
-      const hasResults = Array.isArray(response.data.result) && response.data.result.length > 0;
-      const searchProgress = response.data.complete || 0;
-      const isStalled = !hasResults && searchProgress >= 50;
-      
-      if (isStalled && retries > 1) {
-        // If search appears stalled but we have retries left, retry immediately
-        retries--;
-        continue;
-      }
-
       const data = {
         ...response.data,
-        // If search is stalled, mark it as complete to prevent further polling
-        complete: isStalled ? 100 : response.data.complete,
-        status: isStalled ? 'no_results' : (response.data.status || 'ok'),
-        message: isStalled ? 'No flights found for this route and date combination.' : response.data.message
+        status: response.data.status || 'ok',
+        message: response.data.message
       };
       
       searchCache.set(cacheKey, { data, timestamp: Date.now() });
