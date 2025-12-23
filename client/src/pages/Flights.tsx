@@ -411,41 +411,10 @@ const Flights = () => {
         infants: data.passengers.infants ?? 0,
       }, data.cabin, data.direct);
 
-      // Wait for the hook to populate results (avoid race where startMultiSearch returns a job id)
-      const gotResults = await waitForResults(60000);
-      if (gotResults) {
-        setHasSearched(true);
-      } else {
-        // Initial search completed without usable results - retry immediately once (silently, without showing error)
-        if (!hasRetriedRef.current && lastSearchPayloadRef.current) {
-          hasRetriedRef.current = true;
-          const payload = lastSearchPayloadRef.current;
-          setIsSubmitting(true);
-          try {
-            await startMultiSearch(payload.segments, payload.passengers, payload.cabin, payload.direct);
-            const retryResults = await waitForResults(30000, 500);
-            if (retryResults) {
-              setHasSearched(true);
-            } else {
-              // Only show error if retry also failed
-              toast({
-                title: t('searchErrorTitle', 'Search Error'),
-                description: t('noFlightsFoundTimeout', 'No flights found after multiple attempts. Please try different search criteria.'),
-                variant: 'destructive',
-              });
-            }
-          } finally {
-            setIsSubmitting(false);
-          }
-        } else {
-          // If we can't retry, show error immediately
-          toast({
-            title: t('searchErrorTitle', 'Search Error'),
-            description: t('noFlightsFoundTimeout', 'No flights found after multiple attempts. Please try different search criteria.'),
-            variant: 'destructive',
-          });
-        }
-      }
+      // Mark search as started immediately.
+      // Results arrive asynchronously (Seeru async search model) and will
+      // update the UI progressively.
+      setHasSearched(true);
     } catch (error) {
       toast({
         title: t('error', 'Error'),
@@ -521,31 +490,8 @@ const Flights = () => {
 
           await startMultiSearch(segmentsForHook, passengerCounts || { adults: 1, children: 0, infants: 0 }, undefined, undefined);
 
-          const gotResults = await waitForResults(60000);
-          if (gotResults) {
-            setHasSearched(true);
-          } else {
-            // Initial search completed without usable results - retry immediately once
-            toast({
-              title: t('searchErrorTitle', 'Search Error'),
-              description: t('noFlightsFoundTimeout', 'No flights found after multiple attempts. Please try different search criteria.'),
-              variant: 'destructive',
-            });
-            if (!hasRetriedRef.current && lastSearchPayloadRef.current) {
-              hasRetriedRef.current = true;
-              const payload = lastSearchPayloadRef.current;
-              setIsSubmitting(true);
-              try {
-                await startMultiSearch(payload.segments, payload.passengers, payload.cabin, payload.direct);
-                const retryResults = await waitForResults(30000, 500);
-                if (retryResults) {
-                  setHasSearched(true);
-                }
-              } finally {
-                setIsSubmitting(false);
-              }
-            }
-          }
+          // Mark search as started immediately; results will stream in.
+          setHasSearched(true);
         } catch (error) {
           toast({
             title: t('error', 'Error'),
@@ -779,7 +725,7 @@ const Flights = () => {
               currency: flight.currency
             },
             // Include fare_key for Seeru integration (use id as fare_key)
-            fareKey: flight.id || flight.fare_key || null
+            fareKey: flight.fare_key || flight.id || null
           }
         };
         cartItems.push(newItem);
@@ -794,7 +740,7 @@ const Flights = () => {
       }
 
       // For logged in users, save to backend
-  const response = await api.post('/bookings', {
+      const response = await api.post('/bookings', {
         flightDetails: {
           from: flight.legs[0].from.city,
           to: flight.legs[0].to.city,
@@ -814,7 +760,7 @@ const Flights = () => {
               currency: flight.currency
             },
             // Include fare_key for Seeru integration (use id as fare_key)
-            fareKey: flight.id || flight.fare_key || null
+            fareKey: flight.fare_key || flight.id || null
           }
         }
       });
@@ -908,568 +854,568 @@ const Flights = () => {
   };
 
   return (
-    <>
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 py-12">
-        <div className="container-custom">
-          <h1 className="text-4xl font-bold mb-4">{t('flights', 'رحلات الطيران')}</h1>
-          <p className="text-gray-600 max-w-2xl">
-            {t('findAndBook', 'ابحث واحجز رحلات الطيران إلى وجهاتك المفضلة. قارن الأسعار واعثر على أفضل العروض.')}
-          </p>
-        </div>
+  <>
+    {/* Hero Section */}
+    <div className="bg-gradient-to-r from-gray-50 to-gray-100 py-12">
+      <div className="container-custom">
+        <h1 className="text-4xl font-bold mb-4">{t('flights', 'رحلات الطيران')}</h1>
+        <p className="text-gray-600 max-w-2xl">
+          {t('findAndBook', 'ابحث واحجز رحلات الطيران إلى وجهاتك المفضلة. قارن الأسعار واعثر على أفضل العروض.')}
+        </p>
       </div>
+    </div>
 
-      {/* Search Form */}
-      <div className="py-8 container-custom">
-        <Card className="bg-white shadow-md">
-          <CardContent className="p-6">
-            {/* Flight Type Tabs */}
-            <div className="flex space-x-1 rounded-lg bg-gray-100 p-1 mb-6">
-              <button
-                type="button"
-                className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'oneWay'
-                    ? 'bg-white text-tourtastic-blue shadow'
-                    : 'text-gray-500 hover:text-gray-700'
-                  }`}
-                onClick={() => handleSearchTypeChange('oneWay')}
-              >
-                {t('oneWay', 'One Way')}
-              </button>
-              <button
-                type="button"
-                className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'roundTrip'
-                    ? 'bg-white text-tourtastic-blue shadow'
-                    : 'text-gray-500 hover:text-gray-700'
-                  }`}
-                onClick={() => handleSearchTypeChange('roundTrip')}
-              >
-                {t('roundTrip', 'Round Trip')}
-              </button>
-              <button
-                type="button"
-                className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'multiCity'
-                    ? 'bg-white text-tourtastic-blue shadow'
-                    : 'text-gray-500 hover:text-gray-700'
-                  }`}
-                onClick={() => handleSearchTypeChange('multiCity')}
-              >
-                {t('multiCity', 'Multi-City')}
-              </button>
-            </div>
+    {/* Search Form */}
+    <div className="py-8 container-custom">
+      <Card className="bg-white shadow-md">
+        <CardContent className="p-6">
+          {/* Flight Type Tabs */}
+          <div className="flex space-x-1 rounded-lg bg-gray-100 p-1 mb-6">
+            <button
+              type="button"
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'oneWay'
+                ? 'bg-white text-tourtastic-blue shadow'
+                : 'text-gray-500 hover:text-gray-700'
+                }`}
+              onClick={() => handleSearchTypeChange('oneWay')}
+            >
+              {t('oneWay', 'One Way')}
+            </button>
+            <button
+              type="button"
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'roundTrip'
+                ? 'bg-white text-tourtastic-blue shadow'
+                : 'text-gray-500 hover:text-gray-700'
+                }`}
+              onClick={() => handleSearchTypeChange('roundTrip')}
+            >
+              {t('roundTrip', 'Round Trip')}
+            </button>
+            <button
+              type="button"
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium ${searchType === 'multiCity'
+                ? 'bg-white text-tourtastic-blue shadow'
+                : 'text-gray-500 hover:text-gray-700'
+                }`}
+              onClick={() => handleSearchTypeChange('multiCity')}
+            >
+              {t('multiCity', 'Multi-City')}
+            </button>
+          </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {/* Flight Segments */}
-              <div className="space-y-4">
-                {flightSegments.map((segment, index) => (
-                  <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-lg relative">
-                    {/* Remove button for additional segments */}
-                    {(searchType === 'multiCity' ? flightSegments.length > 2 : flightSegments.length > 1) && (
-                      <button
-                        type="button"
-                        onClick={() => removeFlightSegment(index)}
-                        className="absolute top-2 right-2 h-6 w-6 p-0 text-gray-400 hover:text-red-500"
-                      >
-                        <X className="h-4 w-4" />
-                      </button>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            {/* Flight Segments */}
+            <div className="space-y-4">
+              {flightSegments.map((segment, index) => (
+                <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-lg relative">
+                  {/* Remove button for additional segments */}
+                  {(searchType === 'multiCity' ? flightSegments.length > 2 : flightSegments.length > 1) && (
+                    <button
+                      type="button"
+                      onClick={() => removeFlightSegment(index)}
+                      className="absolute top-2 right-2 h-6 w-6 p-0 text-gray-400 hover:text-red-500"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                  <div className="space-y-2">
+                    <Label htmlFor={`from-${index}`}>{t('from', 'From')}</Label>
+                    <div className="relative">
+                      <Input
+                        id={`from-${index}`}
+                        placeholder={t('departureCity', 'Type 2-3 letters...')}
+                        value={fromAirportNames[index] || ''}
+                        onChange={(e) => handleFromInputChange(e, index)}
+                        autoComplete="off"
+                        onFocus={() => {
+                          if (fromAirportNames[index]?.length >= 2) {
+                            setShowFromSuggestions(index);
+                          }
+                        }}
+                        onBlur={() => setTimeout(() => setShowFromSuggestions(null), 150)}
+                        className="pr-10"
+                      />
+                      {fromAirportNames[index] && fromAirportNames[index].includes(' - ') && (
+                        <button
+                          type="button"
+                          aria-label={i18n.language === 'ar' ? 'مسح' : 'Clear'}
+                          onClick={() => {
+                            setValue(`flightSegments.${index}.from`, '');
+                            setFromAirportNames(values => {
+                              const newValues = [...values];
+                              newValues[index] = '';
+                              return newValues;
+                            });
+                            setFromSuggestions([]);
+                            setShowFromSuggestions(null);
+                          }}
+                          className="absolute inset-y-0 right-0 flex items-center pr-3 text-red-600"
+                        >
+                          <span className="text-xs">✖</span>
+                        </button>
+                      )}
+                      {showFromSuggestions === index && fromSuggestions.length > 0 && (
+                        <ul className="absolute z-50 bg-white border w-full max-h-48 overflow-y-auto shadow-lg rounded mt-1">
+                          {fromSuggestions.map((a, i) => (
+                            <li
+                              key={`${a.iata_code || 'unknown'}-${i}`}
+                              className={`px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm ${i18n.language === 'ar' ? 'text-right' : ''}`}
+                              onMouseDown={() => handleFromSuggestionClick(a, index)}
+                              dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}
+                            >
+                              <div className={`font-medium ${i18n.language === 'ar' ? 'text-right' : ''}`}>
+                                {i18n.language === 'ar' ? (
+                                  <>{a.name_arbic || a.name} - {a.iata_code}</>
+                                ) : (
+                                  <>{a.iata_code} - {a.name}</>
+                                )}
+                              </div>
+                              <div className={`text-gray-500 text-xs ${i18n.language === 'ar' ? 'text-right' : ''}`}>
+                                {i18n.language === 'ar'
+                                  ? `${a.municipality_arbic || a.municipality || a.city}، ${a.country_arbic || a.country}`
+                                  : `${a.municipality || a.city}, ${a.country || a.iso_country}`
+                                }
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    {errors.flightSegments?.[index]?.from && (
+                      <p className="text-sm text-destructive">{errors.flightSegments[index]?.from?.message}</p>
                     )}
-                    <div className="space-y-2">
-                      <Label htmlFor={`from-${index}`}>{t('from', 'From')}</Label>
-                      <div className="relative">
-                        <Input
-                          id={`from-${index}`}
-                          placeholder={t('departureCity', 'Type 2-3 letters...')}
-                          value={fromAirportNames[index] || ''}
-                          onChange={(e) => handleFromInputChange(e, index)}
-                          autoComplete="off"
-                          onFocus={() => {
-                            if (fromAirportNames[index]?.length >= 2) {
-                              setShowFromSuggestions(index);
-                            }
-                          }}
-                          onBlur={() => setTimeout(() => setShowFromSuggestions(null), 150)}
-                          className="pr-10"
-                        />
-                        {fromAirportNames[index] && fromAirportNames[index].includes(' - ') && (
-                          <button
-                            type="button"
-                            aria-label={i18n.language === 'ar' ? 'مسح' : 'Clear'}
-                            onClick={() => {
-                              setValue(`flightSegments.${index}.from`, '');
-                              setFromAirportNames(values => {
-                                const newValues = [...values];
-                                newValues[index] = '';
-                                return newValues;
-                              });
-                              setFromSuggestions([]);
-                              setShowFromSuggestions(null);
-                            }}
-                            className="absolute inset-y-0 right-0 flex items-center pr-3 text-red-600"
-                          >
-                            <span className="text-xs">✖</span>
-                          </button>
-                        )}
-                        {showFromSuggestions === index && fromSuggestions.length > 0 && (
-                          <ul className="absolute z-50 bg-white border w-full max-h-48 overflow-y-auto shadow-lg rounded mt-1">
-                            {fromSuggestions.map((a, i) => (
-                              <li
-                                key={`${a.iata_code || 'unknown'}-${i}`}
-                                className={`px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm ${i18n.language === 'ar' ? 'text-right' : ''}`}
-                                onMouseDown={() => handleFromSuggestionClick(a, index)}
-                                dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}
-                              >
-                                <div className={`font-medium ${i18n.language === 'ar' ? 'text-right' : ''}`}>
-                                  {i18n.language === 'ar' ? (
-                                    <>{a.name_arbic || a.name} - {a.iata_code}</>
-                                  ) : (
-                                    <>{a.iata_code} - {a.name}</>
-                                  )}
-                                </div>
-                                <div className={`text-gray-500 text-xs ${i18n.language === 'ar' ? 'text-right' : ''}`}>
-                                  {i18n.language === 'ar' 
-                                    ? `${a.municipality_arbic || a.municipality || a.city}، ${a.country_arbic || a.country}`
-                                    : `${a.municipality || a.city}, ${a.country || a.iso_country}`
-                                  }
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                      {errors.flightSegments?.[index]?.from && (
-                        <p className="text-sm text-destructive">{errors.flightSegments[index]?.from?.message}</p>
-                      )}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor={`to-${index}`}>{t('to', 'To')}</Label>
-                      <div className="relative">
-                        <Input
-                          id={`to-${index}`}
-                          placeholder={t('destinationCity', 'Type 2-3 letters...')}
-                          value={toAirportNames[index] || ''}
-                          onChange={(e) => handleToInputChange(e, index)}
-                          autoComplete="off"
-                          onFocus={() => {
-                            if (toAirportNames[index]?.length >= 2) {
-                              setShowToSuggestions(index);
-                            }
-                          }}
-                          onBlur={() => setTimeout(() => setShowToSuggestions(null), 150)}
-                          className="pr-10"
-                        />
-                        {toAirportNames[index] && toAirportNames[index].includes(' - ') && (
-                          <button
-                            type="button"
-                            aria-label={i18n.language === 'ar' ? 'مسح' : 'Clear'}
-                            onClick={() => {
-                              setValue(`flightSegments.${index}.to`, '');
-                              setToAirportNames(values => {
-                                const newValues = [...values];
-                                newValues[index] = '';
-                                return newValues;
-                              });
-                              setToSuggestions([]);
-                              setShowToSuggestions(null);
-                            }}
-                            className="absolute inset-y-0 right-0 flex items-center pr-3 text-red-600"
-                          >
-                            <span className="text-xs">✖</span>
-                          </button>
-                        )}
-                        {showToSuggestions === index && toSuggestions.length > 0 && (
-                          <ul className="absolute z-50 bg-white border w-full max-h-48 overflow-y-auto shadow-lg rounded mt-1">
-                            {toSuggestions.map((a, i) => (
-                              <li
-                                key={`${a.iata_code || 'unknown'}-${i}`}
-                                className="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                                onMouseDown={() => handleToSuggestionClick(a, index)}
-                              >
-                                <div className={`font-medium ${i18n.language === 'ar' ? 'text-right' : ''}`}>
-                                  {i18n.language === 'ar' ? (
-                                    <>{a.name_arbic || a.name} - {a.iata_code}</>
-                                  ) : (
-                                    <>{a.iata_code} - {a.name}</>
-                                  )}
-                                </div>
-                                <div className={`text-gray-500 text-xs ${i18n.language === 'ar' ? 'text-right' : ''}`}>
-                                  {i18n.language === 'ar' 
-                                    ? `${a.municipality_arbic || a.municipality || a.city}، ${a.country_arbic || a.country}`
-                                    : `${a.municipality || a.city}, ${a.country || a.iso_country}`
-                                  }
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                      {errors.flightSegments?.[index]?.to && (
-                        <p className="text-sm text-destructive">{errors.flightSegments[index]?.to?.message}</p>
-                      )}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor={`date-${index}`}>
-                        {t('date', 'Date')}
-                        {index > 0 && (
-                          <span className="text-xs text-gray-500 ml-1">
-                            {flightSegments[index - 1]?.date
-                              ? (i18n.language === 'ar'
-                                  ? `بعد ${format(flightSegments[index - 1].date, "MMM dd")}`
-                                  : `(after ${format(flightSegments[index - 1].date, "MMM dd")})`)
-                              : (i18n.language === 'ar' ? '  بعد الرحلة السابقة' : ' (after previous flight)')}
-                          </span>
-                        )}
-                      </Label>
-                      <Popover open={datePickerOpen[index]} onOpenChange={open => setDatePickerOpen(prev => {
-                        const arr = [...prev];
-                        arr[index] = open;
-                        return arr;
-                      })}>
-                        <PopoverTrigger asChild>
-                          <Button
-                            id={`date-${index}`}
-                            variant="outline"
-                            className={cn(
-                              'w-full justify-start text-left font-normal',
-                              !segment.date && 'text-muted-foreground'
-                            )}
-                            onClick={() => setDatePickerOpen(prev => {
-                              const arr = [...prev];
-                              arr[index] = true;
-                              return arr;
-                            })}
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {segment.date ? (segment.date instanceof Date && !isNaN(segment.date.getTime()) ? format(segment.date, 'dd MMMM yyyy', { locale: i18n.language === 'ar' ? ar : enUS }) : <span>{t('pickDate', 'Pick a date')}</span>) : <span>{t('pickDate', 'Pick a date')}</span>}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={segment.date}
-                            onSelect={(date) => {
-                              setValue(`flightSegments.${index}.date`, date);
-                              setDatePickerOpen(prev => {
-                                const arr = [...prev];
-                                arr[index] = false;
-                                return arr;
-                              });
-                              // Validate date sequence
-                              trigger('flightSegments');
-                            }}
-                            disabled={(date) => date < getMinDateForSegment(index)}
-                            initialFocus
-                            locale={i18n.language === 'ar' ? ar : enUS}
-                            className={cn('p-3 pointer-events-auto')}
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      {errors.flightSegments?.[index]?.date && (
-                        <p className="text-sm text-destructive">{errors.flightSegments[index]?.date?.message}</p>
-                      )}
-                    </div>
                   </div>
-                ))}
-              </div>
 
-              {/* Add Search Button - Only show for Multi-City */}
-              {searchType === 'multiCity' && flightSegments.length < 3 && (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={addFlightSegment}
-                  className="w-full"
-                >
-                  <Plus className="mr-2 h-4 w-4" /> {t('addSearch', 'Add Search')}
-                </Button>
-              )}
+                  <div className="space-y-2">
+                    <Label htmlFor={`to-${index}`}>{t('to', 'To')}</Label>
+                    <div className="relative">
+                      <Input
+                        id={`to-${index}`}
+                        placeholder={t('destinationCity', 'Type 2-3 letters...')}
+                        value={toAirportNames[index] || ''}
+                        onChange={(e) => handleToInputChange(e, index)}
+                        autoComplete="off"
+                        onFocus={() => {
+                          if (toAirportNames[index]?.length >= 2) {
+                            setShowToSuggestions(index);
+                          }
+                        }}
+                        onBlur={() => setTimeout(() => setShowToSuggestions(null), 150)}
+                        className="pr-10"
+                      />
+                      {toAirportNames[index] && toAirportNames[index].includes(' - ') && (
+                        <button
+                          type="button"
+                          aria-label={i18n.language === 'ar' ? 'مسح' : 'Clear'}
+                          onClick={() => {
+                            setValue(`flightSegments.${index}.to`, '');
+                            setToAirportNames(values => {
+                              const newValues = [...values];
+                              newValues[index] = '';
+                              return newValues;
+                            });
+                            setToSuggestions([]);
+                            setShowToSuggestions(null);
+                          }}
+                          className="absolute inset-y-0 right-0 flex items-center pr-3 text-red-600"
+                        >
+                          <span className="text-xs">✖</span>
+                        </button>
+                      )}
+                      {showToSuggestions === index && toSuggestions.length > 0 && (
+                        <ul className="absolute z-50 bg-white border w-full max-h-48 overflow-y-auto shadow-lg rounded mt-1">
+                          {toSuggestions.map((a, i) => (
+                            <li
+                              key={`${a.iata_code || 'unknown'}-${i}`}
+                              className="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                              onMouseDown={() => handleToSuggestionClick(a, index)}
+                            >
+                              <div className={`font-medium ${i18n.language === 'ar' ? 'text-right' : ''}`}>
+                                {i18n.language === 'ar' ? (
+                                  <>{a.name_arbic || a.name} - {a.iata_code}</>
+                                ) : (
+                                  <>{a.iata_code} - {a.name}</>
+                                )}
+                              </div>
+                              <div className={`text-gray-500 text-xs ${i18n.language === 'ar' ? 'text-right' : ''}`}>
+                                {i18n.language === 'ar'
+                                  ? `${a.municipality_arbic || a.municipality || a.city}، ${a.country_arbic || a.country}`
+                                  : `${a.municipality || a.city}, ${a.country || a.iso_country}`
+                                }
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    {errors.flightSegments?.[index]?.to && (
+                      <p className="text-sm text-destructive">{errors.flightSegments[index]?.to?.message}</p>
+                    )}
+                  </div>
 
-              {/* Return date for Round Trip */}
-              {searchType === 'roundTrip' && (
-                <div className="p-4 border rounded-lg">
-                  <Label>{t('returnDate', 'Return Date')}</Label>
-                  <div className="mt-2">
-                    <Popover open={returnDatePickerOpen} onOpenChange={open => setReturnDatePickerOpen(open)}>
+                  <div className="space-y-2">
+                    <Label htmlFor={`date-${index}`}>
+                      {t('date', 'Date')}
+                      {index > 0 && (
+                        <span className="text-xs text-gray-500 ml-1">
+                          {flightSegments[index - 1]?.date
+                            ? (i18n.language === 'ar'
+                              ? `بعد ${format(flightSegments[index - 1].date, "MMM dd")}`
+                              : `(after ${format(flightSegments[index - 1].date, "MMM dd")})`)
+                            : (i18n.language === 'ar' ? '  بعد الرحلة السابقة' : ' (after previous flight)')}
+                        </span>
+                      )}
+                    </Label>
+                    <Popover open={datePickerOpen[index]} onOpenChange={open => setDatePickerOpen(prev => {
+                      const arr = [...prev];
+                      arr[index] = open;
+                      return arr;
+                    })}>
                       <PopoverTrigger asChild>
                         <Button
-                          type="button"
+                          id={`date-${index}`}
                           variant="outline"
                           className={cn(
-                            "w-full justify-start text-left font-normal",
-                            !returnDate && "text-muted-foreground"
+                            'w-full justify-start text-left font-normal',
+                            !segment.date && 'text-muted-foreground'
                           )}
-                          onClick={() => setReturnDatePickerOpen(true)}
+                          onClick={() => setDatePickerOpen(prev => {
+                            const arr = [...prev];
+                            arr[index] = true;
+                            return arr;
+                          })}
                         >
                           <CalendarIcon className="mr-2 h-4 w-4" />
-                          {returnDate ? (returnDate instanceof Date && !isNaN(returnDate.getTime()) ? format(returnDate, 'dd MMMM yyyy', { locale: i18n.language === 'ar' ? ar : enUS }) : <span>{t('pickDate', 'Pick a date')}</span>) : <span>{t('pickDate', 'Pick a date')}</span>}
+                          {segment.date ? (segment.date instanceof Date && !isNaN(segment.date.getTime()) ? format(segment.date, 'dd MMMM yyyy', { locale: i18n.language === 'ar' ? ar : enUS }) : <span>{t('pickDate', 'Pick a date')}</span>) : <span>{t('pickDate', 'Pick a date')}</span>}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
-                          selected={returnDate}
+                          selected={segment.date}
                           onSelect={(date) => {
-                            setValue('returnDate', date);
-                            setReturnDatePickerOpen(false);
+                            setValue(`flightSegments.${index}.date`, date);
+                            setDatePickerOpen(prev => {
+                              const arr = [...prev];
+                              arr[index] = false;
+                              return arr;
+                            });
+                            // Validate date sequence
+                            trigger('flightSegments');
                           }}
-                          disabled={(date) => {
-                            const outboundDate = flightSegments?.[0]?.date;
-                            return outboundDate ? date <= outboundDate : date < new Date();
-                          }}
+                          disabled={(date) => date < getMinDateForSegment(index)}
                           initialFocus
                           locale={i18n.language === 'ar' ? ar : enUS}
                           className={cn('p-3 pointer-events-auto')}
                         />
                       </PopoverContent>
                     </Popover>
-                    {errors.returnDate && <p className="text-sm text-destructive mt-2">{errors.returnDate.message}</p>}
+                    {errors.flightSegments?.[index]?.date && (
+                      <p className="text-sm text-destructive">{errors.flightSegments[index]?.date?.message}</p>
+                    )}
                   </div>
                 </div>
-              )}
+              ))}
+            </div>
 
-              {/* Passenger Selection */}
+            {/* Add Search Button - Only show for Multi-City */}
+            {searchType === 'multiCity' && flightSegments.length < 3 && (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={addFlightSegment}
+                className="w-full"
+              >
+                <Plus className="mr-2 h-4 w-4" /> {t('addSearch', 'Add Search')}
+              </Button>
+            )}
+
+            {/* Return date for Round Trip */}
+            {searchType === 'roundTrip' && (
               <div className="p-4 border rounded-lg">
-                <Label>{t('passengers', 'Passengers')}</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="w-full justify-start text-left font-normal"
-                    >
-                      {`${passengers.adults} ${t('adults', 'Adults')}` +
-                        (passengers.children ? `, ${passengers.children} ${t('children', 'Children')}` : '') +
-                        (passengers.infants ? `, ${passengers.infants} ${t('infants', 'Infants')}` : '')}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-72">
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <span>{t('adults', 'Adults')}</span>
-                        <div className="text-xs text-gray-500">{t('adultDesc', 'Up to 18 years')}</div>
-                        <div className="flex items-center gap-2">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setValue('passengers.adults', Math.max(1, passengers.adults - 1))}
-                          >
-                            -
-                          </Button>
-                          <span className="w-8 text-center">{passengers.adults}</span>
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setValue('passengers.adults', passengers.adults + 1)}
-                          >
-                            +
-                          </Button>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span>{t('children', 'Children')}</span>
-                        <div className="text-xs text-gray-500">{t('childDesc', 'Ages 2 to 17')}</div>
-                        <div className="flex items-center gap-2">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setValue('passengers.children', Math.max(0, passengers.children - 1))}
-                          >
-                            -
-                          </Button>
-                          <span className="w-8 text-center">{passengers.children}</span>
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setValue('passengers.children', passengers.children + 1)}
-                          >
-                            +
-                          </Button>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span>{t('infants', 'Infants')}</span>
-                        <div className="text-xs text-gray-500">{t('infantDesc', 'Up to 2 years')}</div>
-                        <div className="flex items-center gap-2">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setValue('passengers.infants', Math.max(0, passengers.infants - 1))}
-                          >
-                            -
-                          </Button>
-                          <span className="w-8 text-center">{passengers.infants}</span>
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setValue('passengers.infants', passengers.infants + 1)}
-                          >
-                            +
-                          </Button>
-                        </div>
+                <Label>{t('returnDate', 'Return Date')}</Label>
+                <div className="mt-2">
+                  <Popover open={returnDatePickerOpen} onOpenChange={open => setReturnDatePickerOpen(open)}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className={cn(
+                          "w-full justify-start text-left font-normal",
+                          !returnDate && "text-muted-foreground"
+                        )}
+                        onClick={() => setReturnDatePickerOpen(true)}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {returnDate ? (returnDate instanceof Date && !isNaN(returnDate.getTime()) ? format(returnDate, 'dd MMMM yyyy', { locale: i18n.language === 'ar' ? ar : enUS }) : <span>{t('pickDate', 'Pick a date')}</span>) : <span>{t('pickDate', 'Pick a date')}</span>}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={returnDate}
+                        onSelect={(date) => {
+                          setValue('returnDate', date);
+                          setReturnDatePickerOpen(false);
+                        }}
+                        disabled={(date) => {
+                          const outboundDate = flightSegments?.[0]?.date;
+                          return outboundDate ? date <= outboundDate : date < new Date();
+                        }}
+                        initialFocus
+                        locale={i18n.language === 'ar' ? ar : enUS}
+                        className={cn('p-3 pointer-events-auto')}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  {errors.returnDate && <p className="text-sm text-destructive mt-2">{errors.returnDate.message}</p>}
+                </div>
+              </div>
+            )}
+
+            {/* Passenger Selection */}
+            <div className="p-4 border rounded-lg">
+              <Label>{t('passengers', 'Passengers')}</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full justify-start text-left font-normal"
+                  >
+                    {`${passengers.adults} ${t('adults', 'Adults')}` +
+                      (passengers.children ? `, ${passengers.children} ${t('children', 'Children')}` : '') +
+                      (passengers.infants ? `, ${passengers.infants} ${t('infants', 'Infants')}` : '')}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-72">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span>{t('adults', 'Adults')}</span>
+                      <div className="text-xs text-gray-500">{t('adultDesc', 'Up to 18 years')}</div>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setValue('passengers.adults', Math.max(1, passengers.adults - 1))}
+                        >
+                          -
+                        </Button>
+                        <span className="w-8 text-center">{passengers.adults}</span>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setValue('passengers.adults', passengers.adults + 1)}
+                        >
+                          +
+                        </Button>
                       </div>
                     </div>
-                  </PopoverContent>
-                </Popover>
+                    <div className="flex items-center justify-between">
+                      <span>{t('children', 'Children')}</span>
+                      <div className="text-xs text-gray-500">{t('childDesc', 'Ages 2 to 17')}</div>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setValue('passengers.children', Math.max(0, passengers.children - 1))}
+                        >
+                          -
+                        </Button>
+                        <span className="w-8 text-center">{passengers.children}</span>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setValue('passengers.children', passengers.children + 1)}
+                        >
+                          +
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>{t('infants', 'Infants')}</span>
+                      <div className="text-xs text-gray-500">{t('infantDesc', 'Up to 2 years')}</div>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setValue('passengers.infants', Math.max(0, passengers.infants - 1))}
+                        >
+                          -
+                        </Button>
+                        <span className="w-8 text-center">{passengers.infants}</span>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setValue('passengers.infants', passengers.infants + 1)}
+                        >
+                          +
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </div>
+
+            {/* Cabin Class and Direct Flights */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg">
+              <div className="space-y-2">
+                <Label>{t('cabinClass', 'Cabin Class')}</Label>
+                <Select value={cabin} onValueChange={(value) => setValue('cabin', value as 'e' | 'p' | 'b' | 'f')}>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t('selectCabin', 'Select cabin class')} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="e">{t('economy', 'Economy')}</SelectItem>
+                    <SelectItem value="p">{t('premiumEconomy', 'Premium Economy')}</SelectItem>
+                    <SelectItem value="b">{t('business', 'Business')}</SelectItem>
+                    <SelectItem value="f">{t('first', 'First')}</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
-              {/* Cabin Class and Direct Flights */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg">
-                <div className="space-y-2">
-                  <Label>{t('cabinClass', 'Cabin Class')}</Label>
-                  <Select value={cabin} onValueChange={(value) => setValue('cabin', value as 'e' | 'p' | 'b' | 'f')}>
-                    <SelectTrigger>
-                      <SelectValue placeholder={t('selectCabin', 'Select cabin class')} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="e">{t('economy', 'Economy')}</SelectItem>
-                      <SelectItem value="p">{t('premiumEconomy', 'Premium Economy')}</SelectItem>
-                      <SelectItem value="b">{t('business', 'Business')}</SelectItem>
-                      <SelectItem value="f">{t('first', 'First')}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label>{t('flightType', 'Flight Type')}</Label>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      type="button"
-                      variant={direct ? 'default' : 'outline'}
-                      onClick={() => setValue('direct', true)}
-                    >
-                      {t('directOnly', 'Direct Only')}
-                    </Button>
-                    <Button
-                      type="button"
-                      variant={!direct ? 'default' : 'outline'}
-                      onClick={() => setValue('direct', false)}
-                    >
-                      {t('allFlights', 'All Flights')}
-                    </Button>
-                  </div>
+              <div className="space-y-2">
+                <Label>{t('flightType', 'Flight Type')}</Label>
+                <div className="flex items-center gap-2">
+                  <Button
+                    type="button"
+                    variant={direct ? 'default' : 'outline'}
+                    onClick={() => setValue('direct', true)}
+                  >
+                    {t('directOnly', 'Direct Only')}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant={!direct ? 'default' : 'outline'}
+                    onClick={() => setValue('direct', false)}
+                  >
+                    {t('allFlights', 'All Flights')}
+                  </Button>
                 </div>
               </div>
+            </div>
 
-              {/* Search Button */}
-              <Button type="submit" disabled={isSubmitting} className="w-full bg-tourtastic-blue hover:bg-tourtastic-dark-blue text-white">
-                {isSubmitting ? (
-                  <div className="flex items-center gap-2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                    {t('searching', 'Searching...')}
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <Plane className="h-4 w-4" />
-                    {t('searchFlights', 'Search Flights')}
-                  </div>
-                )}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Results Section */}
-      {hasSearched && (
-        <div className="container-custom py-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {/* Filters Popover Button (replaces sidebar on smaller screens) */}
-            <div className="md:col-span-1 flex items-start justify-start md:justify-center">
-              {isDesktop ? (
-                filtersOpen && (
-                  <div className="w-full">
-                    <FilterSidebar filters={filters} setFilters={setFilters} availableAirlines={availableAirlines} />
-                  </div>
-                )
+            {/* Search Button */}
+            <Button type="submit" disabled={isSubmitting} className="w-full bg-tourtastic-blue hover:bg-tourtastic-dark-blue text-white">
+              {isSubmitting ? (
+                <div className="flex items-center gap-2">
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                  {t('searching', 'Searching...')}
+                </div>
               ) : (
-                <Popover open={filtersOpen} onOpenChange={setFiltersOpen}>
-                  <PopoverTrigger asChild>
-                    <Button variant="outline" className="w-full md:w-40 px-4 py-2">{t('filters', 'Filters')}</Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-[320px] p-0">
-                    <FilterSidebar filters={filters} setFilters={setFilters} availableAirlines={availableAirlines} />
-                  </PopoverContent>
-                </Popover>
+                <div className="flex items-center gap-2">
+                  <Plane className="h-4 w-4" />
+                  {t('searchFlights', 'Search Flights')}
+                </div>
               )}
-            </div>
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
 
-            {/* Results */}
-            <div className="md:col-span-3">
-              <MultiCityFlightResults
-                searchSections={searchSections.map(section => {
-                  const derivedFlights = section.flights
-                    .filter(flight => {
-                      // Apply airline filter
-                      if (filters.selectedAirlines.length > 0 &&
-                        !filters.selectedAirlines.includes(flight.legs[0].segments[0].airline_name)) {
+    {/* Results Section */}
+    {hasSearched && (
+      <div className="container-custom py-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Filters Popover Button (replaces sidebar on smaller screens) */}
+          <div className="md:col-span-1 flex items-start justify-start md:justify-center">
+            {isDesktop ? (
+              filtersOpen && (
+                <div className="w-full">
+                  <FilterSidebar filters={filters} setFilters={setFilters} availableAirlines={availableAirlines} />
+                </div>
+              )
+            ) : (
+              <Popover open={filtersOpen} onOpenChange={setFiltersOpen}>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className="w-full md:w-40 px-4 py-2">{t('filters', 'Filters')}</Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-[320px] p-0">
+                  <FilterSidebar filters={filters} setFilters={setFilters} availableAirlines={availableAirlines} />
+                </PopoverContent>
+              </Popover>
+            )}
+          </div>
+
+          {/* Results */}
+          <div className="md:col-span-3">
+            <MultiCityFlightResults
+              searchSections={searchSections.map(section => {
+                const derivedFlights = section.flights
+                  .filter(flight => {
+                    // Apply airline filter
+                    if (filters.selectedAirlines.length > 0 &&
+                      !filters.selectedAirlines.includes(flight.legs[0].segments[0].airline_name)) {
+                      return false;
+                    }                      // Apply price range filter
+                    if (flight.price < filters.priceRange.min ||
+                      flight.price > filters.priceRange.max) {
+                      return false;
+                    }
+
+                    // Apply time of day filter for departure
+                    if (filters.timeOfDay.departure.length > 0) {
+                      const hour = new Date(flight.legs[0].from.date).getHours();
+                      const timeOfDay =
+                        hour >= 5 && hour < 12 ? 'morning' :
+                          hour >= 12 && hour < 17 ? 'afternoon' :
+                            hour >= 17 && hour < 21 ? 'evening' : 'night';
+
+                      if (!filters.timeOfDay.departure.includes(timeOfDay)) {
                         return false;
-                      }                      // Apply price range filter
-                      if (flight.price < filters.priceRange.min ||
-                        flight.price > filters.priceRange.max) {
-                        return false;
                       }
+                    }
 
-                      // Apply time of day filter for departure
-                      if (filters.timeOfDay.departure.length > 0) {
-                        const hour = new Date(flight.legs[0].from.date).getHours();
-                        const timeOfDay =
-                          hour >= 5 && hour < 12 ? 'morning' :
-                            hour >= 12 && hour < 17 ? 'afternoon' :
-                              hour >= 17 && hour < 21 ? 'evening' : 'night';
-
-                        if (!filters.timeOfDay.departure.includes(timeOfDay)) {
-                          return false;
-                        }
+                    return true;
+                  })
+                  .sort((a, b) => {
+                    switch (filters.sortBy) {
+                      case 'price_asc':
+                        return a.price - b.price;
+                      case 'price_desc':
+                        return b.price - a.price;
+                      case 'duration_asc': {
+                        const durationA = new Date(a.legs[0].to.date).getTime() -
+                          new Date(a.legs[0].from.date).getTime();
+                        const durationB = new Date(b.legs[0].to.date).getTime() -
+                          new Date(b.legs[0].from.date).getTime();
+                        return durationA - durationB;
                       }
+                      default:
+                        return 0;
+                    }
+                  });
 
-                      return true;
-                    })
-                    .sort((a, b) => {
-                      switch (filters.sortBy) {
-                        case 'price_asc':
-                          return a.price - b.price;
-                        case 'price_desc':
-                          return b.price - a.price;
-                        case 'duration_asc': {
-                          const durationA = new Date(a.legs[0].to.date).getTime() -
-                            new Date(a.legs[0].from.date).getTime();
-                          const durationB = new Date(b.legs[0].to.date).getTime() -
-                            new Date(b.legs[0].from.date).getTime();
-                          return durationA - durationB;
-                        }
-                        default:
-                          return 0;
-                      }
-                    });
+                // Recompute hasMore relative to the derived list and streaming state
+                const hasMoreDerived = section.hasMore || (!section.isComplete) || (derivedFlights.length > section.visibleCount);
 
-                  // Recompute hasMore relative to the derived list and streaming state
-                  const hasMoreDerived = section.hasMore || (!section.isComplete) || (derivedFlights.length > section.visibleCount);
-
-                  return {
-                    ...section,
-                    flights: derivedFlights,
-                    hasMore: hasMoreDerived,
-                  };
-                })}
-                passengers={{ adults: passengers.adults, children: passengers.children, infants: passengers.infants }}
-                onFlightSelection={handleFlightSelection}
-                onLoadMore={loadMore}
-                onAddToCart={handleAddToCart}
-                selectedFlights={selectedFlights}
-                showDetails={showDetails}
-              />
-            </div>
+                return {
+                  ...section,
+                  flights: derivedFlights,
+                  hasMore: hasMoreDerived,
+                };
+              })}
+              passengers={{ adults: passengers.adults, children: passengers.children, infants: passengers.infants }}
+              onFlightSelection={handleFlightSelection}
+              onLoadMore={loadMore}
+              onAddToCart={handleAddToCart}
+              selectedFlights={selectedFlights}
+              showDetails={showDetails}
+            />
           </div>
         </div>
-      )}
-    </>
-  );
+      </div>
+    )}
+  </>
+);
 };
 
 export default Flights;

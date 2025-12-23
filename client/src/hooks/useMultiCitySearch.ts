@@ -46,9 +46,11 @@ interface PollingRef {
 
 // Module-level caches and locks (shared across hook instances)
 const CACHE_DURATION_MS = 5 * 60 * 1000; // 5 minutes
-const POLLING_INTERVAL_MS = 800; // Reduced from 2000ms for faster results
-const MAX_IDLE_POLLS = 8; // ~6.4s if interval is 800ms (show results faster)
-const MAX_IDLE_POLLS_NO_RESULTS = 5; // ~4s if no results found yet (fail fast)
+const POLLING_INTERVAL_MS = 800; // Poll roughly every 0.8s
+// Allow substantially more idle polls before giving up, to avoid
+// prematurely treating slow Seeru searches as failures.
+const MAX_IDLE_POLLS = 60; // ~48s if interval is 800ms
+const MAX_IDLE_POLLS_NO_RESULTS = 120; // ~96s if no results found yet
 const segmentResultsCache = new Map<string, {
   flights: Flight[];
   progress: number;
@@ -152,10 +154,12 @@ export function useMultiCitySearch(): MultiCitySearchApi {
           passengers
         };
 
-        // Handle empty results or no-results status
+        // Handle empty results or explicit no-results status
         if (results.status === 'no_results' || 
             (!results.result || (Array.isArray(results.result) && results.result.length === 0))) {
-          // If search is complete, has no results, or status indicates no results
+          // If Seeru (via backend) explicitly reports no_results or the
+          // search is 100% complete with no data, treat this as a
+          // definitive "no flights" outcome.
           if (normalizedComplete >= 100 || results.status === 'no_results') {
             updateSection(sectionIndex, (prev) => ({
               ...prev,
@@ -166,11 +170,13 @@ export function useMultiCitySearch(): MultiCitySearchApi {
             }));
             return;
           }
-          
-          // If we've been polling with no results for a while, fail fast to allow retry
-          // But only if search progress is significant (>= 50%) to avoid premature errors
+
+          // Otherwise, this likely just means Seeru hasn't returned
+          // any results *yet*. Increment an empty-poll counter but
+          // allow significantly more time before we consider the
+          // search stalled.
           ref.emptyPollCount += 1;
-          if (ref.emptyPollCount >= MAX_IDLE_POLLS_NO_RESULTS && normalizedComplete >= 50) { // ~4s with 800ms interval, but only if search is 50% done
+          if (ref.emptyPollCount >= MAX_IDLE_POLLS_NO_RESULTS && normalizedComplete >= 100) {
             updateSection(sectionIndex, (prev) => ({
               ...prev,
               loading: false,
@@ -267,7 +273,21 @@ export function useMultiCitySearch(): MultiCitySearchApi {
         const maxIdlePolls = pollingRef.lastFlightsCount === 0 ? MAX_IDLE_POLLS_NO_RESULTS : MAX_IDLE_POLLS;
 
         if (pollingRef.idleCount >= maxIdlePolls) {
-          // Stop polling to avoid infinite spinner; mark section complete with whatever results we have
+          // If we haven't received any flights yet, keep polling (with a slower interval)
+          // instead of prematurely failing. Seeru searches can take time before the first
+          // results arrive.
+          if (pollingRef.lastFlightsCount === 0 && normalizedComplete < 100) {
+            pollingRef.idleCount = 0;
+            const timeoutId = setTimeout(() => pollOnce(normalizedLastAfter), POLLING_INTERVAL_MS * 2);
+            pollingRef.timeoutId = timeoutId;
+            pollingRef.active = true;
+            pollingRefs.set(segmentKey, pollingRef);
+            return;
+          }
+
+          // Stop polling to avoid an infinite spinner; mark section
+          // complete with whatever results we currently have. Only
+          // surface an error if *no* flights were found at all.
           if (pollingRef.timeoutId) clearTimeout(pollingRef.timeoutId);
           pollingRef.active = false;
           pollingRefs.set(segmentKey, pollingRef);
@@ -276,7 +296,6 @@ export function useMultiCitySearch(): MultiCitySearchApi {
             loading: false, 
             isComplete: true, 
             hasMore: prev.flights.length > prev.visibleCount,
-            // Only show error if we actually have no flights
             error: prev.flights.length === 0 ? 'No flights found after multiple attempts. Please try different search criteria.' : undefined
           }));
           return;
@@ -447,14 +466,11 @@ export function useMultiCitySearch(): MultiCitySearchApi {
           hasMore: true,
         }));
         const promise = (async () => {
-          // Retry starting search once if it fails initially, without additional delay
-          try {
-            const resp = await searchFlights(searchParams);
-            return resp.search_id;
-          } catch (e) {
-            const resp = await searchFlights(searchParams);
-            return resp.search_id;
-          }
+          // searchFlights already implements its own retry logic and
+          // appropriate error handling (including timeouts and 429s),
+          // so we just call it once here.
+          const resp = await searchFlights(searchParams);
+          return resp.search_id;
         })();
         pendingSearches.set(key, promise);
         try {

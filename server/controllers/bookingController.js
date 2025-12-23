@@ -106,6 +106,9 @@ exports.createBooking = asyncHandler(async (req, res, next) => {
     amount: null,
   };
 
+  // Normalize raw flight object from selectedFlight for downstream processing
+  const rawFlight = selectedFlight || {};
+
   // Resolve Seeru integration keys from incoming payload/raw flight
   const resolvedFareKey = (selectedFlight && (selectedFlight.fareKey || selectedFlight.fare_key))
     || (rawFlight && (rawFlight.fareKey || rawFlight.fare_key))
@@ -119,9 +122,6 @@ exports.createBooking = asyncHandler(async (req, res, next) => {
 
   // Use values from bookingData when creating the DB record
   const { type, destination, bookingDate, details, amount } = bookingData;
-
-  // Normalize selectedFlight/raw flight object to extract core fields required by schema
-  const rawFlight = details.flight || selectedFlight || {};
 
   const extractFlightId = (f) => {
     return (

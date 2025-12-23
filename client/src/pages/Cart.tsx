@@ -297,7 +297,7 @@ const Cart = () => {
         setPassengerDialogOpen(true);
       }, 0);
     }
-  }, [i18n.language, passengerDialogOpen]);
+  }, [i18n.language]);
 
   const handleCheckout = () => {
     // Check if user is logged in before proceeding to checkout
@@ -1115,7 +1115,7 @@ const Cart = () => {
                         </Button>
 
                         <Button
-                          onClick={() => openPassengerDialog(booking)}
+                          onClick={() => authenticatedAction(() => openPassengerDialog(booking))}
                           variant="ghost"
                           className={`w-full border border-gray-200 py-4 rounded-lg ${i18n.language === 'ar' ? 'flex-row-reverse' : ''}`}
                         >

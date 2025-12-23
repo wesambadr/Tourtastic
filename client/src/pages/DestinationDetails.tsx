@@ -174,7 +174,7 @@ const DestinationDetails: React.FC = () => {
           segments: flight.legs[0].segments,
           price_breakdowns: flight.price_breakdowns || null,
           // Include fare_key for Seeru integration (use id as fare_key)
-          fareKey: flight.id || flight.fare_key || null,
+          fareKey: flight.fare_key || flight.id || null,
           // keep raw provider payload for debugging/record
           raw: flight
         }

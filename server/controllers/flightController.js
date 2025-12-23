@@ -130,21 +130,13 @@ exports.getFlightSearchResults = asyncHandler(async (req, res) => {
       params.after = parseInt(after);
     }
     
-    
-    
     const response = await seeruApi.get(resultUrl, { params });
 
-    // Check if the search is stalled with no results
-    const hasNoResults = !Array.isArray(response.data.result) || response.data.result.length === 0;
-    const searchProgress = typeof response.data.complete === 'number' ? response.data.complete : 0;
-    const isStalled = hasNoResults && searchProgress >= 50; // Consider stalled if no results at 50% progress
-
-    // Normalize complete and last_result
-    const completePercent = isStalled ? 100 : (
-      typeof response.data.complete === 'number'
-        ? response.data.complete
-        : (response.data.complete ? 100 : 0)
-    );
+    // Normalize complete and last_result exactly as reported by Seeru
+    // Do NOT force completion early based on partial progress and empty results.
+    const completePercent = typeof response.data.complete === 'number'
+      ? response.data.complete
+      : (response.data.complete ? 100 : 0);
     const lastResult = typeof response.data.last_result === 'number' ? response.data.last_result : undefined;
 
     // Dedupe by trip_id within this batch in case Seeru returns duplicates in same payload
@@ -164,14 +156,19 @@ exports.getFlightSearchResults = asyncHandler(async (req, res) => {
     });
 
     const transformedFlights = Array.from(tripIdToTransformed.values());
+
+    // Only treat the search as definitively having no results when Seeru
+    // reports completion (100%) AND there are still no flights.
+    const isDefinitiveNoResults = transformedFlights.length === 0 && completePercent >= 100;
+
     const transformedResults = {
       complete: completePercent,
       result: transformedFlights,
       last_result: lastResult,
-      status: transformedFlights.length === 0 && completePercent >= 50 ? 'no_results' : 'ok'
+      status: isDefinitiveNoResults ? 'no_results' : 'ok'
     };
     
-    if (transformedFlights.length === 0 && completePercent >= 100) {
+    if (isDefinitiveNoResults) {
       transformedResults.message = 'No flights found for this route and date combination.';
     }
     

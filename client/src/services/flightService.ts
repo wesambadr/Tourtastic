@@ -224,7 +224,7 @@ export const searchFlights = async (params: FlightSearchParams): Promise<FlightS
 
 // Add simple cache for search results
 const searchCache = new Map<string, { data: FlightSearchResults; timestamp: number }>();
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const CACHE_DURATION = 1500; // 1.5 seconds
 
 export const getSearchResults = async (searchId: string, after?: number): Promise<FlightSearchResults> => {
   const cacheKey = `${searchId}-${after || 0}`;
@@ -253,8 +253,12 @@ export const getSearchResults = async (searchId: string, after?: number): Promis
         status: response.data.status || 'ok',
         message: response.data.message
       };
-      
-      searchCache.set(cacheKey, { data, timestamp: Date.now() });
+
+      const hasResults = Array.isArray((data as FlightSearchResults).result) && (data as FlightSearchResults).result.length > 0;
+      const isComplete = typeof (data as FlightSearchResults).complete === 'number' && (data as FlightSearchResults).complete >= 100;
+      if (hasResults || isComplete) {
+        searchCache.set(cacheKey, { data, timestamp: Date.now() });
+      }
       return data;
       
     } catch (error) {
