@@ -11,7 +11,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 const { createClient } = require('@supabase/supabase-js');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY;
 const BUCKET_NAME = process.env.SUPABASE_BUCKET || 'tourtastic-files';
 
 async function createBucket() {
@@ -61,7 +61,7 @@ async function createBucket() {
     console.log(`📝 Creating bucket "${BUCKET_NAME}"...`);
     const { data, error } = await supabase.storage.createBucket(BUCKET_NAME, {
       public: false,  // Private bucket (مهم!)
-      fileSizeLimit: 10485, // 100MB
+      fileSizeLimit: 100 * 1024 * 1024, // 100MB
       allowedMimeTypes: null  // السماح بكل أنواع الملفات
     });
 

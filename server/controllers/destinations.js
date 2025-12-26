@@ -11,8 +11,7 @@ async function convertToSignedUrl(destination) {
   
   const dest = destination.toObject ? destination.toObject() : { ...destination };
   
-  // Convert image to signed URL if it's a supabase:// path
-  if (dest.image && dest.image.startsWith('supabase://')) {
+  if (dest.image && !/^https?:\/\//i.test(dest.image)) {
     try {
       dest.image = await generateSignedUrl(dest.image, 3600);
     } catch (err) {
@@ -193,7 +192,8 @@ exports.createDestination = asyncHandler(async (req, res, next) => {
 
   try {
     const destination = await Destination.create(data);
-    res.status(201).json({ success: true, data: destination });
+    const destinationWithUrl = await convertToSignedUrl(destination);
+    res.status(201).json({ success: true, data: destinationWithUrl });
   } catch (dbErr) {
     console.error('Failed to create destination:', dbErr);
     return res.status(500).json({ success: false, error: 'Failed to create destination', details: String(dbErr) });
@@ -234,9 +234,10 @@ exports.updateDestination = asyncHandler(async (req, res, next) => {
     runValidators: true
   });
 
+  const destinationWithUrl = await convertToSignedUrl(destination);
   res.status(200).json({
     success: true,
-    data: destination
+    data: destinationWithUrl
   });
 });
 

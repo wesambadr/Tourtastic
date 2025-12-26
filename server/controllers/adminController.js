@@ -9,7 +9,7 @@ const sendEmail = require('../utils/sendEmail'); // Import the email utility
 const path = require('path');
 const fs = require('fs');
 // Supabase storage helper
-const { uploadFile, uploadBuffer, generateSignedUrl } = require('../utils/gcsStorage');
+const { uploadFile, uploadBuffer, generateSignedUrl, deleteFile } = require('../utils/gcsStorage');
 
 /**
  * Convert storage path to signed URL for frontend (destinations)
@@ -19,8 +19,7 @@ async function convertToSignedUrl(destination) {
   
   const dest = destination.toObject ? destination.toObject() : { ...destination };
   
-  // Convert image to signed URL if it's a supabase:// path
-  if (dest.image && dest.image.startsWith('supabase://')) {
+  if (dest.image && !/^https?:\/\//i.test(dest.image)) {
     try {
       dest.image = await generateSignedUrl(dest.image, 3600);
     } catch (err) {
@@ -49,7 +48,7 @@ async function convertBookingUrls(booking) {
      book.ticketDetails.additionalDocuments[0] && 
      book.ticketDetails.additionalDocuments[0].path);
   
-  if (ticketPath && ticketPath.startsWith('supabase://')) {
+  if (ticketPath && !/^https?:\/\//i.test(ticketPath)) {
     try {
       const signedUrl = await generateSignedUrl(ticketPath, 86400); // 24 hours
       
@@ -411,15 +410,29 @@ exports.updateBooking = asyncHandler(async (req, res, next) => {
   
   // Handle file upload if present
   if (req.file) {
-      // If there was a previous file, attempt to delete it
-      if (updateData.ticketInfo.filePath) {
-          const oldPath = path.join(__dirname, '..', updateData.ticketInfo.filePath); // Adjust path as needed
+      if (updateData.ticketInfo.filePath && !updateData.ticketInfo.filePath.startsWith('supabase://')) {
+          const oldPath = path.join(__dirname, '..', updateData.ticketInfo.filePath);
           fs.unlink(oldPath, (err) => {
               if (err) console.error("Error deleting old ticket file:", oldPath, err);
           });
       }
-      // Store the relative path from the project root
-      updateData.ticketInfo.filePath = req.file.path.replace(/^\.\//, ''); // Store relative path
+
+      const localPath = req.file.path;
+      const originalName = req.file.originalname || path.basename(localPath);
+      const prefix = process.env.UPLOAD_PREFIX_BOOKINGS || 'tickets';
+      const dest = `${prefix}/${booking.bookingId || booking._id}/${Date.now()}_${originalName}`;
+
+      try {
+          const storageIdentifier = await uploadFile(localPath, dest, req.file.mimetype || 'application/pdf');
+          updateData.ticketInfo.filePath = storageIdentifier;
+
+          if (storageIdentifier && storageIdentifier.startsWith('supabase://')) {
+              fs.unlink(localPath, (err) => { if (err) console.warn('Failed to remove local upload:', err); });
+          }
+      } catch (err) {
+          console.error('Ticket upload failed:', err);
+          updateData.ticketInfo.filePath = req.file.path.replace(/^\.\//, '');
+      }
   }
   
   updateData.updatedAt = Date.now();
@@ -430,7 +443,8 @@ exports.updateBooking = asyncHandler(async (req, res, next) => {
     runValidators: true,
   });
 
-  res.status(200).json({ success: true, data: booking });
+  const bookingWithUrl = await convertBookingUrls(booking);
+  res.status(200).json({ success: true, data: bookingWithUrl });
 });
 
 // @desc    Delete booking (Admin)
@@ -444,10 +458,19 @@ exports.deleteBooking = asyncHandler(async (req, res, next) => {
 
   // Optionally delete associated ticket file
   if (booking.ticketInfo && booking.ticketInfo.filePath) {
-      const filePath = path.join(__dirname, '..', booking.ticketInfo.filePath); // Adjust path
-      fs.unlink(filePath, (err) => {
-          if (err) console.error("Error deleting ticket file during booking deletion:", filePath, err);
-      });
+      const storedPath = booking.ticketInfo.filePath;
+      if (storedPath.startsWith('supabase://')) {
+        try {
+          await deleteFile(storedPath);
+        } catch (err) {
+          console.error("Error deleting ticket from storage during booking deletion:", storedPath, err);
+        }
+      } else {
+        const filePath = path.join(__dirname, '..', storedPath);
+        fs.unlink(filePath, (err) => {
+            if (err) console.error("Error deleting ticket file during booking deletion:", filePath, err);
+        });
+      }
   }
 
   await booking.deleteOne(); // Use deleteOne or remove
@@ -469,14 +492,29 @@ exports.sendTicket = asyncHandler(async (req, res, next) => {
        return res.status(400).json({ success: false, message: 'Booking customer email not found.' });
   }
 
-  // Check if a ticket file path exists in the booking record
-  const pdfFilePath = booking.ticketInfo && booking.ticketInfo.filePath 
-                      ? path.join(__dirname, '..', booking.ticketInfo.filePath) // Construct absolute path
-                      : null;
+  const storedPath = booking.ticketInfo && booking.ticketInfo.filePath ? String(booking.ticketInfo.filePath) : '';
+  let attachmentPath = null;
+  if (storedPath) {
+    if (/^https?:\/\//i.test(storedPath)) {
+      attachmentPath = storedPath;
+    } else if (storedPath.startsWith('supabase://')) {
+      try {
+        attachmentPath = await generateSignedUrl(storedPath, 86400);
+      } catch (err) {
+        attachmentPath = null;
+      }
+    } else {
+      attachmentPath = path.join(__dirname, '..', storedPath);
+    }
+  }
 
-  if (!pdfFilePath || !fs.existsSync(pdfFilePath)) {
-      console.error(`Ticket file not found for booking ${booking.bookingId} at path: ${pdfFilePath}`);
-      return res.status(400).json({ success: false, message: 'Ticket PDF file not found for this booking. Please upload it first.' });
+  if (!attachmentPath) {
+    return res.status(400).json({ success: false, message: 'Ticket PDF file not found for this booking. Please upload it first.' });
+  }
+
+  if (!/^https?:\/\//i.test(attachmentPath) && !fs.existsSync(attachmentPath)) {
+    console.error(`Ticket file not found for booking ${booking.bookingId} at path: ${attachmentPath}`);
+    return res.status(400).json({ success: false, message: 'Ticket PDF file not found for this booking. Please upload it first.' });
   }
 
   // Email content (can be customized via req.body if needed)
@@ -501,7 +539,7 @@ The Tourtastic Team`;
       text: body,
       attachments: [{ 
           filename: `Tourtastic_Ticket_${booking.bookingId}.pdf`, // Custom filename for email
-          path: pdfFilePath 
+          path: attachmentPath 
       }]
     });
 
@@ -885,11 +923,21 @@ exports.deleteDestination = asyncHandler(async (req, res, next) => {
     return next(new Error(`Destination not found with id of ${req.params.id}`));
   }
   // Delete associated image file
-  if (destination.imageUrl) {
-      const imagePath = path.join(__dirname, '..', destination.imageUrl);
+  const storedImagePath = destination.image || destination.imageUrl;
+  if (storedImagePath) {
+    if (typeof storedImagePath === 'string' && storedImagePath.startsWith('supabase://')) {
+      try {
+        await deleteFile(storedImagePath);
+      } catch (err) {
+        console.error("Error deleting destination image during deletion:", storedImagePath, err);
+      }
+    } else if (typeof storedImagePath === 'string' && /^https?:\/\//i.test(storedImagePath)) {
+    } else {
+      const imagePath = path.join(__dirname, '..', String(storedImagePath));
       fs.unlink(imagePath, (err) => {
           if (err) console.error("Error deleting destination image during deletion:", imagePath, err);
       });
+    }
   }
   await destination.deleteOne();
   res.status(200).json({ success: true, data: {} });
@@ -1117,10 +1165,20 @@ exports.deleteFlightBooking = asyncHandler(async (req, res, next) => {
 
   // Optionally delete uploaded ticket file
   if (booking.ticketDetails && booking.ticketDetails.eTicketPath) {
-    const filePath = path.join(__dirname, '..', booking.ticketDetails.eTicketPath);
-    fs.unlink(filePath, (err) => {
-      if (err) console.error('Error deleting eTicket file during flight booking deletion:', filePath, err);
-    });
+    const storedPath = String(booking.ticketDetails.eTicketPath);
+    if (storedPath.startsWith('supabase://')) {
+      try {
+        await deleteFile(storedPath);
+      } catch (err) {
+        console.error('Error deleting eTicket file during flight booking deletion:', storedPath, err);
+      }
+    } else if (/^https?:\/\//i.test(storedPath)) {
+    } else {
+      const filePath = path.join(__dirname, '..', storedPath);
+      fs.unlink(filePath, (err) => {
+        if (err) console.error('Error deleting eTicket file during flight booking deletion:', filePath, err);
+      });
+    }
   }
 
   await booking.deleteOne();
@@ -1234,6 +1292,24 @@ exports.sendFlightTicket = asyncHandler(async (req, res, next) => {
     });
   }
 
+  const storedPath = String(booking.ticketDetails.eTicketPath);
+  let attachmentPath = null;
+  if (/^https?:\/\//i.test(storedPath)) {
+    attachmentPath = storedPath;
+  } else if (storedPath.startsWith('supabase://')) {
+    try {
+      attachmentPath = await generateSignedUrl(storedPath, 86400);
+    } catch (err) {
+      attachmentPath = null;
+    }
+  } else {
+    attachmentPath = path.join(__dirname, '..', storedPath);
+  }
+
+  if (!attachmentPath) {
+    return res.status(400).json({ success: false, message: "No e-ticket found for this booking" });
+  }
+
   const emailContent = `Dear ${booking.customerName},
 
 Your flight ticket for booking ${booking.bookingId} is attached.
@@ -1256,7 +1332,7 @@ Tourtastic Team`;
       text: emailContent,
       attachments: [{
         filename: `ticket_${booking.bookingId}.pdf`,
-        path: path.join(__dirname, '..', booking.ticketDetails.eTicketPath)
+        path: attachmentPath
       }]
     });
 

@@ -38,7 +38,7 @@ function logTest(name, passed, error = null) {
 async function testConfiguration() {
   try {
     const hasUrl = !!process.env.SUPABASE_URL;
-    const hasKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const hasKey = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY);
     const hasBucket = !!process.env.SUPABASE_BUCKET;
     
     if (!hasUrl || !hasKey || !hasBucket) {
@@ -223,7 +223,7 @@ async function runTests() {
   console.log('='.repeat(60));
   
   let testFilePath = null;
-  let testSignedUrl = null;
+  let signedUrl = null;
   let testImagePath = null;
   
   // Run tests sequentially
@@ -232,11 +232,11 @@ async function runTests() {
   testFilePath = await testUploadBuffer();
   
   if (testFilePath) {
-    testSignedUrl = await testSignedUrl(testFilePath);
+    signedUrl = await testSignedUrl(testFilePath);
   }
   
-  if (testSignedUrl) {
-    await testDownloadViaSignedUrl(testSignedUrl);
+  if (signedUrl) {
+    await testDownloadViaSignedUrl(signedUrl);
   }
   
   await testListFiles();

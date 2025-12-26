@@ -4,7 +4,7 @@ require('dotenv').config();
 
 // Initialize Supabase client with service role key (server-only)
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY;
 const SUPABASE_BUCKET = process.env.SUPABASE_BUCKET || 'tourtastic-files';
 const SIGNED_URL_EXPIRY = parseInt(process.env.SUPABASE_SIGNED_URL_EXPIRY || '3600', 10); // 1 hour default
 
@@ -210,6 +210,8 @@ async function generateSignedUrl(identifier, expiresIn = SIGNED_URL_EXPIRY) {
   }
 
   // Default: treat as local path
+  if (identifier.startsWith('/uploads/')) return identifier;
+  if (identifier.startsWith('uploads/')) return `/${identifier}`;
   return `/uploads/${identifier}`;
 }
 
@@ -261,6 +263,8 @@ function generatePublicUrl(identifier) {
   }
 
   // Default: treat as local path
+  if (identifier.startsWith('/uploads/')) return identifier;
+  if (identifier.startsWith('uploads/')) return `/${identifier}`;
   return `/uploads/${identifier}`;
 }
 
