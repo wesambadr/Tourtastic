@@ -4,6 +4,7 @@ const { handlePaymentCallback, initiatePayment } = require("../controllers/payme
 const router = express.Router();
 
 router.post("/callback", handlePaymentCallback);
+router.get("/callback", handlePaymentCallback);
 router.post("/initiate", initiatePayment);
 
 module.exports = router;

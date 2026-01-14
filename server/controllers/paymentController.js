@@ -52,9 +52,28 @@ exports.initiatePayment = asyncHandler(async (req, res) => {
 // @route   POST /api/payment/callback
 // @access  Public
 exports.handlePaymentCallback = asyncHandler(async (req, res) => {
-  const { isSuccess, message, orderRef, transactionNo, amount, token } = req.body;
+  const payload = {
+    ...(req.query || {}),
+    ...(req.body || {})
+  };
 
-  if (!orderRef || !transactionNo || !amount || !token) {
+  const orderRef = payload.orderRef || payload.orderref || payload.or || payload.order_ref || payload.order || payload.bookingId || payload.booking_id;
+  const transactionNo = payload.transactionNo || payload.transactionno || payload.transaction_no || payload.transaction || payload.transNo || payload.trans_no || payload.tn;
+  const amountRaw = payload.amount ?? payload.a ?? payload.Amount ?? payload.A;
+  const token = payload.token || payload.Token || payload.t;
+  const message = payload.message || payload.msg || payload.errorMessage || payload.error_message || payload.Message || null;
+
+  const parseIsSuccess = (v) => {
+    if (typeof v === 'boolean') return v;
+    const s = String(v ?? '').trim().toLowerCase();
+    if (!s) return false;
+    return ['1', 'true', 'yes', 'y', 'success', 'succeeded', 'ok', 'completed', 'paid'].includes(s);
+  };
+
+  const isSuccess = parseIsSuccess(payload.isSuccess ?? payload.success ?? payload.is_success ?? payload.status ?? payload.result);
+  const amountStr = amountRaw == null ? '' : String(amountRaw).trim();
+
+  if (!orderRef || !transactionNo || !amountStr || !token) {
     return res.status(400).json({
       success: false,
       message: "Missing required payment information"
@@ -66,8 +85,19 @@ exports.handlePaymentCallback = asyncHandler(async (req, res) => {
     if (!MERCHANT_KEY || !MERCHANT_SECRET) {
       return res.status(500).json({ success: false, message: 'Payment gateway not configured' });
     }
-    const expectedToken = buildExpectedCallbackToken(String(transactionNo || ''), Number(amount || 0), String(orderRef || ''));
-    if (!token || String(token).toUpperCase() !== expectedToken) {
+    const tokenUpper = String(token).toUpperCase();
+    const baseAmount = amountStr;
+    const noCommas = baseAmount.replace(/,/g, '');
+    const trimmedZeros = noCommas.replace(/(\.[0-9]*?)0+$/, '$1').replace(/\.$/, '').replace(/\.0+$/, '');
+    const parsed = Number(noCommas);
+    const parsedStr = Number.isFinite(parsed) ? String(parsed) : null;
+
+    const amountCandidates = [baseAmount, noCommas, trimmedZeros, parsedStr].filter(v => v != null && String(v).length > 0);
+    const expectedTokens = new Set(
+      amountCandidates.map(a => buildExpectedCallbackToken(String(transactionNo || ''), String(a), String(orderRef || '')))
+    );
+
+    if (!expectedTokens.has(tokenUpper)) {
       return res.status(400).json({ success: false, message: 'Invalid callback token' });
     }
 
@@ -84,21 +114,26 @@ exports.handlePaymentCallback = asyncHandler(async (req, res) => {
       });
     }
 
-    // Update booking with payment information
-    booking.paymentDetails = {
-      status: isSuccess ? "completed" : "failed",
-      currency: "SYP",
-      transactions: [
-        ...(booking.paymentDetails?.transactions || []),
-        {
-          transactionNo,
-          amount,
-          status: isSuccess ? "completed" : "failed",
-          message,
-          timestamp: new Date()
-        }
-      ]
-    };
+    const amountNumber = Number(String(amountCandidates[1] ?? amountCandidates[0] ?? amountStr).replace(/,/g, ''));
+    const safeAmountNumber = Number.isFinite(amountNumber) ? amountNumber : 0;
+
+    if (!booking.paymentDetails) {
+      booking.paymentDetails = {};
+    }
+
+    booking.paymentDetails.status = isSuccess ? 'completed' : 'pending';
+    booking.paymentDetails.currency = 'SYP';
+    booking.paymentDetails.amount = safeAmountNumber;
+    booking.paymentDetails.reference = String(transactionNo);
+    booking.paymentDetails.transactions = [
+      ...(booking.paymentDetails.transactions || []),
+      {
+        date: new Date(),
+        amount: safeAmountNumber,
+        type: 'payment',
+        reference: String(transactionNo)
+      }
+    ];
 
     if (isSuccess) {
       booking.status = "confirmed";
@@ -166,6 +201,7 @@ exports.handlePaymentCallback = asyncHandler(async (req, res) => {
           });
       }
     } else {
+      booking.paymentStatus = "failed";
       // Create payment failure notification
       await Notification.create({
         userId: booking.userId,

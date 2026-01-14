@@ -43,6 +43,8 @@ const app = express();
 // Body parser middleware
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
+
 // Behind proxies/load balancers (Render, Vercel)
 app.set('trust proxy', 1);
 
