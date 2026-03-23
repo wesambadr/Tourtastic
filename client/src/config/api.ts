@@ -13,6 +13,14 @@ const api = axios.create({
 
 const REFRESH_ENDPOINT = '/auth/refresh-token';
 let redirectingToLogin = false;
+let refreshPromise: Promise<string | null> | null = null;
+
+const PUBLIC_ENDPOINT_PREFIXES = ['/flights/search', '/flights/results'];
+
+const isPublicEndpoint = (url?: string) => {
+  if (!url) return false;
+  return PUBLIC_ENDPOINT_PREFIXES.some(prefix => url.includes(prefix));
+};
 
 // Add session ID to requests for anonymous users
 api.interceptors.request.use(async (config) => {
@@ -35,22 +43,36 @@ api.interceptors.request.use(async (config) => {
       }
 
       // Token looks expired or invalid; attempt refresh if we have a refresh token
-      if (refreshToken) {
+      // Skip refresh for public endpoints (avoid noisy refresh loops when user is browsing unauthenticated pages)
+      if (refreshToken && !isPublicEndpoint(config.url)) {
         try {
-          // Use full URL to avoid circular dependency with api instance
-          const baseURL = import.meta.env.VITE_API_URL ?? '/api';
-          const refreshResp = await axios.post(`${baseURL}${REFRESH_ENDPOINT}`, { refreshToken });
-          if (refreshResp.data?.success && refreshResp.data.accessToken) {
-            localStorage.setItem('token', refreshResp.data.accessToken);
-            if (refreshResp.data.refreshToken) {
-              localStorage.setItem('refreshToken', refreshResp.data.refreshToken);
-            }
+          if (!refreshPromise) {
+            const baseURL = import.meta.env.VITE_API_URL ?? '/api';
+            refreshPromise = axios
+              .post(`${baseURL}${REFRESH_ENDPOINT}`, { refreshToken })
+              .then((refreshResp) => {
+                if (refreshResp.data?.success && refreshResp.data.accessToken) {
+                  localStorage.setItem('token', refreshResp.data.accessToken);
+                  if (refreshResp.data.refreshToken) {
+                    localStorage.setItem('refreshToken', refreshResp.data.refreshToken);
+                  }
+                  return String(refreshResp.data.accessToken);
+                }
+                return null;
+              })
+              .catch(() => null)
+              .finally(() => {
+                refreshPromise = null;
+              });
+          }
+
+          const newAccessToken = await refreshPromise;
+          if (newAccessToken) {
             config.headers = (config.headers ?? {}) as AxiosRequestHeaders;
-            (config.headers as AxiosRequestHeaders).Authorization = `Bearer ${refreshResp.data.accessToken}`;
+            (config.headers as AxiosRequestHeaders).Authorization = `Bearer ${newAccessToken}`;
             return config;
           }
         } catch (refreshErr) {
-          // refresh failed; fall through to clearing tokens
           console.warn('Token refresh failed', refreshErr);
         }
       }
@@ -111,21 +133,33 @@ api.interceptors.response.use(
         
         // Try to refresh the token
         const refreshToken = localStorage.getItem('refreshToken');
-        if (refreshToken) {
+        if (refreshToken && !isPublicEndpoint(originalRequest.url)) {
           try {
-            // Use full URL to avoid circular dependency
-            const baseURL = import.meta.env.VITE_API_URL ?? '/api';
-            const response = await axios.post(`${baseURL}${REFRESH_ENDPOINT}`, { refreshToken });
-            
-            if (response.data.success) {
-              // Save new tokens
-              localStorage.setItem('token', response.data.accessToken);
-              localStorage.setItem('refreshToken', response.data.refreshToken);
-              
-              // Retry the original request with new token
+            if (!refreshPromise) {
+              const baseURL = import.meta.env.VITE_API_URL ?? '/api';
+              refreshPromise = axios
+                .post(`${baseURL}${REFRESH_ENDPOINT}`, { refreshToken })
+                .then((refreshResp) => {
+                  if (refreshResp.data?.success && refreshResp.data.accessToken) {
+                    localStorage.setItem('token', refreshResp.data.accessToken);
+                    if (refreshResp.data.refreshToken) {
+                      localStorage.setItem('refreshToken', refreshResp.data.refreshToken);
+                    }
+                    return String(refreshResp.data.accessToken);
+                  }
+                  return null;
+                })
+                .catch(() => null)
+                .finally(() => {
+                  refreshPromise = null;
+                });
+            }
+
+            const newAccessToken = await refreshPromise;
+            if (newAccessToken) {
               originalRequest.headers = {
                 ...(originalRequest.headers ?? {}),
-                Authorization: `Bearer ${response.data.accessToken}`,
+                Authorization: `Bearer ${newAccessToken}`,
               };
               return axios(originalRequest);
             }

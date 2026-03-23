@@ -430,6 +430,7 @@
       "multipleUsers": "عدة مستخدمين",
       "emailTab": "البريد الإلكتروني",
       "emailTitle": "إرسال بريد إلكتروني",
+      "emailFrom": "من",
       "emailPlaceholder": "user@example.com",
       "recipientsPlaceholder": "أدخل عناوين بريد مفصولة بفواصل، مثال: a@example.com, b@example.com",
       "emailSubject": "الموضوع",

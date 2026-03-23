@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-03-23T01:01:37.100Z",
+  "status": 200,
+  "headers": {
+    "server": "openresty",
+    "date": "Mon, 23 Mar 2026 01:01:36 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "content-length": "52",
+    "connection": "keep-alive",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*, https://docs.seeru.travel",
+    "access-control-allow-methods": "HEAD, GET, POST, OPTIONS, GET, POST, OPTIONS",
+    "access-control-allow-headers": "*, Origin, Content-Type, Accept, Authorization",
+    "x-p-st": "2026-03-23T04:01:36.532+03:00",
+    "x-i-st": "2026-03-23T04:01:36.676+03:00",
+    "x-i-et": "2026-03-23T04:01:36.678+03:00",
+    "etag": "W/\"34-pkQQ8x6znrmCtFCZV169eXnG7bA\"",
+    "x-p-et": "2026-03-23T04:01:36.721+03:00",
+    "x-p-d": "0.189",
+    "access-control-allow-credentials": "true",
+    "x-execution-time": "0.194"
+  },
+  "body": {
+    "search_id": "76e5a29a-436d-4749-80e9-4dd90448cd09"
+  }
+}

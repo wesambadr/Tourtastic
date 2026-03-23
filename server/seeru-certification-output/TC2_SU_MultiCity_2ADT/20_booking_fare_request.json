@@ -1,0 +1,198 @@
+{
+  "timestamp": "2026-03-23T01:01:53.849Z",
+  "environment": "sandbox",
+  "method": "POST",
+  "url": "https://sandbox-api.seeru.travel/v1/flights/booking/fare",
+  "headers": {
+    "common": {
+      "Accept": "application/json, text/plain, */*"
+    },
+    "delete": {},
+    "get": {},
+    "head": {},
+    "post": {},
+    "put": {},
+    "patch": {},
+    "Authorization": "Bearer eyJhbG...aWJA",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "booking": {
+      "price": 618.81,
+      "tax": 358.09,
+      "refundable_info": "Refundable",
+      "fare_key": "",
+      "fare_brand": "",
+      "price_breakdowns": {
+        "ADT": {
+          "total": 309.4,
+          "price": 130.35,
+          "label": "Adult",
+          "tax": 179.05
+        }
+      },
+      "legs": [
+        {
+          "duration": 10750,
+          "segments": [
+            {
+              "cabin": "Y",
+              "cabin_name": "Economy",
+              "farebase": "DVALOW",
+              "seats": 9,
+              "class": "D",
+              "from": {
+                "date": "2026-05-10 02:15",
+                "airport": "CAI",
+                "city": "Cairo",
+                "country": "Egypt",
+                "country_iso": "EG",
+                "terminal": "1",
+                "airport_name": "Cairo International Airport"
+              },
+              "to": {
+                "date": "2026-05-10 04:40",
+                "airport": "JED",
+                "city": "Jeddah",
+                "country": "Saudi Arabia",
+                "country_iso": "SA",
+                "terminal": "1",
+                "airport_name": "King Abdulaziz International Airport"
+              },
+              "equipment": "32N",
+              "equipment_name": "",
+              "flightnumber": "574",
+              "iata": "XY",
+              "airline_name": "",
+              "operating": null,
+              "duration": 85
+            },
+            {
+              "cabin": "Y",
+              "cabin_name": "Economy",
+              "farebase": "DVALOW",
+              "seats": 9,
+              "class": "D",
+              "from": {
+                "date": "2026-05-17 08:05",
+                "airport": "JED",
+                "city": "Jeddah",
+                "country": "Saudi Arabia",
+                "country_iso": "SA",
+                "terminal": "1",
+                "airport_name": "King Abdulaziz International Airport"
+              },
+              "to": {
+                "date": "2026-05-17 09:50",
+                "airport": "RUH",
+                "city": "Riyadh",
+                "country": "Saudi Arabia",
+                "country_iso": "SA",
+                "terminal": "3",
+                "airport_name": "King Khaled International Airport"
+              },
+              "equipment": "32N",
+              "equipment_name": "",
+              "flightnumber": "4",
+              "iata": "XY",
+              "airline_name": "",
+              "operating": null,
+              "duration": 105
+            },
+            {
+              "cabin": "Y",
+              "cabin_name": "Economy",
+              "farebase": "DVALOW",
+              "seats": 9,
+              "class": "D",
+              "from": {
+                "date": "2026-05-17 12:20",
+                "airport": "RUH",
+                "city": "Riyadh",
+                "country": "Saudi Arabia",
+                "country_iso": "SA",
+                "terminal": "1",
+                "airport_name": "King Khaled International Airport"
+              },
+              "to": {
+                "date": "2026-05-17 15:25",
+                "airport": "DXB",
+                "city": "Dubai",
+                "country": "United Arab Emirates",
+                "country_iso": "AE",
+                "terminal": "1",
+                "airport_name": "Dubai International Airport"
+              },
+              "equipment": "32N",
+              "equipment_name": "",
+              "flightnumber": "205",
+              "iata": "XY",
+              "airline_name": "",
+              "operating": null,
+              "duration": 125
+            }
+          ],
+          "from": {
+            "date": "2026-05-10 02:15",
+            "airport": "CAI",
+            "city": "Cairo",
+            "country": "Egypt",
+            "country_iso": "EG",
+            "terminal": "1",
+            "airport_name": "Cairo International Airport"
+          },
+          "to": {
+            "date": "2026-05-17 15:25",
+            "airport": "DXB",
+            "city": "Dubai",
+            "country": "United Arab Emirates",
+            "country_iso": "AE",
+            "terminal": "1",
+            "airport_name": "Dubai International Airport"
+          },
+          "cabin": "Y",
+          "seats": "9",
+          "iata": [
+            "XY"
+          ],
+          "bags": {
+            "unit": "kg",
+            "value": 30,
+            "ADT": {
+              "cabin": {
+                "desc": "0 kg"
+              },
+              "checked": {
+                "desc": "30 kg"
+              }
+            }
+          },
+          "stop_over": [
+            10285,
+            150
+          ],
+          "stops": [
+            "JED",
+            "RUH"
+          ]
+        }
+      ],
+      "can_hold": true,
+      "search_id": "2103319211226726400",
+      "trip_id": "CAI|2026-05-10|XY|02:15|04:40|2026-05-10|JED|30 kg_JED|2026-05-17|XY|08:05|09:50|2026-05-17|RUH|30 kg_RUH|2026-05-17|XY|12:20|15:25|2026-05-17|DXB|30 kg",
+      "instant_issue": false,
+      "can_void": false,
+      "can_refund": true,
+      "can_exchange": true,
+      "search_query": "{\"trips\":[{\"from\":\"CAI\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"DXB\",\"date\":\"2026/05/17\"}],\"adt\":2,\"chd\":0,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":true,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+      "from_cache": false,
+      "src": "RA",
+      "total_pax_no_inf": 2,
+      "cache_time": 1774238509395,
+      "search_time": 1774238496687,
+      "result_time": 1774238509395,
+      "id": "1f173693de9043b886a65faa853538f1",
+      "currency": "USD"
+    }
+  }
+}

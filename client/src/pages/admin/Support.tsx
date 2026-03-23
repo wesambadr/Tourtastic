@@ -31,6 +31,7 @@ const AdminSupport: React.FC = () => {
   // email tab state
   const [emailRecipientType, setEmailRecipientType] = useState<'single' | 'all'>('single');
   const [emailRecipient, setEmailRecipient] = useState('');
+  const [smtpAccount, setSmtpAccount] = useState<'wesam' | 'support' | 'info'>('support');
   const [emailSubject, setEmailSubject] = useState('');
   const [emailBodyHtml, setEmailBodyHtml] = useState('');
   const [emailPdf, setEmailPdf] = useState<File | null>(null);
@@ -84,6 +85,7 @@ const AdminSupport: React.FC = () => {
       if (emailRecipientType === 'single') {
         form.append('recipient', emailRecipient);
       }
+      form.append('smtpAccount', smtpAccount);
       form.append('subject', emailSubject);
       form.append('bodyHtml', emailBodyHtml);
       if (emailPdf) form.append('pdf', emailPdf);
@@ -244,6 +246,19 @@ const AdminSupport: React.FC = () => {
           <div className="space-y-4">
             <h2 className="text-lg font-semibold">{t('admin.support.emailTitle')}</h2>
             <form onSubmit={handleEmailSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">{t('admin.support.emailFrom')}</label>
+                <select
+                  value={smtpAccount}
+                  onChange={(e) => setSmtpAccount(e.target.value as 'wesam' | 'support' | 'info')}
+                  className="w-full border rounded p-2"
+                >
+                  <option value="wesam">wesam.badr@tourtastic.net</option>
+                  <option value="support">support@tourtastic.net</option>
+                  <option value="info">info@tourtastic.net</option>
+                </select>
+              </div>
+
               <div>
                 <label className="block text-sm font-medium mb-1">{t('admin.support.recipient')}</label>
                 <div className="flex gap-3 flex-wrap">

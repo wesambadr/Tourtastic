@@ -1,0 +1,4730 @@
+{
+  "timestamp": "2026-03-23T01:01:23.157Z",
+  "status": 200,
+  "headers": {
+    "server": "openresty",
+    "date": "Mon, 23 Mar 2026 01:01:22 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "vary": "Accept-Encoding",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*, https://docs.seeru.travel",
+    "access-control-allow-methods": "HEAD, GET, POST, OPTIONS, GET, POST, OPTIONS",
+    "access-control-allow-headers": "*, Origin, Content-Type, Accept, Authorization",
+    "x-p-st": "2026-03-23T04:01:22.385+03:00",
+    "x-i-st": "2026-03-23T04:01:22.526+03:00",
+    "x-i-et": "2026-03-23T04:01:22.537+03:00",
+    "etag": "W/\"150fd-e20FwFg2Bfq4WXNovRs05hBgqEE\"",
+    "x-p-et": "2026-03-23T04:01:22.579+03:00",
+    "x-p-d": "0.194",
+    "access-control-allow-credentials": "true",
+    "x-execution-time": "0.199"
+  },
+  "body": {
+    "complete": 72,
+    "result": [
+      {
+        "price": 359.01,
+        "tax": 16.01,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.SU.0.370.F2858218S2828300.OENCTkRDX1NVX0FDX01BMg==...RUB-31.SU.232.SVO.202605081840.DEL.202605090320.32Q.GNO.370.0.TUA.0.0PC.1P10K..1.0.75125.0.0.0.RWNvbm9teSBMaXRl",
+        "gds_id": 31,
+        "fare_brand": "Economy Lite",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 327.89,
+            "price": 313.31,
+            "label": "Adult",
+            "tax": 14.58
+          },
+          "INF": {
+            "total": 31.12,
+            "price": 29.69,
+            "label": "Infant",
+            "tax": 1.43
+          }
+        },
+        "trip_id": "SVO|2026-05-09|SU|18:40|03:20|2026-05-09|DEL|0 kg_GNO",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 370,
+            "bags": {
+              "unit": "pc",
+              "value": 0,
+              "ADT": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 18:40",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 03:20",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [],
+            "stop_over": [],
+            "iata": [
+              "SU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "GNO",
+                "seats": 2,
+                "class": "G",
+                "from": {
+                  "date": "2026/05/08 18:40",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 03:20",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32Q",
+                "iata": "SU",
+                "equipment_name": "Airbus A321neo",
+                "flightnumber": "0232",
+                "operating": "",
+                "validating": "SU",
+                "airline_name": "Aeroflot",
+                "duration": 370
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "d2cc7af0f85bcdfa655177908f1aa0e5"
+      },
+      {
+        "price": 406.58,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.705.F3236958S3208400.OENCUDQ5NzAzMjY=...RUB-17.EY.844.SVO.202605082355.AUH.202605090640.781.ELN20H2K.345.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==_17.EY.214.AUH.202605090855.DEL.202605091410.32A.ELN20H2K.225.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY BASIC",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 350.10999999999996,
+            "price": 172.99,
+            "label": "Adult",
+            "tax": 177.12
+          },
+          "INF": {
+            "total": 56.47,
+            "price": 26.9,
+            "label": "Infant",
+            "tax": 29.57
+          }
+        },
+        "trip_id": "SVO|2026-05-09|EY|23:55|06:40|2026-05-09|AUH|0 kg_AUH|2026-05-09|EY|08:55|14:10|2026-05-09|DEL|0 kg_ELN20H2K:ELN20H2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 705,
+            "bags": {
+              "unit": "pc",
+              "value": 0,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 23:55",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 14:10",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              135
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 23:55",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 06:40",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0844",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 08:55",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 14:10",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32A",
+                "iata": "EY",
+                "equipment_name": "Airbus A320 Sharklets",
+                "flightnumber": "0214",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 225
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "e6af8f259eb43861289fc5eafa8f9cc3"
+      },
+      {
+        "price": 406.58,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.1015.F3236958S3208400.OENCUDQ5NzAzMjY=...RUB-17.EY.844.SVO.202605082355.AUH.202605090640.781.ELN20H2K.345.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==_17.EY.216.AUH.202605091410.DEL.202605091920.351.ELN20H2K.220.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY BASIC",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 350.10999999999996,
+            "price": 172.99,
+            "label": "Adult",
+            "tax": 177.12
+          },
+          "INF": {
+            "total": 56.47,
+            "price": 26.9,
+            "label": "Infant",
+            "tax": 29.57
+          }
+        },
+        "trip_id": "SVO|2026-05-09|EY|23:55|06:40|2026-05-09|AUH|0 kg_AUH|2026-05-09|EY|14:10|19:20|2026-05-09|DEL|0 kg_ELN20H2K:ELN20H2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1015,
+            "bags": {
+              "unit": "pc",
+              "value": 0,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 23:55",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 19:20",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              450
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 23:55",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 06:40",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0844",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 14:10",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 19:20",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "351",
+                "iata": "EY",
+                "equipment_name": "Airbus A350-1000",
+                "flightnumber": "0216",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 220
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "6463c26a9407ceb0618d678e31bc68c7"
+      },
+      {
+        "price": 406.58,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.1485.F3236958S3208400.OENCUDQ5NzAzMjY=...RUB-17.EY.844.SVO.202605082355.AUH.202605090640.781.ELN20H2K.345.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==_17.EY.218.AUH.202605092200.DEL.202605100310.781.ELN20H2K.220.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY BASIC",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 350.10999999999996,
+            "price": 172.99,
+            "label": "Adult",
+            "tax": 177.12
+          },
+          "INF": {
+            "total": 56.47,
+            "price": 26.9,
+            "label": "Infant",
+            "tax": 29.57
+          }
+        },
+        "trip_id": "SVO|2026-05-09|EY|23:55|06:40|2026-05-09|AUH|0 kg_AUH|2026-05-10|EY|22:00|03:10|2026-05-10|DEL|0 kg_ELN20H2K:ELN20H2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1485,
+            "bags": {
+              "unit": "pc",
+              "value": 0,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 23:55",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/10 03:10",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              920
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 23:55",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 06:40",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0844",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 22:00",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/10 03:10",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0218",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 220
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "7221c9e4351bb5ce0c30a559381bc69c"
+      },
+      {
+        "price": 413.56,
+        "tax": 192.02,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.GF.0.1765.F3292518S3262600.OENCUDM1MzQxMjU=...RUB-17.GF.13.SVO.202605081300.BAH.202605081925.32N.NDLIT3RU.385.0.TUA.0.1P25K.1P6K..1.1..0.0.0.RUNPTk9NWSBMSUdIVA==_17.GF.134.BAH.202605091420.DEL.202605092055.32Q.NDLIT3RU.245.0.TUA.0.1P25K.1P6K..1.1..0.0.0.RUNPTk9NWSBMSUdIVA==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY LIGHT",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 383.8,
+            "price": 206.01,
+            "label": "Adult",
+            "tax": 177.79
+          },
+          "INF": {
+            "total": 29.76,
+            "price": 15.53,
+            "label": "Infant",
+            "tax": 14.23
+          }
+        },
+        "trip_id": "SVO|2026-05-08|GF|13:00|19:25|2026-05-08|BAH|0 kg_BAH|2026-05-09|GF|14:20|20:55|2026-05-09|DEL|0 kg_NDLIT3RU:NDLIT3RU",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1765,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 13:00",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 20:55",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "BAH"
+            ],
+            "stop_over": [
+              1135
+            ],
+            "iata": [
+              "GF",
+              "GF"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "NDLIT3RU",
+                "seats": 1,
+                "class": "N",
+                "from": {
+                  "date": "2026/05/08 13:00",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:25",
+                  "airport": "BAH",
+                  "city": "Bahrain",
+                  "country": "Bahrain",
+                  "country_iso": "BH",
+                  "terminal": "",
+                  "airport_name": "Bahrain International"
+                },
+                "equipment": "32N",
+                "iata": "GF",
+                "equipment_name": "Airbus A320neo",
+                "flightnumber": "0013",
+                "operating": "",
+                "validating": "GF",
+                "airline_name": "Gulf Air",
+                "duration": 385
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "NDLIT3RU",
+                "seats": 1,
+                "class": "N",
+                "from": {
+                  "date": "2026/05/09 14:20",
+                  "airport": "BAH",
+                  "city": "Bahrain",
+                  "country": "Bahrain",
+                  "country_iso": "BH",
+                  "terminal": "",
+                  "airport_name": "Bahrain International"
+                },
+                "to": {
+                  "date": "2026/05/09 20:55",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32Q",
+                "iata": "GF",
+                "equipment_name": "Airbus A321neo",
+                "flightnumber": "0134",
+                "operating": "",
+                "validating": "GF",
+                "airline_name": "Gulf Air",
+                "duration": 245
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "59bc3e373d16d15bdcbc3d594c75e88e"
+      },
+      {
+        "price": 418.76,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.705.F3333866S3305400.OENCUDQ5NzAzMjY=...RUB-17.EY.844.SVO.202605082355.AUH.202605090640.781.ELN20V2K.345.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==_17.EY.214.AUH.202605090855.DEL.202605091410.32A.ELN20V2K.225.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY VALUE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 361.13,
+            "price": 183.73999999999998,
+            "label": "Adult",
+            "tax": 177.39
+          },
+          "INF": {
+            "total": 57.63,
+            "price": 28.33,
+            "label": "Infant",
+            "tax": 29.3
+          }
+        },
+        "trip_id": "SVO|2026-05-09|EY|23:55|06:40|2026-05-09|AUH|0 kg_AUH|2026-05-09|EY|08:55|14:10|2026-05-09|DEL|0 kg_ELN20V2K:ELN20V2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 705,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 23:55",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 14:10",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              135
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 23:55",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 06:40",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0844",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 08:55",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 14:10",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32A",
+                "iata": "EY",
+                "equipment_name": "Airbus A320 Sharklets",
+                "flightnumber": "0214",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 225
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "dea85c44442e81a44c8d61470f47ab45"
+      },
+      {
+        "price": 418.76,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.1015.F3333866S3305400.OENCUDQ5NzAzMjY=...RUB-17.EY.844.SVO.202605082355.AUH.202605090640.781.ELN20V2K.345.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==_17.EY.216.AUH.202605091410.DEL.202605091920.351.ELN20V2K.220.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY VALUE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 361.13,
+            "price": 183.73999999999998,
+            "label": "Adult",
+            "tax": 177.39
+          },
+          "INF": {
+            "total": 57.63,
+            "price": 28.33,
+            "label": "Infant",
+            "tax": 29.3
+          }
+        },
+        "trip_id": "SVO|2026-05-09|EY|23:55|06:40|2026-05-09|AUH|0 kg_AUH|2026-05-09|EY|14:10|19:20|2026-05-09|DEL|0 kg_ELN20V2K:ELN20V2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1015,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 23:55",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 19:20",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              450
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 23:55",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 06:40",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0844",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 14:10",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 19:20",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "351",
+                "iata": "EY",
+                "equipment_name": "Airbus A350-1000",
+                "flightnumber": "0216",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 220
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "56e3d5a7492320f3c5c2521da51b5e82"
+      },
+      {
+        "price": 418.76,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.1485.F3333866S3305400.OENCUDQ5NzAzMjY=...RUB-17.EY.844.SVO.202605082355.AUH.202605090640.781.ELN20V2K.345.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==_17.EY.218.AUH.202605092200.DEL.202605100310.781.ELN20V2K.220.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY VALUE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 361.13,
+            "price": 183.73999999999998,
+            "label": "Adult",
+            "tax": 177.39
+          },
+          "INF": {
+            "total": 57.63,
+            "price": 28.33,
+            "label": "Infant",
+            "tax": 29.3
+          }
+        },
+        "trip_id": "SVO|2026-05-09|EY|23:55|06:40|2026-05-09|AUH|0 kg_AUH|2026-05-10|EY|22:00|03:10|2026-05-10|DEL|0 kg_ELN20V2K:ELN20V2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1485,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 23:55",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/10 03:10",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              920
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 23:55",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 06:40",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0844",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 22:00",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/10 03:10",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0218",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 220
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "9582d7d553686497e0f44a60900f6c3b"
+      },
+      {
+        "price": 447.99,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.710.F3566644S3538400.OENCUDQ5NzAzMjY=...RUB-17.EY.842.SVO.202605081250.AUH.202605081935.781.ELN20H2K.345.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==_17.EY.218.AUH.202605082200.DEL.202605090310.789.ELN20H2K.220.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY BASIC",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 371.29,
+            "price": 201.05,
+            "label": "Adult",
+            "tax": 170.24
+          },
+          "INF": {
+            "total": 76.7,
+            "price": 40.25,
+            "label": "Infant",
+            "tax": 36.45
+          }
+        },
+        "trip_id": "SVO|2026-05-08|EY|12:50|19:35|2026-05-08|AUH|0 kg_AUH|2026-05-09|EY|22:00|03:10|2026-05-09|DEL|0 kg_ELN20H2K:ELN20H2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 710,
+            "bags": {
+              "unit": "pc",
+              "value": 0,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 12:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 03:10",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              145
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 12:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:35",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0842",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 22:00",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 03:10",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "789",
+                "iata": "EY",
+                "equipment_name": "Boeing 787-900",
+                "flightnumber": "0218",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 220
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "df4e1e34441c49f851d869f793482c14"
+      },
+      {
+        "price": 447.99,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.995.F3566644S3538400.OENCUDQ5NzAzMjY=...RUB-17.EY.842.SVO.202605081250.AUH.202605081935.781.ELN20H2K.345.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==_17.EY.212.AUH.202605090240.DEL.202605090755.321.ELN20H2K.225.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY BASIC",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 371.29,
+            "price": 201.05,
+            "label": "Adult",
+            "tax": 170.24
+          },
+          "INF": {
+            "total": 76.7,
+            "price": 40.25,
+            "label": "Infant",
+            "tax": 36.45
+          }
+        },
+        "trip_id": "SVO|2026-05-08|EY|12:50|19:35|2026-05-08|AUH|0 kg_AUH|2026-05-09|EY|02:40|07:55|2026-05-09|DEL|0 kg_ELN20H2K:ELN20H2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 995,
+            "bags": {
+              "unit": "pc",
+              "value": 0,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 12:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 07:55",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              425
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 12:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:35",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0842",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 02:40",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 07:55",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "321",
+                "iata": "EY",
+                "equipment_name": "Airbus A321",
+                "flightnumber": "0212",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 225
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "e2c7c0c07d2cc30c8d3081d1e531b218"
+      },
+      {
+        "price": 447.99,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.1370.F3566644S3538400.OENCUDQ5NzAzMjY=...RUB-17.EY.842.SVO.202605081250.AUH.202605081935.781.ELN20H2K.345.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==_17.EY.214.AUH.202605090855.DEL.202605091410.32A.ELN20H2K.225.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY BASIC",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 371.29,
+            "price": 201.05,
+            "label": "Adult",
+            "tax": 170.24
+          },
+          "INF": {
+            "total": 76.7,
+            "price": 40.25,
+            "label": "Infant",
+            "tax": 36.45
+          }
+        },
+        "trip_id": "SVO|2026-05-08|EY|12:50|19:35|2026-05-08|AUH|0 kg_AUH|2026-05-09|EY|08:55|14:10|2026-05-09|DEL|0 kg_ELN20H2K:ELN20H2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1370,
+            "bags": {
+              "unit": "pc",
+              "value": 0,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 12:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 14:10",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              800
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 12:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:35",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0842",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 08:55",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 14:10",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32A",
+                "iata": "EY",
+                "equipment_name": "Airbus A320 Sharklets",
+                "flightnumber": "0214",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 225
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "89a8c18d6e8859b514da65884b1ce040"
+      },
+      {
+        "price": 447.99,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.1680.F3566644S3538400.OENCUDQ5NzAzMjY=...RUB-17.EY.842.SVO.202605081250.AUH.202605081935.781.ELN20H2K.345.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==_17.EY.216.AUH.202605091410.DEL.202605091920.351.ELN20H2K.220.0.TUA.0.0PC.1P7K..0.0..0.0.0.RUNPTk9NWSBCQVNJQw==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY BASIC",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 371.29,
+            "price": 201.05,
+            "label": "Adult",
+            "tax": 170.24
+          },
+          "INF": {
+            "total": 76.7,
+            "price": 40.25,
+            "label": "Infant",
+            "tax": 36.45
+          }
+        },
+        "trip_id": "SVO|2026-05-08|EY|12:50|19:35|2026-05-08|AUH|0 kg_AUH|2026-05-09|EY|14:10|19:20|2026-05-09|DEL|0 kg_ELN20H2K:ELN20H2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1680,
+            "bags": {
+              "unit": "pc",
+              "value": 0,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 12:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 19:20",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              1115
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 12:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:35",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0842",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20H2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 14:10",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 19:20",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "351",
+                "iata": "EY",
+                "equipment_name": "Airbus A350-1000",
+                "flightnumber": "0216",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 220
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "caaa06e852efd8fce022880d3aecf160"
+      },
+      {
+        "price": 452.84,
+        "tax": 16.01,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.SU.0.370.F3605218S3575300.OENCTkRDX1NVX0FDX01BMg==...RUB-31.SU.232.SVO.202605081840.DEL.202605090320.32Q.GCO.370.0.TUA.0.1P23K.1P10K..1.1.100150.0.0.0.RWNvbm9teSBDbGFzc2lj",
+        "gds_id": 31,
+        "fare_brand": "Economy Classic",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 413.42,
+            "price": 398.84000000000003,
+            "label": "Adult",
+            "tax": 14.58
+          },
+          "INF": {
+            "total": 39.42,
+            "price": 37.98,
+            "label": "Infant",
+            "tax": 1.44
+          }
+        },
+        "trip_id": "SVO|2026-05-09|SU|18:40|03:20|2026-05-09|DEL|0 kg_GCO",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 370,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 18:40",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 03:20",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [],
+            "stop_over": [],
+            "iata": [
+              "SU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "GCO",
+                "seats": 2,
+                "class": "G",
+                "from": {
+                  "date": "2026/05/08 18:40",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 03:20",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32Q",
+                "iata": "SU",
+                "equipment_name": "Airbus A321neo",
+                "flightnumber": "0232",
+                "operating": "",
+                "validating": "SU",
+                "airline_name": "Aeroflot",
+                "duration": 370
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "b804b01ced7a38a7cb38cc26fc6a3fc6"
+      },
+      {
+        "price": 457.45,
+        "tax": 192.02,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.GF.0.1765.F3642018S3612100.OENCUDM1MzQxMjU=...RUB-17.GF.13.SVO.202605081300.BAH.202605081925.32N.NDSMR3RU.385.0.TUA.0.1P30K.1P6K..1.1..0.0.0.RUNPTk9NWSBTTUFSVA==_17.GF.134.BAH.202605091420.DEL.202605092055.32Q.NDSMR3RU.245.0.TUA.0.1P30K.1P6K..1.1..0.0.0.RUNPTk9NWSBTTUFSVA==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY SMART",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 422.92,
+            "price": 245.83,
+            "label": "Adult",
+            "tax": 177.09
+          },
+          "INF": {
+            "total": 34.53,
+            "price": 19.6,
+            "label": "Infant",
+            "tax": 14.93
+          }
+        },
+        "trip_id": "SVO|2026-05-08|GF|13:00|19:25|2026-05-08|BAH|0 kg_BAH|2026-05-09|GF|14:20|20:55|2026-05-09|DEL|0 kg_NDSMR3RU:NDSMR3RU",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1765,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 13:00",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 20:55",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "BAH"
+            ],
+            "stop_over": [
+              1135
+            ],
+            "iata": [
+              "GF",
+              "GF"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "NDSMR3RU",
+                "seats": 1,
+                "class": "N",
+                "from": {
+                  "date": "2026/05/08 13:00",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:25",
+                  "airport": "BAH",
+                  "city": "Bahrain",
+                  "country": "Bahrain",
+                  "country_iso": "BH",
+                  "terminal": "",
+                  "airport_name": "Bahrain International"
+                },
+                "equipment": "32N",
+                "iata": "GF",
+                "equipment_name": "Airbus A320neo",
+                "flightnumber": "0013",
+                "operating": "",
+                "validating": "GF",
+                "airline_name": "Gulf Air",
+                "duration": 385
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "NDSMR3RU",
+                "seats": 1,
+                "class": "N",
+                "from": {
+                  "date": "2026/05/09 14:20",
+                  "airport": "BAH",
+                  "city": "Bahrain",
+                  "country": "Bahrain",
+                  "country_iso": "BH",
+                  "terminal": "",
+                  "airport_name": "Bahrain International"
+                },
+                "to": {
+                  "date": "2026/05/09 20:55",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32Q",
+                "iata": "GF",
+                "equipment_name": "Airbus A321neo",
+                "flightnumber": "0134",
+                "operating": "",
+                "validating": "GF",
+                "airline_name": "Gulf Air",
+                "duration": 245
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "f1d8aee195dbb4ee195c1810bcb3b0fb"
+      },
+      {
+        "price": 460.16,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.710.F3663551S3635400.OENCUDQ5NzAzMjY=...RUB-17.EY.842.SVO.202605081250.AUH.202605081935.781.ELN20V2K.345.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==_17.EY.218.AUH.202605082200.DEL.202605090310.789.ELN20V2K.220.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY VALUE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 382.31,
+            "price": 211.64000000000001,
+            "label": "Adult",
+            "tax": 170.67
+          },
+          "INF": {
+            "total": 77.85,
+            "price": 41.83,
+            "label": "Infant",
+            "tax": 36.02
+          }
+        },
+        "trip_id": "SVO|2026-05-08|EY|12:50|19:35|2026-05-08|AUH|0 kg_AUH|2026-05-09|EY|22:00|03:10|2026-05-09|DEL|0 kg_ELN20V2K:ELN20V2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 710,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 12:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 03:10",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              145
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 12:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:35",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0842",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 22:00",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 03:10",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "789",
+                "iata": "EY",
+                "equipment_name": "Boeing 787-900",
+                "flightnumber": "0218",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 220
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "3c1539c80e8b3c5df8ccbe71823ba430"
+      },
+      {
+        "price": 460.16,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.995.F3663551S3635400.OENCUDQ5NzAzMjY=...RUB-17.EY.842.SVO.202605081250.AUH.202605081935.781.ELN20V2K.345.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==_17.EY.212.AUH.202605090240.DEL.202605090755.321.ELN20V2K.225.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY VALUE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 382.31,
+            "price": 211.64000000000001,
+            "label": "Adult",
+            "tax": 170.67
+          },
+          "INF": {
+            "total": 77.85,
+            "price": 41.83,
+            "label": "Infant",
+            "tax": 36.02
+          }
+        },
+        "trip_id": "SVO|2026-05-08|EY|12:50|19:35|2026-05-08|AUH|0 kg_AUH|2026-05-09|EY|02:40|07:55|2026-05-09|DEL|0 kg_ELN20V2K:ELN20V2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 995,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 12:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 07:55",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              425
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 12:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:35",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0842",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 02:40",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 07:55",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "321",
+                "iata": "EY",
+                "equipment_name": "Airbus A321",
+                "flightnumber": "0212",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 225
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "ab5fd7dc55f4d188ba5790d77db97f76"
+      },
+      {
+        "price": 460.16,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.1370.F3663551S3635400.OENCUDQ5NzAzMjY=...RUB-17.EY.842.SVO.202605081250.AUH.202605081935.781.ELN20V2K.345.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==_17.EY.214.AUH.202605090855.DEL.202605091410.32A.ELN20V2K.225.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY VALUE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 382.31,
+            "price": 211.64000000000001,
+            "label": "Adult",
+            "tax": 170.67
+          },
+          "INF": {
+            "total": 77.85,
+            "price": 41.83,
+            "label": "Infant",
+            "tax": 36.02
+          }
+        },
+        "trip_id": "SVO|2026-05-08|EY|12:50|19:35|2026-05-08|AUH|0 kg_AUH|2026-05-09|EY|08:55|14:10|2026-05-09|DEL|0 kg_ELN20V2K:ELN20V2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1370,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 12:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 14:10",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              800
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 12:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:35",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0842",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 08:55",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 14:10",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32A",
+                "iata": "EY",
+                "equipment_name": "Airbus A320 Sharklets",
+                "flightnumber": "0214",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 225
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "26681265af0334d3a704be4be9ffdd22"
+      },
+      {
+        "price": 460.16,
+        "tax": 206.69,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.EY.0.1680.F3663551S3635400.OENCUDQ5NzAzMjY=...RUB-17.EY.842.SVO.202605081250.AUH.202605081935.781.ELN20V2K.345.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==_17.EY.216.AUH.202605091410.DEL.202605091920.351.ELN20V2K.220.0.TUA.0.1P30K.1P7K..1.0..0.0.0.RUNPTk9NWSBWQUxVRQ==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY VALUE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 382.31,
+            "price": 211.64000000000001,
+            "label": "Adult",
+            "tax": 170.67
+          },
+          "INF": {
+            "total": 77.85,
+            "price": 41.83,
+            "label": "Infant",
+            "tax": 36.02
+          }
+        },
+        "trip_id": "SVO|2026-05-08|EY|12:50|19:35|2026-05-08|AUH|0 kg_AUH|2026-05-09|EY|14:10|19:20|2026-05-09|DEL|0 kg_ELN20V2K:ELN20V2K",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1680,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 12:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 19:20",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "AUH"
+            ],
+            "stop_over": [
+              1115
+            ],
+            "iata": [
+              "EY",
+              "EY"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 12:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:35",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "equipment": "781",
+                "iata": "EY",
+                "equipment_name": "",
+                "flightnumber": "0842",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 345
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "ELN20V2K",
+                "seats": 9,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/09 14:10",
+                  "airport": "AUH",
+                  "city": "Abu Dhabi",
+                  "country": "United Arab Emirates",
+                  "country_iso": "AE",
+                  "terminal": "A",
+                  "airport_name": "Abu Dhabi International"
+                },
+                "to": {
+                  "date": "2026/05/09 19:20",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "351",
+                "iata": "EY",
+                "equipment_name": "Airbus A350-1000",
+                "flightnumber": "0216",
+                "operating": "",
+                "validating": "EY",
+                "airline_name": "Etihad Airways",
+                "duration": 220
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "7247ad06743dc229a0d1dd0ebc3269e3"
+      },
+      {
+        "price": 508.7,
+        "tax": 99.46,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.B2.0.1035.F4049940S4007100.OENCTUlYVkVMX0IyXzQzNDE=...RUB-36.B2.976.SVO.202605080950.MSQ.202605081115.E95.HSMTR1.85.0.TUA.0.1P23K.1P10K..1.1..0.0.0.RVM=_36.B2.757.MSQ.202605082025.DEL.202605090535.7M8.HSMTR1.400.0.TUA.0.1P23K.1P10K..1.1..0.0.0.RVM=",
+        "gds_id": 36,
+        "fare_brand": "ECONOMY SMART",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 472.84,
+            "price": 380.59999999999997,
+            "label": "Adult",
+            "tax": 92.24
+          },
+          "INF": {
+            "total": 35.86,
+            "price": 28.64,
+            "label": "Infant",
+            "tax": 7.22
+          }
+        },
+        "trip_id": "SVO|2026-05-08|B2|09:50|11:15|2026-05-08|MSQ|0 kg_MSQ|2026-05-09|B2|20:25|05:35|2026-05-09|DEL|0 kg_HSMTR1:HSMTR1",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1035,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 09:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 05:35",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "MSQ"
+            ],
+            "stop_over": [
+              550
+            ],
+            "iata": [
+              "B2",
+              "B2"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "HSMTR1",
+                "seats": 9,
+                "class": "H",
+                "from": {
+                  "date": "2026/05/08 09:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 11:15",
+                  "airport": "MSQ",
+                  "city": "Minsk",
+                  "country": "Belarus",
+                  "country_iso": "BY",
+                  "terminal": "",
+                  "airport_name": "Minsk 2 International"
+                },
+                "equipment": "E95",
+                "iata": "B2",
+                "equipment_name": "Embraer 195",
+                "flightnumber": "0976",
+                "operating": "",
+                "validating": "B2",
+                "airline_name": "Belavia - Belarusian Airlines",
+                "duration": 85
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "HSMTR1",
+                "seats": 9,
+                "class": "H",
+                "from": {
+                  "date": "2026/05/08 20:25",
+                  "airport": "MSQ",
+                  "city": "Minsk",
+                  "country": "Belarus",
+                  "country_iso": "BY",
+                  "terminal": "",
+                  "airport_name": "Minsk 2 International"
+                },
+                "to": {
+                  "date": "2026/05/09 05:35",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "7M8",
+                "iata": "B2",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0757",
+                "operating": "",
+                "validating": "B2",
+                "airline_name": "Belavia - Belarusian Airlines",
+                "duration": 400
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "570257bfe48301665e3f94db031d7bc2"
+      },
+      {
+        "price": 538.1,
+        "tax": 181.84,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.MU.0.1345.F4284026S4372100.OENCTU9XUjIyOFhF...RUB-17.MU.248.SVO.202605081650.PVG.202605090700.333.S0S0BBSD.550.0.TUA.0.1P23K.1P8K..1.0..0.0.0.RUNPTk9NWSBTVEFOREFSRA==_17.MU.563.PVG.202605091335.DEL.202605091745.332.S0S0BBSD.400.0.TUA.0.1P23K.1P8K..1.0..0.0.0.RUNPTk9NWSBTVEFOREFSRA==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY STANDARD",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 506.79,
+            "price": 335.85,
+            "label": "Adult",
+            "tax": 170.94
+          },
+          "INF": {
+            "total": 31.31,
+            "price": 20.41,
+            "label": "Infant",
+            "tax": 10.9
+          }
+        },
+        "trip_id": "SVO|2026-05-09|MU|16:50|07:00|2026-05-09|PVG|0 kg_PVG|2026-05-09|MU|13:35|17:45|2026-05-09|DEL|0 kg_S0S0BBSD:S0S0BBSD",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1345,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 16:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 17:45",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "PVG"
+            ],
+            "stop_over": [
+              395
+            ],
+            "iata": [
+              "MU",
+              "MU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "S0S0BBSD",
+                "seats": 9,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/08 16:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 07:00",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "equipment": "333",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-300",
+                "flightnumber": "0248",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 550
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "S0S0BBSD",
+                "seats": 9,
+                "class": "B",
+                "from": {
+                  "date": "2026/05/09 13:35",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "to": {
+                  "date": "2026/05/09 17:45",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "332",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-200",
+                "flightnumber": "0563",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 400
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "8e7f698b66f600198e748ed97049478c"
+      },
+      {
+        "price": 568.3,
+        "tax": 192.02,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.GF.0.755.F4524518S4494600.OENCUDM1MzQxMjU=...RUB-17.GF.13.SVO.202605081300.BAH.202605081925.32N.EBLIT3RU.385.0.TUA.0.1P25K.1P6K..1.1..0.0.0.RUNPTk9NWSBMSUdIVA==_17.GF.130.BAH.202605082125.DEL.202605090405.32Q.EBLIT3RU.250.0.TUA.0.1P25K.1P6K..1.1..0.0.0.RUNPTk9NWSBMSUdIVA==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY LIGHT",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 524.31,
+            "price": 347.6,
+            "label": "Adult",
+            "tax": 176.71
+          },
+          "INF": {
+            "total": 43.99,
+            "price": 28.68,
+            "label": "Infant",
+            "tax": 15.31
+          }
+        },
+        "trip_id": "SVO|2026-05-08|GF|13:00|19:25|2026-05-08|BAH|0 kg_BAH|2026-05-09|GF|21:25|04:05|2026-05-09|DEL|0 kg_EBLIT3RU:EBLIT3RU",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 755,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 13:00",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 04:05",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "BAH"
+            ],
+            "stop_over": [
+              120
+            ],
+            "iata": [
+              "GF",
+              "GF"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "EBLIT3RU",
+                "seats": 7,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 13:00",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:25",
+                  "airport": "BAH",
+                  "city": "Bahrain",
+                  "country": "Bahrain",
+                  "country_iso": "BH",
+                  "terminal": "",
+                  "airport_name": "Bahrain International"
+                },
+                "equipment": "32N",
+                "iata": "GF",
+                "equipment_name": "Airbus A320neo",
+                "flightnumber": "0013",
+                "operating": "",
+                "validating": "GF",
+                "airline_name": "Gulf Air",
+                "duration": 385
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "EBLIT3RU",
+                "seats": 7,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 21:25",
+                  "airport": "BAH",
+                  "city": "Bahrain",
+                  "country": "Bahrain",
+                  "country_iso": "BH",
+                  "terminal": "",
+                  "airport_name": "Bahrain International"
+                },
+                "to": {
+                  "date": "2026/05/09 04:05",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32Q",
+                "iata": "GF",
+                "equipment_name": "Airbus A321neo",
+                "flightnumber": "0130",
+                "operating": "",
+                "validating": "GF",
+                "airline_name": "Gulf Air",
+                "duration": 250
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "d2ac1ca4f132273673680687571f341f"
+      },
+      {
+        "price": 610.94,
+        "tax": 192.02,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.GF.0.755.F4864018S4834100.OENCUDM1MzQxMjU=...RUB-17.GF.13.SVO.202605081300.BAH.202605081925.32N.EBSMR3RU.385.0.TUA.0.1P30K.1P6K..1.1..0.0.0.RUNPTk9NWSBTTUFSVA==_17.GF.130.BAH.202605082125.DEL.202605090405.32Q.EBSMR3RU.250.0.TUA.0.1P30K.1P6K..1.1..0.0.0.RUNPTk9NWSBTTUFSVA==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY SMART",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 563.42,
+            "price": 386.79,
+            "label": "Adult",
+            "tax": 176.63
+          },
+          "INF": {
+            "total": 47.52,
+            "price": 32.14,
+            "label": "Infant",
+            "tax": 15.38
+          }
+        },
+        "trip_id": "SVO|2026-05-08|GF|13:00|19:25|2026-05-08|BAH|0 kg_BAH|2026-05-09|GF|21:25|04:05|2026-05-09|DEL|0 kg_EBSMR3RU:EBSMR3RU",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 755,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "6 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 13:00",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 04:05",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "BAH"
+            ],
+            "stop_over": [
+              120
+            ],
+            "iata": [
+              "GF",
+              "GF"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "EBSMR3RU",
+                "seats": 7,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 13:00",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 19:25",
+                  "airport": "BAH",
+                  "city": "Bahrain",
+                  "country": "Bahrain",
+                  "country_iso": "BH",
+                  "terminal": "",
+                  "airport_name": "Bahrain International"
+                },
+                "equipment": "32N",
+                "iata": "GF",
+                "equipment_name": "Airbus A320neo",
+                "flightnumber": "0013",
+                "operating": "",
+                "validating": "GF",
+                "airline_name": "Gulf Air",
+                "duration": 385
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "EBSMR3RU",
+                "seats": 7,
+                "class": "E",
+                "from": {
+                  "date": "2026/05/08 21:25",
+                  "airport": "BAH",
+                  "city": "Bahrain",
+                  "country": "Bahrain",
+                  "country_iso": "BH",
+                  "terminal": "",
+                  "airport_name": "Bahrain International"
+                },
+                "to": {
+                  "date": "2026/05/09 04:05",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32Q",
+                "iata": "GF",
+                "equipment_name": "Airbus A321neo",
+                "flightnumber": "0130",
+                "operating": "",
+                "validating": "GF",
+                "airline_name": "Gulf Air",
+                "duration": 250
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "c0438936b391a41233ad643a8bee6a09"
+      },
+      {
+        "price": 640.43,
+        "tax": 16.01,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.SU.0.370.F5098718S5068800.OENCTkRDX1NVX0FDX01BMg==...RUB-31.SU.232.SVO.202605081840.DEL.202605090320.32Q.GFO.370.0.TUA.0.2P23K.1P10K..1.1.150200.1.1.1.RWNvbm9teSBGbGV4",
+        "gds_id": 31,
+        "fare_brand": "Economy Flex",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 584.49,
+            "price": 569.92,
+            "label": "Adult",
+            "tax": 14.57
+          },
+          "INF": {
+            "total": 55.94,
+            "price": 54.5,
+            "label": "Infant",
+            "tax": 1.44
+          }
+        },
+        "trip_id": "SVO|2026-05-09|SU|18:40|03:20|2026-05-09|DEL|0 kg_GFO",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 370,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 18:40",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 03:20",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [],
+            "stop_over": [],
+            "iata": [
+              "SU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "GFO",
+                "seats": 2,
+                "class": "G",
+                "from": {
+                  "date": "2026/05/08 18:40",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 03:20",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "32Q",
+                "iata": "SU",
+                "equipment_name": "Airbus A321neo",
+                "flightnumber": "0232",
+                "operating": "",
+                "validating": "SU",
+                "airline_name": "Aeroflot",
+                "duration": 370
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "21c0ea1b33144f13b677b0dabcbaa20b"
+      },
+      {
+        "price": 666.63,
+        "tax": 181.84,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.MU.0.1345.F5307297S5439100.OENCTU9XUjIyOFhF...RUB-17.MU.248.SVO.202605081650.PVG.202605090700.333.S0S0BEFD.550.0.TUA.0.1PC.1P8K..1.1..0.1.0.RUNPTk9NWSBGTEVY_17.MU.563.PVG.202605091335.DEL.202605091745.332.S0S0BEFD.400.0.TUA.0.1PC.1P8K..1.1..0.1.0.RUNPTk9NWSBGTEVY",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY FLEX",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 623.91,
+            "price": 454.08000000000004,
+            "label": "Adult",
+            "tax": 169.83
+          },
+          "INF": {
+            "total": 42.72,
+            "price": 30.72,
+            "label": "Infant",
+            "tax": 12
+          }
+        },
+        "trip_id": "SVO|2026-05-09|MU|16:50|07:00|2026-05-09|PVG|0 kg_PVG|2026-05-09|MU|13:35|17:45|2026-05-09|DEL|0 kg_S0S0BEFD:S0S0BEFD",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1345,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 16:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 17:45",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "PVG"
+            ],
+            "stop_over": [
+              395
+            ],
+            "iata": [
+              "MU",
+              "MU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "S0S0BEFD",
+                "seats": 9,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/08 16:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 07:00",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "equipment": "333",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-300",
+                "flightnumber": "0248",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 550
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "S0S0BEFD",
+                "seats": 9,
+                "class": "B",
+                "from": {
+                  "date": "2026/05/09 13:35",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "to": {
+                  "date": "2026/05/09 17:45",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "332",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-200",
+                "flightnumber": "0563",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 400
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "e0ba904ad78d68852e47629f1c3375ab"
+      },
+      {
+        "price": 718.06,
+        "tax": 181.84,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.MU.0.1130.F5716797S5866100.OENCTU9XUjIyOFhF...RUB-17.MU.6020.SVO.202605082025.PVG.202605091035.332.N0S0BBSD.550.0.TUA.0.1P23K.1P8K..1.0..0.0.0.RUNPTk9NWSBTVEFOREFSRA==_17.MU.563.PVG.202605091335.DEL.202605091745.332.N0S0BBSD.400.0.TUA.0.1P23K.1P8K..1.0..0.0.0.RUNPTk9NWSBTVEFOREFSRA==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY STANDARD",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 670.76,
+            "price": 501.26000000000005,
+            "label": "Adult",
+            "tax": 169.5
+          },
+          "INF": {
+            "total": 47.3,
+            "price": 34.96,
+            "label": "Infant",
+            "tax": 12.34
+          }
+        },
+        "trip_id": "SVO|2026-05-09|MU|20:25|10:35|2026-05-09|PVG|0 kg_PVG|2026-05-09|MU|13:35|17:45|2026-05-09|DEL|0 kg_N0S0BBSD:N0S0BBSD",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1130,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 20:25",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 17:45",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "PVG"
+            ],
+            "stop_over": [
+              180
+            ],
+            "iata": [
+              "MU",
+              "MU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "N0S0BBSD",
+                "seats": 9,
+                "class": "N",
+                "from": {
+                  "date": "2026/05/08 20:25",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 10:35",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "equipment": "332",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-200",
+                "flightnumber": "6020",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 550
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "N0S0BBSD",
+                "seats": 9,
+                "class": "B",
+                "from": {
+                  "date": "2026/05/09 13:35",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "to": {
+                  "date": "2026/05/09 17:45",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "332",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-200",
+                "flightnumber": "0563",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 400
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "72ebb2bbc5e9b2a7e83aa5ed84229f52"
+      },
+      {
+        "price": 718.06,
+        "tax": 181.84,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.MU.0.1210.F5716797S5866100.OENCTU9XUjIyOFhF...RUB-17.MU.592.SVO.202605081905.PVG.202605090855.333.N0S0BBSD.530.0.TUA.0.1P23K.1P8K..1.0..0.0.0.RUNPTk9NWSBTVEFOREFSRA==_17.MU.563.PVG.202605091335.DEL.202605091745.332.N0S0BBSD.400.0.TUA.0.1P23K.1P8K..1.0..0.0.0.RUNPTk9NWSBTVEFOREFSRA==",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY STANDARD",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 670.76,
+            "price": 501.26000000000005,
+            "label": "Adult",
+            "tax": 169.5
+          },
+          "INF": {
+            "total": 47.3,
+            "price": 34.96,
+            "label": "Infant",
+            "tax": 12.34
+          }
+        },
+        "trip_id": "SVO|2026-05-09|MU|19:05|08:55|2026-05-09|PVG|0 kg_PVG|2026-05-09|MU|13:35|17:45|2026-05-09|DEL|0 kg_N0S0BBSD:N0S0BBSD",
+        "can_exchange": false,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": false,
+        "legs": [
+          {
+            "duration": 1210,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 19:05",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 17:45",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "PVG"
+            ],
+            "stop_over": [
+              280
+            ],
+            "iata": [
+              "MU",
+              "MU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "N0S0BBSD",
+                "seats": 9,
+                "class": "N",
+                "from": {
+                  "date": "2026/05/08 19:05",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 08:55",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "equipment": "333",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-300",
+                "flightnumber": "0592",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 530
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "N0S0BBSD",
+                "seats": 9,
+                "class": "B",
+                "from": {
+                  "date": "2026/05/09 13:35",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "to": {
+                  "date": "2026/05/09 17:45",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "332",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-200",
+                "flightnumber": "0563",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 400
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "2a990f765dd9f03e28aeb3a8aa1ef8bf"
+      },
+      {
+        "price": 841.01,
+        "tax": 99.46,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.B2.0.1035.F6695575S6674600.OENCTUlYVkVMX0IyXzQzNDE=...RUB-36.B2.976.SVO.202605080950.MSQ.202605081115.E95.MFLXTR1.85.0.TUA.0.1P32K.1P10K..1.1..0.0.0.RUY=_36.B2.757.MSQ.202605082025.DEL.202605090535.7M8.MFLXTR1.400.0.TUA.0.1P32K.1P10K..1.1..0.0.0.RUY=",
+        "gds_id": 36,
+        "fare_brand": "ECONOMY FLEX",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 775.75,
+            "price": 684.24,
+            "label": "Adult",
+            "tax": 91.51
+          },
+          "INF": {
+            "total": 65.26,
+            "price": 57.31,
+            "label": "Infant",
+            "tax": 7.95
+          }
+        },
+        "trip_id": "SVO|2026-05-08|B2|09:50|11:15|2026-05-08|MSQ|0 kg_MSQ|2026-05-09|B2|20:25|05:35|2026-05-09|DEL|0 kg_MFLXTR1:MFLXTR1",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1035,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "10 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 09:50",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 05:35",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "MSQ"
+            ],
+            "stop_over": [
+              550
+            ],
+            "iata": [
+              "B2",
+              "B2"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "MFLXTR1",
+                "seats": 9,
+                "class": "M",
+                "from": {
+                  "date": "2026/05/08 09:50",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/08 11:15",
+                  "airport": "MSQ",
+                  "city": "Minsk",
+                  "country": "Belarus",
+                  "country_iso": "BY",
+                  "terminal": "",
+                  "airport_name": "Minsk 2 International"
+                },
+                "equipment": "E95",
+                "iata": "B2",
+                "equipment_name": "Embraer 195",
+                "flightnumber": "0976",
+                "operating": "",
+                "validating": "B2",
+                "airline_name": "Belavia - Belarusian Airlines",
+                "duration": 85
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "MFLXTR1",
+                "seats": 9,
+                "class": "M",
+                "from": {
+                  "date": "2026/05/08 20:25",
+                  "airport": "MSQ",
+                  "city": "Minsk",
+                  "country": "Belarus",
+                  "country_iso": "BY",
+                  "terminal": "",
+                  "airport_name": "Minsk 2 International"
+                },
+                "to": {
+                  "date": "2026/05/09 05:35",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "7M8",
+                "iata": "B2",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0757",
+                "operating": "",
+                "validating": "B2",
+                "airline_name": "Belavia - Belarusian Airlines",
+                "duration": 400
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "ed53b028e17592e5f62706e64cf7ed0e"
+      },
+      {
+        "price": 846.59,
+        "tax": 181.84,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.MU.0.1130.F6740067S6933100.OENCTU9XUjIyOFhF...RUB-17.MU.6020.SVO.202605082025.PVG.202605091035.332.N0S0BEFD.550.0.TUA.0.1PC.1P8K..1.1..0.1.0.RUNPTk9NWSBGTEVY_17.MU.563.PVG.202605091335.DEL.202605091745.332.N0S0BEFD.400.0.TUA.0.1PC.1P8K..1.1..0.1.0.RUNPTk9NWSBGTEVY",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY FLEX",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 787.91,
+            "price": 619.06,
+            "label": "Adult",
+            "tax": 168.85
+          },
+          "INF": {
+            "total": 58.68,
+            "price": 45.7,
+            "label": "Infant",
+            "tax": 12.98
+          }
+        },
+        "trip_id": "SVO|2026-05-09|MU|20:25|10:35|2026-05-09|PVG|0 kg_PVG|2026-05-09|MU|13:35|17:45|2026-05-09|DEL|0 kg_N0S0BEFD:N0S0BEFD",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1130,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 20:25",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 17:45",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "PVG"
+            ],
+            "stop_over": [
+              180
+            ],
+            "iata": [
+              "MU",
+              "MU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "N0S0BEFD",
+                "seats": 9,
+                "class": "N",
+                "from": {
+                  "date": "2026/05/08 20:25",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 10:35",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "equipment": "332",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-200",
+                "flightnumber": "6020",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 550
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "N0S0BEFD",
+                "seats": 9,
+                "class": "B",
+                "from": {
+                  "date": "2026/05/09 13:35",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "to": {
+                  "date": "2026/05/09 17:45",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "332",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-200",
+                "flightnumber": "0563",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 400
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "273a689e840a6f4bdaed5d588c709e4b"
+      },
+      {
+        "price": 846.59,
+        "tax": 181.84,
+        "refundable_info": null,
+        "search_id": "1UGJA300OWE1010000090SVODEL20260508_EN_500_76291CE8-TUA.MU.0.1210.F6740067S6933100.OENCTU9XUjIyOFhF...RUB-17.MU.592.SVO.202605081905.PVG.202605090855.333.N0S0BEFD.530.0.TUA.0.1PC.1P8K..1.1..0.1.0.RUNPTk9NWSBGTEVY_17.MU.563.PVG.202605091335.DEL.202605091745.332.N0S0BEFD.400.0.TUA.0.1PC.1P8K..1.1..0.1.0.RUNPTk9NWSBGTEVY",
+        "gds_id": 17,
+        "fare_brand": "ECONOMY FLEX",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 787.91,
+            "price": 619.06,
+            "label": "Adult",
+            "tax": 168.85
+          },
+          "INF": {
+            "total": 58.68,
+            "price": 45.7,
+            "label": "Infant",
+            "tax": 12.98
+          }
+        },
+        "trip_id": "SVO|2026-05-09|MU|19:05|08:55|2026-05-09|PVG|0 kg_PVG|2026-05-09|MU|13:35|17:45|2026-05-09|DEL|0 kg_N0S0BEFD:N0S0BEFD",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1210,
+            "bags": {
+              "unit": "pc",
+              "value": 1,
+              "ADT": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": "1 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "8 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/08 19:05",
+              "airport": "SVO",
+              "city": "Moscow",
+              "country": "Russia",
+              "country_iso": "RU",
+              "terminal": "C",
+              "airport_name": "Sheremetyevo International"
+            },
+            "to": {
+              "date": "2026/05/09 17:45",
+              "airport": "DEL",
+              "city": "Delhi",
+              "country": "India",
+              "country_iso": "IN",
+              "terminal": "3",
+              "airport_name": "Indira Gandhi International"
+            },
+            "stops": [
+              "PVG"
+            ],
+            "stop_over": [
+              280
+            ],
+            "iata": [
+              "MU",
+              "MU"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "N0S0BEFD",
+                "seats": 9,
+                "class": "N",
+                "from": {
+                  "date": "2026/05/08 19:05",
+                  "airport": "SVO",
+                  "city": "Moscow",
+                  "country": "Russia",
+                  "country_iso": "RU",
+                  "terminal": "C",
+                  "airport_name": "Sheremetyevo International"
+                },
+                "to": {
+                  "date": "2026/05/09 08:55",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "equipment": "333",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-300",
+                "flightnumber": "0592",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 530
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "N0S0BEFD",
+                "seats": 9,
+                "class": "B",
+                "from": {
+                  "date": "2026/05/09 13:35",
+                  "airport": "PVG",
+                  "city": "Shanghai",
+                  "country": "China",
+                  "country_iso": "CN",
+                  "terminal": "1",
+                  "airport_name": "Pudong International"
+                },
+                "to": {
+                  "date": "2026/05/09 17:45",
+                  "airport": "DEL",
+                  "city": "Delhi",
+                  "country": "India",
+                  "country_iso": "IN",
+                  "terminal": "3",
+                  "airport_name": "Indira Gandhi International"
+                },
+                "equipment": "332",
+                "iata": "MU",
+                "equipment_name": "Airbus A330-200",
+                "flightnumber": "0563",
+                "operating": "",
+                "validating": "MU",
+                "airline_name": "China Eastern Airlines",
+                "duration": 400
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 1,
+        "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238482386,
+        "search_time": 1774238479133,
+        "result_time": 1774238482386,
+        "id": "d94fc28685adf45fbfe8effc63cfcbfb"
+      }
+    ],
+    "last_result": 1774238482386
+  }
+}

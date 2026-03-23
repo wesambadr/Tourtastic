@@ -1,4 +1,6 @@
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
 const SEERU_API_BASE_URL = process.env.SEERU_API_BASE_URL || 'https://sandbox-api.seeru.travel/v1/flights';
 const SEERU_API_KEY = process.env.SEERU_API_KEY;
@@ -19,10 +21,151 @@ const seeruClient = axios.create({
   timeout: 10000
 });
 
+const CERT_CAPTURE_ENABLED = String(process.env.SEERU_CERT_CAPTURE || '').toLowerCase() === '1' || String(process.env.SEERU_CERT_CAPTURE || '').toLowerCase() === 'true';
+const CERT_OUTPUT_DIR = process.env.SEERU_CERT_OUTPUT_DIR || path.join(process.cwd(), 'seeru-certification-output');
+
+function ensureDirSync(dirPath) {
+  fs.mkdirSync(dirPath, { recursive: true });
+}
+
+function maskToken(value) {
+  const s = String(value || '');
+  if (!s) return s;
+  if (s.length <= 12) return '[REDACTED]';
+  return `${s.slice(0, 6)}...${s.slice(-4)}`;
+}
+
+function sanitizeHeaders(headers) {
+  const out = {};
+  const h = headers || {};
+  for (const [kRaw, v] of Object.entries(h)) {
+    const k = String(kRaw);
+    const lower = k.toLowerCase();
+    if (lower === 'authorization') {
+      out[k] = typeof v === 'string' ? v.replace(/Bearer\s+(.+)/i, (m, token) => `Bearer ${maskToken(token)}`) : '[REDACTED]';
+    } else if (lower.includes('cookie') || lower.includes('token') || lower.includes('secret') || lower.includes('key')) {
+      out[k] = '[REDACTED]';
+    } else {
+      out[k] = v;
+    }
+  }
+  return out;
+}
+
+function safeJsonParse(value) {
+  if (value === undefined) return undefined;
+  if (value === null) return null;
+  if (typeof value === 'string') {
+    try {
+      return JSON.parse(value);
+    } catch (e) {
+      return value;
+    }
+  }
+  return value;
+}
+
+function normalizeEndpoint(urlPath) {
+  const p = String(urlPath || '').split('?')[0];
+  if (!p) return 'unknown';
+  return p.replace(/^\//, '').replace(/\//g, '_');
+}
+
+function getCertCaseMeta() {
+  const caseName = process.env.SEERU_CERT_CASE || 'TC';
+  const label = process.env.SEERU_CERT_LABEL || '';
+  return { caseName, label };
+}
+
+function getCertCounters() {
+  if (!global.__SEERU_CERT_COUNTERS__) global.__SEERU_CERT_COUNTERS__ = {};
+  return global.__SEERU_CERT_COUNTERS__;
+}
+
+function nextSeq(caseName, endpoint) {
+  const counters = getCertCounters();
+  const key = `${caseName}:${endpoint}`;
+  counters[key] = (counters[key] || 0) + 1;
+  return counters[key];
+}
+
+function writeCertFile(dir, filename, payload) {
+  ensureDirSync(dir);
+  fs.writeFileSync(path.join(dir, filename), JSON.stringify(payload, null, 2), 'utf8');
+}
+
+function captureSeeruExchange({ phase, config, response, error }) {
+  if (!CERT_CAPTURE_ENABLED) return;
+
+  const { caseName, label } = getCertCaseMeta();
+  const endpoint = normalizeEndpoint(config?.url);
+  const seq = nextSeq(caseName, endpoint);
+  const folderName = label ? `${caseName}_${label}` : caseName;
+  const outDir = path.join(CERT_OUTPUT_DIR, folderName);
+
+  const requestRecord = {
+    timestamp: new Date().toISOString(),
+    environment: 'sandbox',
+    phase,
+    method: (config?.method || '').toUpperCase(),
+    url: (config?.baseURL || '') + (config?.url || ''),
+    headers: sanitizeHeaders(config?.headers),
+    body: safeJsonParse(config?.data),
+  };
+
+  writeCertFile(outDir, `${String(seq).padStart(2, '0')}_${endpoint}_request.json`, requestRecord);
+
+  if (response) {
+    const responseRecord = {
+      timestamp: new Date().toISOString(),
+      status: response.status,
+      headers: sanitizeHeaders(response.headers),
+      body: response.data,
+    };
+    writeCertFile(outDir, `${String(seq).padStart(2, '0')}_${endpoint}_response.json`, responseRecord);
+  }
+
+  if (error && !response) {
+    const errorRecord = {
+      timestamp: new Date().toISOString(),
+      message: error.message,
+      code: error.code,
+      status: error.response?.status,
+      headers: sanitizeHeaders(error.response?.headers),
+      body: error.response?.data,
+    };
+    writeCertFile(outDir, `${String(seq).padStart(2, '0')}_${endpoint}_error.json`, errorRecord);
+  }
+}
+
+// Certification capture interceptors
+seeruClient.interceptors.request.use(
+  (config) => {
+    captureSeeruExchange({ phase: 'request', config });
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 // Add response interceptor to handle network errors gracefully
 seeruClient.interceptors.response.use(
-  response => response,
-  error => {
+  (response) => {
+    try {
+      captureSeeruExchange({ phase: 'response', config: response.config, response });
+    } catch (e) {
+      // ignore capture errors
+    }
+    return response;
+  },
+  (error) => {
+    try {
+      captureSeeruExchange({ phase: 'error', config: error.config, response: error.response, error });
+    } catch (e) {
+      // ignore capture errors
+    }
+
     if (error.code === 'ENOTFOUND' || error.code === 'ECONNREFUSED' || error.code === 'ETIMEDOUT') {
       console.warn('Seeru API is unreachable. Network error:', error.code);
     }

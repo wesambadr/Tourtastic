@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-03-23T01:02:10.384Z",
+  "baseURL": "https://sandbox-api.seeru.travel/v1/flights",
+  "cases": [
+    {
+      "tc": "TC1",
+      "label": "SU_OneWay_SVO-DEL_08MAY",
+      "success": true,
+      "searchId": "0e360bd4-8ca0-484f-ab1c-c4c830c1308a",
+      "orderId": "65f8f5c4-a7ed-4396-86cb-feffb22f04b7"
+    },
+    {
+      "tc": "TC2",
+      "label": "SU_MultiCity_2ADT",
+      "success": true,
+      "searchId": "76e5a29a-436d-4749-80e9-4dd90448cd09",
+      "orderId": "82c830a5-8047-4037-97c1-694fcba9ba80"
+    },
+    {
+      "tc": "TC3",
+      "label": "J4_RoundTrip_PZU-JED",
+      "success": true,
+      "searchId": "da128df4-7b10-4820-bbd3-d31dfe3572d6",
+      "orderId": "233366b9-64cf-4a92-8b52-943678ea249f"
+    }
+  ]
+}

@@ -71,17 +71,16 @@ exports.searchFlights = asyncHandler(async (req, res) => {
       console.warn('SearchLog insert failed:', e?.message || e);
     }
 
+    const seeruUrl = `https://${process.env.SEERU_API_ENDPOINT}/${process.env.SEERU_API_VERSION}/flights/search/${trips}/${adults}/${children}/${infants}?cabin=${cabin}&direct=${direct}`;
+
     // Use environment variables for the correct API endpoint
-    const seeruResponse = await axios.get(
-      `https://${process.env.SEERU_API_ENDPOINT}/${process.env.SEERU_API_VERSION}/flights/search/${trips}/${adults}/${children}/${infants}?cabin=${cabin}&direct=${direct}`,
-      {
-        headers: {
-          'Authorization': `Bearer ${process.env.SEERU_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        timeout: seeruApiConfig.timeout
-      }
-    );
+    const seeruResponse = await axios.get(seeruUrl, {
+      headers: {
+        'Authorization': `Bearer ${process.env.SEERU_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      timeout: seeruApiConfig.timeout
+    });
 
     res.json({
       success: true,
@@ -95,11 +94,34 @@ exports.searchFlights = asyncHandler(async (req, res) => {
         message: 'Search request timed out. Please try again with fewer passengers.'
       });
     }
-    
-    console.error('Seeru API Error:', error.response?.data || error.message);
-    res.status(500).json({
+
+    const status = error.response?.status;
+    const providerData = error.response?.data;
+    const providerMessage =
+      (providerData && (providerData.message || providerData.error || providerData.msg)) ||
+      (typeof providerData === 'string' ? providerData : null) ||
+      error.message;
+
+    console.error('Seeru API Error:', {
+      status,
+      message: providerMessage,
+      data: providerData
+    });
+
+    // Map Seeru permission/certification issues to a clearer response
+    if (status === 401 || status === 403) {
+      return res.status(502).json({
+        success: false,
+        message: 'Flight provider rejected the request (not allowed / production not certified).',
+        details: process.env.NODE_ENV === 'development' ? providerMessage : undefined
+      });
+    }
+
+    // Fallback: bubble provider HTTP status when present, else 500
+    return res.status(status || 500).json({
       success: false,
-      message: 'Failed to initiate flight search'
+      message: 'Failed to initiate flight search',
+      details: process.env.NODE_ENV === 'development' ? providerMessage : undefined
     });
   }
 });

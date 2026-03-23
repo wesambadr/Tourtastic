@@ -1,32 +1,76 @@
 const nodemailer = require('nodemailer');
 
-function getTransporter() {
-  if (!process.env.EMAIL_HOST || !process.env.EMAIL_PORT || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    throw new Error('Missing SMTP environment variables. Please set EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS');
+const SMTP_ACCOUNTS = {
+  wesam: {
+    host: 'EMAIL_HOST_WESAM',
+    port: 'EMAIL_PORT_WESAM',
+    user: 'EMAIL_USER_WESAM',
+    pass: 'EMAIL_PASS_WESAM',
+    from: 'EMAIL_FROM_WESAM',
+  },
+  support: {
+    host: 'EMAIL_HOST_SUPPORT',
+    port: 'EMAIL_PORT_SUPPORT',
+    user: 'EMAIL_USER_SUPPORT',
+    pass: 'EMAIL_PASS_SUPPORT',
+    from: 'EMAIL_FROM_SUPPORT',
+  },
+  info: {
+    host: 'EMAIL_HOST_INFO',
+    port: 'EMAIL_PORT_INFO',
+    user: 'EMAIL_USER_INFO',
+    pass: 'EMAIL_PASS_INFO',
+    from: 'EMAIL_FROM_INFO',
+  },
+};
+
+function resolveSmtpConfig(accountKey) {
+  const key = (accountKey || 'support').toString().toLowerCase();
+  const account = SMTP_ACCOUNTS[key];
+  if (!account) {
+    throw new Error('Invalid SMTP account. Allowed: wesam, support, info');
   }
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: Number(process.env.EMAIL_PORT) || 465,
-    secure: Number(process.env.EMAIL_PORT) === 465, // true for 465, false for 587/25
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-    // SiteGround commonly requires TLS; if you run into self-signed or intermediary cert issues, you can enable the below:
-    tls: {
-      // ciphers: 'SSLv3',
-      // rejectUnauthorized: false,
-    },
-  });
+  const host = process.env[account.host];
+  const port = process.env[account.port];
+  const user = process.env[account.user];
+  const pass = process.env[account.pass];
+  const from = process.env[account.from];
 
-  return transporter;
+  if (!host || !port || !user || !pass) {
+    throw new Error(`Missing SMTP environment variables for account: ${key}`);
+  }
+
+  return {
+    key,
+    host,
+    port: Number(port) || 465,
+    user,
+    pass,
+    from: from || user,
+  };
 }
 
-async function sendMail({ to, subject, html, text, from, attachments }) {
-  const transporter = getTransporter();
+function getTransporter(accountKey) {
+  const smtp = resolveSmtpConfig(accountKey);
+  const transporter = nodemailer.createTransport({
+    host: smtp.host,
+    port: smtp.port,
+    secure: smtp.port === 465,
+    auth: {
+      user: smtp.user,
+      pass: smtp.pass,
+    },
+    tls: {},
+  });
+
+  return { transporter, smtp };
+}
+
+async function sendMail({ to, subject, html, text, from, attachments, smtpAccount }) {
+  const { transporter, smtp } = getTransporter(smtpAccount);
   const info = await transporter.sendMail({
-    from: from || process.env.EMAIL_FROM || process.env.EMAIL_USER,
+    from: from || smtp.from,
     to,
     subject,
     text,

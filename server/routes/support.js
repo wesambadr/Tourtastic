@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 // Admin: send email to single or multiple recipients
 router.post('/send-email', upload.single('pdf'), async (req, res) => {
   try {
-    const { recipientType, recipient, recipients, subject } = req.body || {};
+    const { recipientType, recipient, recipients, subject, smtpAccount } = req.body || {};
     let { bodyHtml, bodyText, from } = req.body || {};
 
     if (!subject || (!bodyHtml && !bodyText)) {
@@ -99,7 +99,7 @@ router.post('/send-email', upload.single('pdf'), async (req, res) => {
       bodyHtml = wrapHtml(`<pre style="white-space:pre-wrap">${String(bodyText).replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`);
     }
 
-    from = from || process.env.EMAIL_FROM || process.env.EMAIL_USER;
+    from = from || undefined;
 
     // Build attachments if pdf present
     let attachments = [];
@@ -120,6 +120,7 @@ router.post('/send-email', upload.single('pdf'), async (req, res) => {
           text: bodyText,
           from,
           attachments,
+          smtpAccount,
         });
         sent++;
       } catch (err) {

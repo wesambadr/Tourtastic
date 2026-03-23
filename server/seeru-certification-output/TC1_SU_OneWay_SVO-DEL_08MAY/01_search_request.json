@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-03-23T01:01:19.192Z",
+  "environment": "sandbox",
+  "method": "GET",
+  "url": "https://sandbox-api.seeru.travel/v1/flights/search/SVO-DEL-20260508/1/0/1",
+  "headers": {
+    "common": {
+      "Accept": "application/json, text/plain, */*"
+    },
+    "delete": {},
+    "get": {},
+    "head": {},
+    "post": {},
+    "put": {},
+    "patch": {},
+    "Authorization": "Bearer eyJhbG...aWJA",
+    "Content-Type": "application/json"
+  }
+}

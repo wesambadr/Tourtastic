@@ -1,0 +1,5262 @@
+{
+  "timestamp": "2026-03-23T01:02:00.595Z",
+  "status": 200,
+  "headers": {
+    "server": "openresty",
+    "date": "Mon, 23 Mar 2026 01:01:59 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "vary": "Accept-Encoding",
+    "x-powered-by": "Express",
+    "access-control-allow-origin": "*, https://docs.seeru.travel",
+    "access-control-allow-methods": "HEAD, GET, POST, OPTIONS, GET, POST, OPTIONS",
+    "access-control-allow-headers": "*, Origin, Content-Type, Accept, Authorization",
+    "x-p-st": "2026-03-23T04:01:59.715+03:00",
+    "x-i-st": "2026-03-23T04:01:59.856+03:00",
+    "x-i-et": "2026-03-23T04:01:59.863+03:00",
+    "etag": "W/\"152c2-Ubxqi22idToJsfRCXTE8om5ySZc\"",
+    "x-p-et": "2026-03-23T04:01:59.906+03:00",
+    "x-p-d": "0.191",
+    "access-control-allow-credentials": "true",
+    "x-execution-time": "0.195"
+  },
+  "body": {
+    "complete": 86,
+    "result": [
+      {
+        "currency": "USD",
+        "price": 960.42,
+        "tax": 661.33,
+        "fare_key": "W",
+        "fare_brand": "W-PROMO FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 517.64,
+            "price": 160.53,
+            "tax": 357.11,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 442.77000000000004,
+            "price": 138.54999999999998,
+            "tax": 304.22,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "L",
+                "farebase": "L-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|L:W",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "6fdb96e889e586d6b4c3fa9d5eb140c4",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "53bfb57da0fce197e6a74c0c1fa9a8de"
+      },
+      {
+        "currency": "USD",
+        "price": 1010.9,
+        "tax": 695.56,
+        "fare_key": "W",
+        "fare_brand": "W-PROMO FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 545.61,
+            "price": 169.26,
+            "tax": 376.35,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 465.29,
+            "price": 146.08,
+            "tax": 319.21,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|W:W",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "850c0111dbcd3388e6a37bfb50ab37eb",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "44adfc165a75dba3178d845fe5fdc451"
+      },
+      {
+        "currency": "USD",
+        "price": 1048.77,
+        "tax": 722.46,
+        "fare_key": "W",
+        "fare_brand": "W-PROMO FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 565.22,
+            "price": 175.14000000000001,
+            "tax": 390.08,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 483.53999999999996,
+            "price": 151.16,
+            "tax": 332.38,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|T:W",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "7ca66a60c2ecd52abbd3d32e36ba20c9",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "b4f162bbb7dac092fffb92fbd77fc512"
+      },
+      {
+        "currency": "USD",
+        "price": 1079.6,
+        "tax": 752.4,
+        "fare_key": "T",
+        "fare_brand": "T- Restricted Fare",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 582,
+            "price": 175.59,
+            "tax": 406.41,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 497.6,
+            "price": 151.60999999999999,
+            "tax": 345.99,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "L",
+                "farebase": "L-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|L:T",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "e22090c964aa8dc83f5a431161633b5d",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "22cafcacf50f7eda92c901aab2b42891"
+      },
+      {
+        "currency": "USD",
+        "price": 1130.09,
+        "tax": 786.63,
+        "fare_key": "T",
+        "fare_brand": "T- Restricted Fare",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 609.97,
+            "price": 184.32000000000002,
+            "tax": 425.65,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 520.12,
+            "price": 159.14000000000001,
+            "tax": 360.98,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|W:T",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "77702affa443fad5192f43e6988fa17b",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "aaabe112b322dc76311918a4a57a2db0"
+      },
+      {
+        "currency": "USD",
+        "price": 1137.1,
+        "tax": 783.58,
+        "fare_key": "W",
+        "fare_brand": "W-PROMO FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 612.79,
+            "price": 189.75,
+            "tax": 423.04,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 524.31,
+            "price": 163.77,
+            "tax": 360.54,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|H:W",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "771103f0c9a9f53d706e46e0d5ffa667",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "1f675cae99bbf2a000e2b6afe6653b90"
+      },
+      {
+        "currency": "USD",
+        "price": 1167.94,
+        "tax": 813.52,
+        "fare_key": "T",
+        "fare_brand": "T- Restricted Fare",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 629.5699999999999,
+            "price": 190.2,
+            "tax": 439.37,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 538.37,
+            "price": 164.22,
+            "tax": 374.15,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|T:T",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "9bc7a440e37219ed7a369324fa6a0a29",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "87d29984b3952ff4b6b6063f6ba8f98e"
+      },
+      {
+        "currency": "USD",
+        "price": 1226.84,
+        "tax": 855.91,
+        "fare_key": "H",
+        "fare_brand": "H-HIGH FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 661.74,
+            "price": 199.05,
+            "tax": 462.69,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 565.09,
+            "price": 171.87,
+            "tax": 393.22,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "L",
+                "farebase": "L-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|L:H",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "24792f0fcca056658fe4633be5bd5fae",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "74b47e238583f702b9b78aade86b33b4"
+      },
+      {
+        "currency": "USD",
+        "price": 1256.28,
+        "tax": 874.64,
+        "fare_key": "T",
+        "fare_brand": "T- Restricted Fare",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 677.14,
+            "price": 204.79999999999998,
+            "tax": 472.34,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 579.13,
+            "price": 176.82999999999998,
+            "tax": 402.3,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|H:T",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "ccaf3a7030709178ac1e3cfe6c668f51",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "f891d8011e521048a3f337e021cbdf22"
+      },
+      {
+        "currency": "USD",
+        "price": 1277.3,
+        "tax": 890.12,
+        "fare_key": "H",
+        "fare_brand": "H-HIGH FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 689.7,
+            "price": 207.78,
+            "tax": 481.92,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 587.6,
+            "price": 179.4,
+            "tax": 408.2,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|W:H",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "da0a0648f95c9201f2ec206883fd2af8",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "9cd3eb9f341329b9da0bef80db16ae1c"
+      },
+      {
+        "currency": "USD",
+        "price": 1315.17,
+        "tax": 917.02,
+        "fare_key": "H",
+        "fare_brand": "H-HIGH FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 709.31,
+            "price": 213.66,
+            "tax": 495.65,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 605.85,
+            "price": 184.48000000000002,
+            "tax": 421.37,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|T:H",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "8b3429acfdbae00995ddd6b731cfb498",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "1be24b7e49f148c591bcad8dbca51800"
+      },
+      {
+        "currency": "USD",
+        "price": 1400.7,
+        "tax": 965.56,
+        "fare_key": "W",
+        "fare_brand": "W-PROMO FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 755.48,
+            "price": 233.56,
+            "tax": 521.92,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 645.22,
+            "price": 201.58,
+            "tax": 443.64,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 69,
+              "ADT": {
+                "checked": {
+                  "desc": "69 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "69 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|69 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|C:W",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "d88e5a027b013c9ebc0f6c60987d5e6d",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "453da24f042c8a53d10baa6a0ec74a63"
+      },
+      {
+        "currency": "USD",
+        "price": 1400.71,
+        "tax": 948.62,
+        "fare_key": "C",
+        "fare_brand": "C-BUSINESS DISCOUNT",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 755.49,
+            "price": 242.72,
+            "tax": 512.77,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 645.22,
+            "price": 209.37,
+            "tax": 435.85,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "L",
+                "farebase": "L-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 3,
+              "ADT": {
+                "checked": {
+                  "desc": "3 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|3 pc|L:C",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "273de09b3020a8dcb73b1233e213d632",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "22716d0c08997e281772008346b7b9d2"
+      },
+      {
+        "currency": "USD",
+        "price": 1403.5,
+        "tax": 978.14,
+        "fare_key": "H",
+        "fare_brand": "H-HIGH FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 756.8800000000001,
+            "price": 228.27,
+            "tax": 528.61,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 646.62,
+            "price": 197.09,
+            "tax": 449.53,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|H:H",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "be9556d261ac8f45f43a45c8130beec8",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "0da5f01f1299784bf219d83d02e50e50"
+      },
+      {
+        "currency": "USD",
+        "price": 1451.18,
+        "tax": 982.84,
+        "fare_key": "C",
+        "fare_brand": "C-BUSINESS DISCOUNT",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 783.4499999999999,
+            "price": 251.45,
+            "tax": 532,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 667.74,
+            "price": 216.89999999999998,
+            "tax": 450.84,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "W",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 3,
+              "ADT": {
+                "checked": {
+                  "desc": "3 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|3 pc|W:C",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "5338864162c51b75ea27f2b7859910b9",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "4d47027a192f1adce06ba28a336baf9d"
+      },
+      {
+        "currency": "USD",
+        "price": 1489.04,
+        "tax": 1009.74,
+        "fare_key": "C",
+        "fare_brand": "C-BUSINESS DISCOUNT",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 803.05,
+            "price": 257.32,
+            "tax": 545.73,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 685.9799999999999,
+            "price": 221.97,
+            "tax": 464.01,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 3,
+              "ADT": {
+                "checked": {
+                  "desc": "3 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|3 pc|T:C",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "1dba1ec1b1820d99f6c70c57ace3768d",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "9426b602c0f909efcc7fac5aa4763c50"
+      },
+      {
+        "currency": "USD",
+        "price": 1519.88,
+        "tax": 1056.62,
+        "fare_key": "T",
+        "fare_brand": "T- Restricted Fare",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 819.83,
+            "price": 248.60999999999999,
+            "tax": 571.22,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 700.04,
+            "price": 214.64,
+            "tax": 485.4,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 69,
+              "ADT": {
+                "checked": {
+                  "desc": "69 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "69 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "T",
+                "farebase": "T- Restricted Fare",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|69 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|C:T",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "d88f95e76d8b6286b579c4dee30f3eb9",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "72c482cffe60956fc22fe49447fcfc57"
+      },
+      {
+        "currency": "USD",
+        "price": 1577.36,
+        "tax": 1070.84,
+        "fare_key": "C",
+        "fare_brand": "C-BUSINESS DISCOUNT",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 850.62,
+            "price": 271.93,
+            "tax": 578.69,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 726.74,
+            "price": 234.59,
+            "tax": 492.15,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 46,
+              "ADT": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "46 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 3,
+              "ADT": {
+                "checked": {
+                  "desc": "3 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|3 pc|H:C",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "be1be73bd23b72aada7fcc23c704735b",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "55279724fb2d4416c31931ae864cd205"
+      },
+      {
+        "currency": "USD",
+        "price": 1667.11,
+        "tax": 1160.12,
+        "fare_key": "H",
+        "fare_brand": "H-HIGH FARE",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 899.5799999999999,
+            "price": 272.08000000000004,
+            "tax": 627.5,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 767.53,
+            "price": 234.91,
+            "tax": 532.62,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 69,
+              "ADT": {
+                "checked": {
+                  "desc": "69 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "69 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "seats": 9,
+                "class": "H",
+                "farebase": "H-HIGH FARE",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "Y",
+            "cabin_name": "Economy",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|69 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|C:H",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "88fedcb07e383e76335802d50b48138c",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "17df4d488aad746b6ac08b9f263f2f04"
+      },
+      {
+        "currency": "USD",
+        "price": 1840.96,
+        "tax": 1252.82,
+        "fare_key": "C",
+        "fare_brand": "C-BUSINESS DISCOUNT",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 993.31,
+            "price": 315.74,
+            "tax": 677.57,
+            "label": "Adult"
+          },
+          "CHD": {
+            "total": 847.65,
+            "price": 272.4,
+            "tax": 575.25,
+            "label": "Child"
+          }
+        },
+        "legs": [
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-10 06:00",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026-05-10 08:00",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "666",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-10 06:00",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026-05-10 08:00",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "kg",
+              "value": 69,
+              "ADT": {
+                "checked": {
+                  "desc": "69 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "69 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          },
+          {
+            "duration": 60,
+            "from": {
+              "date": "2026-05-17 08:45",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "Jeddah, King Abdulaziz Intl"
+            },
+            "to": {
+              "date": "2026-05-17 08:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": null,
+              "airport_name": "Port Sudan"
+            },
+            "segments": [
+              {
+                "cabin": "C",
+                "cabin_name": "Business",
+                "seats": 9,
+                "class": "C",
+                "farebase": "C-BUSINESS DISCOUNT",
+                "equipment": "Boeing 737-800",
+                "equipment_name": "Embraer",
+                "flightnumber": "667",
+                "iata": "J4",
+                "airline_name": "Badr Airlines",
+                "duration": 60,
+                "from": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "Jeddah, King Abdulaziz Intl"
+                },
+                "to": {
+                  "date": "2026-05-17 08:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": null,
+                  "airport_name": "Port Sudan"
+                }
+              }
+            ],
+            "bags": {
+              "unit": "pc",
+              "value": 3,
+              "ADT": {
+                "checked": {
+                  "desc": "3 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              },
+              "CHD": {
+                "checked": {
+                  "desc": "2 x 23 KG"
+                },
+                "cabin": {
+                  "desc": "7 kg"
+                }
+              }
+            },
+            "cabin": "C",
+            "cabin_name": "Business",
+            "seats": 9,
+            "iata": [
+              "J4"
+            ],
+            "stops": [],
+            "stop_over": []
+          }
+        ],
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|69 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|3 pc|C:C",
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "refundable_info": "Refundable",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": true,
+        "can_refund": true,
+        "can_exchange": true,
+        "search_id": "c8cb66f87d38aab9a802575165f925f5",
+        "from_cache": false,
+        "src": "DR",
+        "total_pax_no_inf": 2,
+        "cache_time": 1774238519818,
+        "search_time": 1774238517097,
+        "result_time": 1774238519818,
+        "id": "560ff080ec06116ddaa811bd4a125b5b"
+      },
+      {
+        "price": 2964.87,
+        "tax": 1017.47,
+        "refundable_info": null,
+        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_8D411E14-TUA.ET.0.1850.F23604536S23544536.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.HESSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.462.ADD.202605111100.JED.202605111330.7M8.KEEET.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.403.JED.202605170440.ADD.202605170710.77L.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605171130.PZU.202605171245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
+        "gds_id": 17,
+        "fare_brand": "",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 1614.8200000000002,
+            "price": 1059.29,
+            "label": "Adult",
+            "tax": 555.53
+          },
+          "CHD": {
+            "total": 1350.05,
+            "price": 888.1099999999999,
+            "label": "Child",
+            "tax": 461.94
+          }
+        },
+        "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|0 kg_ADD|2026-05-11|ET|11:00|13:30|2026-05-11|JED|0 kg_JED|2026-05-17|ET|04:40|07:10|2026-05-17|ADD|0 kg_ADD|2026-05-17|ET|11:30|12:45|2026-05-17|PZU|0 kg_HESSD:KEEET:VESSD:VESSD",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1305,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/10 14:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": "",
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026/05/11 13:30",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International"
+            },
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              1020
+            ],
+            "iata": [
+              "ET",
+              "ET"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "HESSD",
+                "seats": 7,
+                "class": "H",
+                "from": {
+                  "date": "2026/05/10 14:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": "",
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026/05/10 18:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0349",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "KEEET",
+                "seats": 7,
+                "class": "K",
+                "from": {
+                  "date": "2026/05/11 11:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "to": {
+                  "date": "2026/05/11 13:30",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0462",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              }
+            ]
+          },
+          {
+            "duration": 545,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/17 04:40",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International"
+            },
+            "to": {
+              "date": "2026/05/17 12:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": "",
+              "airport_name": "Port Sudan"
+            },
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              260
+            ],
+            "iata": [
+              "ET",
+              "ET"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "VESSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 04:40",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International"
+                },
+                "to": {
+                  "date": "2026/05/17 07:10",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "1",
+                  "airport_name": "Bole"
+                },
+                "equipment": "77L",
+                "iata": "ET",
+                "equipment_name": "Boeing 777-200LR",
+                "flightnumber": "0403",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "VESSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 11:30",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "to": {
+                  "date": "2026/05/17 12:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": "",
+                  "airport_name": "Port Sudan"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0348",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 2,
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238519734,
+        "search_time": 1774238517103,
+        "result_time": 1774238519734,
+        "id": "69e6b05a19d0826707a3afaaa15e8a5a"
+      },
+      {
+        "price": 3167.91,
+        "tax": 1017.47,
+        "refundable_info": null,
+        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_8D411E14-TUA.ET.0.2650.F25221008S25161008.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.HESSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.462.ADD.202605111100.JED.202605111330.7M8.KEEET.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.463.JED.202605171520.ADD.202605171750.7M8.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605181130.PZU.202605181245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
+        "gds_id": 17,
+        "fare_brand": "",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 1716.3100000000002,
+            "price": 1163.7900000000002,
+            "label": "Adult",
+            "tax": 552.52
+          },
+          "CHD": {
+            "total": 1451.5900000000001,
+            "price": 986.64,
+            "label": "Child",
+            "tax": 464.95
+          }
+        },
+        "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|0 kg_ADD|2026-05-11|ET|11:00|13:30|2026-05-11|JED|0 kg_JED|2026-05-17|ET|15:20|17:50|2026-05-17|ADD|0 kg_ADD|2026-05-18|ET|11:30|12:45|2026-05-18|PZU|0 kg_HESSD:KEEET:VESSD:VESSD",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 1305,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/10 14:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": "",
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026/05/11 13:30",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International"
+            },
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              1020
+            ],
+            "iata": [
+              "ET",
+              "ET"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "HESSD",
+                "seats": 7,
+                "class": "H",
+                "from": {
+                  "date": "2026/05/10 14:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": "",
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026/05/10 18:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0349",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "KEEET",
+                "seats": 7,
+                "class": "K",
+                "from": {
+                  "date": "2026/05/11 11:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "to": {
+                  "date": "2026/05/11 13:30",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0462",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              }
+            ]
+          },
+          {
+            "duration": 1345,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/17 15:20",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International"
+            },
+            "to": {
+              "date": "2026/05/18 12:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": "",
+              "airport_name": "Port Sudan"
+            },
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              1060
+            ],
+            "iata": [
+              "ET",
+              "ET"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "VESSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 15:20",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International"
+                },
+                "to": {
+                  "date": "2026/05/17 17:50",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0463",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "VESSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/18 11:30",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "to": {
+                  "date": "2026/05/18 12:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": "",
+                  "airport_name": "Port Sudan"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0348",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 2,
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238519734,
+        "search_time": 1774238517103,
+        "result_time": 1774238519734,
+        "id": "6b8fa36c464dbe6149c054ea384ee69c"
+      },
+      {
+        "price": 3635.31,
+        "tax": 1092.17,
+        "refundable_info": null,
+        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_8D411E14-TUA.ET.0.1200.F28942209S28882209.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.SRTSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.402.ADD.202605110010.JED.202605110240.77L.SRTSD.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.403.JED.202605170440.ADD.202605170710.77L.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605171130.PZU.202605171245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
+        "gds_id": 17,
+        "fare_brand": "",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 1991.76,
+            "price": 1391.8,
+            "label": "Adult",
+            "tax": 599.96
+          },
+          "CHD": {
+            "total": 1643.55,
+            "price": 1151.3400000000001,
+            "label": "Child",
+            "tax": 492.21
+          }
+        },
+        "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|0 kg_ADD|2026-05-11|ET|00:10|02:40|2026-05-11|JED|0 kg_JED|2026-05-17|ET|04:40|07:10|2026-05-17|ADD|0 kg_ADD|2026-05-17|ET|11:30|12:45|2026-05-17|PZU|0 kg_SRTSD:SRTSD:VESSD:VESSD",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 655,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/10 14:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": "",
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026/05/11 02:40",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International"
+            },
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              370
+            ],
+            "iata": [
+              "ET",
+              "ET"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 5,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/10 14:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": "",
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026/05/10 18:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0349",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 5,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/11 00:10",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "1",
+                  "airport_name": "Bole"
+                },
+                "to": {
+                  "date": "2026/05/11 02:40",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International"
+                },
+                "equipment": "77L",
+                "iata": "ET",
+                "equipment_name": "Boeing 777-200LR",
+                "flightnumber": "0402",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              }
+            ]
+          },
+          {
+            "duration": 545,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/17 04:40",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International"
+            },
+            "to": {
+              "date": "2026/05/17 12:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": "",
+              "airport_name": "Port Sudan"
+            },
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              260
+            ],
+            "iata": [
+              "ET",
+              "ET"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "VESSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 04:40",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International"
+                },
+                "to": {
+                  "date": "2026/05/17 07:10",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "1",
+                  "airport_name": "Bole"
+                },
+                "equipment": "77L",
+                "iata": "ET",
+                "equipment_name": "Boeing 777-200LR",
+                "flightnumber": "0403",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "VESSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 11:30",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "to": {
+                  "date": "2026/05/17 12:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": "",
+                  "airport_name": "Port Sudan"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0348",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 2,
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238519734,
+        "search_time": 1774238517103,
+        "result_time": 1774238519734,
+        "id": "9efaecbca4faac85bea81a9185556353"
+      },
+      {
+        "price": 3838.35,
+        "tax": 1092.17,
+        "refundable_info": null,
+        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_8D411E14-TUA.ET.0.2000.F30558682S30498682.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.SRTSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.402.ADD.202605110010.JED.202605110240.77L.SRTSD.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.463.JED.202605171520.ADD.202605171750.7M8.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605181130.PZU.202605181245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
+        "gds_id": 17,
+        "fare_brand": "",
+        "price_breakdowns": {
+          "ADT": {
+            "total": 2093.27,
+            "price": 1496.16,
+            "label": "Adult",
+            "tax": 597.11
+          },
+          "CHD": {
+            "total": 1745.0800000000002,
+            "price": 1250.02,
+            "label": "Child",
+            "tax": 495.06
+          }
+        },
+        "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|0 kg_ADD|2026-05-11|ET|00:10|02:40|2026-05-11|JED|0 kg_JED|2026-05-17|ET|15:20|17:50|2026-05-17|ADD|0 kg_ADD|2026-05-18|ET|11:30|12:45|2026-05-18|PZU|0 kg_SRTSD:SRTSD:VESSD:VESSD",
+        "can_exchange": true,
+        "src": "MW",
+        "instant_issue": true,
+        "can_hold": true,
+        "can_void": false,
+        "can_refund": true,
+        "legs": [
+          {
+            "duration": 655,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/10 14:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": "",
+              "airport_name": "Port Sudan"
+            },
+            "to": {
+              "date": "2026/05/11 02:40",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International"
+            },
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              370
+            ],
+            "iata": [
+              "ET",
+              "ET"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 5,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/10 14:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": "",
+                  "airport_name": "Port Sudan"
+                },
+                "to": {
+                  "date": "2026/05/10 18:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0349",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 5,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/11 00:10",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "1",
+                  "airport_name": "Bole"
+                },
+                "to": {
+                  "date": "2026/05/11 02:40",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International"
+                },
+                "equipment": "77L",
+                "iata": "ET",
+                "equipment_name": "Boeing 777-200LR",
+                "flightnumber": "0402",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              }
+            ]
+          },
+          {
+            "duration": 1345,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2 Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": null
+                }
+              }
+            },
+            "from": {
+              "date": "2026/05/17 15:20",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International"
+            },
+            "to": {
+              "date": "2026/05/18 12:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": "",
+              "airport_name": "Port Sudan"
+            },
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              1060
+            ],
+            "iata": [
+              "ET",
+              "ET"
+            ],
+            "segments": [
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "VESSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 15:20",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International"
+                },
+                "to": {
+                  "date": "2026/05/17 17:50",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0463",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              },
+              {
+                "cabin": "E",
+                "cabin_name": "Economy",
+                "farebase": "VESSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/18 11:30",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Bole"
+                },
+                "to": {
+                  "date": "2026/05/18 12:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": "",
+                  "airport_name": "Port Sudan"
+                },
+                "equipment": "7M8",
+                "iata": "ET",
+                "equipment_name": "Boeing 737 Max 8 Passenger",
+                "flightnumber": "0348",
+                "operating": "",
+                "validating": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              }
+            ]
+          }
+        ],
+        "currency": "USD",
+        "from_cache": false,
+        "total_pax_no_inf": 2,
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774238519734,
+        "search_time": 1774238517103,
+        "result_time": 1774238519734,
+        "id": "c9111cdb3943fe6df93b18cbba9fb116"
+      }
+    ],
+    "last_result": 1774238519818
+  }
+}

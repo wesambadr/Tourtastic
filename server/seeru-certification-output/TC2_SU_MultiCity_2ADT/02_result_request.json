@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-03-23T01:01:37.815Z",
+  "environment": "sandbox",
+  "method": "GET",
+  "url": "https://sandbox-api.seeru.travel/v1/flights/result/76e5a29a-436d-4749-80e9-4dd90448cd09",
+  "headers": {
+    "common": {
+      "Accept": "application/json, text/plain, */*"
+    },
+    "delete": {},
+    "get": {},
+    "head": {},
+    "post": {},
+    "put": {},
+    "patch": {},
+    "Authorization": "Bearer eyJhbG...aWJA",
+    "Content-Type": "application/json"
+  }
+}

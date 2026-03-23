@@ -213,6 +213,7 @@
       "multipleUsers": "Multiple users",
       "emailTab": "Email",
       "emailTitle": "Send Email",
+      "emailFrom": "From",
       "emailPlaceholder": "user@example.com",
       "recipientsPlaceholder": "Enter comma-separated emails, e.g. a@example.com, b@example.com",
       "emailSubject": "Subject",
