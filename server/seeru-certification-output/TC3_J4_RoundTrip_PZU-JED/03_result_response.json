@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-03-23T01:02:00.595Z",
+  "timestamp": "2026-03-25T15:15:58.620Z",
   "status": 200,
   "headers": {
     "server": "openresty",
-    "date": "Mon, 23 Mar 2026 01:01:59 GMT",
+    "date": "Wed, 25 Mar 2026 15:15:57 GMT",
     "content-type": "application/json; charset=utf-8",
     "transfer-encoding": "chunked",
     "connection": "keep-alive",
@@ -12,14 +12,14 @@
     "access-control-allow-origin": "*, https://docs.seeru.travel",
     "access-control-allow-methods": "HEAD, GET, POST, OPTIONS, GET, POST, OPTIONS",
     "access-control-allow-headers": "*, Origin, Content-Type, Accept, Authorization",
-    "x-p-st": "2026-03-23T04:01:59.715+03:00",
-    "x-i-st": "2026-03-23T04:01:59.856+03:00",
-    "x-i-et": "2026-03-23T04:01:59.863+03:00",
-    "etag": "W/\"152c2-Ubxqi22idToJsfRCXTE8om5ySZc\"",
-    "x-p-et": "2026-03-23T04:01:59.906+03:00",
-    "x-p-d": "0.191",
+    "x-p-st": "2026-03-25T18:15:56.893+03:00",
+    "x-i-st": "2026-03-25T18:15:57.038+03:00",
+    "x-i-et": "2026-03-25T18:15:57.048+03:00",
+    "etag": "W/\"1a0a2-gM8UO4tKFT/WqXEyGIkNvmflpws\"",
+    "x-p-et": "2026-03-25T18:15:57.102+03:00",
+    "x-p-d": "0.209",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "0.195"
+    "x-execution-time": "0.213"
   },
   "body": {
     "complete": 86,
@@ -218,13 +218,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "6fdb96e889e586d6b4c3fa9d5eb140c4",
+        "search_id": "03f8f21f80ab0d7be8970706fcb6550a",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "53bfb57da0fce197e6a74c0c1fa9a8de"
       },
       {
@@ -421,13 +421,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "850c0111dbcd3388e6a37bfb50ab37eb",
+        "search_id": "9976a8c04a08c70f1161b1ae14c0ebe1",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "44adfc165a75dba3178d845fe5fdc451"
       },
       {
@@ -624,13 +624,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "7ca66a60c2ecd52abbd3d32e36ba20c9",
+        "search_id": "42b94f4c41686caa490887a21240fb6d",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "b4f162bbb7dac092fffb92fbd77fc512"
       },
       {
@@ -827,13 +827,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "e22090c964aa8dc83f5a431161633b5d",
+        "search_id": "5ce0621ae1a7b431ad524e9aa02ed4f2",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "22cafcacf50f7eda92c901aab2b42891"
       },
       {
@@ -1030,13 +1030,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "77702affa443fad5192f43e6988fa17b",
+        "search_id": "4007d0a4bee9a4883f053ab53d8a6c23",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "aaabe112b322dc76311918a4a57a2db0"
       },
       {
@@ -1233,13 +1233,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "771103f0c9a9f53d706e46e0d5ffa667",
+        "search_id": "1ddedd4b1b136c177a140579fd14ac49",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "1f675cae99bbf2a000e2b6afe6653b90"
       },
       {
@@ -1436,13 +1436,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "9bc7a440e37219ed7a369324fa6a0a29",
+        "search_id": "b19528a0c978876fc3183a8b32bf2f42",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "87d29984b3952ff4b6b6063f6ba8f98e"
       },
       {
@@ -1639,13 +1639,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "24792f0fcca056658fe4633be5bd5fae",
+        "search_id": "5218d5ab910a04ec99984a0c753a264a",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "74b47e238583f702b9b78aade86b33b4"
       },
       {
@@ -1842,13 +1842,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "ccaf3a7030709178ac1e3cfe6c668f51",
+        "search_id": "de7d6032397a76af22e6386938552ec0",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "f891d8011e521048a3f337e021cbdf22"
       },
       {
@@ -2045,13 +2045,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "da0a0648f95c9201f2ec206883fd2af8",
+        "search_id": "eac4e21a37ee04c112a9ef71dcaaa571",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "9cd3eb9f341329b9da0bef80db16ae1c"
       },
       {
@@ -2248,13 +2248,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "8b3429acfdbae00995ddd6b731cfb498",
+        "search_id": "2b7d794ea7fcb8e09b7127e41aeef2da",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "1be24b7e49f148c591bcad8dbca51800"
       },
       {
@@ -2451,13 +2451,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "d88e5a027b013c9ebc0f6c60987d5e6d",
+        "search_id": "114fbfac7c86ae42f40ebd3515904b04",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "453da24f042c8a53d10baa6a0ec74a63"
       },
       {
@@ -2654,13 +2654,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "273de09b3020a8dcb73b1233e213d632",
+        "search_id": "258bf997fd711c352b5b09132d9ad1b1",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "22716d0c08997e281772008346b7b9d2"
       },
       {
@@ -2857,13 +2857,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "be9556d261ac8f45f43a45c8130beec8",
+        "search_id": "5094d111defd97c32743c1b14e2928fe",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "0da5f01f1299784bf219d83d02e50e50"
       },
       {
@@ -3060,13 +3060,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "5338864162c51b75ea27f2b7859910b9",
+        "search_id": "fb513d5f882bdd1f2e9f52173d8a20ef",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "4d47027a192f1adce06ba28a336baf9d"
       },
       {
@@ -3263,13 +3263,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "1dba1ec1b1820d99f6c70c57ace3768d",
+        "search_id": "9a101ee9df12e9dc6ade3542156058da",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "9426b602c0f909efcc7fac5aa4763c50"
       },
       {
@@ -3466,13 +3466,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "d88f95e76d8b6286b579c4dee30f3eb9",
+        "search_id": "7c747b92c2fe2c31749964e8d6cfd6ef",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "72c482cffe60956fc22fe49447fcfc57"
       },
       {
@@ -3669,13 +3669,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "be1be73bd23b72aada7fcc23c704735b",
+        "search_id": "6cd6fa25e81edecb05305946b123999f",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "55279724fb2d4416c31931ae864cd205"
       },
       {
@@ -3872,13 +3872,13 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "88fedcb07e383e76335802d50b48138c",
+        "search_id": "3eacf5f1fd2f974158aeefbca339ab0d",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "17df4d488aad746b6ac08b9f263f2f04"
       },
       {
@@ -4075,34 +4075,327 @@
         "can_void": true,
         "can_refund": true,
         "can_exchange": true,
-        "search_id": "c8cb66f87d38aab9a802575165f925f5",
+        "search_id": "b0a709a7f30d98efa1603b921547f8f4",
         "from_cache": false,
         "src": "DR",
         "total_pax_no_inf": 2,
-        "cache_time": 1774238519818,
-        "search_time": 1774238517097,
-        "result_time": 1774238519818,
+        "cache_time": 1774462404820,
+        "search_time": 1774462401113,
+        "result_time": 1774462404820,
         "id": "560ff080ec06116ddaa811bd4a125b5b"
       },
       {
-        "price": 2964.87,
-        "tax": 1017.47,
+        "price": 2866.49,
+        "tax": 933.88,
+        "refundable_info": "REFUNDABLE",
+        "fare_key": null,
+        "fare_brand": null,
+        "price_breakdowns": {
+          "ADT": {
+            "total": 1565.77,
+            "price": 1098.8300000000002,
+            "label": "Adult",
+            "tax": 466.94
+          },
+          "CHD": {
+            "total": 1300.72,
+            "price": 833.78,
+            "label": "Child",
+            "tax": 466.94
+          }
+        },
+        "search_id": "RoundTrip|216|PZU|2026-05-10|ET|349|2026-05-10|ADD_ADD|2026-05-11|ET|462|2026-05-11|JED_JED|2026-05-17|ET|403|2026-05-17|ADD_ADD|2026-05-17|ET|348|2026-05-17|PZU",
+        "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|2 pc_ADD|2026-05-11|ET|11:00|13:30|2026-05-11|JED|2 pc_JED|2026-05-17|ET|04:40|07:10|2026-05-17|ADD|2 pc_ADD|2026-05-17|ET|11:30|12:45|2026-05-17|PZU|2 pc_HESSD:HESSD:KEEET:KEEET",
+        "can_hold": true,
+        "instant_issue": true,
+        "from_cache": false,
+        "src": "NT",
+        "total_pax_no_inf": 2,
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774462405387,
+        "search_time": 1774462401115,
+        "result_time": 1774462405387,
+        "can_void": false,
+        "can_refund": false,
+        "can_exchange": false,
+        "legs": [
+          {
+            "duration": 1305,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "10 KG"
+                }
+              }
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "HESSD",
+                "seats": 7,
+                "class": "H",
+                "from": {
+                  "date": "2026/05/10 14:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": " ",
+                  "airport_name": "Port Sudan New International Airport"
+                },
+                "to": {
+                  "date": "2026/05/10 18:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "349",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              },
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "HESSD",
+                "seats": 7,
+                "class": "K",
+                "from": {
+                  "date": "2026/05/11 11:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "to": {
+                  "date": "2026/05/11 13:30",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "462",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              }
+            ],
+            "from": {
+              "date": "2026/05/10 14:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": " ",
+              "airport_name": "Port Sudan New International Airport"
+            },
+            "to": {
+              "date": "2026/05/11 13:30",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International Airport"
+            },
+            "cabin": "Y",
+            "seats": 7,
+            "iata": [
+              "ET"
+            ],
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              1020
+            ],
+            "cabin_name": "Economy"
+          },
+          {
+            "duration": 545,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "10 KG"
+                }
+              }
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "KEEET",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 04:40",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International Airport"
+                },
+                "to": {
+                  "date": "2026/05/17 07:10",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "1",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "equipment": "77L",
+                "equipment_name": "77L",
+                "flightnumber": "403",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              },
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "KEEET",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 11:30",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "to": {
+                  "date": "2026/05/17 12:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": " ",
+                  "airport_name": "Port Sudan New International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "348",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              }
+            ],
+            "from": {
+              "date": "2026/05/17 04:40",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International Airport"
+            },
+            "to": {
+              "date": "2026/05/17 12:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": " ",
+              "airport_name": "Port Sudan New International Airport"
+            },
+            "cabin": "Y",
+            "seats": 7,
+            "iata": [
+              "ET"
+            ],
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              260
+            ],
+            "cabin_name": "Economy"
+          }
+        ],
+        "id": "30b29507c44c2ada6b1a4b71d55e3172",
+        "currency": "USD"
+      },
+      {
+        "price": 3031.03,
+        "tax": 983.63,
         "refundable_info": null,
-        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_8D411E14-TUA.ET.0.1850.F23604536S23544536.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.HESSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.462.ADD.202605111100.JED.202605111330.7M8.KEEET.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.403.JED.202605170440.ADD.202605170710.77L.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605171130.PZU.202605171245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
+        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_867C1DCB-TUA.ET.0.1850.F23578613S23518613.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.HESSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.462.ADD.202605111100.JED.202605111330.7M8.KEEET.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.403.JED.202605170440.ADD.202605170710.77L.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605171130.PZU.202605171245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
         "gds_id": 17,
         "fare_brand": "",
         "price_breakdowns": {
           "ADT": {
-            "total": 1614.8200000000002,
-            "price": 1059.29,
+            "total": 1655.2700000000002,
+            "price": 1116.74,
             "label": "Adult",
-            "tax": 555.53
+            "tax": 538.53
           },
           "CHD": {
-            "total": 1350.05,
-            "price": 888.1099999999999,
+            "total": 1375.76,
+            "price": 930.66,
             "label": "Child",
-            "tax": 461.94
+            "tax": 445.1
           }
         },
         "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|0 kg_ADD|2026-05-11|ET|11:00|13:30|2026-05-11|JED|0 kg_JED|2026-05-17|ET|04:40|07:10|2026-05-17|ADD|0 kg_ADD|2026-05-17|ET|11:30|12:45|2026-05-17|PZU|0 kg_HESSD:KEEET:VESSD:VESSD",
@@ -4372,30 +4665,323 @@
         "from_cache": false,
         "total_pax_no_inf": 2,
         "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
-        "cache_time": 1774238519734,
-        "search_time": 1774238517103,
-        "result_time": 1774238519734,
-        "id": "69e6b05a19d0826707a3afaaa15e8a5a"
+        "cache_time": 1774462404026,
+        "search_time": 1774462401120,
+        "result_time": 1774462404026,
+        "id": "4fffd3af13d8a95dea71c4b8deb74dfd"
       },
       {
-        "price": 3167.91,
-        "tax": 1017.47,
+        "price": 3051.89,
+        "tax": 933.88,
+        "refundable_info": "REFUNDABLE",
+        "fare_key": null,
+        "fare_brand": null,
+        "price_breakdowns": {
+          "ADT": {
+            "total": 1656.83,
+            "price": 1189.8899999999999,
+            "label": "Adult",
+            "tax": 466.94
+          },
+          "CHD": {
+            "total": 1395.05,
+            "price": 928.11,
+            "label": "Child",
+            "tax": 466.94
+          }
+        },
+        "search_id": "RoundTrip|216|PZU|2026-05-10|ET|349|2026-05-10|ADD_ADD|2026-05-11|ET|462|2026-05-11|JED_JED|2026-05-17|ET|463|2026-05-17|ADD_ADD|2026-05-18|ET|348|2026-05-18|PZU",
+        "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|2 pc_ADD|2026-05-11|ET|11:00|13:30|2026-05-11|JED|2 pc_JED|2026-05-17|ET|15:20|17:50|2026-05-17|ADD|2 pc_ADD|2026-05-18|ET|11:30|12:45|2026-05-18|PZU|2 pc_HESSD:HESSD:KEEET:KEEET",
+        "can_hold": true,
+        "instant_issue": true,
+        "from_cache": false,
+        "src": "NT",
+        "total_pax_no_inf": 2,
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774462405387,
+        "search_time": 1774462401115,
+        "result_time": 1774462405387,
+        "can_void": false,
+        "can_refund": false,
+        "can_exchange": false,
+        "legs": [
+          {
+            "duration": 1305,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "10 KG"
+                }
+              }
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "HESSD",
+                "seats": 7,
+                "class": "H",
+                "from": {
+                  "date": "2026/05/10 14:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": " ",
+                  "airport_name": "Port Sudan New International Airport"
+                },
+                "to": {
+                  "date": "2026/05/10 18:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "349",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              },
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "HESSD",
+                "seats": 7,
+                "class": "K",
+                "from": {
+                  "date": "2026/05/11 11:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "to": {
+                  "date": "2026/05/11 13:30",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "462",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              }
+            ],
+            "from": {
+              "date": "2026/05/10 14:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": " ",
+              "airport_name": "Port Sudan New International Airport"
+            },
+            "to": {
+              "date": "2026/05/11 13:30",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International Airport"
+            },
+            "cabin": "Y",
+            "seats": 7,
+            "iata": [
+              "ET"
+            ],
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              1020
+            ],
+            "cabin_name": "Economy"
+          },
+          {
+            "duration": 1345,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "10 KG"
+                }
+              }
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "KEEET",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 15:20",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International Airport"
+                },
+                "to": {
+                  "date": "2026/05/17 17:50",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "463",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              },
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "KEEET",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/18 11:30",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "to": {
+                  "date": "2026/05/18 12:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": " ",
+                  "airport_name": "Port Sudan New International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "348",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              }
+            ],
+            "from": {
+              "date": "2026/05/17 15:20",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International Airport"
+            },
+            "to": {
+              "date": "2026/05/18 12:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": " ",
+              "airport_name": "Port Sudan New International Airport"
+            },
+            "cabin": "Y",
+            "seats": 7,
+            "iata": [
+              "ET"
+            ],
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              1060
+            ],
+            "cabin_name": "Economy"
+          }
+        ],
+        "id": "4b89f4bc0e2cc2e82647e5d243fffc1d",
+        "currency": "USD"
+      },
+      {
+        "price": 3227.11,
+        "tax": 983.63,
         "refundable_info": null,
-        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_8D411E14-TUA.ET.0.2650.F25221008S25161008.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.HESSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.462.ADD.202605111100.JED.202605111330.7M8.KEEET.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.463.JED.202605171520.ADD.202605171750.7M8.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605181130.PZU.202605181245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
+        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_867C1DCB-TUA.ET.0.2650.F25103968S25043968.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.HESSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.462.ADD.202605111100.JED.202605111330.7M8.KEEET.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.463.JED.202605171520.ADD.202605171750.7M8.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605181130.PZU.202605181245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
         "gds_id": 17,
         "fare_brand": "",
         "price_breakdowns": {
           "ADT": {
-            "total": 1716.3100000000002,
-            "price": 1163.7900000000002,
+            "total": 1753.91,
+            "price": 1218.03,
             "label": "Adult",
-            "tax": 552.52
+            "tax": 535.88
           },
           "CHD": {
-            "total": 1451.5900000000001,
-            "price": 986.64,
+            "total": 1473.21,
+            "price": 1025.46,
             "label": "Child",
-            "tax": 464.95
+            "tax": 447.75
           }
         },
         "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|0 kg_ADD|2026-05-11|ET|11:00|13:30|2026-05-11|JED|0 kg_JED|2026-05-17|ET|15:20|17:50|2026-05-17|ADD|0 kg_ADD|2026-05-18|ET|11:30|12:45|2026-05-18|PZU|0 kg_HESSD:KEEET:VESSD:VESSD",
@@ -4665,30 +5251,616 @@
         "from_cache": false,
         "total_pax_no_inf": 2,
         "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
-        "cache_time": 1774238519734,
-        "search_time": 1774238517103,
-        "result_time": 1774238519734,
-        "id": "6b8fa36c464dbe6149c054ea384ee69c"
+        "cache_time": 1774462404026,
+        "search_time": 1774462401120,
+        "result_time": 1774462404026,
+        "id": "3f59801da552db1994901a8e5089eefe"
       },
       {
-        "price": 3635.31,
-        "tax": 1092.17,
+        "price": 3462.86,
+        "tax": 1002.6,
+        "refundable_info": "REFUNDABLE",
+        "fare_key": null,
+        "fare_brand": null,
+        "price_breakdowns": {
+          "ADT": {
+            "total": 1899.95,
+            "price": 1398.65,
+            "label": "Adult",
+            "tax": 501.3
+          },
+          "CHD": {
+            "total": 1562.91,
+            "price": 1061.6100000000001,
+            "label": "Child",
+            "tax": 501.3
+          }
+        },
+        "search_id": "RoundTrip|216|PZU|2026-05-10|ET|349|2026-05-10|ADD_ADD|2026-05-11|ET|402|2026-05-11|JED_JED|2026-05-17|ET|403|2026-05-17|ADD_ADD|2026-05-17|ET|348|2026-05-17|PZU",
+        "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|2 pc_ADD|2026-05-11|ET|00:10|02:40|2026-05-11|JED|2 pc_JED|2026-05-17|ET|04:40|07:10|2026-05-17|ADD|2 pc_ADD|2026-05-17|ET|11:30|12:45|2026-05-17|PZU|2 pc_SRTSD:SRTSD:SRTSD:SRTSD",
+        "can_hold": true,
+        "instant_issue": true,
+        "from_cache": false,
+        "src": "NT",
+        "total_pax_no_inf": 2,
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774462405387,
+        "search_time": 1774462401115,
+        "result_time": 1774462405387,
+        "can_void": false,
+        "can_refund": false,
+        "can_exchange": false,
+        "legs": [
+          {
+            "duration": 655,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "10 KG"
+                }
+              }
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 4,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/10 14:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": " ",
+                  "airport_name": "Port Sudan New International Airport"
+                },
+                "to": {
+                  "date": "2026/05/10 18:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "349",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              },
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 4,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/11 00:10",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "1",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "to": {
+                  "date": "2026/05/11 02:40",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International Airport"
+                },
+                "equipment": "77L",
+                "equipment_name": "77L",
+                "flightnumber": "402",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              }
+            ],
+            "from": {
+              "date": "2026/05/10 14:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": " ",
+              "airport_name": "Port Sudan New International Airport"
+            },
+            "to": {
+              "date": "2026/05/11 02:40",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International Airport"
+            },
+            "cabin": "Y",
+            "seats": 4,
+            "iata": [
+              "ET"
+            ],
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              370
+            ],
+            "cabin_name": "Economy"
+          },
+          {
+            "duration": 545,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "10 KG"
+                }
+              }
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 04:40",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International Airport"
+                },
+                "to": {
+                  "date": "2026/05/17 07:10",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "1",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "equipment": "77L",
+                "equipment_name": "77L",
+                "flightnumber": "403",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              },
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 11:30",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "to": {
+                  "date": "2026/05/17 12:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": " ",
+                  "airport_name": "Port Sudan New International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "348",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              }
+            ],
+            "from": {
+              "date": "2026/05/17 04:40",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International Airport"
+            },
+            "to": {
+              "date": "2026/05/17 12:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": " ",
+              "airport_name": "Port Sudan New International Airport"
+            },
+            "cabin": "Y",
+            "seats": 7,
+            "iata": [
+              "ET"
+            ],
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              260
+            ],
+            "cabin_name": "Economy"
+          }
+        ],
+        "id": "bbca4f5a4c73011de599069672f0b2f2",
+        "currency": "USD"
+      },
+      {
+        "price": 3645.17,
+        "tax": 1002.6,
+        "refundable_info": "REFUNDABLE",
+        "fare_key": null,
+        "fare_brand": null,
+        "price_breakdowns": {
+          "ADT": {
+            "total": 1991.11,
+            "price": 1489.81,
+            "label": "Adult",
+            "tax": 501.3
+          },
+          "CHD": {
+            "total": 1654.07,
+            "price": 1152.77,
+            "label": "Child",
+            "tax": 501.3
+          }
+        },
+        "search_id": "RoundTrip|216|PZU|2026-05-10|ET|349|2026-05-10|ADD_ADD|2026-05-11|ET|402|2026-05-11|JED_JED|2026-05-17|ET|463|2026-05-17|ADD_ADD|2026-05-18|ET|348|2026-05-18|PZU",
+        "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|2 pc_ADD|2026-05-11|ET|00:10|02:40|2026-05-11|JED|2 pc_JED|2026-05-17|ET|15:20|17:50|2026-05-17|ADD|2 pc_ADD|2026-05-18|ET|11:30|12:45|2026-05-18|PZU|2 pc_SRTSD:SRTSD:SRTSD:SRTSD",
+        "can_hold": true,
+        "instant_issue": true,
+        "from_cache": false,
+        "src": "NT",
+        "total_pax_no_inf": 2,
+        "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
+        "cache_time": 1774462405387,
+        "search_time": 1774462401115,
+        "result_time": 1774462405387,
+        "can_void": false,
+        "can_refund": false,
+        "can_exchange": false,
+        "legs": [
+          {
+            "duration": 655,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "10 KG"
+                }
+              }
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 4,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/10 14:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": " ",
+                  "airport_name": "Port Sudan New International Airport"
+                },
+                "to": {
+                  "date": "2026/05/10 18:00",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "349",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              },
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 4,
+                "class": "S",
+                "from": {
+                  "date": "2026/05/11 00:10",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "1",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "to": {
+                  "date": "2026/05/11 02:40",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International Airport"
+                },
+                "equipment": "77L",
+                "equipment_name": "77L",
+                "flightnumber": "402",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              }
+            ],
+            "from": {
+              "date": "2026/05/10 14:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": " ",
+              "airport_name": "Port Sudan New International Airport"
+            },
+            "to": {
+              "date": "2026/05/11 02:40",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International Airport"
+            },
+            "cabin": "Y",
+            "seats": 4,
+            "iata": [
+              "ET"
+            ],
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              370
+            ],
+            "cabin_name": "Economy"
+          },
+          {
+            "duration": 1345,
+            "bags": {
+              "unit": "pc",
+              "value": 2,
+              "ADT": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "CHD": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "2   Pieces"
+                }
+              },
+              "INF": {
+                "cabin": {
+                  "desc": "7 kg"
+                },
+                "checked": {
+                  "desc": "10 KG"
+                }
+              }
+            },
+            "segments": [
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/17 15:20",
+                  "airport": "JED",
+                  "city": "Jeddah",
+                  "country": "Saudi Arabia",
+                  "country_iso": "SA",
+                  "terminal": "N",
+                  "airport_name": "King Abdulaziz International Airport"
+                },
+                "to": {
+                  "date": "2026/05/17 17:50",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "463",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 150
+              },
+              {
+                "cabin": "Y",
+                "cabin_name": "Economy",
+                "farebase": "SRTSD",
+                "seats": 7,
+                "class": "V",
+                "from": {
+                  "date": "2026/05/18 11:30",
+                  "airport": "ADD",
+                  "city": "Addis Ababa",
+                  "country": "Ethiopia",
+                  "country_iso": "ET",
+                  "terminal": "2",
+                  "airport_name": "Addis Ababa Bole International Airport"
+                },
+                "to": {
+                  "date": "2026/05/18 12:45",
+                  "airport": "PZU",
+                  "city": "Port Sudan",
+                  "country": "Sudan",
+                  "country_iso": "SD",
+                  "terminal": " ",
+                  "airport_name": "Port Sudan New International Airport"
+                },
+                "equipment": "7M8",
+                "equipment_name": "7M8",
+                "flightnumber": "348",
+                "operating": "",
+                "iata": "ET",
+                "airline_name": "Ethiopian Airlines",
+                "duration": 135
+              }
+            ],
+            "from": {
+              "date": "2026/05/17 15:20",
+              "airport": "JED",
+              "city": "Jeddah",
+              "country": "Saudi Arabia",
+              "country_iso": "SA",
+              "terminal": "N",
+              "airport_name": "King Abdulaziz International Airport"
+            },
+            "to": {
+              "date": "2026/05/18 12:45",
+              "airport": "PZU",
+              "city": "Port Sudan",
+              "country": "Sudan",
+              "country_iso": "SD",
+              "terminal": " ",
+              "airport_name": "Port Sudan New International Airport"
+            },
+            "cabin": "Y",
+            "seats": 7,
+            "iata": [
+              "ET"
+            ],
+            "stops": [
+              "ADD"
+            ],
+            "stop_over": [
+              1060
+            ],
+            "cabin_name": "Economy"
+          }
+        ],
+        "id": "4604042b7e1354b7f0d1f3aeaf3b8e31",
+        "currency": "USD"
+      },
+      {
+        "price": 3659.4,
+        "tax": 1055.75,
         "refundable_info": null,
-        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_8D411E14-TUA.ET.0.1200.F28942209S28882209.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.SRTSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.402.ADD.202605110010.JED.202605110240.77L.SRTSD.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.403.JED.202605170440.ADD.202605170710.77L.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605171130.PZU.202605171245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
+        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_867C1DCB-TUA.ET.0.1200.F28466833S28406833.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.SRTSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.402.ADD.202605110010.JED.202605110240.77L.SRTSD.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.403.JED.202605170440.ADD.202605170710.77L.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605171130.PZU.202605171245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
         "gds_id": 17,
         "fare_brand": "",
         "price_breakdowns": {
           "ADT": {
-            "total": 1991.76,
-            "price": 1391.8,
+            "total": 2007.55,
+            "price": 1426.83,
             "label": "Adult",
-            "tax": 599.96
+            "tax": 580.72
           },
           "CHD": {
-            "total": 1643.55,
-            "price": 1151.3400000000001,
+            "total": 1651.85,
+            "price": 1176.83,
             "label": "Child",
-            "tax": 492.21
+            "tax": 475.02
           }
         },
         "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|0 kg_ADD|2026-05-11|ET|00:10|02:40|2026-05-11|JED|0 kg_JED|2026-05-17|ET|04:40|07:10|2026-05-17|ADD|0 kg_ADD|2026-05-17|ET|11:30|12:45|2026-05-17|PZU|0 kg_SRTSD:SRTSD:VESSD:VESSD",
@@ -4762,7 +5934,7 @@
                 "cabin": "E",
                 "cabin_name": "Economy",
                 "farebase": "SRTSD",
-                "seats": 5,
+                "seats": 4,
                 "class": "S",
                 "from": {
                   "date": "2026/05/10 14:45",
@@ -4795,7 +5967,7 @@
                 "cabin": "E",
                 "cabin_name": "Economy",
                 "farebase": "SRTSD",
-                "seats": 5,
+                "seats": 4,
                 "class": "S",
                 "from": {
                   "date": "2026/05/11 00:10",
@@ -4958,30 +6130,30 @@
         "from_cache": false,
         "total_pax_no_inf": 2,
         "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
-        "cache_time": 1774238519734,
-        "search_time": 1774238517103,
-        "result_time": 1774238519734,
-        "id": "9efaecbca4faac85bea81a9185556353"
+        "cache_time": 1774462404026,
+        "search_time": 1774462401120,
+        "result_time": 1774462404026,
+        "id": "968073722a689ee494516b356a06961e"
       },
       {
-        "price": 3838.35,
-        "tax": 1092.17,
+        "price": 3856.75,
+        "tax": 1055.75,
         "refundable_info": null,
-        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_8D411E14-TUA.ET.0.2000.F30558682S30498682.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.SRTSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.402.ADD.202605110010.JED.202605110240.77L.SRTSD.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.463.JED.202605171520.ADD.202605171750.7M8.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605181130.PZU.202605181245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
+        "search_id": "1UGJA300RTE1100000090PZUJED20260510JEDPZU20260517_EN_500_867C1DCB-TUA.ET.0.2000.F30002028S29942028.OENCUDM0MTI0MzM=...RUB-17.ET.349.PZU.202605101445.ADD.202605101800.7M8.SRTSD.135.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.402.ADD.202605110010.JED.202605110240.77L.SRTSD.150.0.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.463.JED.202605171520.ADD.202605171750.7M8.VESSD.150.1.TUA.0.2PC.1P7K..1.1..0.0.0._17.ET.348.ADD.202605181130.PZU.202605181245.7M8.VESSD.135.1.TUA.0.2PC.1P7K..1.1..0.0.0.",
         "gds_id": 17,
         "fare_brand": "",
         "price_breakdowns": {
           "ADT": {
-            "total": 2093.27,
-            "price": 1496.16,
+            "total": 2106.2,
+            "price": 1528.19,
             "label": "Adult",
-            "tax": 597.11
+            "tax": 578.01
           },
           "CHD": {
-            "total": 1745.0800000000002,
-            "price": 1250.02,
+            "total": 1750.5400000000002,
+            "price": 1272.8100000000002,
             "label": "Child",
-            "tax": 495.06
+            "tax": 477.73
           }
         },
         "trip_id": "PZU|2026-05-10|ET|14:45|18:00|2026-05-10|ADD|0 kg_ADD|2026-05-11|ET|00:10|02:40|2026-05-11|JED|0 kg_JED|2026-05-17|ET|15:20|17:50|2026-05-17|ADD|0 kg_ADD|2026-05-18|ET|11:30|12:45|2026-05-18|PZU|0 kg_SRTSD:SRTSD:VESSD:VESSD",
@@ -5055,7 +6227,7 @@
                 "cabin": "E",
                 "cabin_name": "Economy",
                 "farebase": "SRTSD",
-                "seats": 5,
+                "seats": 4,
                 "class": "S",
                 "from": {
                   "date": "2026/05/10 14:45",
@@ -5088,7 +6260,7 @@
                 "cabin": "E",
                 "cabin_name": "Economy",
                 "farebase": "SRTSD",
-                "seats": 5,
+                "seats": 4,
                 "class": "S",
                 "from": {
                   "date": "2026/05/11 00:10",
@@ -5251,12 +6423,12 @@
         "from_cache": false,
         "total_pax_no_inf": 2,
         "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
-        "cache_time": 1774238519734,
-        "search_time": 1774238517103,
-        "result_time": 1774238519734,
-        "id": "c9111cdb3943fe6df93b18cbba9fb116"
+        "cache_time": 1774462404026,
+        "search_time": 1774462401120,
+        "result_time": 1774462404026,
+        "id": "44af664301ce7deaf15360c030838f5f"
       }
     ],
-    "last_result": 1774238519818
+    "last_result": 1774462405387
   }
 }

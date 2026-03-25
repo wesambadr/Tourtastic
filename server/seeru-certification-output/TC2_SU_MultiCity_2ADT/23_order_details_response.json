@@ -1,33 +1,33 @@
 {
-  "timestamp": "2026-03-23T01:01:55.436Z",
+  "timestamp": "2026-03-25T15:15:54.617Z",
   "status": 201,
   "headers": {
     "server": "openresty",
-    "date": "Mon, 23 Mar 2026 01:01:54 GMT",
+    "date": "Wed, 25 Mar 2026 15:15:53 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "6340",
+    "content-length": "6357",
     "connection": "keep-alive",
     "x-powered-by": "Express",
     "vary": "Origin",
-    "etag": "W/\"18c4-FYLTAHXpPUtzjTocyzSqduEjYzI\"",
-    "x-p-et": "2026-03-23T04:01:54.882+03:00",
-    "x-p-d": "0.06",
+    "etag": "W/\"18d5-2OKNf6cGogSjNG6NlH+awq1HxSE\"",
+    "x-p-et": "2026-03-25T18:15:53.418+03:00",
+    "x-p-d": "0.068",
     "access-control-allow-origin": "https://docs.seeru.travel",
     "access-control-allow-methods": "GET, POST, OPTIONS",
     "access-control-allow-headers": "Origin, Content-Type, Accept, Authorization",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "0.066"
+    "x-execution-time": "0.073"
   },
   "body": {
     "status": "success",
     "message": "Booking details fetched successfully",
-    "order_id": "82c830a5-8047-4037-97c1-694fcba9ba80",
-    "reservation_no": "1WT7J6",
+    "order_id": "a4511b2f-9ab6-46a2-8657-55734b35809c",
+    "reservation_no": "M5DW5F",
     "payload": {
       "booking": {
-        "id": "1f173693de9043b886a65faa853538f1",
+        "id": "ba90e9ce10bbea689ba11d72187aed48",
         "src": "RA",
-        "tax": 358.09,
+        "tax": 361.31,
         "legs": [
           {
             "to": {
@@ -69,7 +69,7 @@
               "JED",
               "RUH"
             ],
-            "leg_id": "c5752afc-34d6-4cca-a470-3bf3e8a3ce45",
+            "leg_id": "370218a0-b1d0-43b1-bccc-14ae34fe6c02",
             "duration": 10750,
             "segments": [
               {
@@ -93,10 +93,10 @@
                 },
                 "iata": "XY",
                 "cabin": "Y",
-                "class": "D",
+                "class": "Q",
                 "seats": 9,
                 "duration": 85,
-                "farebase": "DVALOW",
+                "farebase": "QVALOW",
                 "equipment": "32N",
                 "operating": null,
                 "cabin_name": "Economy",
@@ -125,10 +125,10 @@
                 },
                 "iata": "XY",
                 "cabin": "Y",
-                "class": "D",
+                "class": "Q",
                 "seats": 9,
                 "duration": 105,
-                "farebase": "DVALOW",
+                "farebase": "QVALOW",
                 "equipment": "32N",
                 "operating": null,
                 "cabin_name": "Economy",
@@ -157,10 +157,10 @@
                 },
                 "iata": "XY",
                 "cabin": "Y",
-                "class": "D",
+                "class": "Q",
                 "seats": 9,
                 "duration": 125,
-                "farebase": "DVALOW",
+                "farebase": "QVALOW",
                 "equipment": "32N",
                 "operating": null,
                 "cabin_name": "Economy",
@@ -175,29 +175,29 @@
             ]
           }
         ],
-        "price": 618.81,
+        "price": 602.44,
         "trip_id": "CAI|2026-05-10|XY|02:15|04:40|2026-05-10|JED|30 kg_JED|2026-05-17|XY|08:05|09:50|2026-05-17|RUH|30 kg_RUH|2026-05-17|XY|12:20|15:25|2026-05-17|DXB|30 kg",
         "can_hold": true,
         "can_void": false,
         "currency": "USD",
         "fare_key": "",
-        "search_id": "2103319211226726400",
-        "cache_time": 1774238509395,
+        "search_id": "2104786413060915200",
+        "cache_time": 1774462386622,
         "can_refund": true,
         "fare_brand": "",
         "from_cache": false,
-        "result_time": 1774238509395,
-        "search_time": 1774238496687,
+        "result_time": 1774462386622,
+        "search_time": 1774462373073,
         "can_exchange": true,
         "search_query": "{\"trips\":[{\"from\":\"CAI\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"DXB\",\"date\":\"2026/05/17\"}],\"adt\":2,\"chd\":0,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":true,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
         "instant_issue": false,
         "refundable_info": "Refundable",
         "price_breakdowns": {
           "ADT": {
-            "tax": 179.05,
+            "tax": 180.66,
             "label": "Adult",
-            "price": 130.35,
-            "total": 309.4
+            "price": 120.56,
+            "total": 301.21999999999997
           }
         },
         "total_pax_no_inf": 2
@@ -211,38 +211,38 @@
         {
           "type": "ADT",
           "gender": "M",
-          "pax_id": "b231ca96-7c34-4b06-a1ee-2891fc4802e5",
+          "pax_id": "5a2fb608-4705-4de2-9666-b6dcaaca42e4",
           "last_name": "Passenger",
           "birth_date": "1990-01-01",
           "first_name": "Test",
-          "nationality": "SY",
+          "nationality": "SDN",
           "document_type": "PP",
           "document_expiry": "2030-01-01",
           "document_number": "A1234567",
-          "document_country": "SY"
+          "document_country": "SDN"
         }
       ]
     },
     "orderStatus": "ticketing",
     "transactions": [
       {
-        "transaction_id": "05732b40-febc-4bc6-80c3-ea6575043160",
-        "amount": "-618.81",
-        "date": "2026-03-23 01:01:54",
+        "transaction_id": "a293fa65-e423-4156-b07d-0ce18ac4d9f3",
+        "amount": "-602.44",
+        "date": "2026-03-25 15:15:52",
         "status": "pending",
         "remarks": "issue booking"
       }
     ],
     "tickets": [
       {
-        "ticket_id": "b1084550-2797-443b-8a80-2539dde386bf",
+        "ticket_id": "caa7cbb9-cb85-4f8b-8047-9243af257f61",
         "ticket_ref": "",
         "airline_pnr": "",
         "refundable_info": null,
         "fare_key": null,
         "legs": [
           {
-            "leg_id": "c5752afc-34d6-4cca-a470-3bf3e8a3ce45",
+            "leg_id": "370218a0-b1d0-43b1-bccc-14ae34fe6c02",
             "duration": 10750,
             "bags": {
               "ADT": {
@@ -278,10 +278,10 @@
                 },
                 "iata": "XY",
                 "cabin": "Y",
-                "class": "D",
+                "class": "Q",
                 "seats": 9,
                 "duration": 85,
-                "farebase": "DVALOW",
+                "farebase": "QVALOW",
                 "equipment": "32N",
                 "operating": null,
                 "cabin_name": "Economy",
@@ -310,10 +310,10 @@
                 },
                 "iata": "XY",
                 "cabin": "Y",
-                "class": "D",
+                "class": "Q",
                 "seats": 9,
                 "duration": 105,
-                "farebase": "DVALOW",
+                "farebase": "QVALOW",
                 "equipment": "32N",
                 "operating": null,
                 "cabin_name": "Economy",
@@ -342,10 +342,10 @@
                 },
                 "iata": "XY",
                 "cabin": "Y",
-                "class": "D",
+                "class": "Q",
                 "seats": 9,
                 "duration": 125,
-                "farebase": "DVALOW",
+                "farebase": "QVALOW",
                 "equipment": "32N",
                 "operating": null,
                 "cabin_name": "Economy",
@@ -360,10 +360,10 @@
         "status": "draft",
         "passengers": [
           {
-            "passenger_id": "b231ca96-7c34-4b06-a1ee-2891fc4802e5",
+            "passenger_id": "5a2fb608-4705-4de2-9666-b6dcaaca42e4",
             "legs": [
               {
-                "leg_id": "c5752afc-34d6-4cca-a470-3bf3e8a3ce45",
+                "leg_id": "370218a0-b1d0-43b1-bccc-14ae34fe6c02",
                 "pnr": null,
                 "etkt": null
               }
@@ -376,8 +376,8 @@
             "document_type": "PP",
             "document_number": "A1234567",
             "document_expiry": "2030-01-01",
-            "document_country": "SY",
-            "nationality": "SY"
+            "document_country": "SDN",
+            "nationality": "SDN"
           }
         ]
       }

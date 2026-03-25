@@ -10,6 +10,15 @@ function getArg(name, fallback) {
   return hit.slice(key.length);
 }
 
+function getArgLoose(name, fallback) {
+  const primary = getArg(name, undefined);
+  if (primary !== undefined) return primary;
+  const dashed = `--${name}`;
+  const idx = process.argv.findIndex((a) => a === dashed);
+  if (idx >= 0 && process.argv[idx + 1] && !process.argv[idx + 1].startsWith('--')) return process.argv[idx + 1];
+  return fallback;
+}
+
 function pad2(n) {
   return String(n).padStart(2, '0');
 }
@@ -147,14 +156,68 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function mergeResultsByTripId(existing, incoming) {
+  const out = Array.isArray(existing) ? [...existing] : [];
+  const idxByTrip = new Map();
+  for (let i = 0; i < out.length; i++) {
+    const tId = out[i]?.trip_id;
+    if (tId !== undefined && tId !== null) idxByTrip.set(String(tId), i);
+  }
+  const inc = Array.isArray(incoming) ? incoming : [];
+  for (const trip of inc) {
+    const tId = trip?.trip_id;
+    if (tId === undefined || tId === null) {
+      out.push(trip);
+      continue;
+    }
+    const key = String(tId);
+    if (idxByTrip.has(key)) {
+      out[idxByTrip.get(key)] = trip;
+    } else {
+      idxByTrip.set(key, out.length);
+      out.push(trip);
+    }
+  }
+  return out;
+}
+
+function getTripAirlineCode(trip) {
+  const t = trip || {};
+  return (
+    t.airline ||
+    t.validating_airline ||
+    t.carrier ||
+    t.owner ||
+    t.owner_airline ||
+    t.marketing_airline ||
+    t.fare?.validating_airline ||
+    t.fare?.airline ||
+    t.fare?.carrier ||
+    t.segments?.[0]?.airline ||
+    t.segments?.[0]?.carrier ||
+    t.segments?.[0]?.marketing_airline ||
+    t.segments?.[0]?.operating_airline
+  );
+}
+
+function pickTripByAirline(trips, airlineCode) {
+  const arr = Array.isArray(trips) ? trips : [];
+  const target = String(airlineCode || '').toUpperCase();
+  if (!target) return arr[0];
+  const hit = arr.find((t) => String(getTripAirlineCode(t) || '').toUpperCase() === target);
+  return hit || arr[0];
+}
+
 async function runTestCase({ caseId, label, tripsParam, adults, children, infants, cabin = 'e', direct = 0 }) {
-  const outRoot = getArg('out', path.join(process.cwd(), 'seeru-certification-output'));
+  const outRoot = getArgLoose('out', path.join(process.cwd(), 'seeru-certification-output'));
   const outDir = path.join(outRoot, `${caseId}_${label}`);
   ensureDirSync(outDir);
 
   const seeruApi = createSeeruApi();
 
   // 01 search
+  // eslint-disable-next-line no-console
+  console.log('Step 01: search');
   const searchPath = `/search/${tripsParam}/${adults}/${children}/${infants}`;
   const searchParams = { cabin, direct };
   const search = await requestAndCapture({
@@ -174,10 +237,14 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
     return { success: false, outDir, step: 'search', error: 'No search_id in response' };
   }
 
-  // 02 result (poll until complete>=100 or max polls)
+  // 02+ result polling (must use last_result as after, merge by trip_id until completion===100)
+  // eslint-disable-next-line no-console
+  console.log('Step 02+: result polling (until completion=100)');
   let after;
-  let finalResultResp;
-  for (let i = 0; i < 8; i++) {
+  let completion;
+  let mergedTrips = [];
+  let lastResultValue;
+  for (let i = 0; i < 20; i++) {
     const res = await requestAndCapture({
       seeruApi,
       outDir,
@@ -190,23 +257,38 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
     });
     if (!res.ok) return { success: false, outDir, step: 'result' };
 
-    finalResultResp = res.response;
-    const complete = finalResultResp.data?.complete;
-    const lastResult = finalResultResp.data?.last_result;
-    if (typeof lastResult === 'number') after = lastResult;
+    const resp = res.response;
+    completion = resp.data?.completion;
+    if (completion === undefined) completion = resp.data?.complete;
+    lastResultValue = resp.data?.last_result;
+    const trips = Array.isArray(resp.data?.result) ? resp.data.result : [];
+    mergedTrips = mergeResultsByTripId(mergedTrips, trips);
 
-    if (typeof complete === 'number' && complete >= 100) break;
+    if (typeof lastResultValue === 'number') after = lastResultValue;
+    if (typeof completion === 'number' && completion >= 100) break;
     await sleep(1200);
   }
 
-  const resultsArr = Array.isArray(finalResultResp?.data?.result) ? finalResultResp.data.result : [];
-  if (resultsArr.length === 0) {
+  if (!(typeof completion === 'number' && completion >= 100)) {
+    return { success: false, outDir, step: 'result', error: `Polling did not reach completion=100 (completion=${completion})` };
+  }
+
+  if (!Array.isArray(mergedTrips) || mergedTrips.length === 0) {
     return { success: false, outDir, step: 'result', error: 'No flights returned' };
   }
 
-  const selected = resultsArr[0];
+  // For TC3: do not filter airline in URL; pick J4 from completed results
+  const preferredAirline = caseId === 'TC3' ? 'J4' : undefined;
+  const selected = pickTripByAirline(mergedTrips, preferredAirline);
+  if (!selected) {
+    return { success: false, outDir, step: 'result', error: 'Unable to select a flight from results' };
+  }
+  // eslint-disable-next-line no-console
+  console.log(`Selected trip_id=${selected.trip_id} airline=${getTripAirlineCode(selected) || 'N/A'} completion=${completion} last_result=${lastResultValue}`);
 
   // 03 booking/fare
+  // eslint-disable-next-line no-console
+  console.log('Step 20: booking/fare');
   const fare = await requestAndCapture({
     seeruApi,
     outDir,
@@ -223,7 +305,6 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
   // Note: For certification evidence only; real booking flow uses real passenger data.
   const passengers = [
     {
-      pax_id: 'PAX1',
       type: 'ADT',
       first_name: 'Test',
       last_name: 'Passenger',
@@ -232,13 +313,12 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
       document_type: 'PP',
       document_number: 'A1234567',
       document_expiry: '2030-01-01',
-      document_country: 'SY',
-      nationality: 'SY',
+      document_country: 'SDN',
+      nationality: 'SDN',
     },
   ];
   if (Number(children) > 0) {
     passengers.push({
-      pax_id: 'PAX2',
       type: 'CHD',
       first_name: 'Test',
       last_name: 'Child',
@@ -247,13 +327,12 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
       document_type: 'PP',
       document_number: 'B1234567',
       document_expiry: '2030-01-01',
-      document_country: 'SY',
-      nationality: 'SY',
+      document_country: 'SDN',
+      nationality: 'SDN',
     });
   }
   if (Number(infants) > 0) {
     passengers.push({
-      pax_id: 'PAX3',
       type: 'INF',
       first_name: 'Test',
       last_name: 'Infant',
@@ -262,8 +341,8 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
       document_type: 'PP',
       document_number: 'C1234567',
       document_expiry: '2030-01-01',
-      document_country: 'SY',
-      nationality: 'SY',
+      document_country: 'SDN',
+      nationality: 'SDN',
     });
   }
 
@@ -274,6 +353,8 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
   };
 
   // 04 booking/save
+  // eslint-disable-next-line no-console
+  console.log('Step 21: booking/save');
   const save = await requestAndCapture({
     seeruApi,
     outDir,
@@ -292,6 +373,8 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
   }
 
   // 05 order/issue
+  // eslint-disable-next-line no-console
+  console.log('Step 22: order/issue');
   const issue = await requestAndCapture({
     seeruApi,
     outDir,
@@ -305,6 +388,8 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
   if (!issue.ok) return { success: false, outDir, step: 'order/issue' };
 
   // 06 order/details
+  // eslint-disable-next-line no-console
+  console.log('Step 23: order/details');
   const details = await requestAndCapture({
     seeruApi,
     outDir,
@@ -321,7 +406,7 @@ async function runTestCase({ caseId, label, tripsParam, adults, children, infant
 }
 
 async function main() {
-  const which = (getArg('tc', 'all') || 'all').toLowerCase();
+  const which = (getArgLoose('tc', 'all') || 'all').toLowerCase();
 
   const cases = [
     {
@@ -358,7 +443,8 @@ async function main() {
     },
   ];
 
-  const selected = which === 'all' ? cases : cases.filter((c) => c.id.toLowerCase() === which);
+  const normalizedWhich = which.replace(/^tc/i, 'tc');
+  const selected = normalizedWhich === 'all' ? cases : cases.filter((c) => c.id.toLowerCase() === normalizedWhich);
   if (selected.length === 0) {
     throw new Error('Unknown --tc value. Use TC1, TC2, TC3, or all');
   }
@@ -388,7 +474,7 @@ async function main() {
     await sleep(1500);
   }
 
-  const outRoot = getArg('out', path.join(process.cwd(), 'seeru-certification-output'));
+  const outRoot = getArgLoose('out', path.join(process.cwd(), 'seeru-certification-output'));
   writeJson(path.join(outRoot, 'summary.json'), {
     generatedAt: new Date().toISOString(),
     baseURL: buildSeeruBaseURL(),

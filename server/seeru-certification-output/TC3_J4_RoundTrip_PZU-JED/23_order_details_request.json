@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-23T01:02:08.870Z",
+  "timestamp": "2026-03-25T15:16:04.763Z",
   "environment": "sandbox",
   "method": "POST",
   "url": "https://sandbox-api.seeru.travel/v1/flights/order/details",
@@ -17,6 +17,6 @@
     "Content-Type": "application/json"
   },
   "body": {
-    "order_id": "233366b9-64cf-4a92-8b52-943678ea249f"
+    "order_id": "b2ad6830-b666-4bef-a05c-057bc4974b3d"
   }
 }

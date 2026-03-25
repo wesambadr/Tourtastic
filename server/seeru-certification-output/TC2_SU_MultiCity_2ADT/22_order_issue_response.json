@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-03-23T01:01:54.862Z",
+  "timestamp": "2026-03-25T15:15:54.417Z",
   "status": 201,
   "headers": {
     "server": "openresty",
-    "date": "Mon, 23 Mar 2026 01:01:54 GMT",
+    "date": "Wed, 25 Mar 2026 15:15:53 GMT",
     "content-type": "application/json; charset=utf-8",
     "content-length": "150",
     "connection": "keep-alive",
     "x-powered-by": "Express",
     "vary": "Origin",
-    "etag": "W/\"96-a3bGB3JIWlwxPFf1rDpSV5daczQ\"",
-    "x-p-et": "2026-03-23T04:01:54.512+03:00",
-    "x-p-d": "0.201",
+    "etag": "W/\"96-We/QFV67MGWaW4SJmlB+6+HD6b0\"",
+    "x-p-et": "2026-03-25T18:15:53.218+03:00",
+    "x-p-d": "0.387",
     "access-control-allow-origin": "https://docs.seeru.travel",
     "access-control-allow-methods": "GET, POST, OPTIONS",
     "access-control-allow-headers": "Origin, Content-Type, Accept, Authorization",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "0.208"
+    "x-execution-time": "0.392"
   },
   "body": {
     "status": "success",
     "message": "order ticketing",
-    "order_id": "82c830a5-8047-4037-97c1-694fcba9ba80",
-    "request_id": "acc7e84d-1eb2-4c4d-94f2-935121914df8"
+    "order_id": "a4511b2f-9ab6-46a2-8657-55734b35809c",
+    "request_id": "b620ccd0-4b64-4957-840f-bd47cc562590"
   }
 }

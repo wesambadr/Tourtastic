@@ -24,6 +24,24 @@ const seeruClient = axios.create({
 const CERT_CAPTURE_ENABLED = String(process.env.SEERU_CERT_CAPTURE || '').toLowerCase() === '1' || String(process.env.SEERU_CERT_CAPTURE || '').toLowerCase() === 'true';
 const CERT_OUTPUT_DIR = process.env.SEERU_CERT_OUTPUT_DIR || path.join(process.cwd(), 'seeru-certification-output');
 
+// [SEERU-FIX-4] ISO2 -> ISO3 mapping for nationality/document_country normalization (silent fallback)
+const ISO2_TO_ISO3 = {
+  EG: 'EGY', SA: 'SAU', SD: 'SDN', JO: 'JOR', SY: 'SYR',
+  IQ: 'IRQ', LB: 'LBN', AE: 'ARE', KW: 'KWT', QA: 'QAT',
+  BH: 'BHR', OM: 'OMN', YE: 'YEM', LY: 'LBY', TN: 'TUN',
+  DZ: 'DZA', MA: 'MAR', TR: 'TUR', IN: 'IND', PK: 'PAK',
+  GB: 'GBR', US: 'USA', DE: 'DEU', FR: 'FRA', RU: 'RUS',
+  CN: 'CHN', PH: 'PHL', NG: 'NGA', ET: 'ETH', SN: 'SEN',
+  GH: 'GHA', KE: 'KEN', TZ: 'TZA', UG: 'UGA', ZA: 'ZAF'
+};
+
+// [SEERU-FIX-4] helper to normalize ISO2/ISO3 without throwing
+const toISO3 = (code) => {
+  if (!code) return code;
+  if (String(code).length === 3) return code;
+  return ISO2_TO_ISO3[String(code).toUpperCase()] || code;
+};
+
 function ensureDirSync(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
 }
@@ -297,9 +315,17 @@ async function saveBooking(bookingData, passengers, contact) {
       etd: bookingData.etd
     };
     
+    // [SEERU-FIX-3] strip pax_id from outgoing passengers payload only (do not change internal model)
+    // [SEERU-FIX-4] normalize country codes to ISO3 for Seeru (silent fallback for unknown codes)
+    const normalizedPassengers = (passengers || []).map(({ pax_id, ...rest }) => ({
+      ...rest,
+      nationality: toISO3(rest.nationality),
+      document_country: toISO3(rest.document_country)
+    }));
+
     const payloadToSend = {
       booking: cleanedBooking,
-      passengers: passengers,
+      passengers: normalizedPassengers,
       contact: contact
     };
     

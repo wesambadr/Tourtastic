@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-23T01:01:53.849Z",
+  "timestamp": "2026-03-25T15:15:53.247Z",
   "environment": "sandbox",
   "method": "POST",
   "url": "https://sandbox-api.seeru.travel/v1/flights/booking/fare",
@@ -18,17 +18,17 @@
   },
   "body": {
     "booking": {
-      "price": 618.81,
-      "tax": 358.09,
+      "price": 602.44,
+      "tax": 361.31,
       "refundable_info": "Refundable",
       "fare_key": "",
       "fare_brand": "",
       "price_breakdowns": {
         "ADT": {
-          "total": 309.4,
-          "price": 130.35,
+          "total": 301.21999999999997,
+          "price": 120.56,
           "label": "Adult",
-          "tax": 179.05
+          "tax": 180.66
         }
       },
       "legs": [
@@ -38,9 +38,9 @@
             {
               "cabin": "Y",
               "cabin_name": "Economy",
-              "farebase": "DVALOW",
+              "farebase": "QVALOW",
               "seats": 9,
-              "class": "D",
+              "class": "Q",
               "from": {
                 "date": "2026-05-10 02:15",
                 "airport": "CAI",
@@ -70,9 +70,9 @@
             {
               "cabin": "Y",
               "cabin_name": "Economy",
-              "farebase": "DVALOW",
+              "farebase": "QVALOW",
               "seats": 9,
-              "class": "D",
+              "class": "Q",
               "from": {
                 "date": "2026-05-17 08:05",
                 "airport": "JED",
@@ -102,9 +102,9 @@
             {
               "cabin": "Y",
               "cabin_name": "Economy",
-              "farebase": "DVALOW",
+              "farebase": "QVALOW",
               "seats": 9,
-              "class": "D",
+              "class": "Q",
               "from": {
                 "date": "2026-05-17 12:20",
                 "airport": "RUH",
@@ -178,7 +178,7 @@
         }
       ],
       "can_hold": true,
-      "search_id": "2103319211226726400",
+      "search_id": "2104786413060915200",
       "trip_id": "CAI|2026-05-10|XY|02:15|04:40|2026-05-10|JED|30 kg_JED|2026-05-17|XY|08:05|09:50|2026-05-17|RUH|30 kg_RUH|2026-05-17|XY|12:20|15:25|2026-05-17|DXB|30 kg",
       "instant_issue": false,
       "can_void": false,
@@ -188,10 +188,10 @@
       "from_cache": false,
       "src": "RA",
       "total_pax_no_inf": 2,
-      "cache_time": 1774238509395,
-      "search_time": 1774238496687,
-      "result_time": 1774238509395,
-      "id": "1f173693de9043b886a65faa853538f1",
+      "cache_time": 1774462386622,
+      "search_time": 1774462373073,
+      "result_time": 1774462386622,
+      "id": "ba90e9ce10bbea689ba11d72187aed48",
       "currency": "USD"
     }
   }

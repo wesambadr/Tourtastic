@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-03-23T01:01:32.242Z",
+  "timestamp": "2026-03-25T15:15:39.213Z",
   "status": 200,
   "headers": {
     "server": "openresty",
-    "date": "Mon, 23 Mar 2026 01:01:31 GMT",
+    "date": "Wed, 25 Mar 2026 15:15:38 GMT",
     "content-type": "application/json; charset=utf-8",
     "transfer-encoding": "chunked",
     "connection": "keep-alive",
@@ -12,30 +12,30 @@
     "access-control-allow-origin": "*, https://docs.seeru.travel",
     "access-control-allow-methods": "HEAD, GET, POST, OPTIONS, GET, POST, OPTIONS",
     "access-control-allow-headers": "*, Origin, Content-Type, Accept, Authorization",
-    "x-p-st": "2026-03-23T04:01:25.196+03:00",
-    "x-i-st": "2026-03-23T04:01:25.339+03:00",
-    "x-i-et": "2026-03-23T04:01:31.840+03:00",
-    "etag": "W/\"b55-T07+PIWGFFSlyvT8saUTk1fYxbM\"",
-    "x-p-et": "2026-03-23T04:01:31.883+03:00",
-    "x-p-d": "6.687",
+    "x-p-st": "2026-03-25T18:15:30.918+03:00",
+    "x-i-st": "2026-03-25T18:15:31.062+03:00",
+    "x-i-et": "2026-03-25T18:15:37.944+03:00",
+    "etag": "W/\"b48-XEoEpJd1wkOoBYui6M703vYDz+U\"",
+    "x-p-et": "2026-03-25T18:15:38.006+03:00",
+    "x-p-d": "7.088",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "6.691"
+    "x-execution-time": "7.094"
   },
   "body": {
     "status": "ok",
     "result": 258.53,
     "booking": {
       "price": 258.53,
-      "tax": 129.09,
+      "tax": 129.74,
       "refundable_info": "NON-REFUNDABLE",
       "fare_key": null,
       "fare_brand": null,
       "price_breakdowns": {
         "ADT": {
           "total": 245.44,
-          "price": 116.35000000000001,
+          "price": 115.7,
           "label": "Adult",
-          "tax": 129.09
+          "tax": 129.74
         },
         "INF": {
           "total": 13.09,
@@ -52,9 +52,9 @@
       "src": "NT",
       "total_pax_no_inf": 1,
       "search_query": "{\"trips\":[{\"from\":\"SVO\",\"to\":\"DEL\",\"date\":\"2026/05/08\"}],\"adt\":1,\"chd\":0,\"inf\":1,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
-      "cache_time": 1774238484136,
-      "search_time": 1774238479126,
-      "result_time": 1774238484136,
+      "cache_time": 1774462334988,
+      "search_time": 1774462329063,
+      "result_time": 1774462334988,
       "can_void": false,
       "can_refund": false,
       "can_exchange": false,
@@ -94,7 +94,7 @@
               "cabin": "Y",
               "cabin_name": "Economy",
               "farebase": "KT0P35DA",
-              "seats": 3,
+              "seats": 6,
               "class": "K",
               "from": {
                 "date": "2026/05/08 01:00",
@@ -174,7 +174,7 @@
             "airport_name": "Indira Gandhi International Airport"
           },
           "cabin": "Y",
-          "seats": 3,
+          "seats": 6,
           "iata": [
             "J2"
           ],
@@ -187,7 +187,7 @@
           "cabin_name": "Economy"
         }
       ],
-      "id": "e27c96c4f130734549fc4fc55f4afaf4",
+      "id": "525c2198542be73382c90f34e90c3215",
       "currency": "USD"
     }
   }

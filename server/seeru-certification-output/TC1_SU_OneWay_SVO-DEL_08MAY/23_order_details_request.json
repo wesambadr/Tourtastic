@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-23T01:01:35.071Z",
+  "timestamp": "2026-03-25T15:15:39.838Z",
   "environment": "sandbox",
   "method": "POST",
   "url": "https://sandbox-api.seeru.travel/v1/flights/order/details",

@@ -71,7 +71,10 @@ exports.searchFlights = asyncHandler(async (req, res) => {
       console.warn('SearchLog insert failed:', e?.message || e);
     }
 
-    const seeruUrl = `https://${process.env.SEERU_API_ENDPOINT}/${process.env.SEERU_API_VERSION}/flights/search/${trips}/${adults}/${children}/${infants}?cabin=${cabin}&direct=${direct}`;
+    // [SEERU-FIX-2] append airline query param only when provided (do not append when missing/empty)
+    const airline = req.query?.airline;
+    const airlinePart = airline !== undefined && String(airline).trim() !== '' ? `&airline=${encodeURIComponent(String(airline).trim())}` : '';
+    const seeruUrl = `https://${process.env.SEERU_API_ENDPOINT}/${process.env.SEERU_API_VERSION}/flights/search/${trips}/${adults}/${children}/${infants}?cabin=${cabin}&direct=${direct}${airlinePart}`;
 
     // Use environment variables for the correct API endpoint
     const seeruResponse = await axios.get(seeruUrl, {
@@ -152,35 +155,58 @@ exports.getFlightSearchResults = asyncHandler(async (req, res) => {
       params.after = parseInt(after);
     }
     
-    const response = await seeruApi.get(resultUrl, { params });
+    // [SEERU-FIX-1] poll /result using last_result pagination until completion=100 (max 40, 800ms delay). Merge by trip_id and degrade gracefully.
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const mergeByTripId = (existing, incoming) => {
+      const out = Array.isArray(existing) ? [...existing] : [];
+      const byTripId = new Map();
+      out.forEach((t) => {
+        if (t?.trip_id) byTripId.set(String(t.trip_id), t);
+      });
+      (Array.isArray(incoming) ? incoming : []).forEach((t) => {
+        if (t?.trip_id) byTripId.set(String(t.trip_id), t);
+      });
+      return Array.from(byTripId.values());
+    };
 
-    // Normalize complete and last_result exactly as reported by Seeru
-    // Do NOT force completion early based on partial progress and empty results.
-    const completePercent = typeof response.data.complete === 'number'
-      ? response.data.complete
-      : (response.data.complete ? 100 : 0);
-    const lastResult = typeof response.data.last_result === 'number' ? response.data.last_result : undefined;
+    let pollAfter = after ? parseInt(after) : undefined;
+    let completePercent = 0;
+    let lastResult;
+    let mergedRawResults = [];
 
-    // Dedupe by trip_id within this batch in case Seeru returns duplicates in same payload
-    const rawResults = Array.isArray(response.data.result) ? response.data.result : [];
+    for (let i = 0; i < 40; i++) {
+      const pollParams = {};
+      if (pollAfter !== undefined && !Number.isNaN(pollAfter)) pollParams.after = pollAfter;
+      const response = await seeruApi.get(resultUrl, { params: pollParams });
+
+      completePercent = typeof response.data.complete === 'number'
+        ? response.data.complete
+        : (response.data.complete ? 100 : 0);
+      lastResult = typeof response.data.last_result === 'number' ? response.data.last_result : lastResult;
+
+      const rawResults = Array.isArray(response.data.result) ? response.data.result : [];
+      mergedRawResults = mergeByTripId(mergedRawResults, rawResults);
+
+      if (typeof lastResult === 'number') pollAfter = lastResult;
+      if (completePercent >= 100) break;
+      await sleep(800);
+    }
+
+    // Transform merged raw results into frontend format (best-effort segment index)
     const tripIdToTransformed = new Map();
-    rawResults.forEach((flight, index) => {
-      // Determine segment index based on trip structure (best-effort; single-trip searches will be 0)
+    mergedRawResults.forEach((flight, index) => {
       const tripsLen = Array.isArray(flight?.search_query?.trips) ? flight.search_query.trips.length : 1;
-      const segmentIndex = tripsLen > 1 && rawResults.length > 0
-        ? Math.floor(index / (rawResults.length / tripsLen))
+      const segmentIndex = tripsLen > 1 && mergedRawResults.length > 0
+        ? Math.floor(index / (mergedRawResults.length / tripsLen))
         : 0;
       const transformed = transformSeeruToFrontendFormat(flight, segmentIndex);
       if (transformed && transformed.trip_id) {
-        // Last occurrence wins per Seeru doc (newer updates replace older)
         tripIdToTransformed.set(transformed.trip_id, transformed);
       }
     });
 
     const transformedFlights = Array.from(tripIdToTransformed.values());
 
-    // Only treat the search as definitively having no results when Seeru
-    // reports completion (100%) AND there are still no flights.
     const isDefinitiveNoResults = transformedFlights.length === 0 && completePercent >= 100;
 
     const transformedResults = {

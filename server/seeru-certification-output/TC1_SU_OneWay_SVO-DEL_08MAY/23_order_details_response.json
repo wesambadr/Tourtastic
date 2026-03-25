@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-03-23T01:01:35.073Z",
+  "timestamp": "2026-03-25T15:15:39.841Z",
   "status": 201,
   "headers": {
     "server": "openresty",
-    "date": "Mon, 23 Mar 2026 01:01:33 GMT",
+    "date": "Wed, 25 Mar 2026 15:15:38 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "6256",
+    "content-length": "6298",
     "connection": "keep-alive",
     "x-powered-by": "Express",
     "vary": "Origin",
-    "etag": "W/\"1870-39QZ/hrD8IpqVu29L414O0g1y7A\"",
-    "x-p-et": "2026-03-23T04:01:33.260+03:00",
-    "x-p-d": "0.059",
+    "etag": "W/\"189a-eXAE/5rHKx9ehJjIDQ4yE7PKdII\"",
+    "x-p-et": "2026-03-25T18:15:38.539+03:00",
+    "x-p-d": "0.046",
     "access-control-allow-origin": "https://docs.seeru.travel",
     "access-control-allow-methods": "GET, POST, OPTIONS",
     "access-control-allow-headers": "Origin, Content-Type, Accept, Authorization",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "0.064"
+    "x-execution-time": "0.050"
   },
   "body": {
     "status": "success",
@@ -225,7 +225,7 @@
         }
       ]
     },
-    "orderStatus": "ticketing",
+    "orderStatus": "ticketed",
     "transactions": [
       {
         "transaction_id": "84b77d72-97b3-485c-9ddf-03ea70aafc16",
@@ -238,8 +238,8 @@
     "tickets": [
       {
         "ticket_id": "dc21f707-30a9-4c70-8a8a-aa840af4785e",
-        "ticket_ref": "",
-        "airline_pnr": "",
+        "ticket_ref": "NST9H2",
+        "airline_pnr": "DEV123",
         "refundable_info": null,
         "fare_key": null,
         "legs": [
@@ -343,7 +343,7 @@
           }
         ],
         "src": "NT",
-        "status": "draft",
+        "status": "open",
         "passengers": [
           {
             "passenger_id": "b231ca96-7c34-4b06-a1ee-2891fc4802e5",
@@ -351,8 +351,8 @@
               null,
               {
                 "leg_id": "11687ad9-703a-4f73-b226-b58379b7c3be",
-                "pnr": null,
-                "etkt": null
+                "pnr": "DEV123",
+                "etkt": "01234567890123"
               }
             ],
             "type": "ADT",
@@ -371,8 +371,8 @@
             "legs": [
               {
                 "leg_id": "11687ad9-703a-4f73-b226-b58379b7c3be",
-                "pnr": null,
-                "etkt": null
+                "pnr": "DEV123",
+                "etkt": "01234567890123"
               },
               null
             ],

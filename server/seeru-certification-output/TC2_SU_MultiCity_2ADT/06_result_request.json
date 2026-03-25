@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-03-23T01:01:46.519Z",
+  "timestamp": "2026-03-25T15:13:34.928Z",
   "environment": "sandbox",
   "method": "GET",
-  "url": "https://sandbox-api.seeru.travel/v1/flights/result/76e5a29a-436d-4749-80e9-4dd90448cd09",
+  "url": "https://sandbox-api.seeru.travel/v1/flights/result/4d7b4487-ae73-45e1-ad05-3fc5541f343f",
   "headers": {
     "common": {
       "Accept": "application/json, text/plain, */*"

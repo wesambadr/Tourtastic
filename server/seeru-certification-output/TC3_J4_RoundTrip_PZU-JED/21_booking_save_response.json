@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-03-23T01:02:08.090Z",
+  "timestamp": "2026-03-25T15:16:04.248Z",
   "status": 200,
   "headers": {
     "server": "openresty",
-    "date": "Mon, 23 Mar 2026 01:02:07 GMT",
+    "date": "Wed, 25 Mar 2026 15:16:03 GMT",
     "content-type": "application/json; charset=utf-8",
     "content-length": "122",
     "connection": "keep-alive",
     "x-powered-by": "Express",
     "vary": "Origin",
-    "etag": "W/\"7a-HH0AvpL/1Gt7x7gLa0rvQqFkohQ\"",
-    "x-p-et": "2026-03-23T04:02:07.780+03:00",
-    "x-p-d": "0.198",
+    "etag": "W/\"7a-m+5bTzAIgnooL12DKykqqRvsc1I\"",
+    "x-p-et": "2026-03-25T18:16:03.038+03:00",
+    "x-p-d": "0.24",
     "access-control-allow-origin": "https://docs.seeru.travel",
     "access-control-allow-methods": "GET, POST, OPTIONS",
     "access-control-allow-headers": "Origin, Content-Type, Accept, Authorization",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "0.204"
+    "x-execution-time": "0.247"
   },
   "body": {
     "status": "success",
     "message": "order created",
-    "order_id": "233366b9-64cf-4a92-8b52-943678ea249f",
-    "reservation_no": "CBCTNS"
+    "order_id": "b2ad6830-b666-4bef-a05c-057bc4974b3d",
+    "reservation_no": "H5SWZF"
   }
 }
