@@ -564,9 +564,13 @@ const Profile: React.FC = () => {
                                 className="cursor-pointer hover:bg-muted/30"
                               >
                                 <TableCell>
+                                  {/* CLS fix: explicit width/height for airline logos */}
                                   <img
                                     src={`/${booking.flightDetails.selectedFlight.airline.replace(/\s+/g, '-')}-Logo.png`}
                                     alt={booking.flightDetails.selectedFlight.airline}
+                                    width="48"
+                                    height="48"
+                                    loading="lazy"
                                     className="h-10 w-10 object-contain md:h-12 md:w-12"
                                     onError={(e) => {
                                       e.currentTarget.src = '/placeholder.svg';
@@ -643,12 +647,16 @@ const Profile: React.FC = () => {
                           return (
                             <Card key={item._id} className="overflow-hidden">
                               <div className="relative h-36">
+                                {/* CLS fix: explicit width/height, lazy loading */}
                                 <img 
-                                  src={item.image || 'https://via.placeholder.com/400x200?text=No+Image'} 
+                                  src={item.image || '/placeholder.svg'} 
                                   alt={typeof item.name === 'string' ? item.name : (item.name[i18n.language] || item.name.en || '')}
+                                  width="400"
+                                  height="144"
+                                  loading="lazy"
                                   className="w-full h-full object-cover" 
                                   onError={(e) => {
-                                    e.currentTarget.src = 'https://via.placeholder.com/400x200?text=No+Image';
+                                    e.currentTarget.src = '/placeholder.svg';
                                   }}
                                 />
                                 <button 
@@ -875,9 +883,13 @@ const Profile: React.FC = () => {
               <DialogContent className="max-w-2xl w-[95vw] md:w-full max-h-[90vh] overflow-y-auto p-0">
                 <div className="sticky top-0 bg-white z-10 border-b shadow-sm">
                   <div className="p-4 md:p-6 flex items-center gap-4">
+                    {/* CLS fix: explicit width/height for airline logo */}
                     <img
                       src={`/${selectedBooking?.flightDetails?.selectedFlight?.airline?.replace(/\s+/g, '-')}-Logo.png`}
                       alt={selectedBooking?.flightDetails?.selectedFlight?.airline}
+                      width="48"
+                      height="48"
+                      loading="lazy"
                       className="h-12 w-12 object-contain"
                       onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
                     />

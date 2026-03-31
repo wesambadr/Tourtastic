@@ -140,8 +140,9 @@ body {
   }
 }
 
+/* Note: .hero-section CSS background kept for fallback; primary hero uses <img> element in Hero.tsx for LCP optimization */
 .hero-section {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/hero-bg.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/hero-bg.webp');
   background-size: cover;
   background-position: center;
 }

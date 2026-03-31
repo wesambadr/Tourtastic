@@ -10,15 +10,17 @@ const Hero: React.FC = () => {
   
   return (
     <div className="relative bg-black min-h-[80vh] flex items-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=80')",
-          backgroundPosition: 'center',
-          filter: 'brightness(0.6)'
-        }}
-      ></div>
+      {/* LCP-optimized hero image: <img> instead of CSS background for better preload/fetchpriority support */}
+      <img
+        src="/hero-bg.webp"
+        alt=""
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ filter: 'brightness(0.6)' }}
+      />
       
       {/* Content */}
       <div className="container-custom relative z-10 py-20">

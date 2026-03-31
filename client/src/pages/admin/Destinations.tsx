@@ -512,9 +512,13 @@ const AdminDestinations = () => {
                 {filteredDestinations.map((destination) => (
                   <TableRow key={destination._id}>
                     <TableCell>
+                      {/* CLS fix: explicit width/height */}
                       <img
                         src={destination.image || '/placeholder.svg'}
                         alt={getLocalizedString(destination.name)}
+                        width="48"
+                        height="48"
+                        loading="lazy"
                         className="w-12 h-12 rounded-md object-cover"
                       />
                     </TableCell>
@@ -666,10 +670,11 @@ const AdminDestinations = () => {
                       setImageFile(f || null);
                     }} />
                   </FormControl>
+                  {/* CLS fix: explicit width/height */}
                   {imageFile ? (
-                    <img src={URL.createObjectURL(imageFile)} alt="preview" className="mt-2 w-24 h-24 object-cover rounded" />
+                    <img src={URL.createObjectURL(imageFile)} alt="preview" width="96" height="96" loading="lazy" className="mt-2 w-24 h-24 object-cover rounded" />
                   ) : (form.getValues('image') || editDestination?.image) ? (
-                    <img src={(form.getValues('image') as string) || editDestination?.image} alt="preview" className="mt-2 w-24 h-24 object-cover rounded" />
+                    <img src={(form.getValues('image') as string) || editDestination?.image} alt="preview" width="96" height="96" loading="lazy" className="mt-2 w-24 h-24 object-cover rounded" />
                   ) : null}
                 </FormItem>
 

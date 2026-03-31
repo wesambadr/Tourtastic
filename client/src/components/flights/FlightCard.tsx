@@ -99,9 +99,13 @@ const FlightCard: React.FC<FlightCardProps> = ({
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onFlightSelection(flight); } }}
       >
         <div className="flex items-center gap-3 min-w-0">
+          {/* CLS fix: explicit width/height for airline logos */}
           <img 
             src={getAirlineLogo(flight.legs[0].segments[0].iata)} 
             alt={flight.legs[0].segments[0].iata}
+            width="40"
+            height="40"
+            loading="lazy"
             className="h-10 w-10 object-contain"
             onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
           />
@@ -161,9 +165,13 @@ const FlightCard: React.FC<FlightCardProps> = ({
             <div key={legIndex} className="space-y-3">
               {/* Airline Info */}
               <div className="flex items-center gap-3">
+                {/* CLS fix: explicit width/height for airline logos */}
                 <img 
                   src={getAirlineLogo(leg.segments[0].iata)} 
                   alt={leg.segments[0].iata}
+                  width="160"
+                  height="160"
+                  loading="lazy"
                   className="h-20 w-20 sm:h-32 sm:w-32 lg:h-40 lg:w-40 object-contain"
                   onError={(e) => {
                     e.currentTarget.src = '/placeholder.svg';

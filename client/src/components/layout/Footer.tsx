@@ -17,6 +17,9 @@ const Footer: React.FC = () => {
                 <img 
                   src="/Tourtastic-logo-White.png" 
                   alt="Tourtastic" 
+                  width="160"
+                  height="160"
+                  loading="lazy"
                   className="h-40 mb-2 transition-opacity hover:opacity-90"
                 />
               </Link>

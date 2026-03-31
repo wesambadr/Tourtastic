@@ -73,7 +73,8 @@ const ProductManagement: React.FC = () => {
           {destinations.map(dest => (
             <div key={dest._id} className="p-4 border rounded-md shadow-sm">
               <div className="flex gap-4">
-                <img src={dest.image || '/placeholder.svg'} alt={getLocalized(dest.name)} className="w-28 h-20 object-cover rounded" />
+                {/* CLS fix: explicit width/height */}
+                <img src={dest.image || '/placeholder.svg'} alt={getLocalized(dest.name)} width="112" height="80" loading="lazy" className="w-28 h-20 object-cover rounded" />
                 <div>
                   <h2 className="text-lg font-semibold">{getLocalized(dest.name)}</h2>
                   <div className="text-sm text-muted-foreground">{getLocalized(dest.country)}</div>

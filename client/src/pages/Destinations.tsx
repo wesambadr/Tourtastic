@@ -204,9 +204,13 @@ const Destinations = () => {
               <div key={destination._id} onClick={() => handleDestinationClick(destination._id)} className="cursor-pointer">
                 <Card className="transition-all duration-300 hover:scale-105 hover:shadow-xl">
                   <CardHeader className="p-0 relative group">
+                    {/* CLS fix: explicit width/height for destination images */}
                     <img 
                       src={destination.image} 
                       alt={destination.name[currentLang]} 
+                      width="400"
+                      height="192"
+                      loading="lazy"
                       className="w-full h-48 object-cover rounded-t-md transition-transform duration-300 group-hover:scale-110" 
                     />
                     <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded-md text-sm flex items-center gap-1">
