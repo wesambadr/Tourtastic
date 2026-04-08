@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-03-25T15:15:56.444Z",
+  "timestamp": "2026-04-08T16:44:11.608Z",
   "environment": "sandbox",
   "method": "GET",
-  "url": "https://sandbox-api.seeru.travel/v1/flights/search/PZU-JED-20260510:JED-PZU-20260517/1/1/0",
+  "url": "https://sandbox-api.seeru.travel/v1/flights/search/PZU-JED-20260510:JED-PZU-20260517/1/1/0?cabin=e&direct=0",
   "headers": {
     "common": {
       "Accept": "application/json, text/plain, */*"
@@ -14,6 +14,7 @@
     "put": {},
     "patch": {},
     "Authorization": "Bearer eyJhbG...aWJA",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Accept-Encoding": "gzip"
   }
 }

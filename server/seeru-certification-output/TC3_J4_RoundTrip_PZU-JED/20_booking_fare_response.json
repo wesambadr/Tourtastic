@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-03-25T15:16:03.861Z",
+  "timestamp": "2026-04-08T16:44:17.897Z",
   "status": 200,
   "headers": {
     "server": "openresty",
-    "date": "Wed, 25 Mar 2026 15:16:02 GMT",
+    "date": "Wed, 08 Apr 2026 16:44:13 GMT",
     "content-type": "application/json; charset=utf-8",
     "transfer-encoding": "chunked",
     "connection": "keep-alive",
@@ -12,35 +12,35 @@
     "access-control-allow-origin": "*, https://docs.seeru.travel",
     "access-control-allow-methods": "HEAD, GET, POST, OPTIONS, GET, POST, OPTIONS",
     "access-control-allow-headers": "*, Origin, Content-Type, Accept, Authorization",
-    "x-p-st": "2026-03-25T18:15:59.110+03:00",
-    "x-i-st": "2026-03-25T18:15:59.252+03:00",
-    "x-i-et": "2026-03-25T18:16:02.603+03:00",
-    "etag": "W/\"d20-n6LRoZQY2ENi78CV8/h+GpQFPiU\"",
-    "x-p-et": "2026-03-25T18:16:02.657+03:00",
-    "x-p-d": "3.547",
+    "x-p-st": "2026-04-08T19:44:09.584+03:00",
+    "x-i-st": "2026-04-08T19:44:09.725+03:00",
+    "x-i-et": "2026-04-08T19:44:13.433+03:00",
+    "etag": "W/\"d4a-8Iv4mfUx6V6ZND/80XiHoJJ4v88\"",
+    "x-p-et": "2026-04-08T19:44:13.486+03:00",
+    "x-p-d": "3.902",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "3.552"
+    "x-execution-time": "3.906"
   },
   "body": {
     "status": "ok",
-    "result": 960.42,
+    "result": 1050.19,
     "booking": {
       "currency": "USD",
-      "price": 960.42,
-      "tax": 661.33,
+      "price": 1050.19,
+      "tax": 723.84,
       "fare_key": "W",
       "fare_brand": "W-PROMO FARE",
       "price_breakdowns": {
         "ADT": {
-          "total": 517.64,
-          "price": 160.53,
-          "tax": 357.11,
+          "total": 566.62,
+          "price": 175.17000000000002,
+          "tax": 391.45,
           "label": "Adult"
         },
         "CHD": {
-          "total": 442.77000000000004,
-          "price": 138.54999999999998,
-          "tax": 304.22,
+          "total": 483.58,
+          "price": 151.19,
+          "tax": 332.39,
           "label": "Child"
         }
       },
@@ -70,9 +70,9 @@
               "cabin": "Y",
               "cabin_name": "Economy",
               "seats": 9,
-              "class": "L",
-              "farebase": "L-PROMO FARE",
-              "equipment": "Boeing 737-800",
+              "class": "W",
+              "farebase": "W-PROMO FARE",
+              "equipment": "Boeing 737-800 (winglets) Passenger/BBJ2",
               "equipment_name": "Embraer",
               "flightnumber": "666",
               "iata": "J4",
@@ -128,9 +128,9 @@
           "stop_over": []
         },
         {
-          "duration": 60,
+          "duration": 70,
           "from": {
-            "date": "2026-05-17 08:45",
+            "date": "2026-05-17 04:55",
             "airport": "JED",
             "city": "Jeddah",
             "country": "Saudi Arabia",
@@ -139,7 +139,7 @@
             "airport_name": "Jeddah, King Abdulaziz Intl"
           },
           "to": {
-            "date": "2026-05-17 08:45",
+            "date": "2026-05-17 05:05",
             "airport": "PZU",
             "city": "Port Sudan",
             "country": "Sudan",
@@ -154,14 +154,14 @@
               "seats": 9,
               "class": "W",
               "farebase": "W-PROMO FARE",
-              "equipment": "Boeing 737-800",
+              "equipment": "Boeing 737-800 (winglets) Passenger/BBJ2",
               "equipment_name": "Embraer",
-              "flightnumber": "667",
+              "flightnumber": "669",
               "iata": "J4",
               "airline_name": "Badr Airlines",
-              "duration": 60,
+              "duration": 70,
               "from": {
-                "date": "2026-05-17 08:45",
+                "date": "2026-05-17 04:55",
                 "airport": "JED",
                 "city": "Jeddah",
                 "country": "Saudi Arabia",
@@ -170,7 +170,7 @@
                 "airport_name": "Jeddah, King Abdulaziz Intl"
               },
               "to": {
-                "date": "2026-05-17 08:45",
+                "date": "2026-05-17 05:05",
                 "airport": "PZU",
                 "city": "Port Sudan",
                 "country": "Sudan",
@@ -210,7 +210,7 @@
           "stop_over": []
         }
       ],
-      "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|L:W",
+      "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|04:55|05:05|2026-05-17|PZU|2 pc|W:W",
       "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
       "refundable_info": "Refundable",
       "instant_issue": true,
@@ -218,14 +218,14 @@
       "can_void": true,
       "can_refund": true,
       "can_exchange": true,
-      "search_id": "03f8f21f80ab0d7be8970706fcb6550a",
+      "search_id": "a0879ee2fa2636f3ba8d21298fde3c8c",
       "from_cache": false,
       "src": "DR",
       "total_pax_no_inf": 2,
-      "cache_time": 1774462404820,
-      "search_time": 1774462401113,
-      "result_time": 1774462404820,
-      "id": "53bfb57da0fce197e6a74c0c1fa9a8de"
+      "cache_time": 1775677363050,
+      "search_time": 1775677360043,
+      "result_time": 1775677363050,
+      "id": "d3beddbe5380fa498fdb9e5046c2cd31"
     }
   }
 }

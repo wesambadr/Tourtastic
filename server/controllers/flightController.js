@@ -13,7 +13,8 @@ const getSeeruApiInstance = () => {
     baseURL: seeruBaseURL,
     headers: {
       'Authorization': `Bearer ${seeruApiKey}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Accept-Encoding': 'gzip'
     },
     timeout: 30000, // 30 seconds timeout
     retry: 3, // Retry failed requests 3 times

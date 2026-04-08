@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-03-25T15:15:58.619Z",
+  "timestamp": "2026-04-08T16:44:13.796Z",
   "environment": "sandbox",
   "method": "GET",
-  "url": "https://sandbox-api.seeru.travel/v1/flights/result/a699b0e6-8a0d-42f5-b00e-cc1921d9d539",
+  "url": "https://sandbox-api.seeru.travel/v1/flights/result/f6d59179-95a9-4279-a5e4-769f499af688?after=1775677364238",
   "headers": {
     "common": {
       "Accept": "application/json, text/plain, */*"
@@ -14,6 +14,7 @@
     "put": {},
     "patch": {},
     "Authorization": "Bearer eyJhbG...aWJA",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Accept-Encoding": "gzip"
   }
 }

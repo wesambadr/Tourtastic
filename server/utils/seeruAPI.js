@@ -16,7 +16,8 @@ const seeruClient = axios.create({
   baseURL: process.env.SEERU_API_BASE_URL || 'https://sandbox-api.seeru.travel/v1/flights',
   headers: {
     'Authorization': `Bearer ${process.env.SEERU_API_KEY || ''}`,
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Accept-Encoding': 'gzip'
   },
   timeout: 10000
 });

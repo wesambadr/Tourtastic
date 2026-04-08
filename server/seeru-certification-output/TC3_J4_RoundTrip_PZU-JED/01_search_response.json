@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-03-25T15:15:56.446Z",
+  "timestamp": "2026-04-08T16:44:11.615Z",
   "status": 200,
   "headers": {
     "server": "openresty",
-    "date": "Wed, 25 Mar 2026 15:15:55 GMT",
+    "date": "Wed, 08 Apr 2026 16:44:07 GMT",
     "content-type": "application/json; charset=utf-8",
     "content-length": "52",
     "connection": "keep-alive",
@@ -11,16 +11,16 @@
     "access-control-allow-origin": "*, https://docs.seeru.travel",
     "access-control-allow-methods": "HEAD, GET, POST, OPTIONS, GET, POST, OPTIONS",
     "access-control-allow-headers": "*, Origin, Content-Type, Accept, Authorization",
-    "x-p-st": "2026-03-25T18:15:55.054+03:00",
-    "x-i-st": "2026-03-25T18:15:55.197+03:00",
-    "x-i-et": "2026-03-25T18:15:55.198+03:00",
-    "etag": "W/\"34-jqVFqnBlFt7eoVKG9B+f2pWXdlw\"",
-    "x-p-et": "2026-03-25T18:15:55.252+03:00",
-    "x-p-d": "0.198",
+    "x-p-st": "2026-04-08T19:44:07.006+03:00",
+    "x-i-st": "2026-04-08T19:44:07.148+03:00",
+    "x-i-et": "2026-04-08T19:44:07.149+03:00",
+    "etag": "W/\"34-+X5LVvxVmRBZPOzgJx36f1zoISw\"",
+    "x-p-et": "2026-04-08T19:44:07.203+03:00",
+    "x-p-d": "0.197",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "0.204"
+    "x-execution-time": "0.203"
   },
   "body": {
-    "search_id": "a699b0e6-8a0d-42f5-b00e-cc1921d9d539"
+    "search_id": "f6d59179-95a9-4279-a5e4-769f499af688"
   }
 }

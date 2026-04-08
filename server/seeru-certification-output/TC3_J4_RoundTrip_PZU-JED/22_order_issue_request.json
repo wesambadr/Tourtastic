@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-25T15:16:04.562Z",
+  "timestamp": "2026-04-08T16:44:18.190Z",
   "environment": "sandbox",
   "method": "POST",
   "url": "https://sandbox-api.seeru.travel/v1/flights/order/issue",
@@ -14,9 +14,10 @@
     "put": {},
     "patch": {},
     "Authorization": "Bearer eyJhbG...aWJA",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Accept-Encoding": "gzip"
   },
   "body": {
-    "order_id": "b2ad6830-b666-4bef-a05c-057bc4974b3d"
+    "order_id": "497dbc40-bb4b-4fcb-a904-979061975d47"
   }
 }

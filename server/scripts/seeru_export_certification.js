@@ -75,6 +75,7 @@ function createSeeruApi() {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
+      'Accept-Encoding': 'gzip',
     },
     timeout: 30000,
   });
@@ -104,7 +105,14 @@ async function captureExchange({ outDir, seq, endpointKey, method, url, requestH
 }
 
 async function requestAndCapture({ seeruApi, outDir, seq, endpointKey, method, urlPath, params, data }) {
-  const url = `${seeruApi.defaults.baseURL}${urlPath}`;
+  // Build full URL with query params for certification evidence
+  let fullUrl = `${seeruApi.defaults.baseURL}${urlPath}`;
+  if (params && Object.keys(params).length > 0) {
+    const queryString = Object.entries(params)
+      .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+      .join('&');
+    fullUrl = `${fullUrl}?${queryString}`;
+  }
   try {
     const response = await seeruApi.request({
       method,
@@ -118,7 +126,7 @@ async function requestAndCapture({ seeruApi, outDir, seq, endpointKey, method, u
       seq,
       endpointKey,
       method: method.toUpperCase(),
-      url,
+      url: fullUrl,
       requestHeaders: seeruApi.defaults.headers,
       requestBody: data,
       response,
@@ -132,7 +140,7 @@ async function requestAndCapture({ seeruApi, outDir, seq, endpointKey, method, u
       seq,
       endpointKey,
       method: method.toUpperCase(),
-      url,
+      url: fullUrl,
       requestHeaders: seeruApi.defaults.headers,
       requestBody: data,
       response: resp

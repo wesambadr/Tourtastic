@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-25T15:16:04.246Z",
+  "timestamp": "2026-04-08T16:44:18.042Z",
   "environment": "sandbox",
   "method": "POST",
   "url": "https://sandbox-api.seeru.travel/v1/flights/booking/save",
@@ -14,26 +14,27 @@
     "put": {},
     "patch": {},
     "Authorization": "Bearer eyJhbG...aWJA",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Accept-Encoding": "gzip"
   },
   "body": {
     "booking": {
       "currency": "USD",
-      "price": 960.42,
-      "tax": 661.33,
+      "price": 1050.19,
+      "tax": 723.84,
       "fare_key": "W",
       "fare_brand": "W-PROMO FARE",
       "price_breakdowns": {
         "ADT": {
-          "total": 517.64,
-          "price": 160.53,
-          "tax": 357.11,
+          "total": 566.62,
+          "price": 175.17000000000002,
+          "tax": 391.45,
           "label": "Adult"
         },
         "CHD": {
-          "total": 442.77000000000004,
-          "price": 138.54999999999998,
-          "tax": 304.22,
+          "total": 483.58,
+          "price": 151.19,
+          "tax": 332.39,
           "label": "Child"
         }
       },
@@ -63,9 +64,9 @@
               "cabin": "Y",
               "cabin_name": "Economy",
               "seats": 9,
-              "class": "L",
-              "farebase": "L-PROMO FARE",
-              "equipment": "Boeing 737-800",
+              "class": "W",
+              "farebase": "W-PROMO FARE",
+              "equipment": "Boeing 737-800 (winglets) Passenger/BBJ2",
               "equipment_name": "Embraer",
               "flightnumber": "666",
               "iata": "J4",
@@ -121,9 +122,9 @@
           "stop_over": []
         },
         {
-          "duration": 60,
+          "duration": 70,
           "from": {
-            "date": "2026-05-17 08:45",
+            "date": "2026-05-17 04:55",
             "airport": "JED",
             "city": "Jeddah",
             "country": "Saudi Arabia",
@@ -132,7 +133,7 @@
             "airport_name": "Jeddah, King Abdulaziz Intl"
           },
           "to": {
-            "date": "2026-05-17 08:45",
+            "date": "2026-05-17 05:05",
             "airport": "PZU",
             "city": "Port Sudan",
             "country": "Sudan",
@@ -147,14 +148,14 @@
               "seats": 9,
               "class": "W",
               "farebase": "W-PROMO FARE",
-              "equipment": "Boeing 737-800",
+              "equipment": "Boeing 737-800 (winglets) Passenger/BBJ2",
               "equipment_name": "Embraer",
-              "flightnumber": "667",
+              "flightnumber": "669",
               "iata": "J4",
               "airline_name": "Badr Airlines",
-              "duration": 60,
+              "duration": 70,
               "from": {
-                "date": "2026-05-17 08:45",
+                "date": "2026-05-17 04:55",
                 "airport": "JED",
                 "city": "Jeddah",
                 "country": "Saudi Arabia",
@@ -163,7 +164,7 @@
                 "airport_name": "Jeddah, King Abdulaziz Intl"
               },
               "to": {
-                "date": "2026-05-17 08:45",
+                "date": "2026-05-17 05:05",
                 "airport": "PZU",
                 "city": "Port Sudan",
                 "country": "Sudan",
@@ -203,7 +204,7 @@
           "stop_over": []
         }
       ],
-      "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|L:W",
+      "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|04:55|05:05|2026-05-17|PZU|2 pc|W:W",
       "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
       "refundable_info": "Refundable",
       "instant_issue": true,
@@ -211,14 +212,14 @@
       "can_void": true,
       "can_refund": true,
       "can_exchange": true,
-      "search_id": "03f8f21f80ab0d7be8970706fcb6550a",
+      "search_id": "a0879ee2fa2636f3ba8d21298fde3c8c",
       "from_cache": false,
       "src": "DR",
       "total_pax_no_inf": 2,
-      "cache_time": 1774462404820,
-      "search_time": 1774462401113,
-      "result_time": 1774462404820,
-      "id": "53bfb57da0fce197e6a74c0c1fa9a8de"
+      "cache_time": 1775677363050,
+      "search_time": 1775677360043,
+      "result_time": 1775677363050,
+      "id": "d3beddbe5380fa498fdb9e5046c2cd31"
     },
     "passengers": [
       {

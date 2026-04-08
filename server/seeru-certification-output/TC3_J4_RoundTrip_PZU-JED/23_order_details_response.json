@@ -1,33 +1,33 @@
 {
-  "timestamp": "2026-03-25T15:16:04.766Z",
+  "timestamp": "2026-04-08T16:44:18.483Z",
   "status": 201,
   "headers": {
     "server": "openresty",
-    "date": "Wed, 25 Mar 2026 15:16:03 GMT",
+    "date": "Wed, 08 Apr 2026 16:44:13 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "7040",
+    "content-length": "7208",
     "connection": "keep-alive",
     "x-powered-by": "Express",
     "vary": "Origin",
-    "etag": "W/\"1b80-2ZBOJx+bO9bG+6x7KwjHQja+9Nc\"",
-    "x-p-et": "2026-03-25T18:16:03.557+03:00",
-    "x-p-d": "0.059",
+    "etag": "W/\"1c28-T9ABgv+004nJldnmSk5MSypyBQY\"",
+    "x-p-et": "2026-04-08T19:44:13.988+03:00",
+    "x-p-d": "0.054",
     "access-control-allow-origin": "https://docs.seeru.travel",
     "access-control-allow-methods": "GET, POST, OPTIONS",
     "access-control-allow-headers": "Origin, Content-Type, Accept, Authorization",
     "access-control-allow-credentials": "true",
-    "x-execution-time": "0.066"
+    "x-execution-time": "0.058"
   },
   "body": {
     "status": "success",
     "message": "Booking details fetched successfully",
-    "order_id": "b2ad6830-b666-4bef-a05c-057bc4974b3d",
-    "reservation_no": "H5SWZF",
+    "order_id": "497dbc40-bb4b-4fcb-a904-979061975d47",
+    "reservation_no": "7EBGRZ",
     "payload": {
       "booking": {
-        "id": "53bfb57da0fce197e6a74c0c1fa9a8de",
+        "id": "d3beddbe5380fa498fdb9e5046c2cd31",
         "src": "DR",
-        "tax": 661.33,
+        "tax": 723.84,
         "legs": [
           {
             "to": {
@@ -74,7 +74,7 @@
             "cabin": "Y",
             "seats": 9,
             "stops": [],
-            "leg_id": "885bcf7b-8ff3-450d-b262-d24e5ec83d1b",
+            "leg_id": "3f0fd838-c927-448c-93d1-17780608299a",
             "duration": 60,
             "segments": [
               {
@@ -98,11 +98,11 @@
                 },
                 "iata": "J4",
                 "cabin": "Y",
-                "class": "L",
+                "class": "W",
                 "seats": 9,
                 "duration": 60,
-                "farebase": "L-PROMO FARE",
-                "equipment": "Boeing 737-800",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800 (winglets) Passenger/BBJ2",
                 "cabin_name": "Economy",
                 "airline_name": "Badr Airlines",
                 "flightnumber": "666",
@@ -115,7 +115,7 @@
           {
             "to": {
               "city": "Port Sudan",
-              "date": "2026-05-17 08:45",
+              "date": "2026-05-17 05:05",
               "airport": "PZU",
               "country": "Sudan",
               "terminal": null,
@@ -144,7 +144,7 @@
             },
             "from": {
               "city": "Jeddah",
-              "date": "2026-05-17 08:45",
+              "date": "2026-05-17 04:55",
               "airport": "JED",
               "country": "Saudi Arabia",
               "terminal": "N",
@@ -157,13 +157,13 @@
             "cabin": "Y",
             "seats": 9,
             "stops": [],
-            "leg_id": "580464e0-5e46-44ef-a510-6c94479784b7",
-            "duration": 60,
+            "leg_id": "88fdb70d-63d3-43e9-a4fe-65e4ab837b44",
+            "duration": 70,
             "segments": [
               {
                 "to": {
                   "city": "Port Sudan",
-                  "date": "2026-05-17 08:45",
+                  "date": "2026-05-17 05:05",
                   "airport": "PZU",
                   "country": "Sudan",
                   "terminal": null,
@@ -172,7 +172,7 @@
                 },
                 "from": {
                   "city": "Jeddah",
-                  "date": "2026-05-17 08:45",
+                  "date": "2026-05-17 04:55",
                   "airport": "JED",
                   "country": "Saudi Arabia",
                   "terminal": "N",
@@ -183,12 +183,12 @@
                 "cabin": "Y",
                 "class": "W",
                 "seats": 9,
-                "duration": 60,
+                "duration": 70,
                 "farebase": "W-PROMO FARE",
-                "equipment": "Boeing 737-800",
+                "equipment": "Boeing 737-800 (winglets) Passenger/BBJ2",
                 "cabin_name": "Economy",
                 "airline_name": "Badr Airlines",
-                "flightnumber": "667",
+                "flightnumber": "669",
                 "equipment_name": "Embraer"
               }
             ],
@@ -196,35 +196,35 @@
             "cabin_name": "Economy"
           }
         ],
-        "price": 960.42,
-        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|08:45|08:45|2026-05-17|PZU|2 pc|L:W",
+        "price": 1050.19,
+        "trip_id": "PZU|2026-05-10|J4|06:00|08:00|2026-05-10|JED|46 kg_JED|2026-05-17|J4|04:55|05:05|2026-05-17|PZU|2 pc|W:W",
         "can_hold": true,
         "can_void": true,
         "currency": "USD",
         "fare_key": "W",
-        "search_id": "03f8f21f80ab0d7be8970706fcb6550a",
-        "cache_time": 1774462404820,
+        "search_id": "a0879ee2fa2636f3ba8d21298fde3c8c",
+        "cache_time": 1775677363050,
         "can_refund": true,
         "fare_brand": "W-PROMO FARE",
         "from_cache": false,
-        "result_time": 1774462404820,
-        "search_time": 1774462401113,
+        "result_time": 1775677363050,
+        "search_time": 1775677360043,
         "can_exchange": true,
         "search_query": "{\"trips\":[{\"from\":\"PZU\",\"to\":\"JED\",\"date\":\"2026/05/10\"},{\"from\":\"JED\",\"to\":\"PZU\",\"date\":\"2026/05/17\"}],\"adt\":1,\"chd\":1,\"inf\":0,\"options\":{\"direct\":false,\"cabin\":\"1\",\"multiCity\":false,\"cur\":\"USD\",\"lang\":\"en\",\"office\":\"TOURTASTIC-TEST\",\"airline\":\"\"}}",
         "instant_issue": true,
         "refundable_info": "Refundable",
         "price_breakdowns": {
           "ADT": {
-            "tax": 357.11,
+            "tax": 391.45,
             "label": "Adult",
-            "price": 160.53,
-            "total": 517.64
+            "price": 175.17000000000002,
+            "total": 566.62
           },
           "CHD": {
-            "tax": 304.22,
+            "tax": 332.39,
             "label": "Child",
-            "price": 138.54999999999998,
-            "total": 442.77000000000004
+            "price": 151.19,
+            "total": 483.58
           }
         },
         "total_pax_no_inf": 2
@@ -263,26 +263,26 @@
         }
       ]
     },
-    "orderStatus": "ticketing",
+    "orderStatus": "ticketed",
     "transactions": [
       {
-        "transaction_id": "0805b1f5-402d-4a7e-a593-fc614ff137aa",
-        "amount": "-960.42",
-        "date": "2026-03-25 15:16:03",
+        "transaction_id": "b38a916a-41b6-4085-a6cf-434bb4f46433",
+        "amount": "-1050.19",
+        "date": "2026-04-08 16:42:50",
         "status": "pending",
         "remarks": "issue booking"
       }
     ],
     "tickets": [
       {
-        "ticket_id": "9558acf7-bd12-46c1-b28e-87e1ca32ed6b",
-        "ticket_ref": "",
-        "airline_pnr": "",
+        "ticket_id": "7a7fbee7-90b2-4737-aef9-add99f7b11fb",
+        "ticket_ref": "7EBGRZ",
+        "airline_pnr": "DEV123",
         "refundable_info": null,
         "fare_key": null,
         "legs": [
           {
-            "leg_id": "885bcf7b-8ff3-450d-b262-d24e5ec83d1b",
+            "leg_id": "3f0fd838-c927-448c-93d1-17780608299a",
             "duration": 60,
             "bags": {
               "ADT": {
@@ -326,11 +326,11 @@
                 },
                 "iata": "J4",
                 "cabin": "Y",
-                "class": "L",
+                "class": "W",
                 "seats": 9,
                 "duration": 60,
-                "farebase": "L-PROMO FARE",
-                "equipment": "Boeing 737-800",
+                "farebase": "W-PROMO FARE",
+                "equipment": "Boeing 737-800 (winglets) Passenger/BBJ2",
                 "cabin_name": "Economy",
                 "airline_name": "Badr Airlines",
                 "flightnumber": "666",
@@ -339,8 +339,8 @@
             ]
           },
           {
-            "leg_id": "580464e0-5e46-44ef-a510-6c94479784b7",
-            "duration": 60,
+            "leg_id": "88fdb70d-63d3-43e9-a4fe-65e4ab837b44",
+            "duration": 70,
             "bags": {
               "ADT": {
                 "cabin": {
@@ -365,7 +365,7 @@
               {
                 "to": {
                   "city": "Port Sudan",
-                  "date": "2026-05-17 08:45",
+                  "date": "2026-05-17 05:05",
                   "airport": "PZU",
                   "country": "Sudan",
                   "terminal": null,
@@ -374,7 +374,7 @@
                 },
                 "from": {
                   "city": "Jeddah",
-                  "date": "2026-05-17 08:45",
+                  "date": "2026-05-17 04:55",
                   "airport": "JED",
                   "country": "Saudi Arabia",
                   "terminal": "N",
@@ -385,33 +385,33 @@
                 "cabin": "Y",
                 "class": "W",
                 "seats": 9,
-                "duration": 60,
+                "duration": 70,
                 "farebase": "W-PROMO FARE",
-                "equipment": "Boeing 737-800",
+                "equipment": "Boeing 737-800 (winglets) Passenger/BBJ2",
                 "cabin_name": "Economy",
                 "airline_name": "Badr Airlines",
-                "flightnumber": "667",
+                "flightnumber": "669",
                 "equipment_name": "Embraer"
               }
             ]
           }
         ],
         "src": "DR",
-        "status": "draft",
+        "status": "open",
         "passengers": [
           {
             "passenger_id": "5a2fb608-4705-4de2-9666-b6dcaaca42e4",
             "legs": [
               {
-                "leg_id": "885bcf7b-8ff3-450d-b262-d24e5ec83d1b",
-                "pnr": null,
-                "etkt": null
+                "leg_id": "3f0fd838-c927-448c-93d1-17780608299a",
+                "pnr": "DEV123",
+                "etkt": "01234567890123"
               },
               null,
               {
-                "leg_id": "580464e0-5e46-44ef-a510-6c94479784b7",
-                "pnr": null,
-                "etkt": null
+                "leg_id": "88fdb70d-63d3-43e9-a4fe-65e4ab837b44",
+                "pnr": "DEV123",
+                "etkt": "01234567890123"
               },
               null
             ],
@@ -431,15 +431,15 @@
             "legs": [
               null,
               {
-                "leg_id": "885bcf7b-8ff3-450d-b262-d24e5ec83d1b",
-                "pnr": null,
-                "etkt": null
+                "leg_id": "3f0fd838-c927-448c-93d1-17780608299a",
+                "pnr": "DEV123",
+                "etkt": "01234567890123"
               },
               null,
               {
-                "leg_id": "580464e0-5e46-44ef-a510-6c94479784b7",
-                "pnr": null,
-                "etkt": null
+                "leg_id": "88fdb70d-63d3-43e9-a4fe-65e4ab837b44",
+                "pnr": "DEV123",
+                "etkt": "01234567890123"
               }
             ],
             "type": "CHD",

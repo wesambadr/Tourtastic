@@ -1,30 +1,14 @@
 {
-  "generatedAt": "2026-03-25T15:16:06.276Z",
+  "generatedAt": "2026-04-08T16:44:20.030Z",
   "baseURL": "https://sandbox-api.seeru.travel/v1/flights",
   "cases": [
-    {
-      "tc": "TC1",
-      "label": "SU_OneWay_SVO-DEL_08MAY",
-      "success": true,
-      "outDir": "D:\\toursatic\\Tourtastic_Back-End\\home\\Tourtastic\\server\\seeru-certification-output\\TC1_SU_OneWay_SVO-DEL_08MAY",
-      "searchId": "c7806a4c-7ef3-429d-9607-c8576c5a2b8e",
-      "orderId": "65f8f5c4-a7ed-4396-86cb-feffb22f04b7"
-    },
-    {
-      "tc": "TC2",
-      "label": "SU_MultiCity_2ADT",
-      "success": true,
-      "outDir": "D:\\toursatic\\Tourtastic_Back-End\\home\\Tourtastic\\server\\seeru-certification-output\\TC2_SU_MultiCity_2ADT",
-      "searchId": "6e860652-6dbb-40f9-ac80-f80766e5d45f",
-      "orderId": "a4511b2f-9ab6-46a2-8657-55734b35809c"
-    },
     {
       "tc": "TC3",
       "label": "J4_RoundTrip_PZU-JED",
       "success": true,
       "outDir": "D:\\toursatic\\Tourtastic_Back-End\\home\\Tourtastic\\server\\seeru-certification-output\\TC3_J4_RoundTrip_PZU-JED",
-      "searchId": "a699b0e6-8a0d-42f5-b00e-cc1921d9d539",
-      "orderId": "b2ad6830-b666-4bef-a05c-057bc4974b3d"
+      "searchId": "f6d59179-95a9-4279-a5e4-769f499af688",
+      "orderId": "497dbc40-bb4b-4fcb-a904-979061975d47"
     }
   ]
 }
