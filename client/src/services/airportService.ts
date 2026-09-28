@@ -53,9 +53,8 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
 export const findNearestAirport = async (latitude: number, longitude: number): Promise<Airport> => {
   try {
     
-    // Get all airports from the backend
-    const response = await api.get('/airports');
-    const allAirports = response.data.data;
+    // Get all airports from the backend using cache
+    const allAirports = await fetchAllAirportsCached();
     
     
     // Filter for commercial airports only
@@ -194,11 +193,67 @@ export const findCapitalAirport = async (latitude: number, longitude: number): P
 
 // Cache for airports per language
 const _airportsCache: Record<string, Record<string, Airport>> = {};
+let _allAirportsMemoryCache: RawAirportData[] | null = null;
+
+const CACHE_KEY_PREFIX = 'tourtastic_airports_cache_';
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+// Helper to fetch all airports with localStorage and memory caching
+const fetchAllAirportsCached = async (): Promise<RawAirportData[]> => {
+  if (_allAirportsMemoryCache && _allAirportsMemoryCache.length > 0) {
+    return _allAirportsMemoryCache;
+  }
+
+  try {
+    const cachedData = localStorage.getItem(`${CACHE_KEY_PREFIX}all`);
+    const cachedTime = localStorage.getItem(`${CACHE_KEY_PREFIX}all_time`);
+
+    if (cachedData && cachedTime && (Date.now() - Number(cachedTime) < CACHE_TTL_MS)) {
+      const parsed = JSON.parse(cachedData);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        _allAirportsMemoryCache = parsed;
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to read airports from localStorage cache', e);
+  }
+
+  const response = await api.get('/airports');
+  const allAirports: RawAirportData[] = response.data.data || [];
+
+  if (allAirports.length > 0) {
+    _allAirportsMemoryCache = allAirports;
+    try {
+      localStorage.setItem(`${CACHE_KEY_PREFIX}all`, JSON.stringify(allAirports));
+      localStorage.setItem(`${CACHE_KEY_PREFIX}all_time`, String(Date.now()));
+    } catch (e) {
+      console.warn('Failed to save airports to localStorage', e);
+    }
+  }
+
+  return allAirports;
+};
 
 // Fetch airports and return a map keyed by IATA code, localized by lang ('en'|'ar')
 export const getAirportsMap = async (lang = 'en'): Promise<Record<string, Airport>> => {
   const key = lang || 'en';
   if (_airportsCache[key]) return _airportsCache[key];
+
+  try {
+    const cachedMap = localStorage.getItem(`${CACHE_KEY_PREFIX}map_${key}`);
+    const cachedTime = localStorage.getItem(`${CACHE_KEY_PREFIX}map_${key}_time`);
+
+    if (cachedMap && cachedTime && (Date.now() - Number(cachedTime) < CACHE_TTL_MS)) {
+      const parsed = JSON.parse(cachedMap);
+      if (Object.keys(parsed).length > 0) {
+        _airportsCache[key] = parsed;
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to read airports map from localStorage cache', e);
+  }
 
   try {
     const resp = await api.get(`/airports?lang=${key}`);
@@ -209,6 +264,12 @@ export const getAirportsMap = async (lang = 'en'): Promise<Record<string, Airpor
       if (code) map[code] = a;
     });
     _airportsCache[key] = map;
+    try {
+      localStorage.setItem(`${CACHE_KEY_PREFIX}map_${key}`, JSON.stringify(map));
+      localStorage.setItem(`${CACHE_KEY_PREFIX}map_${key}_time`, String(Date.now()));
+    } catch (e) {
+      console.warn('Failed to save airports map to localStorage', e);
+    }
     return map;
   } catch (err) {
     console.error('Failed to load airports map', err);

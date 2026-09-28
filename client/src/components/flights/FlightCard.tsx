@@ -277,18 +277,13 @@ const FlightCard: React.FC<FlightCardProps> = ({
           ))}
         </div>
         
-        {/* Price and Action Section */}
+        {/* Price and Action Section: ONLY Total Price is displayed per requirement #3 */}
         <div className="flex flex-col items-center lg:items-end gap-3 w-full lg:w-auto lg:min-w-[220px] px-2 sm:px-4">
-          {/* Black price: adult base */}
-          <div className="text-xl sm:text-2xl font-bold text-center lg:text-right break-words">
-            {formatSypFromUsd(adultBase)}
+          <div className="text-2xl sm:text-3xl font-extrabold text-tourtastic-blue text-center lg:text-right break-words">
+            {formatSypFromUsd(totalPrice)}
           </div>
-          <div className="text-xs text-gray-600 text-center lg:text-right whitespace-normal">
-            {t('perAdult', 'للبالغ')} {t('base', 'السعر الأساسي')}
-          </div>
-          {/* Adult tax line */}
-          <div className="text-xs text-gray-600 text-center lg:text-right whitespace-normal">
-            {t('tax', 'الضرائب')}: {formatSypFromUsd(adultTax)}
+          <div className="text-xs text-gray-500 text-center lg:text-right whitespace-normal">
+            {t('totalPriceIncludesTaxes', 'السعر الإجمالي شامل الضرائب')}
           </div>
 
           {/* Passenger counts */}
@@ -296,11 +291,6 @@ const FlightCard: React.FC<FlightCardProps> = ({
             {(flight.search_query?.adt || 0) > 0 && `${flight.search_query.adt} ${t('adults', 'بالغ')}`}
             {(flight.search_query?.chd || 0) > 0 && ` ${flight.search_query.chd} ${t('children', 'طفل')}`}
             {(flight.search_query?.inf || 0) > 0 && ` ${flight.search_query.inf} ${t('infants', 'رضيع')}`}
-          </div>
-          
-          {/* Blue total */}
-          <div className="text-xs font-semibold text-tourtastic-blue text-center lg:text-right">
-            {t('total', 'المجموع')}: {formatSypFromUsd(totalPrice)}
           </div>
 
           <div className="text-xs text-gray-600 text-center lg:text-right flex items-center justify-center lg:justify-end gap-1 px-2 max-w-full">

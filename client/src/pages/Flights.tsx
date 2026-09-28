@@ -58,6 +58,8 @@ interface FilterState {
     min: number;
     max: number;
   };
+  directOnly: boolean;
+  withBaggageOnly: boolean;
 }
 
 interface FilterSidebarProps {
@@ -77,6 +79,31 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   return (
     <Card className="sticky top-4 p-4">
       <CardContent className="space-y-6" dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
+        {/* Direct & Baggage Quick Filters */}
+        <div className="border-b pb-4 space-y-3">
+          <h3 className="font-semibold text-right">{t('quickFilters', 'فلاتر سريعة')}</h3>
+          <div className="flex items-center justify-end gap-2">
+            <Label htmlFor="directOnly" className="text-right flex-grow cursor-pointer">
+              {t('directFlightsOnly', 'رحلات مباشرة فقط')}
+            </Label>
+            <Checkbox
+              id="directOnly"
+              checked={filters.directOnly}
+              onCheckedChange={(checked) => setFilters(prev => ({ ...prev, directOnly: !!checked }))}
+            />
+          </div>
+          <div className="flex items-center justify-end gap-2">
+            <Label htmlFor="withBaggageOnly" className="text-right flex-grow cursor-pointer">
+              {t('withBaggageOnly', 'رحلات شاملة الوزن / أمتعة فقط')}
+            </Label>
+            <Checkbox
+              id="withBaggageOnly"
+              checked={filters.withBaggageOnly}
+              onCheckedChange={(checked) => setFilters(prev => ({ ...prev, withBaggageOnly: !!checked }))}
+            />
+          </div>
+        </div>
+
         {/* Sort By Filter */}
         <div>
           <h3 className="font-semibold mb-3 text-right">
@@ -242,7 +269,9 @@ const Flights = () => {
     priceRange: {
       min: 0,
       max: 10000
-    }
+    },
+    directOnly: false,
+    withBaggageOnly: false,
   });
   const [fromAirportNames, setFromAirportNames] = useState<string[]>(['']);
   const [toAirportNames, setToAirportNames] = useState<string[]>(['']);
@@ -1359,6 +1388,19 @@ const Flights = () => {
                     if (flight.price < filters.priceRange.min ||
                       flight.price > filters.priceRange.max) {
                       return false;
+                    }
+
+                    // Apply direct flights filter
+                    if (filters.directOnly) {
+                      const isDirect = flight.legs?.[0]?.stops_count === 0 || flight.legs?.[0]?.segments?.length === 1;
+                      if (!isDirect) return false;
+                    }
+
+                    // Apply with baggage filter
+                    if (filters.withBaggageOnly) {
+                      const bagDesc = (flight.baggage_allowance || flight.legs?.[0]?.bags?.ADT?.checked?.desc || '').toLowerCase();
+                      const hasBaggage = bagDesc && !bagDesc.includes('0kg') && !bagDesc.includes('0 kg') && !bagDesc.includes('0pc') && !bagDesc.includes('no bag') && !bagDesc.includes('بدون أمتعة');
+                      if (!hasBaggage) return false;
                     }
 
                     // Apply time of day filter for departure

@@ -28,17 +28,17 @@ const Footer: React.FC = () => {
             <p className="text-gray-300 mt-4 text-sm">
               {t('footerAbout', 'Tourtastic is your premium travel partner, offering exceptional flight booking services to destinations around the world.')}
             </p>
-            <div className="flex space-s-4 mt-6 rtl:space-x-reverse">
-              <a href="#" className="text-gray-400 hover:text-tourtastic-blue transition-colors">
+            <div className="flex space-s-4 mt-6 rtl:space-x-reverse gap-3">
+              <a href="https://facebook.com/tourtastic" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-400 hover:text-tourtastic-blue transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-tourtastic-blue transition-colors">
+              <a href="https://instagram.com/tourtastic" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-400 hover:text-tourtastic-blue transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-tourtastic-blue transition-colors">
+              <a href="https://twitter.com/tourtastic" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-gray-400 hover:text-tourtastic-blue transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-tourtastic-blue transition-colors">
+              <a href="https://youtube.com/@tourtastic" target="_blank" rel="noopener noreferrer" aria-label="Youtube" className="text-gray-400 hover:text-tourtastic-blue transition-colors">
                 <Youtube size={20} />
               </a>
             </div>
@@ -49,27 +49,22 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-bold mb-4">{t('quickLinks', 'Quick Links')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
+                <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
                   {t('home', 'Home')}
                 </Link>
               </li>
               <li>
-                <Link to="/flights" className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
+                <Link to="/flights" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
                   {t('flights', 'Flights')}
                 </Link>
               </li>
               <li>
-                <Link to="/destinations" className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
-                  {t('destinations', 'Destinations')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
+                <Link to="/about" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
                   {t('about', 'About Us')}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
+                <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
                   {t('contact', 'Contact')}
                 </Link>
               </li>

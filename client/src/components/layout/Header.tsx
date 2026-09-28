@@ -103,9 +103,6 @@ const Header: React.FC = () => {
           <NavLink to="/flights" className={({isActive}) => `nav-link ${isActive ? 'nav-link-active' : ''}`}>
             {t('flights')}
           </NavLink>
-          <NavLink to="/destinations" className={({isActive}) => `nav-link ${isActive ? 'nav-link-active' : ''}`}>
-            {t('destinations')}
-          </NavLink>
           <NavLink to="/about" className={({isActive}) => `nav-link ${isActive ? 'nav-link-active' : ''}`}>
             {t('about')}
           </NavLink>
@@ -229,13 +226,6 @@ const Header: React.FC = () => {
                 onClick={toggleMenu}
               >
                 {t('flights')}
-              </NavLink>
-              <NavLink 
-                to="/destinations" 
-                className={({isActive}) => `py-2 px-4 ${isActive ? 'text-tourtastic-blue font-semibold' : 'text-gray-800'}`}
-                onClick={toggleMenu}
-              >
-                {t('destinations')}
               </NavLink>
               <NavLink 
                 to="/about" 

@@ -326,7 +326,7 @@ const SearchForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-xl p-6 lg:p-8 -mt-16 relative z-20 mx-auto max-w-6xl">
+    <div id="search-form-widget" className="bg-white rounded-lg shadow-xl p-6 lg:p-8 -mt-16 relative z-20 mx-auto max-w-6xl">
       {/* Flight Type Tabs */}
       <div className="flex space-x-1 rounded-lg bg-gray-100 p-1 mb-6">
         <button

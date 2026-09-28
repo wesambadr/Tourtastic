@@ -1115,11 +1115,16 @@ const Cart = () => {
                         </Button>
 
                         <Button
-                          onClick={() => authenticatedAction(() => openPassengerDialog(booking))}
+                          onClick={() => openPassengerDialog(booking)}
                           variant="ghost"
-                          className={`w-full border border-gray-200 py-4 rounded-lg ${i18n.language === 'ar' ? 'flex-row-reverse' : ''}`}
+                          className={`w-full border border-gray-200 py-4 rounded-lg flex items-center justify-center gap-2 ${i18n.language === 'ar' ? 'flex-row-reverse' : ''}`}
                         >
-                          {t('enterPassengerDetails', 'Enter Passenger Details')}
+                          <Users className="h-5 w-5 text-tourtastic-blue" />
+                          <span>
+                            {!localStorage.getItem('token')
+                              ? t('continueAsGuest', 'المتابعة كضيف / أدخل بيانات المسافر')
+                              : t('enterPassengerDetails', 'Enter Passenger Details')}
+                          </span>
                         </Button>
 
                         <Button

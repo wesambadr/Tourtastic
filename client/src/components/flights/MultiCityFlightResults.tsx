@@ -57,6 +57,7 @@ const MultiCityFlightResults: React.FC<MultiCityFlightResultsProps> = ({
 
   const { i18n } = useTranslation();
   const [airportsMap, setAirportsMap] = useState<Record<string, import('@/services/airportService').Airport>>({});
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     let mounted = true;
@@ -144,20 +145,87 @@ const MultiCityFlightResults: React.FC<MultiCityFlightResultsProps> = ({
           ) : section.flights.length > 0 ? (
             <>
               <div className="space-y-4">
-                {section.flights.slice(0, section.visibleCount).map((flight) => (
-                  <div key={flight.trip_id}>
-                    <FlightCard
-                      flight={flight}
-                      onFlightSelection={() => onFlightSelection(flight, section.searchIndex)}
-                      selectedFlight={selectedFlights[section.searchIndex]}
-                      showDetails={showDetails}
-                      onAddToCart={() => onAddToCart(flight)}
-                    />
-                    {showDetails === flight.trip_id && (
-                      <FlightDetails flight={flight} onAddToCart={onAddToCart} />)
+                {(() => {
+                  const visibleFlights = section.flights.slice(0, section.visibleCount);
+                  // Group flights by Airline IATA + Flight Number or Airline Name
+                  const groupedMap = new Map<string, Flight[]>();
+                  visibleFlights.forEach(flight => {
+                    const iata = flight.legs?.[0]?.segments?.[0]?.iata || '';
+                    const flightNum = flight.legs?.[0]?.segments?.[0]?.flightnumber || '';
+                    const airlineName = flight.legs?.[0]?.segments?.[0]?.airline_name || 'flight';
+                    const groupKey = iata && flightNum ? `${iata}-${flightNum}` : `${airlineName}-${flight.trip_id}`;
+                    
+                    if (!groupedMap.has(groupKey)) {
+                      groupedMap.set(groupKey, []);
                     }
-                  </div>
-                ))}
+                    groupedMap.get(groupKey)!.push(flight);
+                  });
+
+                  return Array.from(groupedMap.entries()).map(([groupKey, groupFlights]) => {
+                    // Sort inside group by price ascending
+                    const sortedGroup = [...groupFlights].sort((a, b) => a.price - b.price);
+                    const primaryFlight = sortedGroup[0];
+                    const otherOptions = sortedGroup.slice(1);
+                    const isExpanded = expandedGroups[groupKey] || false;
+                    const airlineName = primaryFlight.legs?.[0]?.segments?.[0]?.airline_name || '';
+
+                    return (
+                      <div key={groupKey} className="space-y-2 border rounded-xl p-2 bg-gray-50/50">
+                        <div>
+                          <FlightCard
+                            flight={primaryFlight}
+                            onFlightSelection={() => onFlightSelection(primaryFlight, section.searchIndex)}
+                            selectedFlight={selectedFlights[section.searchIndex]}
+                            showDetails={showDetails}
+                            onAddToCart={() => onAddToCart(primaryFlight)}
+                          />
+                          {showDetails === primaryFlight.trip_id && (
+                            <FlightDetails flight={primaryFlight} onAddToCart={onAddToCart} />
+                          )}
+                        </div>
+
+                        {otherOptions.length > 0 && (
+                          <div className="pt-1 px-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => setExpandedGroups(prev => ({ ...prev, [groupKey]: !prev[groupKey] }))}
+                              className="w-full text-xs text-tourtastic-blue border-tourtastic-blue/30 hover:bg-blue-50 flex items-center justify-between"
+                            >
+                              <span>
+                                {isExpanded
+                                  ? (i18n.language === 'ar' ? 'إخفاء الخيارات الأخرى' : 'Hide alternative fares')
+                                  : (i18n.language === 'ar'
+                                      ? `عرض الخيارات الأخرى لهذه الرحلة (${otherOptions.length} خيارات إضافية على طيران ${airlineName})`
+                                      : `View alternative fares for this flight (${otherOptions.length} extra fares on ${airlineName})`)}
+                              </span>
+                              <span>{isExpanded ? '▲' : '▼'}</span>
+                            </Button>
+
+                            {isExpanded && (
+                              <div className="mt-3 space-y-3 pr-2 md:pr-4 border-r-2 border-tourtastic-blue/30">
+                                {otherOptions.map(altFlight => (
+                                  <div key={altFlight.trip_id}>
+                                    <FlightCard
+                                      flight={altFlight}
+                                      onFlightSelection={() => onFlightSelection(altFlight, section.searchIndex)}
+                                      selectedFlight={selectedFlights[section.searchIndex]}
+                                      showDetails={showDetails}
+                                      onAddToCart={() => onAddToCart(altFlight)}
+                                    />
+                                    {showDetails === altFlight.trip_id && (
+                                      <FlightDetails flight={altFlight} onAddToCart={onAddToCart} />
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  });
+                })()}
               </div>
 
               {section.hasMore && (
@@ -211,7 +279,7 @@ const MultiCityFlightResults: React.FC<MultiCityFlightResultsProps> = ({
         </CardContent>
       </Card>
     );
-  }, [airportsMap, i18n.language, t, selectedFlights, showDetails, onAddToCart, onFlightSelection, onLoadMore]);
+  }, [airportsMap, i18n.language, t, selectedFlights, showDetails, onAddToCart, onFlightSelection, onLoadMore, expandedGroups]);
 
   if (searchSections.length === 0) {
     return (

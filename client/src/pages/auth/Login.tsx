@@ -39,19 +39,16 @@ const Login: React.FC = () => {
 
     try {
       // Determine if the input is an email or username
-      const isEmail = formData.email.includes('@');
+      const trimmedInput = formData.email.trim();
+      const isEmail = trimmedInput.includes('@');
       const loginData = {
         password: formData.password,
-        ...(isEmail ? { email: formData.email } : { username: formData.email })
+        ...(isEmail ? { email: trimmedInput } : { username: trimmedInput })
       };
       
       const response = await api.post('/auth/login', loginData);
 
-      
-
-      if (response.data.success) {
-        
-        
+      if (response.data && response.data.success) {
         // Log the user in with both tokens and user data
         login(
           {
@@ -61,60 +58,56 @@ const Login: React.FC = () => {
           response.data.user
         );
         
-        // Sync local cart items if any exist
-        const localCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-        if (localCartItems.length > 0) {
-          try {
-            // Create bookings for each local cart item
-                for (const raw of localCartItems) {
-                  // Normalize dates: server expects `departureDate`
-                  const departureDate = raw.departureDate || raw.departureTime || raw.departure_time ||
-                    raw.selectedFlight?.departureTime || raw.selectedFlight?.legs?.[0]?.from?.date || null;
-
-                  // Build payload matching bookingController expectations
-                  const flightDetails = {
-                    from: raw.from || raw.origin || raw.fromLabel || '',
-                    to: raw.to || raw.destination || raw.toLabel || '',
-                    fromIata: raw.fromIata || raw.originIata || null,
-                    toIata: raw.toIata || raw.destinationIata || null,
-                    departureDate,
-                    passengers: raw.passengers || { adults: 1, children: 0, infants: 0 },
-                    selectedFlight: {
-                      flightId: raw.flightId || raw.flightnumber || raw.trip_id || raw.selectedFlight?.flightId || '',
-                      airline: raw.airline || raw.selectedFlight?.airline || '',
-                      airlineCode: raw.airlineCode || raw.selectedFlight?.airlineCode || null,
-                      airlineLogo: raw.airlineLogo || raw.selectedFlight?.airlineLogo || null,
-                      departureTime: raw.departureTime || departureDate || raw.selectedFlight?.departureTime || null,
-                      arrivalTime: raw.arrivalTime || raw.selectedFlight?.arrivalTime || null,
-                      price: {
-                        total: (raw.price && typeof raw.price === 'object' ? (Number(raw.price.total || raw.price.amount || 0) || 0) : Number(raw.price || 0)) || 0,
-                        currency: (raw.price && typeof raw.price === 'object' ? (raw.price.currency || raw.price.currency_code) : raw.currency) || 'USD'
-                      },
-                      class: raw.class || raw.cabin || raw.selectedFlight?.class || 'economy',
-                      // Keep raw as well for maximum compatibility (server stores under selectedFlight.raw)
-                      raw,
-                    },
-                  };
-
-                  await api.post('/bookings', { flightDetails });
-                }
-            // Clear local cart after successful sync
-            localStorage.removeItem('cartItems');
-          } catch (error) {
-            console.error('Failed to sync cart items to bookings:', error);
-          }
-        }
-
         toast({
           title: lang === 'ar' ? 'نجاح' : 'Success',
           description: lang === 'ar' ? 'تم تسجيل الدخول بنجاح' : 'Successfully logged in',
         });
 
+        // Sync local cart items in the background after successful login (non-blocking)
+        setTimeout(async () => {
+          try {
+            const localCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            if (localCartItems.length > 0) {
+              for (const raw of localCartItems) {
+                const departureDate = raw.departureDate || raw.departureTime || raw.departure_time ||
+                  raw.selectedFlight?.departureTime || raw.selectedFlight?.legs?.[0]?.from?.date || null;
+
+                const flightDetails = {
+                  from: raw.from || raw.origin || raw.fromLabel || '',
+                  to: raw.to || raw.destination || raw.toLabel || '',
+                  fromIata: raw.fromIata || raw.originIata || null,
+                  toIata: raw.toIata || raw.destinationIata || null,
+                  departureDate,
+                  passengers: raw.passengers || { adults: 1, children: 0, infants: 0 },
+                  selectedFlight: {
+                    flightId: raw.flightId || raw.flightnumber || raw.trip_id || raw.selectedFlight?.flightId || '',
+                    airline: raw.airline || raw.selectedFlight?.airline || '',
+                    airlineCode: raw.airlineCode || raw.selectedFlight?.airlineCode || null,
+                    airlineLogo: raw.airlineLogo || raw.selectedFlight?.airlineLogo || null,
+                    departureTime: raw.departureTime || departureDate || raw.selectedFlight?.departureTime || null,
+                    arrivalTime: raw.arrivalTime || raw.selectedFlight?.arrivalTime || null,
+                    price: {
+                      total: (raw.price && typeof raw.price === 'object' ? (Number(raw.price.total || raw.price.amount || 0) || 0) : Number(raw.price || 0)) || 0,
+                      currency: (raw.price && typeof raw.price === 'object' ? (raw.price.currency || raw.price.currency_code) : raw.currency) || 'USD'
+                    },
+                    class: raw.class || raw.cabin || raw.selectedFlight?.class || 'economy',
+                    raw,
+                  },
+                };
+
+                await api.post('/bookings', { flightDetails });
+              }
+              localStorage.removeItem('cartItems');
+            }
+          } catch (syncErr) {
+            console.warn('Background cart sync error:', syncErr);
+          }
+        }, 100);
+
         // If admin, go straight to admin dashboard
         if (response.data.user?.role === 'admin') {
           navigate('/admin');
         } else {
-          // Check if we should redirect to cart for checkout
           const { state } = location;
           if (state?.returnUrl === '/cart' && state?.message?.includes('checkout')) {
             navigate('/cart');
@@ -122,23 +115,24 @@ const Login: React.FC = () => {
             navigate(from);
           }
         }
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      if (axios.isAxiosError(error)) {
-        const message = error.response?.data?.message || "Failed to login";
-        toast({
-          title: lang === 'ar' ? 'خطأ' : 'Error',
-          description: message,
-          variant: "destructive"
-        });
       } else {
         toast({
           title: lang === 'ar' ? 'خطأ' : 'Error',
-          description: lang === 'ar' ? 'حدث خطأ غير متوقع' : 'An unexpected error occurred',
+          description: response.data?.message || (lang === 'ar' ? 'فشل تسجيل الدخول' : 'Failed to login'),
           variant: "destructive"
         });
       }
+    } catch (error) {
+      console.error('Login error:', error);
+      let message = lang === 'ar' ? 'اسم المستخدم أو كلمة المرور غير صحيحة' : 'Invalid credentials';
+      if (axios.isAxiosError(error) && error.response?.data?.message) {
+        message = error.response.data.message;
+      }
+      toast({
+        title: lang === 'ar' ? 'خطأ في الدخول' : 'Login Error',
+        description: message,
+        variant: "destructive"
+      });
     } finally {
       setIsLoading(false);
     }

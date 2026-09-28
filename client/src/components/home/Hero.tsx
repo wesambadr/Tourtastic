@@ -38,7 +38,14 @@ const Hero: React.FC = () => {
               {t('findOut')}
             </button>
             <button 
-              onClick={() => handleAuthenticatedAction(() => navigate('/flights'))}
+              onClick={() => {
+                const widget = document.getElementById('search-form-widget') || document.querySelector('form');
+                if (widget) {
+                  widget.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  navigate('/flights');
+                }
+              }}
               className="bg-white text-tourtastic-dark-blue py-2 px-6 rounded-md hover:bg-gray-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
               {t('bookNow')}
             </button>
