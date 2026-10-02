@@ -26,8 +26,8 @@ const Support247: React.FC = () => {
                 <div>
                   <h3 className="font-bold text-lg mb-2">{t('phoneSupport', 'Phone Support')}</h3>
                   <p className="text-gray-600 mb-2">{t('phoneSupportDesc', 'Speak directly with our support team')}</p>
-                  <a href="tel:+963983697317" className="text-tourtastic-blue hover:underline">
-                    +963 983 697 317
+                  <a href="tel:+963098697313" dir="ltr" className="text-tourtastic-blue hover:underline font-semibold">
+                    +963 098697313
                   </a>
                 </div>
               </div>

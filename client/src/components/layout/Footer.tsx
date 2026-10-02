@@ -112,20 +112,14 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">{t('contact', 'Contact')}</h3>
             <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin size={18} className="mr-2 text-tourtastic-blue flex-shrink-0 mt-1" />
-                <span className="text-gray-300 text-sm">
-                  {t('footerAddress', '123 Travel Street, Suite 100\nNew York, NY 10001')}
-                </span>
-              </li>
               <li className="flex items-center">
-                <Phone size={18} className="mr-2 text-tourtastic-blue flex-shrink-0" />
-                <a href="tel:+963983697317" dir="ltr" className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
-                  {t('footerPhone', '+963 983 697 317')}
+                <Phone size={18} className="mr-2 rtl:ml-2 text-tourtastic-blue flex-shrink-0" />
+                <a href="tel:+963098697313" dir="ltr" className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm font-medium">
+                  {t('footerPhone', '+963 098697313')}
                 </a>
               </li>
               <li className="flex items-center">
-                <Mail size={18} className="mr-2 text-tourtastic-blue flex-shrink-0" />
+                <Mail size={18} className="mr-2 rtl:ml-2 text-tourtastic-blue flex-shrink-0" />
                 <a href="mailto:info@tourtastic.com" dir="ltr" className="text-gray-300 hover:text-tourtastic-blue transition-colors text-sm">
                   {t('footerEmail', 'info@tourtastic.com')}
                 </a>

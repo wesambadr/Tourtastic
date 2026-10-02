@@ -184,66 +184,80 @@ const Contact: React.FC = () => {
             </Card>
           </div>
 
-          {/* Contact Information & Map */}
+          {/* Contact Information Cards */}
           <div className="lg:col-span-5 space-y-6 animate-fade-in animation-delay-200">
-            {/* Office Map */}
-            <Card className="shadow-lg border-0 rounded-2xl overflow-hidden">
-              <CardContent className="p-0">
-                <div className="w-full h-64 bg-gray-200 relative">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9914410203936!2d2.2922926156744847!3d48.858370079287475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sEiffel%20Tower!5e0!3m2!1sen!2sus!4v1653296468325!5m2!1sen!2sus"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Tourtastic Office Location"
-                  ></iframe>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Quick Contact Cards */}
-            <div className="grid grid-cols-1 gap-4">
-              <Card className="shadow-md border border-gray-100 rounded-xl hover:shadow-lg transition-shadow">
-                <CardContent className="p-5 flex items-center gap-4">
-                  <div className="bg-blue-50 p-3.5 rounded-xl text-tourtastic-blue flex-shrink-0">
-                    <MapPin className="h-6 w-6" />
+            <div className="grid grid-cols-1 gap-5">
+              {/* Phone Card */}
+              <Card className="shadow-lg border border-blue-100 rounded-2xl bg-gradient-to-br from-white to-blue-50/50 hover:shadow-xl transition-all duration-300 overflow-hidden">
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="bg-tourtastic-blue p-4 rounded-2xl text-white shadow-md flex-shrink-0 mt-1">
+                    <Phone className="h-7 w-7" />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">{t('visitOurOffice', 'المقر الرئيسي')}</h3>
-                    <p className="text-gray-600 text-sm">{t('address', '123 Travel Street, Paris, France')}</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-md border border-gray-100 rounded-xl hover:shadow-lg transition-shadow">
-                <CardContent className="p-5 flex items-center gap-4">
-                  <div className="bg-blue-50 p-3.5 rounded-xl text-tourtastic-blue flex-shrink-0">
-                    <Phone className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">{t('callUs', 'اتصل بنا مباشرة')}</h3>
-                    <p className="text-gray-700 font-semibold dir-ltr text-right">{t('phoneNumber', '+33 (0) 123 456 789')}</p>
-                    <p className="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
-                      <Clock className="h-3.5 w-3.5 text-gray-400" />
-                      <span>{t('callHours', 'من الإثنين إلى الجمعة: 9 صباحاً - 6 مساءً')}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-bold text-gray-900 text-lg">{t('callUs', 'اتصل بنا مباشرة')}</h3>
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                        {isArabic ? 'متاح الآن' : 'Available'}
+                      </span>
+                    </div>
+                    <p className="text-gray-500 text-sm mb-3">
+                      {isArabic ? 'لأي استفسار عن الرحلات والتذاكر أو تعديل الحجز:' : 'For inquiries regarding flights, tickets, or bookings:'}
+                    </p>
+                    <a 
+                      href="tel:+963098697313" 
+                      dir="ltr" 
+                      className="inline-flex items-center gap-2 text-xl font-extrabold text-tourtastic-blue hover:text-tourtastic-dark-blue transition-colors bg-white px-4 py-2 rounded-xl border border-blue-200 shadow-sm"
+                    >
+                      <span>+963 098697313</span>
+                    </a>
+                    <p className="text-xs text-gray-500 flex items-center gap-1.5 mt-3">
+                      <Clock className="h-4 w-4 text-tourtastic-blue" />
+                      <span>{isArabic ? 'خدمة هاتفية فورية ومباشرة' : 'Immediate phone support'}</span>
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="shadow-md border border-gray-100 rounded-xl hover:shadow-lg transition-shadow">
-                <CardContent className="p-5 flex items-center gap-4">
-                  <div className="bg-blue-50 p-3.5 rounded-xl text-tourtastic-blue flex-shrink-0">
-                    <Mail className="h-6 w-6" />
+              {/* Email Card */}
+              <Card className="shadow-lg border border-gray-100 rounded-2xl bg-white hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="bg-cyan-500 p-4 rounded-2xl text-white shadow-md flex-shrink-0 mt-1">
+                    <Mail className="h-7 w-7" />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">{t('emailUs', 'البريد الإلكتروني')}</h3>
-                    <p className="text-gray-700 font-semibold">{t('emailAddress', 'info@tourtastic.com')}</p>
-                    <p className="text-xs text-gray-500 mt-0.5">{t('responseTime', 'نلتزم بالرد خلال أقل من 24 ساعة')}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-gray-900 text-lg mb-1">{t('emailUs', 'البريد الإلكتروني')}</h3>
+                    <p className="text-gray-500 text-sm mb-3">
+                      {isArabic ? 'أرسل لنا تفاصيل استفسارك وستصلك إجابة شاملة:' : 'Send us your inquiries and receive a quick response:'}
+                    </p>
+                    <a 
+                      href="mailto:info@tourtastic.com" 
+                      dir="ltr" 
+                      className="inline-flex items-center gap-2 text-lg font-bold text-gray-800 hover:text-tourtastic-blue transition-colors bg-gray-50 px-4 py-2 rounded-xl border border-gray-200"
+                    >
+                      <span>info@tourtastic.com</span>
+                    </a>
+                    <p className="text-xs text-gray-500 flex items-center gap-1.5 mt-3">
+                      <Clock className="h-4 w-4 text-cyan-600" />
+                      <span>{isArabic ? 'الرد خلال أقل من 24 ساعة' : 'Replies within 24 hours'}</span>
+                    </p>
                   </div>
+                </CardContent>
+              </Card>
+
+              {/* Customer Support Card */}
+              <Card className="shadow-lg border border-indigo-100 rounded-2xl bg-gradient-to-br from-tourtastic-dark-blue to-tourtastic-blue text-white">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2.5 bg-white/10 rounded-xl backdrop-blur-sm">
+                      <Headset className="h-6 w-6 text-cyan-300" />
+                    </div>
+                    <h3 className="font-bold text-lg">{isArabic ? 'دعم حجز الرحلات' : 'Flight Booking Support'}</h3>
+                  </div>
+                  <p className="text-blue-100 text-sm leading-relaxed mb-4">
+                    {isArabic 
+                      ? 'فريق خبراء تورتاستيك يتيح لك حجز وتأكيد رحلاتك بأفضل الأسعار وأسهل الطرق.' 
+                      : 'Tourtastic expert team ensures smooth flight booking and instant confirmation at best rates.'}
+                  </p>
                 </CardContent>
               </Card>
             </div>
